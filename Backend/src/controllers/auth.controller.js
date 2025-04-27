@@ -8,7 +8,7 @@ export const register = async (req, res) => {
   try {
     const existingUser = await db.user.findUnique({
       where: {
-        email
+        email,
       },
     });
     if (existingUser) {
@@ -23,7 +23,7 @@ export const register = async (req, res) => {
         email,
         password: hashedPassword,
         name,
-        role: UserRole.USER
+        role: UserRole.USER,
       },
     });
     const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, {
@@ -52,7 +52,77 @@ export const register = async (req, res) => {
     });
   }
 };
-
-export const login = async (req, res) => {};
-export const logout = async (req, res) => {};
-export const check = async (req, res) => {};
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        email,
+      },
+    });
+    if (!user) {
+      return res.status(401).json({
+        error: "User not found",
+      });
+    }
+    const isMatch = bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({
+        error: "Invavlid creedentails",
+      });
+    }
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV !== "development",
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+    });
+    res.status(200).json({
+      success: true,
+      message: "user logged in sucessfully",
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+        image: user.image,
+      },
+    });
+  } catch (error) {
+    console.error("error while logging in", error);
+    res.status(402).json({
+      error: "Error logging in user",
+    });
+  }
+};
+export const logout = async (req, res) => {
+  try {
+    res.clearCokkie("jwt", {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV !== "development",
+    });
+  } catch (error) {
+    console.error("Error logging out user:", error);
+    res.status(500).json({
+      error: "Error logging out user",
+    });
+  }
+};
+export const check = async (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      message: "User authenticated successfully",
+      user: req.user,
+    });
+  } catch (error) {
+    console.error("Error checking user:", error);
+    res.status(500).json({
+      error: "Error checking user",
+    });
+  }
+};
