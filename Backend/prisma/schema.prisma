@@ -12,13 +12,11 @@ enum UserRole {
   ADMIN
   USER
 }
-
 enum Difficulty {
   EASY
   MEDIUM
   HARD
 }
-
 model User {
   id            String          @id @default(uuid())
   name          String?
@@ -32,7 +30,6 @@ model User {
   submission    Submission[]
   solvedProblem ProbelmSolved[]
 }
-
 model Problem {
   id                String          @id @default(uuid())
   title             String
@@ -53,7 +50,6 @@ model Problem {
   submission        Submission[]
   problemSolvedBy   ProbelmSolved[]
 }
-
 model Submission {
   id            String           @id @default(uuid())
   userId        String
@@ -73,7 +69,6 @@ model Submission {
   problem       Problem          @relation(fields: [problemId], references: [id], onDelete: Cascade)
   testCases     TestCaseResult[]
 }
-
 model TestCaseResult {
   id            String     @id @default(uuid())
   submissionId  String
@@ -92,7 +87,6 @@ model TestCaseResult {
 
   @@index([submissionId])
 }
-
 model ProbelmSolved {
   id        String   @id @default(uuid())
   userId    String
