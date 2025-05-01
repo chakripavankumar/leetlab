@@ -6,7 +6,7 @@ export const getJudge0LanguageId = (language) => {
     JAVA: 62,
     JAVASCRIPT: 63,
   };
-  return languageMap[language.toUpperCase()]
+  return languageMap[language.toUpperCase()];
 };
 
 export const submitBatch = async (submissions) => {
@@ -20,7 +20,7 @@ export const submitBatch = async (submissions) => {
 
   return data;
 };
-const sleep = (ms) => new Promise((resolve)=> setTimeout( resolve , ms))
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 export const pollBatchResults = async (tokens) => {
   while (true) {
     const { data } = await axios.get(

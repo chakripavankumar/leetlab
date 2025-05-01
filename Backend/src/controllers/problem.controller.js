@@ -16,14 +16,8 @@ export const createProblem = async (req, res) => {
     codeSnippets,
     referenceSolution,
   } = req.body;
-
-  if (req.user.role !== "ADMIN") {
-    return res
-      .status(403)
-      .json({ error: "You're not allowled to create problem" });
-  }
   try {
-    for (cosnt[(language, solutionCode)] of Object.entries(referenceSolution)) {
+    for (const [language, solutionCode] of Object.entries(referenceSolution)) {
       const languageId = getJudge0LanguageId(language);
       if (!languageId) {
         return res
@@ -37,20 +31,15 @@ export const createProblem = async (req, res) => {
         expected_output: output,
       }));
       const submissionResults = await submitBatch(submissions);
-
-      const tokens = submissionResults.map((res) => {
-        res.token;
-      });
+      const tokens = submissionResults.map((res) => res.token);
       const results = await pollBatchResults(tokens);
       for (let i = 0; i < results.length; i++) {
         const result = results[i];
         console.log("Result---", result);
         if (result.status.id !== 3) {
-          return res
-            .status(400)
-            .json({
-              error: `Testcase ${i + 1} failed for language ${language},`,
-            });
+          return res.status(400).json({
+            error: `Testcase ${i + 1} failed for language ${language},`,
+          });
         }
       }
     }
