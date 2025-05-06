@@ -8,14 +8,12 @@ import { db } from "../libs/db.js";
 
 export const createProblem = async (req, res) => {
   const parseResult = problemSchema.safeParse(req.body);
-
   if (!parseResult.success) {
     return res.status(400).json({
       error: "Invalid input data",
       details: parseResult.error.flatten(),
     });
   }
-
   const {
     title,
     description,
@@ -27,34 +25,23 @@ export const createProblem = async (req, res) => {
     codeSnippets = {},
     referenceSolution,
   } = parseResult.data;
-
   try {
-    console.log("req.user in controller:", req.user);
-   console.log("req.body:", req.body);
-    console.log("req.body.testcases:", req.body.testcases);
     for (const [language, solutionCode] of Object.entries(referenceSolution)) {
       const languageId = getJudge0LanguageId(language);
-     
-  if (!languageId) {
-    return res
-      .status(400)
-      .json({ error: `Language ${language} is not supported` });
-  }
-  if (!Array.isArray(req.body.testcases)) {
-    return res.status(400).json({ message: "Invalid testcases format" });
-  }
+      if (!languageId) {
+        return res
+          .status(400)
+          .json({ error: `Language ${language} is not supported` });
+      }
       const submissions = testcases.map(({ input, output }) => ({
         source_code: solutionCode,
         language_id: languageId,
         stdin: input,
         expected_output: output,
       }));
-
       const submissionResults = await submitBatch(submissions);
-      console.log("Submission Results:", submissionResults);
       const tokens = submissionResults.map((res) => res.token);
       const results = await pollBatchResults(tokens);
-
       for (let i = 0; i < results.length; i++) {
         if (results[i].status.id !== 3) {
           return res.status(400).json({
@@ -65,7 +52,6 @@ export const createProblem = async (req, res) => {
         }
       }
     }
-
     const newProblem = await db.problem.create({
       data: {
         title,
@@ -80,7 +66,6 @@ export const createProblem = async (req, res) => {
         userId: req.user.id,
       },
     });
-
     return res.status(201).json({
       success: true,
       message: "Problem Created Successfully",
@@ -107,7 +92,7 @@ export const getAllProblems = async (req, res) => {
       problem: problems,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).json({
       error: "Error While Fetching Problems",
     });
@@ -130,7 +115,7 @@ export const getProbelmById = async (req, res) => {
       problem,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).json({
       error: "Error While Fetching Problem by id",
     });
@@ -166,7 +151,7 @@ export const updateProblem = async (req, res) => {
         testcases,
         codeSnippets,
         referenceSolution,
-        userId: req.user.id
+        userId: req.user.id,
       },
     });
     return res.status(200).json({
@@ -196,7 +181,7 @@ export const deleteProblem = async (req, res) => {
       message: "Problem deleted Successfully",
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).json({
       error: "Error While deleting the problem",
     });

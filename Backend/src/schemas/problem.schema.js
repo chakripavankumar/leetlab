@@ -10,16 +10,18 @@ export const problemSchema = z.object({
     z.object({
       input: z.string(),
       output: z.string(),
-      explanation: z.string()
+      explanation: z.string(),
     })
   ),
   constraints: z.string(),
-  testcases: z.array(
-    z.object({
-      input: z.string(),
-      output: z.string(),
-    })
-  ).min(1), 
+  testcases: z
+    .array(
+      z.object({
+        input: z.string(),
+        output: z.string(),
+      })
+    )
+    .min(1),
   codeSnippets: z.record(z.string(), z.string()),
-  referenceSolution: z.record(z.string(), z.string())
+  referenceSolution: z.record(z.string(), z.string()),
 });

@@ -13,8 +13,8 @@ authRoutes.post("/register", register);
 
 authRoutes.post("/login", login);
 
-authRoutes.post("/logout",authMiddleware, logout);
+authRoutes.post("/logout", authMiddleware, logout);
 
-authRoutes.post("/check", authMiddleware ,check);
+authRoutes.post("/check", authMiddleware, check);
 
 export default authRoutes;

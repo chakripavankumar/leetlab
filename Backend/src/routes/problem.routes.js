@@ -9,7 +9,6 @@ import {
   updateProblem,
 } from "../controllers/problem.controller.js";
 
-
 const problemRoutes = express.Router();
 
 problemRoutes.post(

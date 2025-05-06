@@ -7,8 +7,8 @@ const headers = {
 };
 
 export const getJudge0LanguageId = (language) => {
-  if (!language || typeof language !== 'string') {
-    throw new Error('Language must be a non-empty string');
+  if (!language || typeof language !== "string") {
+    throw new Error("Language must be a non-empty string");
   }
 
   const languageMap = {
