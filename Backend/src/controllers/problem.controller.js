@@ -3,46 +3,69 @@ import {
   pollBatchResults,
   submitBatch,
 } from "../libs/judge0.lib.js";
+import { problemSchema } from "../schemas/problem.schema.js";
 import { db } from "../libs/db.js";
+
 export const createProblem = async (req, res) => {
+  const parseResult = problemSchema.safeParse(req.body);
+
+  if (!parseResult.success) {
+    return res.status(400).json({
+      error: "Invalid input data",
+      details: parseResult.error.flatten(),
+    });
+  }
+
   const {
     title,
     description,
     difficulty,
-    tags,
-    examples,
-    constraints,
+    tags = [],
+    examples = {},
+    constraints = "",
     testcases,
-    codeSnippets,
+    codeSnippets = {},
     referenceSolution,
-  } = req.body;
+  } = parseResult.data;
+
   try {
+    console.log("req.user in controller:", req.user);
+   console.log("req.body:", req.body);
+    console.log("req.body.testcases:", req.body.testcases);
     for (const [language, solutionCode] of Object.entries(referenceSolution)) {
       const languageId = getJudge0LanguageId(language);
-      if (!languageId) {
-        return res
-          .status(400)
-          .json({ error: `Language ${languageId}  is not supported` });
-      }
+     
+  if (!languageId) {
+    return res
+      .status(400)
+      .json({ error: `Language ${language} is not supported` });
+  }
+  if (!Array.isArray(req.body.testcases)) {
+    return res.status(400).json({ message: "Invalid testcases format" });
+  }
       const submissions = testcases.map(({ input, output }) => ({
         source_code: solutionCode,
         language_id: languageId,
         stdin: input,
         expected_output: output,
       }));
+
       const submissionResults = await submitBatch(submissions);
+      console.log("Submission Results:", submissionResults);
       const tokens = submissionResults.map((res) => res.token);
       const results = await pollBatchResults(tokens);
+
       for (let i = 0; i < results.length; i++) {
-        const result = results[i];
-        console.log("Result---", result);
-        if (result.status.id !== 3) {
+        if (results[i].status.id !== 3) {
           return res.status(400).json({
-            error: `Testcase ${i + 1} failed for language ${language},`,
+            error: `Testcase ${i + 1} failed for ${language}. Expected: ${
+              testcases[i].output
+            }, Got: ${results[i].stdout}`,
           });
         }
       }
     }
+
     const newProblem = await db.problem.create({
       data: {
         title,
@@ -57,13 +80,14 @@ export const createProblem = async (req, res) => {
         userId: req.user.id,
       },
     });
+
     return res.status(201).json({
-      sucess: true,
-      message: "Message Created Successfully",
+      success: true,
+      message: "Problem Created Successfully",
       problem: newProblem,
     });
   } catch (error) {
-    console.log(error);
+    console.error("Create Problem Error: ", error);
     return res.status(500).json({
       error: "Error While Creating Problem",
     });
@@ -113,7 +137,7 @@ export const getProbelmById = async (req, res) => {
   }
 };
 export const updateProblem = async (req, res) => {
-  const id = req.params;
+  const id = req.params.id;
   const {
     title,
     description,
@@ -131,9 +155,7 @@ export const updateProblem = async (req, res) => {
       return res.status(404).json({ error: "Problem not found" });
     }
     const updatedProblem = await db.problem.update({
-      where: {
-        id,
-      },
+      where: { id },
       data: {
         title,
         description,
@@ -144,7 +166,7 @@ export const updateProblem = async (req, res) => {
         testcases,
         codeSnippets,
         referenceSolution,
-        userId: req.user.id,
+        userId: req.user.id
       },
     });
     return res.status(200).json({

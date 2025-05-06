@@ -245,7 +245,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://myuser:mypassword@localhost:5432/postgres"
+        "value": "postgresql://pavan:pacan123456@localhost:5432/pavan"
       }
     }
   },

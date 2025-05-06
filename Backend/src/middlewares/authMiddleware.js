@@ -3,6 +3,7 @@ import { db } from "../libs/db.js";
 
 export const authMiddleware = async (req, res, next) => {
   try {
+    console.log("Incoming JWT from cookies:", req.cookies.jwt);
     const token = req.cookies.jwt;
 
     if (!token) {
@@ -65,3 +66,4 @@ export const checkAdmin = async (req, res, next) => {
     res.status(500).json({ message: "Error checking admin role" });
   }
 };
+
