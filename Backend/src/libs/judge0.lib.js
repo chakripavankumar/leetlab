@@ -10,18 +10,10 @@ export const getJudge0LanguageId = (language) => {
   if (!language || typeof language !== "string") {
     throw new Error("Language must be a non-empty string");
   }
-
   const languageMap = {
     PYTHON: 71,
     JAVA: 62,
     JAVASCRIPT: 63,
-    C: 50,
-    CPP: 54,
-    CSHARP: 51,
-    RUBY: 72,
-    GO: 60,
-    PHP: 68,
-    SWIFT: 83,
     TYPESCRIPT: 74,
   };
 
@@ -62,3 +54,13 @@ export const pollBatchResults = async (tokens) => {
     await sleep(1000);
   }
 };
+
+export function getLanguageName (languageId) {
+   const languageNames =  {
+    74: "TypeScript",
+    63: "JavaScript",
+    71: "Python",
+    62: "Java",
+   }
+   return languageNames[languageId] || "Unknow"
+}
