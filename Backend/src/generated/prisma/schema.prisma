@@ -30,7 +30,7 @@ model User {
   updateAt      DateTime        @updatedAt
   problems      Problem[]
   submission    Submission[]
-  solvedProblem ProbelmSolved[]
+  solvedProblem ProblemSolved[]
 }
 
 model Problem {
@@ -51,7 +51,7 @@ model Problem {
   updatedAt         DateTime        @updatedAt
   user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   submission        Submission[]
-  problemSolvedBy   ProbelmSolved[]
+  problemSolvedBy   ProblemSolved[]
 }
 
 model Submission {
@@ -93,7 +93,7 @@ model TestCaseResult {
   @@index([submissionId])
 }
 
-model ProbelmSolved {
+model ProblemSolved {
   id        String   @id @default(uuid())
   userId    String
   problemId String
