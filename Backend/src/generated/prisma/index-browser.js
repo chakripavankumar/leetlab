@@ -183,7 +183,7 @@ exports.Prisma.ProblemSolvedScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   problemId: 'problemId',
-  ceratedAt: 'ceratedAt',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 

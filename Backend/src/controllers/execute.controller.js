@@ -83,11 +83,11 @@ export const executeCode = async (req, res) => {
             userId,
             problemId,
           },
-          update: {},
-          create: {
-            userId,
-            problemId,
-          },
+        },
+        update: {},
+        create: {
+          userId,
+          problemId,
         },
       });
     }

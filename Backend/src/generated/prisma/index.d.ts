@@ -6192,7 +6192,7 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     problemId: string | null
-    ceratedAt: Date | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
@@ -6200,7 +6200,7 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     problemId: string | null
-    ceratedAt: Date | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
@@ -6208,7 +6208,7 @@ export namespace Prisma {
     id: number
     userId: number
     problemId: number
-    ceratedAt: number
+    createdAt: number
     updatedAt: number
     _all: number
   }
@@ -6218,7 +6218,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     problemId?: true
-    ceratedAt?: true
+    createdAt?: true
     updatedAt?: true
   }
 
@@ -6226,7 +6226,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     problemId?: true
-    ceratedAt?: true
+    createdAt?: true
     updatedAt?: true
   }
 
@@ -6234,7 +6234,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     problemId?: true
-    ceratedAt?: true
+    createdAt?: true
     updatedAt?: true
     _all?: true
   }
@@ -6315,7 +6315,7 @@ export namespace Prisma {
     id: string
     userId: string
     problemId: string
-    ceratedAt: Date
+    createdAt: Date
     updatedAt: Date
     _count: ProblemSolvedCountAggregateOutputType | null
     _min: ProblemSolvedMinAggregateOutputType | null
@@ -6340,7 +6340,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     problemId?: boolean
-    ceratedAt?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
@@ -6350,7 +6350,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     problemId?: boolean
-    ceratedAt?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
@@ -6360,7 +6360,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     problemId?: boolean
-    ceratedAt?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
@@ -6370,11 +6370,11 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     problemId?: boolean
-    ceratedAt?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProblemSolvedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "ceratedAt" | "updatedAt", ExtArgs["result"]["problemSolved"]>
+  export type ProblemSolvedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "createdAt" | "updatedAt", ExtArgs["result"]["problemSolved"]>
   export type ProblemSolvedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
@@ -6398,7 +6398,7 @@ export namespace Prisma {
       id: string
       userId: string
       problemId: string
-      ceratedAt: Date
+      createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["problemSolved"]>
     composites: {}
@@ -6828,7 +6828,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ProblemSolved", 'String'>
     readonly userId: FieldRef<"ProblemSolved", 'String'>
     readonly problemId: FieldRef<"ProblemSolved", 'String'>
-    readonly ceratedAt: FieldRef<"ProblemSolved", 'DateTime'>
+    readonly createdAt: FieldRef<"ProblemSolved", 'DateTime'>
     readonly updatedAt: FieldRef<"ProblemSolved", 'DateTime'>
   }
     
@@ -7336,7 +7336,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     problemId: 'problemId',
-    ceratedAt: 'ceratedAt',
+    createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
@@ -7893,7 +7893,7 @@ export namespace Prisma {
     id?: StringFilter<"ProblemSolved"> | string
     userId?: StringFilter<"ProblemSolved"> | string
     problemId?: StringFilter<"ProblemSolved"> | string
-    ceratedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
@@ -7903,7 +7903,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     problemId?: SortOrder
-    ceratedAt?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     problem?: ProblemOrderByWithRelationInput
@@ -7917,7 +7917,7 @@ export namespace Prisma {
     NOT?: ProblemSolvedWhereInput | ProblemSolvedWhereInput[]
     userId?: StringFilter<"ProblemSolved"> | string
     problemId?: StringFilter<"ProblemSolved"> | string
-    ceratedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
@@ -7927,7 +7927,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     problemId?: SortOrder
-    ceratedAt?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ProblemSolvedCountOrderByAggregateInput
     _max?: ProblemSolvedMaxOrderByAggregateInput
@@ -7941,7 +7941,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"ProblemSolved"> | string
     userId?: StringWithAggregatesFilter<"ProblemSolved"> | string
     problemId?: StringWithAggregatesFilter<"ProblemSolved"> | string
-    ceratedAt?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
   }
 
@@ -8401,7 +8401,7 @@ export namespace Prisma {
 
   export type ProblemSolvedCreateInput = {
     id?: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSolvedProblemInput
     problem: ProblemCreateNestedOneWithoutProblemSolvedByInput
@@ -8411,13 +8411,13 @@ export namespace Prisma {
     id?: string
     userId: string
     problemId: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProblemSolvedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSolvedProblemNestedInput
     problem?: ProblemUpdateOneRequiredWithoutProblemSolvedByNestedInput
@@ -8427,7 +8427,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8435,13 +8435,13 @@ export namespace Prisma {
     id?: string
     userId: string
     problemId: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProblemSolvedUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8449,7 +8449,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8926,7 +8926,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     problemId?: SortOrder
-    ceratedAt?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -8934,7 +8934,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     problemId?: SortOrder
-    ceratedAt?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -8942,7 +8942,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     problemId?: SortOrder
-    ceratedAt?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -9623,7 +9623,7 @@ export namespace Prisma {
 
   export type ProblemSolvedCreateWithoutUserInput = {
     id?: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
     problem: ProblemCreateNestedOneWithoutProblemSolvedByInput
   }
@@ -9631,7 +9631,7 @@ export namespace Prisma {
   export type ProblemSolvedUncheckedCreateWithoutUserInput = {
     id?: string
     problemId: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -9741,7 +9741,7 @@ export namespace Prisma {
     id?: StringFilter<"ProblemSolved"> | string
     userId?: StringFilter<"ProblemSolved"> | string
     problemId?: StringFilter<"ProblemSolved"> | string
-    ceratedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
   }
 
@@ -9822,7 +9822,7 @@ export namespace Prisma {
 
   export type ProblemSolvedCreateWithoutProblemInput = {
     id?: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSolvedProblemInput
   }
@@ -9830,7 +9830,7 @@ export namespace Prisma {
   export type ProblemSolvedUncheckedCreateWithoutProblemInput = {
     id?: string
     userId: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -10428,7 +10428,7 @@ export namespace Prisma {
   export type ProblemSolvedCreateManyUserInput = {
     id?: string
     problemId: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -10539,7 +10539,7 @@ export namespace Prisma {
 
   export type ProblemSolvedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problem?: ProblemUpdateOneRequiredWithoutProblemSolvedByNestedInput
   }
@@ -10547,14 +10547,14 @@ export namespace Prisma {
   export type ProblemSolvedUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10577,7 +10577,7 @@ export namespace Prisma {
   export type ProblemSolvedCreateManyProblemInput = {
     id?: string
     userId: string
-    ceratedAt?: Date | string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -10633,7 +10633,7 @@ export namespace Prisma {
 
   export type ProblemSolvedUpdateWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSolvedProblemNestedInput
   }
@@ -10641,14 +10641,14 @@ export namespace Prisma {
   export type ProblemSolvedUncheckedUpdateWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUncheckedUpdateManyWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    ceratedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
