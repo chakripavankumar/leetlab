@@ -1,7 +1,7 @@
 import express from "express";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import {
-  a,
+  getAllListDetails,
   getPlayListDetails,
   createPlaylist,
   addProblemToPlaylist,
@@ -11,7 +11,7 @@ import {
 
 const playlistRoutes = express.Router();
 
-playlistRoutes.get("/", authMiddleware, a);
+playlistRoutes.get("/", authMiddleware, getAllListDetails);
 
 playlistRoutes.get("/:playlistId", authMiddleware, getPlayListDetails);
 
