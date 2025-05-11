@@ -7,15 +7,18 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 enum UserRole {
   ADMIN
   USER
 }
+
 enum Difficulty {
   EASY
   MEDIUM
   HARD
 }
+
 model User {
   id            String          @id @default(uuid())
   name          String?
@@ -28,7 +31,9 @@ model User {
   problems      Problem[]
   submission    Submission[]
   solvedProblem ProblemSolved[]
+  Playlists      Playlist[]
 }
+
 model Problem {
   id                String          @id @default(uuid())
   title             String
@@ -48,7 +53,9 @@ model Problem {
   user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   submission        Submission[]
   problemSolvedBy   ProblemSolved[]
+  problemPlaylists ProblemPlaylist[]
 }
+
 model Submission {
   id            String           @id @default(uuid())
   userId        String
@@ -68,6 +75,7 @@ model Submission {
   problem       Problem          @relation(fields: [problemId], references: [id], onDelete: Cascade)
   testCases     TestCaseResult[]
 }
+
 model TestCaseResult {
   id            String     @id @default(uuid())
   submissionId  String
@@ -86,6 +94,7 @@ model TestCaseResult {
 
   @@index([submissionId])
 }
+
 model ProblemSolved {
   id        String   @id @default(uuid())
   userId    String
@@ -96,4 +105,28 @@ model ProblemSolved {
   problem   Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
 
   @@unique([userId, problemId])
+}
+
+model Playlist {
+  id       String   @id @default(uuid())
+  name     String
+  description String
+  userId   String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  User     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Problems ProblemPlaylist []
+  @@unique([name,userId])
+}
+
+model ProblemPlaylist {
+  id String @id @default(uuid())
+  playlistId  String
+  problemId String
+  createdAt  DateTime @default(now())
+  updateAt   DateTime @updatedAt  
+  playlist Playlist @relation(fields: [playlistId],references: [id],onDelete: Cascade)
+  problem  Problem @relation(fields: [problemId],references: [id],onDelete: Cascade)
+
+  @@unique([problemId,playlistId])
 }
