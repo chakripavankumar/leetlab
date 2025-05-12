@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import problemRoutes from "./routes/problem.routes.js";
 import executionRoute from "./routes/execute.routes.js";
 import submissionRoute from "./routes/submission.routes.js";
-import playlistRoutes from "./routes/"
+import playlistRoutes from "./routes/playlist.routes.js"
 
 dotenv.config();
 const app = express();
