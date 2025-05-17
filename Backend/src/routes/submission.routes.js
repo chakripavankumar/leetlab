@@ -20,5 +20,4 @@ submissionRoute.get(
   getAllSubmissionsForProblem
 );
 
-
-export default submissionRoute
+export default submissionRoute;

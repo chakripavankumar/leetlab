@@ -1,4 +1,5 @@
 import { db } from "../libs/db.js";
+// GET ALL THE SUBMISSON FOR THE USER
 export const getAllSubmission = async (req, res) => {
   try {
     const user = req.user.id;
@@ -17,6 +18,7 @@ export const getAllSubmission = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch submissions" });
   }
 };
+// GET SUBMISSION BY PARTICULAR PROBLEM
 export const getSubmissionsForProblem = async (req, res) => {
   try {
     const user = req.user.id;
@@ -37,7 +39,7 @@ export const getSubmissionsForProblem = async (req, res) => {
     res.status(500).json({ error: "Fetch Submissions Error" });
   }
 };
-
+// COUNT PER SUBMISSION FOR PATICULAR PROBLEM
 export const getAllSubmissionsForProblem = async (req, res) => {
   try {
     const problemId = req.params.problemId;

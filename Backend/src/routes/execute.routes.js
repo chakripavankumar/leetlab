@@ -1,12 +1,9 @@
 import express from "express";
-import {authMiddleware} from "../middlewares/authMiddleware.js"
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { executeCode } from "../controllers/execute.controller.js";
 
+const executionRoute = express.Router();
 
-const executionRoute =  express.Router();
+executionRoute.post("/", authMiddleware, executeCode);
 
-executionRoute.post("/" ,  authMiddleware, executeCode)
-
-export default executionRoute
-
-
+export default executionRoute;

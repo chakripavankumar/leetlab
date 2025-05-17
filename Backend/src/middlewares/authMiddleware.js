@@ -29,11 +29,9 @@ export const authMiddleware = async (req, res, next) => {
         role: true,
       },
     });
-
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
     req.user = user;
     next();
   } catch (error) {
@@ -41,7 +39,6 @@ export const authMiddleware = async (req, res, next) => {
     res.status(500).json({ message: "Error authenticating user" });
   }
 };
-
 export const checkAdmin = async (req, res, next) => {
   try {
     const userId = req.user.id;

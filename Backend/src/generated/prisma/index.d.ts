@@ -1583,11 +1583,11 @@ export namespace Prisma {
    */
 
   export type PlaylistCountOutputType = {
-    Problems: number
+    problems: number
   }
 
   export type PlaylistCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Problems?: boolean | PlaylistCountOutputTypeCountProblemsArgs
+    problems?: boolean | PlaylistCountOutputTypeCountProblemsArgs
   }
 
   // Custom InputTypes
@@ -7703,8 +7703,8 @@ export namespace Prisma {
     userId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
-    Problems?: boolean | Playlist$ProblemsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problems?: boolean | Playlist$problemsArgs<ExtArgs>
     _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
@@ -7715,7 +7715,7 @@ export namespace Prisma {
     userId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
   export type PlaylistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7725,7 +7725,7 @@ export namespace Prisma {
     userId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
   export type PlaylistSelectScalar = {
@@ -7739,22 +7739,22 @@ export namespace Prisma {
 
   export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "userId" | "createAt" | "updateAt", ExtArgs["result"]["playlist"]>
   export type PlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
-    Problems?: boolean | Playlist$ProblemsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problems?: boolean | Playlist$problemsArgs<ExtArgs>
     _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PlaylistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type PlaylistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $PlaylistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Playlist"
     objects: {
-      User: Prisma.$UserPayload<ExtArgs>
-      Problems: Prisma.$ProblemPlaylistPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+      problems: Prisma.$ProblemPlaylistPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8157,8 +8157,8 @@ export namespace Prisma {
    */
   export interface Prisma__PlaylistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Problems<T extends Playlist$ProblemsArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$ProblemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problems<T extends Playlist$problemsArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8590,9 +8590,9 @@ export namespace Prisma {
   }
 
   /**
-   * Playlist.Problems
+   * Playlist.problems
    */
-  export type Playlist$ProblemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Playlist$problemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ProblemPlaylist
      */
@@ -10438,8 +10438,8 @@ export namespace Prisma {
     userId?: StringFilter<"Playlist"> | string
     createAt?: DateTimeFilter<"Playlist"> | Date | string
     updateAt?: DateTimeFilter<"Playlist"> | Date | string
-    User?: XOR<UserScalarRelationFilter, UserWhereInput>
-    Problems?: ProblemPlaylistListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problems?: ProblemPlaylistListRelationFilter
   }
 
   export type PlaylistOrderByWithRelationInput = {
@@ -10449,8 +10449,8 @@ export namespace Prisma {
     userId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    User?: UserOrderByWithRelationInput
-    Problems?: ProblemPlaylistOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
+    problems?: ProblemPlaylistOrderByRelationAggregateInput
   }
 
   export type PlaylistWhereUniqueInput = Prisma.AtLeast<{
@@ -10464,8 +10464,8 @@ export namespace Prisma {
     userId?: StringFilter<"Playlist"> | string
     createAt?: DateTimeFilter<"Playlist"> | Date | string
     updateAt?: DateTimeFilter<"Playlist"> | Date | string
-    User?: XOR<UserScalarRelationFilter, UserWhereInput>
-    Problems?: ProblemPlaylistListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problems?: ProblemPlaylistListRelationFilter
   }, "id" | "name_userId">
 
   export type PlaylistOrderByWithAggregationInput = {
@@ -11073,8 +11073,8 @@ export namespace Prisma {
     description: string
     createAt?: Date | string
     updateAt?: Date | string
-    User: UserCreateNestedOneWithoutPlaylistsInput
-    Problems?: ProblemPlaylistCreateNestedManyWithoutPlaylistInput
+    user: UserCreateNestedOneWithoutPlaylistsInput
+    problems?: ProblemPlaylistCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUncheckedCreateInput = {
@@ -11084,7 +11084,7 @@ export namespace Prisma {
     userId: string
     createAt?: Date | string
     updateAt?: Date | string
-    Problems?: ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
+    problems?: ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUpdateInput = {
@@ -11093,8 +11093,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    User?: UserUpdateOneRequiredWithoutPlaylistsNestedInput
-    Problems?: ProblemPlaylistUpdateManyWithoutPlaylistNestedInput
+    user?: UserUpdateOneRequiredWithoutPlaylistsNestedInput
+    problems?: ProblemPlaylistUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateInput = {
@@ -11104,7 +11104,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Problems?: ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
+    problems?: ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistCreateManyInput = {
@@ -12641,7 +12641,7 @@ export namespace Prisma {
     description: string
     createAt?: Date | string
     updateAt?: Date | string
-    Problems?: ProblemPlaylistCreateNestedManyWithoutPlaylistInput
+    problems?: ProblemPlaylistCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUncheckedCreateWithoutUserInput = {
@@ -12650,7 +12650,7 @@ export namespace Prisma {
     description: string
     createAt?: Date | string
     updateAt?: Date | string
-    Problems?: ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
+    problems?: ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistCreateOrConnectWithoutUserInput = {
@@ -13627,7 +13627,7 @@ export namespace Prisma {
     description: string
     createAt?: Date | string
     updateAt?: Date | string
-    User: UserCreateNestedOneWithoutPlaylistsInput
+    user: UserCreateNestedOneWithoutPlaylistsInput
   }
 
   export type PlaylistUncheckedCreateWithoutProblemsInput = {
@@ -13706,7 +13706,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    User?: UserUpdateOneRequiredWithoutPlaylistsNestedInput
+    user?: UserUpdateOneRequiredWithoutPlaylistsNestedInput
   }
 
   export type PlaylistUncheckedUpdateWithoutProblemsInput = {
@@ -13951,7 +13951,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Problems?: ProblemPlaylistUpdateManyWithoutPlaylistNestedInput
+    problems?: ProblemPlaylistUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateWithoutUserInput = {
@@ -13960,7 +13960,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Problems?: ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
+    problems?: ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateManyWithoutUserInput = {

@@ -3,6 +3,7 @@ import { db } from "../libs/db.js";
 import jwt from "jsonwebtoken";
 import { UserRole } from "../generated/prisma/index.js";
 
+// REGISTER
 export const register = async (req, res) => {
   const { email, password, name } = req.body;
   try {
@@ -17,7 +18,6 @@ export const register = async (req, res) => {
       });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = await db.user.create({
       data: {
         email,
@@ -42,7 +42,7 @@ export const register = async (req, res) => {
         email: newUser.email,
         name: newUser.name,
         role: newUser.role,
-        image: newUser.image,
+        image: newUser?.image,
       },
     });
   } catch (error) {
@@ -52,6 +52,7 @@ export const register = async (req, res) => {
     });
   }
 };
+// LOGIN
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -67,7 +68,7 @@ export const login = async (req, res) => {
     }
     const isMatch = bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({
+      return res.status(404).json({
         error: "Invavlid creedentails",
       });
     }
@@ -80,7 +81,7 @@ export const login = async (req, res) => {
       secure: process.env.NODE_ENV !== "development",
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     });
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       message: "user logged in sucessfully",
       user: {
@@ -88,7 +89,7 @@ export const login = async (req, res) => {
         email: user.email,
         name: user.name,
         role: user.role,
-        image: user.image,
+        image: user?.image,
       },
     });
   } catch (error) {
@@ -98,13 +99,15 @@ export const login = async (req, res) => {
     });
   }
 };
+// LOGOUT
 export const logout = async (req, res) => {
   try {
-    res.clearCokkie("jwt", {
+    res.clearCookie("jwt", {
       httpOnly: true,
       sameSite: "strict",
       secure: process.env.NODE_ENV !== "development",
     });
+    res.status(201).json({ message: "Logged out successfully" });
   } catch (error) {
     console.error("Error logging out user:", error);
     res.status(500).json({
@@ -112,9 +115,10 @@ export const logout = async (req, res) => {
     });
   }
 };
-export const check = async (req, res) => {
+//CHECK AUTH
+export const checkAuth = async (req, res) => {
   try {
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       message: "User authenticated successfully",
       user: req.user,
@@ -124,5 +128,47 @@ export const check = async (req, res) => {
     res.status(500).json({
       error: "Error checking user",
     });
+  }
+};
+//GET SUBMISSIONS
+export const getSubmissions = async (req, res) => {
+  try {
+    const submissions = await db.submission.findMany({
+      where: {
+        userId: req.user.id,
+      },
+    });
+    res.status(201).json({
+      success: true,
+      message: "Submissions fetched successfully",
+      submissions,
+    });
+  } catch (error) {
+    console.error("Fetch Submissions Error:", error);
+    res.status(500).json({ error: "Failed to fetch submissions" });
+  }
+};
+// GET USER PLAYLIST
+export const getPlayList = async (req, res) => {
+  try {
+    const playlists = await db.playlist.findMany({
+      where: {
+        userId: req.user.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        createdAt: true,
+      },
+    });
+    res.status(201).json({
+      success: true,
+      message: "playlist fetched successfully",
+      playlists,
+    });
+  } catch (error) {
+    console.error(" error while fetching playlists", error);
+    res.status(500).json({ error: "Failed to fetch playlists" });
   }
 };

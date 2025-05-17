@@ -10,7 +10,7 @@ export const executeCode = async (req, res) => {
     const { source_code, language_id, stdin, expected_outputs, problemId } =
       req.body;
     const userId = req.user.id;
-    // Validate test cases
+    // 1. Validate test cases
     if (
       !Array.isArray(stdin) ||
       stdin.length === 0 ||
@@ -30,7 +30,6 @@ export const executeCode = async (req, res) => {
     const tokens = submitResponse.map((res) => res.token);
     // 4. Poll judge0 for results of all submitted test cases
     const results = await pollBatchResults(tokens);
-
     //  Analyze test case results
     let allPassed = true;
     const detailedResults = results.map((result, i) => {
@@ -38,7 +37,6 @@ export const executeCode = async (req, res) => {
       const expected_output = expected_outputs[i]?.trim();
       const passed = stdout === expected_output;
       if (!passed) allPassed = false;
-
       return {
         testCase: i + 1,
         passed,
@@ -107,6 +105,7 @@ export const executeCode = async (req, res) => {
     await db.testCaseResult.createMany({
       data: testCaseResults,
     });
+    // 9. Fetch full submission with test cases
     const submissionWithTestCase = await db.submission.findUnique({
       where: {
         id: submission.id,

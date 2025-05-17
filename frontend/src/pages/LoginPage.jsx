@@ -25,7 +25,7 @@ const LoginSchema = z.object({
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const {signup , isSigninUp} = useAuthStore();
+  const {login , isLoggingIn} = useAuthStore();
 
   const {
     register,
@@ -38,7 +38,7 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
    
     try {
-      await signup(data); // your auth logic here
+      await login(data); // your auth logic here
       console.log("SignUp Data:", data);
     } catch (error) {
       console.error("SignUp failed:", error);
@@ -125,9 +125,9 @@ const LoginPage = () => {
             <button
               type="submit"
               className="btn btn-primary w-full"
-              disabled={isSigninUp}
+              disabled={isLoggingIn}
             >
-              {isSigninUp ? (
+              {isLoggingIn ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
                   Loading...

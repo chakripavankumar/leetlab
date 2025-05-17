@@ -114,8 +114,8 @@ model Playlist {
   userId   String
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
-  User     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Problems ProblemPlaylist []
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problems ProblemPlaylist []
   @@unique([name,userId])
 }
 

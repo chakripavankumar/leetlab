@@ -1,6 +1,8 @@
 import express from "express";
 import {
-  check,
+  checkAuth,
+  getPlayList,
+  getSubmissions,
   login,
   logout,
   register,
@@ -9,12 +11,16 @@ import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const authRoutes = express.Router();
 
+authRoutes.post("/check", authMiddleware, checkAuth);
+
 authRoutes.post("/register", register);
 
 authRoutes.post("/login", login);
 
 authRoutes.post("/logout", authMiddleware, logout);
 
-authRoutes.post("/check", authMiddleware, check);
+authRoutes.post("/get-submissions", authMiddleware, getSubmissions);
+
+authRoutes.post("/get-playlists", authMiddleware, getPlayList);
 
 export default authRoutes;
