@@ -1,26 +1,17 @@
-import {  useNavigate } from "react-router-dom"
-
-
-
 const HomePage = () => {
-  const navigate   = useNavigate();
-   const handleSignupButton =  () =>{
-    navigate ("/signup")
-   }
   return (
-    <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content text-center">
-    <div className="max-w-md">
-      <h1 className="text-5xl font-bold">Hello there</h1>
-      <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
+    <div className="min-h-screen flex flex-col items-center mt-14 px-4">
+      <div className=" absolute to[-16 left-0 w-1/3 h-1/3 bg-primary opacity-30 blur-3xl rounded-md bottom-9"></div>
+      <h1 className="text-4xl font-extrabold z-10 text-center">
+        Welcome to <span className="text-primary">LeetLab</span>
+      </h1>
+      <p className="mt-4 text-center text-lg font-semibold text-gray-500 dark:text-gray-400 z-10">
+        A Platform Inspired by Leetcode which helps you to prepare for coding
+        interviews and helps you to improve your coding skills by solving coding
+        problems
       </p>
-      <button className="btn btn-primary" onClick={handleSignupButton}>Get Started</button>
     </div>
-  </div>
-</div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

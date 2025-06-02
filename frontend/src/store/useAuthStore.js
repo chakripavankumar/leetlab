@@ -1,10 +1,10 @@
 import { create } from "zustand";
-import { axiosInstance } from "../lib/axios.js";
+import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 
 export const useAuthStore = create((set) => ({
   authUser: null,
-  isSignup: false,
+  isSigninUp: false,
   isLoggingIn: false,
   isCheckingAuth: false,
 
@@ -12,26 +12,28 @@ export const useAuthStore = create((set) => ({
     set({ isCheckingAuth: true });
     try {
       const res = await axiosInstance.get("/auth/check");
-      console.log("checkAuth responce ", res.data);
+      console.log("checkauth response", res.data);
       set({ authUser: res.data.user });
     } catch (error) {
-      console.error("error while singing in from frontend", error);
+      console.log("❌ Error checking auth:", error);
       set({ authUser: null });
     } finally {
       set({ isCheckingAuth: false });
     }
   },
-  signUp: async (data) => {
-    set({ isSignup: true });
+  signup: async (data) => {
+    set({ isSigninUp: true });
     try {
       const res = await axiosInstance.post("/auth/register", data);
+
       set({ authUser: res.data.user });
+
       toast.success(res.data.message);
     } catch (error) {
-      console.error("Error signing up", error);
+      console.log("Error signing up", error);
       toast.error("Error signing up");
     } finally {
-      set({ isSignup: false });
+      set({ isSigninUp: false });
     }
   },
   login: async (data) => {
@@ -41,19 +43,19 @@ export const useAuthStore = create((set) => ({
       set({ authUser: res.data.user });
       toast.success(res.data.message);
     } catch (error) {
-      console.error("error while logging", error);
+      console.log("Error logging in", error);
       toast.error("Error logging in");
     } finally {
       set({ isLoggingIn: false });
     }
   },
-  logout: async (data) => {
+  logout: async () => {
     try {
-      await axiosInstance.post("/auth/logout", data);
+      await axiosInstance.post("/auth/logout");
       set({ authUser: null });
-      toast.success("Logout Successful");
+      toast.success("Logout successful");
     } catch (error) {
-      console.error("error while logging out:", error);
+      console.log("Error logging out", error);
       toast.error("Error logging out");
     }
   },
