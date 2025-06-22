@@ -1,60 +1,35 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import HomePage from "./pages/HomePage";
-import { useAuthStore } from "./store/useAuthStore";
-import { useEffect } from "react";
-import { Loader } from "lucide-react";
-import Layout from "./layout/Layout";
-import ProblemPage from "./pages/ProblemPage";
-import AdminRoute from "./components/AdminRoute";
-import AddProblem from "./pages/AddProblem";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const { authUser, isCheckingAuth, checkAuth } = useAuthStore();
+  const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
-  if (isCheckingAuth && !authUser) {
-    return (
-      <div className=" bg-black flex justify-center items-center min-h-screen w-full">
-        <Loader className="size-36 animate-spin" />
-      </div>
-    );
-  }
   return (
-    <div className="flex flex-col items-center justify-center">
-      <Toaster />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={authUser ? <HomePage /> : <Navigate to={"/login"} />}
-          />
-        </Route>
-        <Route
-          path="/login"
-          element={!authUser ? <LoginPage /> : <Navigate to={"/"} />}
-        />
-        <Route
-          path="/signup"
-          element={!authUser ? <SignupPage /> : <Navigate to={"/"} />}
-        />
-        <Route
-          path="/problem/:id"
-          element={authUser ? <ProblemPage /> : <Navigate to={"/login"} />}
-        />
-        <Route element={<AdminRoute />}>
-          <Route
-            path="/add-problem"
-            element={authUser ? <AddProblem /> : <Navigate to="/" />}
-          />
-        </Route>
-      </Routes>
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App

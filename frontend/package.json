@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "bunu",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,21 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.0.1",
+    "@hookform/resolvers": "^5.1.1",
     "@monaco-editor/react": "^4.7.0",
-    "@tailwindcss/vite": "^4.1.6",
-    "axios": "^1.9.0",
-    "daisyui": "^5.0.35",
-    "lucide-react": "^0.509.0",
-    "monaco-editor": "^0.52.2",
+    "@tailwindcss/vite": "^4.1.10",
+    "@vercel/analytics": "^1.5.0",
+    "axios": "^1.10.0",
+    "daisyui": "^5.0.43",
+    "lucide-react": "^0.522.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.56.3",
+    "react-hook-form": "^7.58.1",
     "react-hot-toast": "^2.5.2",
-    "react-router-dom": "^7.6.0",
-    "tailwindcss": "^4.1.6",
-    "zod": "^3.24.4",
-    "zustand": "^5.0.4"
+    "react-query": "^3.39.3",
+    "react-resizable-panels": "^3.0.3",
+    "react-router-dom": "^7.6.2",
+    "recharts": "^2.15.4",
+    "tailwindcss": "^4.1.10",
+    "zod": "^3.25.67",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
