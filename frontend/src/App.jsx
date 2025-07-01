@@ -1,13 +1,14 @@
 
-import { CopyButton } from "./components/common";
+import { CopyButton, DeleteModal } from "./components/common";
 import CodeEditor from "./components/Common/CodeEditor";
 import LandingPage from "./components/Home";
 import Login from "./components/Login";
+import Playlist from "./components/Playlist";
 
 function App() {
   return (
     <div>
-    <LandingPage/>
+    <Playlist/>
     </div>
   );
 }
