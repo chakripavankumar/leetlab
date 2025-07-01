@@ -1,10 +1,13 @@
-import Header from "./components/Common/Header";
+
+import { CopyButton } from "./components/common";
+import CodeEditor from "./components/Common/CodeEditor";
+import LandingPage from "./components/Home";
+import Login from "./components/Login";
 
 function App() {
   return (
     <div>
-<Header/>
-
+    <LandingPage/>
     </div>
   );
 }
