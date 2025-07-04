@@ -15,7 +15,7 @@ const responseInterceptors = () => {
   );
 };
 const  initializeAxios = () => {
- axios.defaults.baseURL = `${import.meta.env.VITE_BACKEND_URL}/api/V1`;
+ axios.defaults.baseURL = `${import.meta.env.VITE_BACKEND_URL}/api/v1`;
  axios.defaults.withCredentials = true;
  setHttpHeaders();
  responseInterceptors();

@@ -4,7 +4,7 @@ const createProblem = (payload) =>
   axios.post("/problem/create-problem", payload);
 
 const deleteProblem = (problemId) =>
-  axios.delete(`/problem/delete-problem/${problemId}`);
+  axios.delete(`/problem/delete-problem//${problemId}`);
 
 const adminApis = {
   createProblem,
