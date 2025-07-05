@@ -39,7 +39,6 @@ const ProblemSet = () => {
   });
 
   const { data, isLoading, isError, error } = useGetAllProblems();
-  // const { data: allPlaylists } = useGetAllPlaylists();
   const { mutate: deleteProblem } = useDeleteProblem();
 
   const {

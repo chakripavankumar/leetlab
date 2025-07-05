@@ -187,7 +187,7 @@ const CreateProblem = () => {
                 />
               </MenuBarTabItem>
               <MenuBarTabItem title="Reference Solutions" icon={CheckCircle}>
-                <RenderReferenceSolutions
+                <RenderReferenceSolution
                   {...{ control, errors, watch, resetField }}
                 />
               </MenuBarTabItem>

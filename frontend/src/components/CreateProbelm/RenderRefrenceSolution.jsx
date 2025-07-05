@@ -9,22 +9,22 @@ import { Controller } from "react-hook-form";
 const RenderRefrenceSolution = ({ control, errors, watch, resetField }) => {
   const [activeTab, setActiveTab] = useState("manage");
   const [addedLanguages, setAddedLanguages] = useState([]);
-  const referenceSolutions = watch("referenceSolutions"); // get live referenceSolutions data
+  const referenceSolution = watch("referenceSolution"); // get live referenceSolution data
   useEffect(() => {
-    if (referenceSolutions) {
-      const langs = Object.keys(referenceSolutions);
+    if (referenceSolution) {
+      const langs = Object.keys(referenceSolution);
       const matchedLangs = SUPPORTED_LANGUAGES.filter((lang) =>
         langs.includes(lang.value)
       );
       setAddedLanguages(matchedLangs);
     }
-  }, [referenceSolutions]);
+  }, [referenceSolution]);
   const toggleSelectedLanguage = (lang) => {
     const isAlreadyAdded = addedLanguages.includes(lang);
 
     if (isAlreadyAdded) {
       setAddedLanguages((prev) => prev.filter((l) => l !== lang));
-      resetField(`referenceSolutions.${lang.value}`);
+      resetField(`referenceSolution.${lang.value}`);
     } else {
       setAddedLanguages((prev) => [...prev, lang]);
     }
@@ -109,11 +109,11 @@ const RenderRefrenceSolution = ({ control, errors, watch, resetField }) => {
                 </div>
                 <div className="h-96">
                   <Controller
-                    name={`referenceSolutions.${lang?.value}`}
+                    name={`referenceSolution.${lang?.value}`}
                     control={control}
                     render={({ field }) => (
                       <CodeEditor
-                        key={`referenceSolutions.${lang?.value}`}
+                        key={`referenceSolution.${lang?.value}`}
                         language={lang?.value}
                         value={field.value}
                         onChange={field.onChange}
@@ -121,9 +121,9 @@ const RenderRefrenceSolution = ({ control, errors, watch, resetField }) => {
                     )}
                   />
                 </div>
-                {errors.referenceSolutions && (
+                {errors.referenceSolution && (
                   <span className="label-text-alt text-error text-sm">
-                    {errors.referenceSolutions?.message}
+                    {errors.referenceSolution?.message}
                   </span>
                 )}
               </div>
