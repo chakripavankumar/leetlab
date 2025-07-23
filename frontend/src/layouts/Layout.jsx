@@ -1,4 +1,3 @@
-import React from "react";
 import { Header } from "../components/common";
 import { Outlet } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";

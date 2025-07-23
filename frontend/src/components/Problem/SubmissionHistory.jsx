@@ -3,7 +3,7 @@ import { useGetSubmissionByProblemId } from '../../hooks/reactQuery/useSubmissio
 import toast from 'react-hot-toast';
 import { MyLoader } from '../common';
 import timeAgo from '../../utils/timeAgo';
-import { Clock, Code, CheckCircle, XCircle, Calendar } from 'lucide-react';
+import { Clock, Code, Calendar } from 'lucide-react';
 
 const SubmissionHistory = () => {
   const { problemId } = useParams();

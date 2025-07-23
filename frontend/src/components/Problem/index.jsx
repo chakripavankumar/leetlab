@@ -1,23 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
-import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels';
-import { Play, Upload, Home, List, BookmarkPlus } from 'lucide-react';
-import { useAuthStore } from '../../stores/useAuthStore';
-import { ChatbotWidget, MyLoader, PageNotFound, PlaylistModal, RightSideNavbar } from '../common';
-import Contents from './Contents';
-import ProblemPageCodeEditor from './ProblemPageCodeEditor';
-import Testcases from './Testcases';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import routes from '../../routes';
+import { useEffect, useRef, useState } from "react";
+import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
+import { Play, Upload, Home, List, BookmarkPlus } from "lucide-react";
+import { useAuthStore } from "../../stores/useAuthStore";
+import {
+  MyLoader,
+  PageNotFound,
+  PlaylistModal,
+  RightSideNavbar,
+} from "../common";
+import Contents from "./Contents";
+import ProblemPageCodeEditor from "./ProblemPageCodeEditor";
+import Testcases from "./Testcases";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import routes from "../../routes";
 import {
   useGetProblemById,
   useRunProblem,
   useSubmitProblem,
-} from '../../hooks/reactQuery/useProblemApi';
-import toast from 'react-hot-toast';
-import { SUPPORTED_LANGUAGES } from '../../constants/problemDetails';
-import useCodeEditorStore from '../../stores/useCodeEditorStore';
-import queryClient from '../../utils/queryClient';
-import { QUERY_KEYS } from '../../constants/keys';
+} from "../../hooks/reactQuery/useProblemApi";
+import toast from "react-hot-toast";
+import { SUPPORTED_LANGUAGES } from "../../constants/problemDetails";
+import useCodeEditorStore from "../../stores/useCodeEditorStore";
+import queryClient from "../../utils/queryClient";
+import { QUERY_KEYS } from "../../constants/keys";
 
 const LeetCodeInterface = () => {
   const [problem, setProblem] = useState({});
@@ -29,11 +34,17 @@ const LeetCodeInterface = () => {
 
   const navigate = useNavigate();
 
-  const { isAuthenticated, addSolvedProblem, playlists: myPlaylists } = useAuthStore();
+  const {
+    isAuthenticated,
+    addSolvedProblem,
+    playlists: myPlaylists,
+  } = useAuthStore();
 
-  const { data, isLoading, isError } = useGetProblemById(problemId || '');
-  const { mutate: myRunProblemHandler, isLoading: runProblemLoading } = useRunProblem();
-  const { mutate: mySubmitProblemHandler, isLoading: submitProblemLoading } = useSubmitProblem();
+  const { data, isLoading, isError } = useGetProblemById(problemId || "");
+  const { mutate: myRunProblemHandler, isLoading: runProblemLoading } =
+    useRunProblem();
+  const { mutate: mySubmitProblemHandler, isLoading: submitProblemLoading } =
+    useSubmitProblem();
   // const { data: allPlaylists } = useGetAllPlaylists();
 
   const { codeMap, lastEditedLanguage } = useCodeEditorStore();
@@ -65,7 +76,9 @@ const LeetCodeInterface = () => {
     testcasesPanelRef.current?.resize(40);
     editorPanelRef.current?.resize(60);
 
-    const languageId = SUPPORTED_LANGUAGES.find((l) => l.value === lastEditedLanguage)?.id;
+    const languageId = SUPPORTED_LANGUAGES.find(
+      (l) => l.value === lastEditedLanguage
+    )?.id;
 
     const sourceCode = codeMap[`${problemId}:${lastEditedLanguage}`];
 
@@ -74,7 +87,9 @@ const LeetCodeInterface = () => {
       !languageId ||
       problem?.codeSnippets[SUPPORTED_LANGUAGES[0].value] === sourceCode
     ) {
-      toast.error('Looks like you have not written any code yet, please write some code first');
+      toast.error(
+        "Looks like you have not written any code yet, please write some code first"
+      );
       return;
     }
 
@@ -83,7 +98,10 @@ const LeetCodeInterface = () => {
 
     const stdin = testcases.reduce((acc, { input }) => [...acc, input], []);
 
-    const expectedOutputs = testcases.reduce((acc, { output }) => [...acc, output], []);
+    const expectedOutputs = testcases.reduce(
+      (acc, { output }) => [...acc, output],
+      []
+    );
 
     const payload = {
       sourceCode,
@@ -94,15 +112,15 @@ const LeetCodeInterface = () => {
 
     // console.log('Payload', payload);
 
-    console.log('start running...');
+    console.log("start running...");
 
     myRunProblemHandler(payload, {
       onSuccess: (res) => {
         console.log(res);
         if (res?.success) {
-          toast.success(res?.message || 'Code ran successfully');
+          toast.success(res?.message || "Code ran successfully");
         } else {
-          toast.error(res?.message || 'Something went wrong');
+          toast.error(res?.message || "Something went wrong");
         }
         const updatedTestcases = testcases.map((t, i) => ({
           ...t,
@@ -119,7 +137,7 @@ const LeetCodeInterface = () => {
         });
       },
       onError: (err) => {
-        toast.error(err.response.data?.error || 'Something went wrong');
+        toast.error(err.response.data?.error || "Something went wrong");
       },
     });
   };
@@ -132,7 +150,9 @@ const LeetCodeInterface = () => {
     // console.log(data?.data?.testcases);
 
     if (!problemId || !lastEditedLanguage) return;
-    const languageId = SUPPORTED_LANGUAGES.find((l) => l.value === lastEditedLanguage)?.id;
+    const languageId = SUPPORTED_LANGUAGES.find(
+      (l) => l.value === lastEditedLanguage
+    )?.id;
 
     const sourceCode = codeMap[`${problemId}:${lastEditedLanguage}`];
 
@@ -141,7 +161,9 @@ const LeetCodeInterface = () => {
       !languageId ||
       problem?.codeSnippets[SUPPORTED_LANGUAGES[0].value] === sourceCode
     ) {
-      toast.error('Looks like you have not written any code yet, please write some code first');
+      toast.error(
+        "Looks like you have not written any code yet, please write some code first"
+      );
       return;
     }
 
@@ -153,15 +175,15 @@ const LeetCodeInterface = () => {
 
     // console.log('Payload', payload);
 
-    console.log('start submitting...');
+    console.log("start submitting...");
 
     mySubmitProblemHandler(payload, {
       onSuccess: (res) => {
         console.log(res);
         if (!res?.success) {
-          toast.error(res?.message || 'Something went wrong');
+          toast.error(res?.message || "Something went wrong");
         } else {
-          toast.success(res?.message || 'Submission successful');
+          toast.success(res?.message || "Submission successful");
           addSolvedProblem(problemId);
         }
 
@@ -177,7 +199,7 @@ const LeetCodeInterface = () => {
         queryClient.invalidateQueries(QUERY_KEYS.SUBMISSIONS);
       },
       onError: (err) => {
-        toast.error(err.response.data?.error || 'Something went wrong');
+        toast.error(err.response.data?.error || "Something went wrong");
       },
     });
   };
@@ -195,7 +217,10 @@ const LeetCodeInterface = () => {
                   <Home className="w-4 h-4" />
                   DSA CodeLab
                 </Link>
-                <Link to={routes.problems.all} className="btn btn-ghost btn-sm gap-2">
+                <Link
+                  to={routes.problems.all}
+                  className="btn btn-ghost btn-sm gap-2"
+                >
                   <List className="w-4 h-4" />
                   All Problems
                 </Link>
@@ -205,12 +230,16 @@ const LeetCodeInterface = () => {
             <div className="flex items-center gap-3">
               <div
                 className="tooltip tooltip-bottom"
-                data-tip={isAuthenticated ? 'Save to playlist' : 'Login to save to playlist'}
+                data-tip={
+                  isAuthenticated
+                    ? "Save to playlist"
+                    : "Login to save to playlist"
+                }
               >
                 <button
                   type="button"
                   onClick={() => {
-                    document.getElementById('add_to_playlist').showModal();
+                    document.getElementById("add_to_playlist").showModal();
                   }}
                   className="btn btn-sm btn-outline gap-2"
                   disabled={!isAuthenticated}
@@ -222,12 +251,12 @@ const LeetCodeInterface = () => {
 
               <div
                 className="tooltip tooltip-bottom"
-                data-tip={isAuthenticated ? 'Run Code' : 'Login to run code'}
+                data-tip={isAuthenticated ? "Run Code" : "Login to run code"}
               >
                 <button
                   type="button"
                   className={`btn btn-primary btn-sm gap-2 ${
-                    (!isAuthenticated || runProblemLoading) && 'btn-disabled'
+                    (!isAuthenticated || runProblemLoading) && "btn-disabled"
                   }`}
                   disabled={!isAuthenticated || runProblemLoading}
                   onClick={handleRunCode}
@@ -243,12 +272,14 @@ const LeetCodeInterface = () => {
 
               <div
                 className="tooltip tooltip-bottom"
-                data-tip={isAuthenticated ? 'Submit Code' : 'Login to submit code'}
+                data-tip={
+                  isAuthenticated ? "Submit Code" : "Login to submit code"
+                }
               >
                 <button
                   type="button"
                   className={`btn btn-success btn-sm gap-2 ${
-                    (!isAuthenticated || submitProblemLoading) && 'btn-disabled'
+                    (!isAuthenticated || submitProblemLoading) && "btn-disabled"
                   }`}
                   disabled={!isAuthenticated || submitProblemLoading}
                   onClick={handleSubmitCode}
@@ -293,7 +324,9 @@ const LeetCodeInterface = () => {
                 <div className="card bg-base-100 shadow-xl h-full">
                   <div className="card-body p-0 h-full overflow-hidden">
                     <div className="flex-1 overflow-hidden card">
-                      <ProblemPageCodeEditor codeSnippets={problem?.codeSnippets} />
+                      <ProblemPageCodeEditor
+                        codeSnippets={problem?.codeSnippets}
+                      />
                     </div>
                   </div>
                 </div>
@@ -321,7 +354,7 @@ const LeetCodeInterface = () => {
       {/* Modal */}
       <PlaylistModal allPlaylists={myPlaylists} {...{ problemId }} />
 
-      {isAuthenticated && <ChatbotWidget />}
+      {isAuthenticated}
     </div>
   );
 };

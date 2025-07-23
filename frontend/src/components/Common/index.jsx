@@ -8,7 +8,6 @@ import MyLoader from "./MyLoader";
 import PlaylistModal from "./PlaylistModal";
 import DeleteModal from "./DeleteModal";
 import PaginatedTable from "./PaginatedTable";
-import ChatbotWidget from "./ChatbotWidget";
 
 export {
   Header,
@@ -21,5 +20,4 @@ export {
   PlaylistModal,
   DeleteModal,
   PaginatedTable,
-  ChatbotWidget,
 };

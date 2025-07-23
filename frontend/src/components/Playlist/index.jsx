@@ -8,19 +8,19 @@ import {
   Tag,
   CheckCircle,
   XCircle,
-} from 'lucide-react';
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+} from "lucide-react";
+import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import {
   useGetPlaylistById,
   useRemoveSingleProblemFromPlaylist,
-} from '../../hooks/reactQuery/usePlaylistApi';
-import { DeleteModal, MyLoader, PaginatedTable } from '../common';
-import { useAuthStore } from '../../stores/useAuthStore';
-import toast from 'react-hot-toast';
-import queryClient from '../../utils/queryClient';
-import { QUERY_KEYS } from '../../constants/keys';
-import timeAgo from '../../utils/timeAgo';
+} from "../../hooks/reactQuery/usePlaylistApi";
+import { DeleteModal, MyLoader, PaginatedTable } from "../common";
+import { useAuthStore } from "../../stores/useAuthStore";
+import toast from "react-hot-toast";
+import queryClient from "../../utils/queryClient";
+import { QUERY_KEYS } from "../../constants/keys";
+import timeAgo from "../../utils/timeAgo";
 
 const Playlist = () => {
   const [entryToDelete, setEntryToDelete] = useState(null);
@@ -38,11 +38,11 @@ const Playlist = () => {
 
     removeProblem(entryToDelete, {
       onSuccess: ({ message }) => {
-        toast.success(message || 'Problem removed successfully');
+        toast.success(message || "Problem removed successfully");
         queryClient.invalidateQueries([QUERY_KEYS.PLAYLISTS, playlistId]);
       },
       onError: (err) => {
-        toast.error(err?.response?.data?.error || 'Something went wrong');
+        toast.error(err?.response?.data?.error || "Something went wrong");
       },
     });
 
@@ -55,11 +55,12 @@ const Playlist = () => {
 
   const totalProblems = data?.data?.problems?.length || 0;
   const solvedProblems =
-    data?.data?.problems?.filter((problem) => problemsSolved.includes(problem?.problemId)).length ||
-    0;
+    data?.data?.problems?.filter((problem) =>
+      problemsSolved.includes(problem?.problemId)
+    ).length || 0;
 
   const difficultyStats = data?.data?.problems?.reduce((acc, problem) => {
-    const difficulty = problem?.problem?.difficulty || 'UNKNOWN';
+    const difficulty = problem?.problem?.difficulty || "UNKNOWN";
     acc[difficulty] = (acc[difficulty] || 0) + 1;
     return acc;
   }, {});
@@ -76,11 +77,17 @@ const Playlist = () => {
                   <BookMarked className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold mb-2">{data?.data?.name}</h1>
-                  <p className="text-base-content/70 text-lg mb-2">{data?.data?.description}</p>
+                  <h1 className="text-4xl font-bold mb-2">
+                    {data?.data?.name}
+                  </h1>
+                  <p className="text-base-content/70 text-lg mb-2">
+                    {data?.data?.description}
+                  </p>
                   <div className="flex items-center gap-2 text-base-content/60">
                     <UserCircle className="w-5 h-5" />
-                    <span className="text-sm">Created by {data?.data?.user?.name}</span>
+                    <span className="text-sm">
+                      Created by {data?.data?.user?.name}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -105,7 +112,9 @@ const Playlist = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-base-content/60">Total Problems</p>
-                  <p className="text-3xl font-bold text-info">{totalProblems}</p>
+                  <p className="text-3xl font-bold text-info">
+                    {totalProblems}
+                  </p>
                 </div>
                 <div className="p-3 bg-info/10 rounded-lg">
                   <Book className="w-8 h-8 text-info" />
@@ -119,7 +128,9 @@ const Playlist = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-base-content/60">Completed</p>
-                  <p className="text-3xl font-bold text-success">{solvedProblems}</p>
+                  <p className="text-3xl font-bold text-success">
+                    {solvedProblems}
+                  </p>
                 </div>
                 <div className="p-3 bg-success/10 rounded-lg">
                   <CheckCircle className="w-8 h-8 text-success" />
@@ -150,7 +161,10 @@ const Playlist = () => {
                 <div>
                   <p className="text-sm text-base-content/60">Completion</p>
                   <p className="text-3xl font-bold text-primary">
-                    {totalProblems > 0 ? Math.round((solvedProblems / totalProblems) * 100) : 0}%
+                    {totalProblems > 0
+                      ? Math.round((solvedProblems / totalProblems) * 100)
+                      : 0}
+                    %
                   </p>
                 </div>
                 <div className="p-3 bg-primary/10 rounded-lg">
@@ -180,7 +194,9 @@ const Playlist = () => {
                     </div>
                     <div>
                       <p className="text-sm text-base-content/60">Easy</p>
-                      <p className="text-lg font-semibold">{difficultyStats?.EASY || 0} problems</p>
+                      <p className="text-lg font-semibold">
+                        {difficultyStats?.EASY || 0} problems
+                      </p>
                     </div>
                   </div>
 
@@ -202,7 +218,9 @@ const Playlist = () => {
                     </div>
                     <div>
                       <p className="text-sm text-base-content/60">Hard</p>
-                      <p className="text-lg font-semibold">{difficultyStats?.HARD || 0} problems</p>
+                      <p className="text-lg font-semibold">
+                        {difficultyStats?.HARD || 0} problems
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -219,7 +237,7 @@ const Playlist = () => {
                 <Book className="w-6 h-6 text-primary" />
                 Playlist Problems
                 <div className="badge badge-outline badge-lg">
-                  {totalProblems} {totalProblems === 1 ? 'Problem' : 'Problems'}
+                  {totalProblems} {totalProblems === 1 ? "Problem" : "Problems"}
                 </div>
               </h2>
             </div>
@@ -229,16 +247,19 @@ const Playlist = () => {
                 data={data?.data?.problems || []}
                 // itemsPerPage={10}
                 columns={[
-                  { label: '#', sortKey: '' },
-                  { label: 'Solved', sortKey: '' },
-                  { label: 'Title', sortKey: '' },
-                  { label: 'Tags', sortKey: '' },
-                  { label: 'Added', sortKey: '' },
-                  { label: 'Difficulty', sortKey: '' },
-                  { label: 'Actions', sortKey: '' },
+                  { label: "#", sortKey: "" },
+                  { label: "Solved", sortKey: "" },
+                  { label: "Title", sortKey: "" },
+                  { label: "Tags", sortKey: "" },
+                  { label: "Added", sortKey: "" },
+                  { label: "Difficulty", sortKey: "" },
+                  { label: "Actions", sortKey: "" },
                 ]}
                 renderRow={(entry, index) => (
-                  <tr key={entry.id} className="hover:bg-base-200/50 transition-colors">
+                  <tr
+                    key={entry.id}
+                    className="hover:bg-base-200/50 transition-colors"
+                  >
                     <td className="text-center font-medium">{index + 1}</td>
                     <td className="text-center">
                       {problemsSolved.includes(entry?.problemId) ? (
@@ -262,10 +283,15 @@ const Playlist = () => {
                     <td>
                       <div className="flex flex-wrap gap-1">
                         {entry?.problem?.tags?.slice(0, 2).map((tag, idx) => (
-                          <span key={idx} className="badge badge-ghost badge-sm capitalize">
+                          <span
+                            key={idx}
+                            className="badge badge-ghost badge-sm capitalize"
+                          >
                             {tag}
                           </span>
-                        )) || <span className="text-base-content/50">No tags</span>}
+                        )) || (
+                          <span className="text-base-content/50">No tags</span>
+                        )}
                         {entry?.problem?.tags?.length > 2 && (
                           <span className="badge badge-ghost badge-sm">
                             +{entry.problem.tags.length - 2}
@@ -276,24 +302,26 @@ const Playlist = () => {
                     <td className="text-center">
                       <div className="flex items-center justify-center gap-1">
                         <Clock className="w-4 h-4 text-base-content/50" />
-                        <span className="text-sm">{timeAgo(entry?.createdAt)}</span>
+                        <span className="text-sm">
+                          {timeAgo(entry?.createdAt)}
+                        </span>
                       </div>
                     </td>
                     <td className="text-center">
                       <span
                         className={`badge font-medium ${
-                          entry?.problem?.difficulty === 'EASY'
-                            ? 'badge-success'
-                            : entry?.problem?.difficulty === 'MEDIUM'
-                            ? 'badge-warning'
-                            : 'badge-error'
+                          entry?.problem?.difficulty === "EASY"
+                            ? "badge-success"
+                            : entry?.problem?.difficulty === "MEDIUM"
+                            ? "badge-warning"
+                            : "badge-error"
                         }`}
                       >
-                        {entry?.problem?.difficulty === 'EASY'
-                          ? 'Easy'
-                          : entry?.problem?.difficulty === 'MEDIUM'
-                          ? 'Medium'
-                          : 'Hard'}
+                        {entry?.problem?.difficulty === "EASY"
+                          ? "Easy"
+                          : entry?.problem?.difficulty === "MEDIUM"
+                          ? "Medium"
+                          : "Hard"}
                       </span>
                     </td>
                     <td className="text-center">
@@ -301,7 +329,9 @@ const Playlist = () => {
                         type="button"
                         onClick={() => {
                           setEntryToDelete(entry?.id);
-                          document.getElementById('delete_problem_in_playlist_modal').showModal();
+                          document
+                            .getElementById("delete_problem_in_playlist_modal")
+                            .showModal();
                         }}
                         className="btn btn-sm btn-outline btn-error hover:btn-error gap-1 transition-all"
                         title="Remove from playlist"
@@ -323,9 +353,13 @@ const Playlist = () => {
                             No problems in this playlist yet
                           </p>
                           <p className="text-sm text-base-content/50 mb-4">
-                            Start building your playlist by adding problems from the problems page.
+                            Start building your playlist by adding problems from
+                            the problems page.
                           </p>
-                          <Link to="/problems" className="btn btn-primary gap-2">
+                          <Link
+                            to="/problems"
+                            className="btn btn-primary gap-2"
+                          >
                             <LinkIcon className="w-4 h-4" />
                             Browse Problems
                           </Link>
