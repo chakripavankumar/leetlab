@@ -1,34 +1,25 @@
 import express from "express";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import {
-  getAllListDetails,
-  getPlayListDetails,
   createPlaylist,
-  addProblemToPlaylist,
   deletePlaylist,
-  removeProblemFromPlaylist,
+  addProblemsToPlaylist,
+  addSingleProblemToPlaylist,
+  getAllPlaylistDetails,
+  getPlaylistById,
+  removeProblemsFromPlaylist,
+  removeSingleProblemFromPlaylist,
 } from "../controllers/playlist.controller.js";
 
 const playlistRoutes = express.Router();
 
-playlistRoutes.get("/", authMiddleware, getAllListDetails);
-
-playlistRoutes.get("/:playlistId", authMiddleware, getPlayListDetails);
-
-playlistRoutes.post("/create-playlist", authMiddleware, createPlaylist);
-
-playlistRoutes.post(
-  "/:playlistId/add-problem",
-  authMiddleware,
-  addProblemToPlaylist
-);
-
-playlistRoutes.delete("/:playlistId", authMiddleware, deletePlaylist);
-
-playlistRoutes.delete(
-  "/:playlistId/remove-problem",
-  authMiddleware,
-  removeProblemFromPlaylist
-);
+playlistRoutes.post('/create', authMiddleware, createPlaylist);
+playlistRoutes.post('/:playlistId/add-problems', authMiddleware, addProblemsToPlaylist);
+playlistRoutes.post('/add-problem', authMiddleware, addSingleProblemToPlaylist);
+playlistRoutes.get('/get-all', authMiddleware, getAllPlaylistDetails);
+playlistRoutes.get('/:playlistId', authMiddleware, getPlaylistById);
+playlistRoutes.delete('/delete/:playlistId', authMiddleware, deletePlaylist);
+playlistRoutes.delete('/:playlistId/remove-problems', authMiddleware, removeProblemsFromPlaylist);
+playlistRoutes.delete('/remove-problem/:entryId', authMiddleware, removeSingleProblemFromPlaylist);
 
 export default playlistRoutes;

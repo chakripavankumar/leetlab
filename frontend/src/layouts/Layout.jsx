@@ -1,4 +1,5 @@
-import { Footer, Header } from "../components/common";
+import React from "react";
+import { Header } from "../components/common";
 import { Outlet } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -10,7 +11,6 @@ const Layout = () => {
         <Analytics />
         <Outlet />
       </main>
-      <Footer />
     </div>
   );
 };

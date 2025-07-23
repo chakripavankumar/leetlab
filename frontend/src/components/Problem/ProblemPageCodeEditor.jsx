@@ -1,29 +1,28 @@
-import { SUPPORTED_LANGUAGES } from "../../constants/ProblemDetials";
-import { CheckCircle, Maximize2, Minimize2, Share2, Code2 } from "lucide-react";
-import CodeEditor from "../common/CodeEditor";
-import useFullScreen from "../../hooks/useFullScreen";
-import { useEffect, useState } from "react";
-import { CopyButton } from "../common";
-import useCodeEditorStore from "../../stores/useCodeEditorStore";
-import { useParams } from "react-router-dom";
-import toast from "react-hot-toast";
+import { CheckCircle, Fullscreen, Maximize2, Minimize2, Share2, Code, Code2 } from 'lucide-react';
+import { SUPPORTED_LANGUAGES } from '../../constants/problemDetails';
+import CodeEditor from '../common/CodeEditor';
+import useFullScreen from '../../hooks/useFullScreen';
+import { useEffect, useState } from 'react';
+import { CopyButton } from '../common';
+import useCodeEditorStore from '../../stores/useCodeEditorStore';
+import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    SUPPORTED_LANGUAGES[0].value
-  );
+  const [selectedLanguage, setSelectedLanguage] = useState(SUPPORTED_LANGUAGES[0].value);
   const [isFullScreen, handleFullScreen] = useFullScreen();
-  const [code, setCode] = useState(
-    codeSnippets[SUPPORTED_LANGUAGES[0].value] || ""
-  );
-  const { codeMap, setCodeMap, lastEditedLanguage, setLastEditedLanguage } =
-    useCodeEditorStore();
+  const [code, setCode] = useState(codeSnippets[SUPPORTED_LANGUAGES[0].value] || '');
+
+  const { codeMap, setCodeMap, lastEditedLanguage, setLastEditedLanguage } = useCodeEditorStore();
+
   const { problemId } = useParams();
+
   useEffect(() => {
     if (!problemId) return;
     const storedCode = codeMap[`${problemId}:${selectedLanguage}`];
-    const fallbackCode = codeSnippets[selectedLanguage] || "";
+    const fallbackCode = codeSnippets[selectedLanguage] || '';
     setCode(storedCode ?? fallbackCode);
+
     setSelectedLanguage(lastEditedLanguage);
   }, [problemId, selectedLanguage, codeSnippets, codeMap, lastEditedLanguage]);
 
@@ -32,10 +31,12 @@ const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
     setCodeMap(problemId, selectedLanguage, value);
     setLastEditedLanguage(selectedLanguage);
   };
+
   const handleChangeLanguage = (language) => {
     setSelectedLanguage(language);
     setLastEditedLanguage(language);
   };
+
   return (
     <div className="h-full flex flex-col bg-base-100">
       {/* Editor Header Card */}
@@ -63,13 +64,14 @@ const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
                 </div>
               </div>
             </div>
+
             <div className="flex items-center gap-3">
               <button
                 onClick={() => {
                   if (problemId) {
                     const shareUrl = `${window.location.origin}/problems/${problemId}`;
                     navigator.clipboard.writeText(shareUrl);
-                    toast.success("Problem link copied to clipboard!");
+                    toast.success('Problem link copied to clipboard!');
                   }
                 }}
                 className="btn btn-ghost btn-sm tooltip tooltip-bottom"
@@ -77,11 +79,14 @@ const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
               >
                 <Share2 className="w-4 h-4" />
               </button>
+
               <CopyButton text={code} />
+
               <div className="flex items-center gap-2 text-sm text-success px-3 py-1 bg-success/10 rounded-lg">
                 <CheckCircle className="w-4 h-4" />
                 <span>Auto saved</span>
               </div>
+
               <button
                 type="button"
                 onClick={handleFullScreen}
@@ -93,12 +98,13 @@ const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
                 ) : (
                   <Maximize2 className="w-4 h-4" />
                 )}
-                {isFullScreen ? "Minimize" : "Maximize"}
+                {isFullScreen ? 'Minimize' : 'Maximize'}
               </button>
             </div>
           </div>
         </div>
       </div>
+
       {/* Monaco Editor */}
       <div className="flex-1 overflow-hidden bg-base-100">
         <CodeEditor

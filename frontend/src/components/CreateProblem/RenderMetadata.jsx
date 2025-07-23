@@ -1,24 +1,29 @@
-import { Card } from "../common";
-import { Building2, Lightbulb, Tag, X } from "lucide-react";
-import { COMPANIES_NAME, TAG_OPTIONS } from "../../constants/problemDetails";
-import TabNavigationButtons from "../Common/TabNavigationButtons";
+import React from 'react';
+import { Card } from '../common';
+import { Building2, Lightbulb, Tag, X } from 'lucide-react';
+import { COMPANIES_NAME, TAG_OPTIONS } from '../../constants/problemDetails';
+import TabNavigationButtons from '../common/TabNavigationButtons';
 
 const RenderMetadata = ({ setValue, watch, register, errors }) => {
-  const selectedTags = watch("tags") || [];
-  const selectedCompanies = watch("companies") || [];
+  const selectedTags = watch('tags') || [];
+  const selectedCompanies = watch('companies') || [];
+  // const hints = watch('hints') || '';
+  // const editorial = watch('editorial') || '';
 
   const toggleTag = (tag) => {
     const updatedTags = selectedTags.includes(tag)
       ? selectedTags.filter((t) => t !== tag)
       : [...selectedTags, tag];
-    setValue("tags", updatedTags);
+    setValue('tags', updatedTags);
   };
+
   const toggleCompany = (company) => {
     const updatedCompanies = selectedCompanies.includes(company)
       ? selectedCompanies.filter((c) => c !== company)
       : [...selectedCompanies, company];
-    setValue("companies", updatedCompanies);
+    setValue('companies', updatedCompanies);
   };
+
   return (
     <div className="space-y-4">
       <Card title="Metadata" subTitle="Additional information">
@@ -41,18 +46,16 @@ const RenderMetadata = ({ setValue, watch, register, errors }) => {
               ))}
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
-              {TAG_OPTIONS.filter((tag) => !selectedTags.includes(tag)).map(
-                (tag) => (
-                  <button
-                    type="button"
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className="btn btn-outline btn-sm cursor-pointer p-1"
-                  >
-                    {tag}
-                  </button>
-                )
-              )}
+              {TAG_OPTIONS.filter((tag) => !selectedTags.includes(tag)).map((tag) => (
+                <button
+                  type="button"
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  className="btn btn-outline btn-sm cursor-pointer p-1"
+                >
+                  {tag}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -76,18 +79,18 @@ const RenderMetadata = ({ setValue, watch, register, errors }) => {
               ))}
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
-              {COMPANIES_NAME.filter(
-                (company) => !selectedCompanies.includes(company)
-              ).map((company) => (
-                <button
-                  type="button"
-                  key={company}
-                  onClick={() => toggleCompany(company)}
-                  className="btn btn-outline btn-sm cursor-pointer p-1"
-                >
-                  {company}
-                </button>
-              ))}
+              {COMPANIES_NAME.filter((company) => !selectedCompanies.includes(company)).map(
+                (company) => (
+                  <button
+                    type="button"
+                    key={company}
+                    onClick={() => toggleCompany(company)}
+                    className="btn btn-outline btn-sm cursor-pointer p-1"
+                  >
+                    {company}
+                  </button>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -106,11 +109,9 @@ const RenderMetadata = ({ setValue, watch, register, errors }) => {
               <textarea
                 placeholder="Provide helpful hints for solving the problem..."
                 className="textarea textarea-bordered w-full"
-                {...register("hints")}
+                {...register('hints')}
               />
-              {errors?.hints && (
-                <p className="text-red-500 text-sm">{errors.hints.message}</p>
-              )}
+              {errors?.hints && <p className="text-red-500 text-sm">{errors.hints.message}</p>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -119,12 +120,10 @@ const RenderMetadata = ({ setValue, watch, register, errors }) => {
               <textarea
                 placeholder="Write a detailed editorial explaining the solution approach..."
                 className="textarea textarea-bordered w-full min-h-[150px]"
-                {...register("editorial")}
+                {...register('editorial')}
               />
               {errors?.editorial && (
-                <p className="text-red-500 text-sm">
-                  {errors.editorial.message}
-                </p>
+                <p className="text-red-500 text-sm">{errors.editorial.message}</p>
               )}
             </div>
           </div>

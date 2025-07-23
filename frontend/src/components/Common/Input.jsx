@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 
 const Input = forwardRef(
-  // eslint-disable-next-line no-unused-vars
   ({ label, icon: Icon, placeHolder, type = 'text', classNames = '', errorMsg, ...props }, ref) => (
     <div className="form-control">
       <label className="label">

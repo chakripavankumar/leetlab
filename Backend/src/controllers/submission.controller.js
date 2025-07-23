@@ -1,60 +1,126 @@
 import { db } from "../libs/db.js";
-// GET ALL THE SUBMISSON FOR THE USER
-export const getAllSubmission = async (req, res) => {
+
+export const getAllSubmissions = async (req, res) => {
+  const { id: userId } = req.user;
   try {
-    const user = req.user.id;
-    const submissions = await db.submission.findMany({
-      where: {
-        userId: user,
+    const allSubmissions = await db.Submission.findMany({
+      where: { userId },
+      select: {
+        id: true,
+        language: true,
+        createdAt: true,
+        memory: true,
+        status: true,
+        time: true,
+        problemId: true,
+        problem: {
+          select: {
+            title: true,
+          },
+        },
       },
     });
-    res.status(200).json({
+
+    return res.status(200).json({
       success: true,
-      message: "Submissions fetched successfully",
-      submissions,
+      message: "All submissions fetched successfully.",
+      data: allSubmissions,
     });
   } catch (error) {
-    console.error("Fetch Submissions Error:", error);
-    res.status(500).json({ error: "Failed to fetch submissions" });
+    console.log("Error while fetching all submissions", error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal server error.",
+    });
   }
 };
-// GET SUBMISSION BY PARTICULAR PROBLEM
-export const getSubmissionsForProblem = async (req, res) => {
+
+export const getSubmissionById = async (req, res) => {
+  const { submissionId } = req.params;
   try {
-    const user = req.user.id;
-    const problemId = req.params.id;
-    const submissions = await db.submission.findMany({
-      where: {
-        userId: user,
-        problemId: problemId,
+    const submission = await db.Submission.findUnique({
+      where: { id: submissionId },
+      include: {
+        problem: true,
+        testcasesResults: {
+          orderBy: {
+            testCaseNumber: "asc",
+          },
+        },
       },
     });
-    res.status(200).json({
+
+    if (!submission) {
+      return res.status(404).json({
+        success: false,
+        error: "Submission not found.",
+      });
+    }
+
+    // Find the first failed test case
+    const firstFailedTestCase = submission.testcasesResults.find(
+      (testCase) => !testCase.isPassed
+    );
+
+    return res.status(200).json({
       success: true,
-      message: "Submissions fetched successfully",
-      submissions,
+      message: "Submission fetched successfully.",
+      data: {
+        ...submission,
+        firstFailedTestCase: firstFailedTestCase || null,
+      },
     });
   } catch (error) {
-    console.error("Fetch Submissions Error:", error);
-    res.status(500).json({ error: "Fetch Submissions Error" });
+    console.log("Error while fetching submission", error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal server error.",
+    });
   }
 };
-// COUNT PER SUBMISSION FOR PATICULAR PROBLEM
-export const getAllSubmissionsForProblem = async (req, res) => {
+export const getSubmissionByProblemId = async (req, res) => {
+  const { problemId } = req.params;
+  const { id: userId } = req.user;
+
   try {
-    const problemId = req.params.problemId;
-    const submission = await db.submission.count({
+    const submissions = await db.Submission.findMany({
       where: {
-        problemId: problemId,
+        userId,
+        problemId,
       },
     });
-    res.status(200).json({
+
+    return res.status(200).json({
       success: true,
-      message: "Submissions Fetched successfully",
-      count: submission,
+      message: "Submissions fetched successfully.",
+      data: submissions,
     });
   } catch (error) {
-    console.error("Fetch Submissions Error:", error);
-    res.status(500).json({ error: "Fetch Submissions Error" });
+    console.log("Error while fetching submissions", error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal server error.",
+    });
+  }
+};
+
+export const getTotalSubmissionsCountByProblemId = async (req, res) => {
+  const { problemId } = req.params;
+  try {
+    const submissionsCount = await db.Submission.count({
+      where: { problemId },
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Submissions count fetched successfully.",
+      data: submissionsCount,
+    });
+  } catch (error) {
+    console.log("Error while fetching submissions count", error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal server error.",
+    });
   }
 };

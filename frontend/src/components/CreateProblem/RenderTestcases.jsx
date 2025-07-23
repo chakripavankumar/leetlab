@@ -1,14 +1,8 @@
-import { Card } from "../common";
-import { Plus, Trash2 } from "lucide-react";
-import TabNavigationButtons from "../Common/TabNavigationButtons";
+import { Card } from '../common';
+import { Plus, Trash2 } from 'lucide-react';
+import TabNavigationButtons from '../common/TabNavigationButtons';
 
-const RenderTestcases = ({
-  testcaseFields,
-  register,
-  addTestcase,
-  removeTestcase,
-  errors,
-}) => {
+const RenderTestcases = ({ testcaseFields, register, addTestcase, removeTestcase, errors }) => {
   return (
     <div className="space-y-4">
       <Card
@@ -17,7 +11,7 @@ const RenderTestcases = ({
             <span>Testcases</span>
             <button
               type="button"
-              onClick={() => addTestcase({ input: "", output: "" })}
+              onClick={() => addTestcase({ input: '', output: '' })}
               className="btn btn-sm btn-primary"
             >
               <Plus className="w-4 h-4" />
@@ -35,9 +29,7 @@ const RenderTestcases = ({
             >
               <div className="p-4 pb-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold">
-                    Testcase {index + 1}
-                  </h3>
+                  <h3 className="text-sm font-semibold">Testcase {index + 1}</h3>
                   <button
                     type="button"
                     className="btn btn-ghost btn-sm text-error"

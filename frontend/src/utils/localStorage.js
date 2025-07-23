@@ -3,9 +3,11 @@ export const setToLocalStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
   } else localStorage.removeItem(key);
 };
+
 export const getFromLocalStorage = (key) => {
   try {
     const value = localStorage.getItem(key);
+
     return value ? JSON.parse(value) : null;
   } catch {
     return null;

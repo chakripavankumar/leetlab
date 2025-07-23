@@ -1,14 +1,8 @@
-import { Card } from "../common";
-import { Plus, Trash2 } from "lucide-react";
-import TabNavigationButtons from "../Common/TabNavigationButtons";
+import { Card } from '../common';
+import { Plus, Trash2 } from 'lucide-react';
+import TabNavigationButtons from '../common/TabNavigationButtons';
 
-const RenderExamples = ({
-  exampleFields,
-  register,
-  errors,
-  addExample,
-  removeExample,
-}) => {
+const RenderExamples = ({ exampleFields, register, errors, addExample, removeExample }) => {
   return (
     <div className="space-y-4">
       <Card
@@ -17,9 +11,7 @@ const RenderExamples = ({
             <span>Examples</span>
             <button
               type="button"
-              onClick={() =>
-                addExample({ input: "", output: "", explanation: "" })
-              }
+              onClick={() => addExample({ input: '', output: '', explanation: '' })}
               className="btn btn-sm btn-primary"
             >
               <Plus className="w-4 h-4" />
@@ -29,7 +21,7 @@ const RenderExamples = ({
         }
         subTitle="Provide clear examples with input, output, and explanations"
       >
-        <div className="space-y-6 grid grid-cols-2 gap-3">
+        <div className="space-y-4 grid grid-cols-2 gap-3">
           {exampleFields?.map((field, index) => (
             <div
               key={field.id}

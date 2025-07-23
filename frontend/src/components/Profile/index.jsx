@@ -16,6 +16,8 @@ import {
   Settings,
   Award,
   Target,
+  Zap,
+  Edit,
   Eye,
   BarChart3,
 } from 'lucide-react';
@@ -33,7 +35,7 @@ import {
   Line,
   ResponsiveContainer,
 } from 'recharts';
-import { useAuthProfile } from '../../hooks/ReactQuery/useAuthApi';
+import { useAuthProfile } from '../../hooks/reactQuery/useAuthApi';
 import { MyLoader } from '../common';
 import { useNavigate } from 'react-router-dom';
 import timeAgo from '../../utils/timeAgo';
@@ -54,6 +56,8 @@ const UserProfilePage = () => {
     totalSubmissions: profileData?.data?.submissions.length,
     totalPlaylists: profileData?.data?.playlists.length,
   };
+
+  // console.log(profileData?.data?);
 
   const difficultyData = ['EASY', 'MEDIUM', 'HARD'].map((level) => ({
     name: level.charAt(0) + level.slice(1).toLowerCase(),

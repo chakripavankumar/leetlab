@@ -121,27 +121,28 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  image: 'image',
-  role: 'role',
   password: 'password',
+  imageUrl: 'imageUrl',
+  role: 'role',
   createdAt: 'createdAt',
-  updateAt: 'updateAt'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ProblemScalarFieldEnum = {
   id: 'id',
+  userId: 'userId',
   title: 'title',
   description: 'description',
   difficulty: 'difficulty',
   tags: 'tags',
-  userId: 'userId',
   examples: 'examples',
   constraints: 'constraints',
+  companies: 'companies',
   hints: 'hints',
   editorial: 'editorial',
   testcases: 'testcases',
   codeSnippets: 'codeSnippets',
-  referenceSolution: 'referenceSolution',
+  referenceSolutions: 'referenceSolutions',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -157,24 +158,25 @@ exports.Prisma.SubmissionScalarFieldEnum = {
   stderr: 'stderr',
   compileOutput: 'compileOutput',
   status: 'status',
-  memory: 'memory',
   time: 'time',
+  memory: 'memory',
   createdAt: 'createdAt',
-  updateAt: 'updateAt'
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.TestCaseResultScalarFieldEnum = {
+exports.Prisma.TestcaseResultsScalarFieldEnum = {
   id: 'id',
   submissionId: 'submissionId',
-  testCase: 'testCase',
-  passed: 'passed',
+  testCaseNumber: 'testCaseNumber',
+  isPassed: 'isPassed',
+  stdin: 'stdin',
   stdout: 'stdout',
-  expected: 'expected',
+  expectedOutput: 'expectedOutput',
   stderr: 'stderr',
   compileOutput: 'compileOutput',
   status: 'status',
-  memory: 'memory',
   time: 'time',
+  memory: 'memory',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -191,17 +193,17 @@ exports.Prisma.PlaylistScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  userId: 'userId',
-  createAt: 'createAt',
-  updateAt: 'updateAt'
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ProblemPlaylistScalarFieldEnum = {
+exports.Prisma.ProblemInPlaylistScalarFieldEnum = {
   id: 'id',
   playlistId: 'playlistId',
   problemId: 'problemId',
   createdAt: 'createdAt',
-  updateAt: 'updateAt'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -233,7 +235,7 @@ exports.UserRole = exports.$Enums.UserRole = {
   USER: 'USER'
 };
 
-exports.Difficulty = exports.$Enums.Difficulty = {
+exports.ProblemDifficulty = exports.$Enums.ProblemDifficulty = {
   EASY: 'EASY',
   MEDIUM: 'MEDIUM',
   HARD: 'HARD'
@@ -243,10 +245,10 @@ exports.Prisma.ModelName = {
   User: 'User',
   Problem: 'Problem',
   Submission: 'Submission',
-  TestCaseResult: 'TestCaseResult',
+  TestcaseResults: 'TestcaseResults',
   ProblemSolved: 'ProblemSolved',
   Playlist: 'Playlist',
-  ProblemPlaylist: 'ProblemPlaylist'
+  ProblemInPlaylist: 'ProblemInPlaylist'
 };
 
 /**

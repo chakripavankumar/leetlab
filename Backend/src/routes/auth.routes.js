@@ -1,26 +1,12 @@
 import express from "express";
-import {
-  checkAuth,
-  getPlayList,
-  getSubmissions,
-  login,
-  logout,
-  register,
-} from "../controllers/auth.controller.js";
+import {login, logout, profile, register } from "../controllers/auth.controller.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const authRoutes = express.Router();
 
-authRoutes.get("/check", authMiddleware, checkAuth);
-
-authRoutes.post("/register", register);
-
-authRoutes.post("/login", login);
-
-authRoutes.post("/logout", authMiddleware, logout);
-
-authRoutes.post("/get-submissions", authMiddleware, getSubmissions);
-
-authRoutes.post("/get-playlists", authMiddleware, getPlayList);
+authRoutes.post('/register', register);
+authRoutes.post('/login', login);
+authRoutes.post('/logout', logout);
+authRoutes.get('/profile', authMiddleware, profile);
 
 export default authRoutes;

@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from "react-query";
-import authApis from "../../apis/authApi";
-import { QUERY_KEYS } from "../../constants/keys";
+import { useMutation, useQuery } from 'react-query';
+import authApis from '../../apis/authApis';
+import { QUERY_KEYS } from '../../constants/keys';
 
 export const useAuthLogin = () => useMutation(authApis.login);
 
@@ -12,6 +12,6 @@ export const useAuthProfile = () =>
   useQuery({
     queryKey: QUERY_KEYS.PROFILE,
     queryFn: () => authApis.profile(),
-    staleTime: 0,
+    staleTime: 0, // 5 minutes - clear query when logout
     retry: false,
   });

@@ -29,10 +29,10 @@ export type Problem = $Result.DefaultSelection<Prisma.$ProblemPayload>
  */
 export type Submission = $Result.DefaultSelection<Prisma.$SubmissionPayload>
 /**
- * Model TestCaseResult
+ * Model TestcaseResults
  * 
  */
-export type TestCaseResult = $Result.DefaultSelection<Prisma.$TestCaseResultPayload>
+export type TestcaseResults = $Result.DefaultSelection<Prisma.$TestcaseResultsPayload>
 /**
  * Model ProblemSolved
  * 
@@ -44,10 +44,10 @@ export type ProblemSolved = $Result.DefaultSelection<Prisma.$ProblemSolvedPayloa
  */
 export type Playlist = $Result.DefaultSelection<Prisma.$PlaylistPayload>
 /**
- * Model ProblemPlaylist
+ * Model ProblemInPlaylist
  * 
  */
-export type ProblemPlaylist = $Result.DefaultSelection<Prisma.$ProblemPlaylistPayload>
+export type ProblemInPlaylist = $Result.DefaultSelection<Prisma.$ProblemInPlaylistPayload>
 
 /**
  * Enums
@@ -61,13 +61,13 @@ export namespace $Enums {
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 
-export const Difficulty: {
+export const ProblemDifficulty: {
   EASY: 'EASY',
   MEDIUM: 'MEDIUM',
   HARD: 'HARD'
 };
 
-export type Difficulty = (typeof Difficulty)[keyof typeof Difficulty]
+export type ProblemDifficulty = (typeof ProblemDifficulty)[keyof typeof ProblemDifficulty]
 
 }
 
@@ -75,9 +75,9 @@ export type UserRole = $Enums.UserRole
 
 export const UserRole: typeof $Enums.UserRole
 
-export type Difficulty = $Enums.Difficulty
+export type ProblemDifficulty = $Enums.ProblemDifficulty
 
-export const Difficulty: typeof $Enums.Difficulty
+export const ProblemDifficulty: typeof $Enums.ProblemDifficulty
 
 /**
  * ##  Prisma Client ʲˢ
@@ -235,14 +235,14 @@ export class PrismaClient<
   get submission(): Prisma.SubmissionDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.testCaseResult`: Exposes CRUD operations for the **TestCaseResult** model.
+   * `prisma.testcaseResults`: Exposes CRUD operations for the **TestcaseResults** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more TestCaseResults
-    * const testCaseResults = await prisma.testCaseResult.findMany()
+    * // Fetch zero or more TestcaseResults
+    * const testcaseResults = await prisma.testcaseResults.findMany()
     * ```
     */
-  get testCaseResult(): Prisma.TestCaseResultDelegate<ExtArgs, ClientOptions>;
+  get testcaseResults(): Prisma.TestcaseResultsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.problemSolved`: Exposes CRUD operations for the **ProblemSolved** model.
@@ -265,14 +265,14 @@ export class PrismaClient<
   get playlist(): Prisma.PlaylistDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.problemPlaylist`: Exposes CRUD operations for the **ProblemPlaylist** model.
+   * `prisma.problemInPlaylist`: Exposes CRUD operations for the **ProblemInPlaylist** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more ProblemPlaylists
-    * const problemPlaylists = await prisma.problemPlaylist.findMany()
+    * // Fetch zero or more ProblemInPlaylists
+    * const problemInPlaylists = await prisma.problemInPlaylist.findMany()
     * ```
     */
-  get problemPlaylist(): Prisma.ProblemPlaylistDelegate<ExtArgs, ClientOptions>;
+  get problemInPlaylist(): Prisma.ProblemInPlaylistDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -716,10 +716,10 @@ export namespace Prisma {
     User: 'User',
     Problem: 'Problem',
     Submission: 'Submission',
-    TestCaseResult: 'TestCaseResult',
+    TestcaseResults: 'TestcaseResults',
     ProblemSolved: 'ProblemSolved',
     Playlist: 'Playlist',
-    ProblemPlaylist: 'ProblemPlaylist'
+    ProblemInPlaylist: 'ProblemInPlaylist'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -738,7 +738,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "problem" | "submission" | "testCaseResult" | "problemSolved" | "playlist" | "problemPlaylist"
+      modelProps: "user" | "problem" | "submission" | "testcaseResults" | "problemSolved" | "playlist" | "problemInPlaylist"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -964,77 +964,77 @@ export namespace Prisma {
           }
         }
       }
-      TestCaseResult: {
-        payload: Prisma.$TestCaseResultPayload<ExtArgs>
-        fields: Prisma.TestCaseResultFieldRefs
+      TestcaseResults: {
+        payload: Prisma.$TestcaseResultsPayload<ExtArgs>
+        fields: Prisma.TestcaseResultsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TestCaseResultFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload> | null
+            args: Prisma.TestcaseResultsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TestCaseResultFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>
+            args: Prisma.TestcaseResultsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>
           }
           findFirst: {
-            args: Prisma.TestCaseResultFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload> | null
+            args: Prisma.TestcaseResultsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TestCaseResultFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>
+            args: Prisma.TestcaseResultsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>
           }
           findMany: {
-            args: Prisma.TestCaseResultFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>[]
+            args: Prisma.TestcaseResultsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>[]
           }
           create: {
-            args: Prisma.TestCaseResultCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>
+            args: Prisma.TestcaseResultsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>
           }
           createMany: {
-            args: Prisma.TestCaseResultCreateManyArgs<ExtArgs>
+            args: Prisma.TestcaseResultsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.TestCaseResultCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>[]
+            args: Prisma.TestcaseResultsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>[]
           }
           delete: {
-            args: Prisma.TestCaseResultDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>
+            args: Prisma.TestcaseResultsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>
           }
           update: {
-            args: Prisma.TestCaseResultUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>
+            args: Prisma.TestcaseResultsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>
           }
           deleteMany: {
-            args: Prisma.TestCaseResultDeleteManyArgs<ExtArgs>
+            args: Prisma.TestcaseResultsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TestCaseResultUpdateManyArgs<ExtArgs>
+            args: Prisma.TestcaseResultsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.TestCaseResultUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>[]
+            args: Prisma.TestcaseResultsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>[]
           }
           upsert: {
-            args: Prisma.TestCaseResultUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestCaseResultPayload>
+            args: Prisma.TestcaseResultsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestcaseResultsPayload>
           }
           aggregate: {
-            args: Prisma.TestCaseResultAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTestCaseResult>
+            args: Prisma.TestcaseResultsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTestcaseResults>
           }
           groupBy: {
-            args: Prisma.TestCaseResultGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TestCaseResultGroupByOutputType>[]
+            args: Prisma.TestcaseResultsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TestcaseResultsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TestCaseResultCountArgs<ExtArgs>
-            result: $Utils.Optional<TestCaseResultCountAggregateOutputType> | number
+            args: Prisma.TestcaseResultsCountArgs<ExtArgs>
+            result: $Utils.Optional<TestcaseResultsCountAggregateOutputType> | number
           }
         }
       }
@@ -1186,77 +1186,77 @@ export namespace Prisma {
           }
         }
       }
-      ProblemPlaylist: {
-        payload: Prisma.$ProblemPlaylistPayload<ExtArgs>
-        fields: Prisma.ProblemPlaylistFieldRefs
+      ProblemInPlaylist: {
+        payload: Prisma.$ProblemInPlaylistPayload<ExtArgs>
+        fields: Prisma.ProblemInPlaylistFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ProblemPlaylistFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload> | null
+            args: Prisma.ProblemInPlaylistFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ProblemPlaylistFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>
+            args: Prisma.ProblemInPlaylistFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>
           }
           findFirst: {
-            args: Prisma.ProblemPlaylistFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload> | null
+            args: Prisma.ProblemInPlaylistFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ProblemPlaylistFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>
+            args: Prisma.ProblemInPlaylistFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>
           }
           findMany: {
-            args: Prisma.ProblemPlaylistFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>[]
+            args: Prisma.ProblemInPlaylistFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>[]
           }
           create: {
-            args: Prisma.ProblemPlaylistCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>
+            args: Prisma.ProblemInPlaylistCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>
           }
           createMany: {
-            args: Prisma.ProblemPlaylistCreateManyArgs<ExtArgs>
+            args: Prisma.ProblemInPlaylistCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.ProblemPlaylistCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>[]
+            args: Prisma.ProblemInPlaylistCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>[]
           }
           delete: {
-            args: Prisma.ProblemPlaylistDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>
+            args: Prisma.ProblemInPlaylistDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>
           }
           update: {
-            args: Prisma.ProblemPlaylistUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>
+            args: Prisma.ProblemInPlaylistUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>
           }
           deleteMany: {
-            args: Prisma.ProblemPlaylistDeleteManyArgs<ExtArgs>
+            args: Prisma.ProblemInPlaylistDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ProblemPlaylistUpdateManyArgs<ExtArgs>
+            args: Prisma.ProblemInPlaylistUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.ProblemPlaylistUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>[]
+            args: Prisma.ProblemInPlaylistUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>[]
           }
           upsert: {
-            args: Prisma.ProblemPlaylistUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProblemPlaylistPayload>
+            args: Prisma.ProblemInPlaylistUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInPlaylistPayload>
           }
           aggregate: {
-            args: Prisma.ProblemPlaylistAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateProblemPlaylist>
+            args: Prisma.ProblemInPlaylistAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProblemInPlaylist>
           }
           groupBy: {
-            args: Prisma.ProblemPlaylistGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ProblemPlaylistGroupByOutputType>[]
+            args: Prisma.ProblemInPlaylistGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProblemInPlaylistGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ProblemPlaylistCountArgs<ExtArgs>
-            result: $Utils.Optional<ProblemPlaylistCountAggregateOutputType> | number
+            args: Prisma.ProblemInPlaylistCountArgs<ExtArgs>
+            result: $Utils.Optional<ProblemInPlaylistCountAggregateOutputType> | number
           }
         }
       }
@@ -1347,10 +1347,10 @@ export namespace Prisma {
     user?: UserOmit
     problem?: ProblemOmit
     submission?: SubmissionOmit
-    testCaseResult?: TestCaseResultOmit
+    testcaseResults?: TestcaseResultsOmit
     problemSolved?: ProblemSolvedOmit
     playlist?: PlaylistOmit
-    problemPlaylist?: ProblemPlaylistOmit
+    problemInPlaylist?: ProblemInPlaylistOmit
   }
 
   /* Types for Logging */
@@ -1446,16 +1446,16 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     problems: number
-    submission: number
-    solvedProblem: number
-    Playlists: number
+    submissions: number
+    problemsSolved: number
+    playlists: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | UserCountOutputTypeCountProblemsArgs
-    submission?: boolean | UserCountOutputTypeCountSubmissionArgs
-    solvedProblem?: boolean | UserCountOutputTypeCountSolvedProblemArgs
-    Playlists?: boolean | UserCountOutputTypeCountPlaylistsArgs
+    submissions?: boolean | UserCountOutputTypeCountSubmissionsArgs
+    problemsSolved?: boolean | UserCountOutputTypeCountProblemsSolvedArgs
+    playlists?: boolean | UserCountOutputTypeCountPlaylistsArgs
   }
 
   // Custom InputTypes
@@ -1479,14 +1479,14 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSubmissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubmissionWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSolvedProblemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountProblemsSolvedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProblemSolvedWhereInput
   }
 
@@ -1503,15 +1503,15 @@ export namespace Prisma {
    */
 
   export type ProblemCountOutputType = {
-    submission: number
-    problemSolvedBy: number
-    problemPlaylists: number
+    submissions: number
+    solvedBy: number
+    problemsPlaylist: number
   }
 
   export type ProblemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    submission?: boolean | ProblemCountOutputTypeCountSubmissionArgs
-    problemSolvedBy?: boolean | ProblemCountOutputTypeCountProblemSolvedByArgs
-    problemPlaylists?: boolean | ProblemCountOutputTypeCountProblemPlaylistsArgs
+    submissions?: boolean | ProblemCountOutputTypeCountSubmissionsArgs
+    solvedBy?: boolean | ProblemCountOutputTypeCountSolvedByArgs
+    problemsPlaylist?: boolean | ProblemCountOutputTypeCountProblemsPlaylistArgs
   }
 
   // Custom InputTypes
@@ -1528,22 +1528,22 @@ export namespace Prisma {
   /**
    * ProblemCountOutputType without action
    */
-  export type ProblemCountOutputTypeCountSubmissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemCountOutputTypeCountSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubmissionWhereInput
   }
 
   /**
    * ProblemCountOutputType without action
    */
-  export type ProblemCountOutputTypeCountProblemSolvedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemCountOutputTypeCountSolvedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProblemSolvedWhereInput
   }
 
   /**
    * ProblemCountOutputType without action
    */
-  export type ProblemCountOutputTypeCountProblemPlaylistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProblemPlaylistWhereInput
+  export type ProblemCountOutputTypeCountProblemsPlaylistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemInPlaylistWhereInput
   }
 
 
@@ -1552,11 +1552,11 @@ export namespace Prisma {
    */
 
   export type SubmissionCountOutputType = {
-    testCases: number
+    testcasesResults: number
   }
 
   export type SubmissionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    testCases?: boolean | SubmissionCountOutputTypeCountTestCasesArgs
+    testcasesResults?: boolean | SubmissionCountOutputTypeCountTestcasesResultsArgs
   }
 
   // Custom InputTypes
@@ -1573,8 +1573,8 @@ export namespace Prisma {
   /**
    * SubmissionCountOutputType without action
    */
-  export type SubmissionCountOutputTypeCountTestCasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestCaseResultWhereInput
+  export type SubmissionCountOutputTypeCountTestcasesResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestcaseResultsWhereInput
   }
 
 
@@ -1605,7 +1605,7 @@ export namespace Prisma {
    * PlaylistCountOutputType without action
    */
   export type PlaylistCountOutputTypeCountProblemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
   }
 
 
@@ -1627,33 +1627,33 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
-    image: string | null
-    role: $Enums.UserRole | null
     password: string | null
+    imageUrl: string | null
+    role: $Enums.UserRole | null
     createdAt: Date | null
-    updateAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
-    image: string | null
-    role: $Enums.UserRole | null
     password: string | null
+    imageUrl: string | null
+    role: $Enums.UserRole | null
     createdAt: Date | null
-    updateAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
     email: number
-    image: number
-    role: number
     password: number
+    imageUrl: number
+    role: number
     createdAt: number
-    updateAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -1662,33 +1662,33 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
-    image?: true
-    role?: true
     password?: true
+    imageUrl?: true
+    role?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    image?: true
-    role?: true
     password?: true
+    imageUrl?: true
+    role?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    image?: true
-    role?: true
     password?: true
+    imageUrl?: true
+    role?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -1766,13 +1766,13 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    name: string | null
+    name: string
     email: string
-    image: string | null
-    role: $Enums.UserRole
     password: string
+    imageUrl: string | null
+    role: $Enums.UserRole
     createdAt: Date
-    updateAt: Date
+    updatedAt: Date
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1796,15 +1796,15 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    image?: boolean
-    role?: boolean
     password?: boolean
+    imageUrl?: boolean
+    role?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     problems?: boolean | User$problemsArgs<ExtArgs>
-    submission?: boolean | User$submissionArgs<ExtArgs>
-    solvedProblem?: boolean | User$solvedProblemArgs<ExtArgs>
-    Playlists?: boolean | User$PlaylistsArgs<ExtArgs>
+    submissions?: boolean | User$submissionsArgs<ExtArgs>
+    problemsSolved?: boolean | User$problemsSolvedArgs<ExtArgs>
+    playlists?: boolean | User$playlistsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1812,41 +1812,41 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    image?: boolean
-    role?: boolean
     password?: boolean
+    imageUrl?: boolean
+    role?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     email?: boolean
-    image?: boolean
-    role?: boolean
     password?: boolean
+    imageUrl?: boolean
+    role?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
     email?: boolean
-    image?: boolean
-    role?: boolean
     password?: boolean
+    imageUrl?: boolean
+    role?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "image" | "role" | "password" | "createdAt" | "updateAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "imageUrl" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | User$problemsArgs<ExtArgs>
-    submission?: boolean | User$submissionArgs<ExtArgs>
-    solvedProblem?: boolean | User$solvedProblemArgs<ExtArgs>
-    Playlists?: boolean | User$PlaylistsArgs<ExtArgs>
+    submissions?: boolean | User$submissionsArgs<ExtArgs>
+    problemsSolved?: boolean | User$problemsSolvedArgs<ExtArgs>
+    playlists?: boolean | User$playlistsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1856,19 +1856,19 @@ export namespace Prisma {
     name: "User"
     objects: {
       problems: Prisma.$ProblemPayload<ExtArgs>[]
-      submission: Prisma.$SubmissionPayload<ExtArgs>[]
-      solvedProblem: Prisma.$ProblemSolvedPayload<ExtArgs>[]
-      Playlists: Prisma.$PlaylistPayload<ExtArgs>[]
+      submissions: Prisma.$SubmissionPayload<ExtArgs>[]
+      problemsSolved: Prisma.$ProblemSolvedPayload<ExtArgs>[]
+      playlists: Prisma.$PlaylistPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string | null
+      name: string
       email: string
-      image: string | null
-      role: $Enums.UserRole
       password: string
+      imageUrl: string | null
+      role: $Enums.UserRole
       createdAt: Date
-      updateAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2264,9 +2264,9 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     problems<T extends User$problemsArgs<ExtArgs> = {}>(args?: Subset<T, User$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    submission<T extends User$submissionArgs<ExtArgs> = {}>(args?: Subset<T, User$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    solvedProblem<T extends User$solvedProblemArgs<ExtArgs> = {}>(args?: Subset<T, User$solvedProblemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Playlists<T extends User$PlaylistsArgs<ExtArgs> = {}>(args?: Subset<T, User$PlaylistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    submissions<T extends User$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, User$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    problemsSolved<T extends User$problemsSolvedArgs<ExtArgs> = {}>(args?: Subset<T, User$problemsSolvedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    playlists<T extends User$playlistsArgs<ExtArgs> = {}>(args?: Subset<T, User$playlistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2299,11 +2299,11 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly image: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'UserRole'>
     readonly password: FieldRef<"User", 'String'>
+    readonly imageUrl: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'UserRole'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updateAt: FieldRef<"User", 'DateTime'>
+    readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -2716,9 +2716,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.submission
+   * User.submissions
    */
-  export type User$submissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$submissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Submission
      */
@@ -2740,9 +2740,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.solvedProblem
+   * User.problemsSolved
    */
-  export type User$solvedProblemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$problemsSolvedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ProblemSolved
      */
@@ -2764,9 +2764,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.Playlists
+   * User.playlists
    */
-  export type User$PlaylistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$playlistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Playlist
      */
@@ -2818,10 +2818,10 @@ export namespace Prisma {
 
   export type ProblemMinAggregateOutputType = {
     id: string | null
+    userId: string | null
     title: string | null
     description: string | null
-    difficulty: $Enums.Difficulty | null
-    userId: string | null
+    difficulty: $Enums.ProblemDifficulty | null
     constraints: string | null
     hints: string | null
     editorial: string | null
@@ -2831,10 +2831,10 @@ export namespace Prisma {
 
   export type ProblemMaxAggregateOutputType = {
     id: string | null
+    userId: string | null
     title: string | null
     description: string | null
-    difficulty: $Enums.Difficulty | null
-    userId: string | null
+    difficulty: $Enums.ProblemDifficulty | null
     constraints: string | null
     hints: string | null
     editorial: string | null
@@ -2844,18 +2844,19 @@ export namespace Prisma {
 
   export type ProblemCountAggregateOutputType = {
     id: number
+    userId: number
     title: number
     description: number
     difficulty: number
     tags: number
-    userId: number
     examples: number
     constraints: number
+    companies: number
     hints: number
     editorial: number
     testcases: number
     codeSnippets: number
-    referenceSolution: number
+    referenceSolutions: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2864,10 +2865,10 @@ export namespace Prisma {
 
   export type ProblemMinAggregateInputType = {
     id?: true
+    userId?: true
     title?: true
     description?: true
     difficulty?: true
-    userId?: true
     constraints?: true
     hints?: true
     editorial?: true
@@ -2877,10 +2878,10 @@ export namespace Prisma {
 
   export type ProblemMaxAggregateInputType = {
     id?: true
+    userId?: true
     title?: true
     description?: true
     difficulty?: true
-    userId?: true
     constraints?: true
     hints?: true
     editorial?: true
@@ -2890,18 +2891,19 @@ export namespace Prisma {
 
   export type ProblemCountAggregateInputType = {
     id?: true
+    userId?: true
     title?: true
     description?: true
     difficulty?: true
     tags?: true
-    userId?: true
     examples?: true
     constraints?: true
+    companies?: true
     hints?: true
     editorial?: true
     testcases?: true
     codeSnippets?: true
-    referenceSolution?: true
+    referenceSolutions?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2981,18 +2983,19 @@ export namespace Prisma {
 
   export type ProblemGroupByOutputType = {
     id: string
+    userId: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags: string[]
-    userId: string
     examples: JsonValue
     constraints: string
+    companies: string[]
     hints: string | null
     editorial: string | null
     testcases: JsonValue
     codeSnippets: JsonValue
-    referenceSolution: JsonValue
+    referenceSolutions: JsonValue
     createdAt: Date
     updatedAt: Date
     _count: ProblemCountAggregateOutputType | null
@@ -3016,41 +3019,43 @@ export namespace Prisma {
 
   export type ProblemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     title?: boolean
     description?: boolean
     difficulty?: boolean
     tags?: boolean
-    userId?: boolean
     examples?: boolean
     constraints?: boolean
+    companies?: boolean
     hints?: boolean
     editorial?: boolean
     testcases?: boolean
     codeSnippets?: boolean
-    referenceSolution?: boolean
+    referenceSolutions?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    submission?: boolean | Problem$submissionArgs<ExtArgs>
-    problemSolvedBy?: boolean | Problem$problemSolvedByArgs<ExtArgs>
-    problemPlaylists?: boolean | Problem$problemPlaylistsArgs<ExtArgs>
+    submissions?: boolean | Problem$submissionsArgs<ExtArgs>
+    solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
+    problemsPlaylist?: boolean | Problem$problemsPlaylistArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
   export type ProblemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     title?: boolean
     description?: boolean
     difficulty?: boolean
     tags?: boolean
-    userId?: boolean
     examples?: boolean
     constraints?: boolean
+    companies?: boolean
     hints?: boolean
     editorial?: boolean
     testcases?: boolean
     codeSnippets?: boolean
-    referenceSolution?: boolean
+    referenceSolutions?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3058,18 +3063,19 @@ export namespace Prisma {
 
   export type ProblemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     title?: boolean
     description?: boolean
     difficulty?: boolean
     tags?: boolean
-    userId?: boolean
     examples?: boolean
     constraints?: boolean
+    companies?: boolean
     hints?: boolean
     editorial?: boolean
     testcases?: boolean
     codeSnippets?: boolean
-    referenceSolution?: boolean
+    referenceSolutions?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3077,28 +3083,29 @@ export namespace Prisma {
 
   export type ProblemSelectScalar = {
     id?: boolean
+    userId?: boolean
     title?: boolean
     description?: boolean
     difficulty?: boolean
     tags?: boolean
-    userId?: boolean
     examples?: boolean
     constraints?: boolean
+    companies?: boolean
     hints?: boolean
     editorial?: boolean
     testcases?: boolean
     codeSnippets?: boolean
-    referenceSolution?: boolean
+    referenceSolutions?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "difficulty" | "tags" | "userId" | "examples" | "constraints" | "hints" | "editorial" | "testcases" | "codeSnippets" | "referenceSolution" | "createdAt" | "updatedAt", ExtArgs["result"]["problem"]>
+  export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "title" | "description" | "difficulty" | "tags" | "examples" | "constraints" | "companies" | "hints" | "editorial" | "testcases" | "codeSnippets" | "referenceSolutions" | "createdAt" | "updatedAt", ExtArgs["result"]["problem"]>
   export type ProblemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    submission?: boolean | Problem$submissionArgs<ExtArgs>
-    problemSolvedBy?: boolean | Problem$problemSolvedByArgs<ExtArgs>
-    problemPlaylists?: boolean | Problem$problemPlaylistsArgs<ExtArgs>
+    submissions?: boolean | Problem$submissionsArgs<ExtArgs>
+    solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
+    problemsPlaylist?: boolean | Problem$problemsPlaylistArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3112,24 +3119,25 @@ export namespace Prisma {
     name: "Problem"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      submission: Prisma.$SubmissionPayload<ExtArgs>[]
-      problemSolvedBy: Prisma.$ProblemSolvedPayload<ExtArgs>[]
-      problemPlaylists: Prisma.$ProblemPlaylistPayload<ExtArgs>[]
+      submissions: Prisma.$SubmissionPayload<ExtArgs>[]
+      solvedBy: Prisma.$ProblemSolvedPayload<ExtArgs>[]
+      problemsPlaylist: Prisma.$ProblemInPlaylistPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      userId: string
       title: string
       description: string
-      difficulty: $Enums.Difficulty
+      difficulty: $Enums.ProblemDifficulty
       tags: string[]
-      userId: string
       examples: Prisma.JsonValue
       constraints: string
+      companies: string[]
       hints: string | null
       editorial: string | null
       testcases: Prisma.JsonValue
       codeSnippets: Prisma.JsonValue
-      referenceSolution: Prisma.JsonValue
+      referenceSolutions: Prisma.JsonValue
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["problem"]>
@@ -3527,9 +3535,9 @@ export namespace Prisma {
   export interface Prisma__ProblemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    submission<T extends Problem$submissionArgs<ExtArgs> = {}>(args?: Subset<T, Problem$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    problemSolvedBy<T extends Problem$problemSolvedByArgs<ExtArgs> = {}>(args?: Subset<T, Problem$problemSolvedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    problemPlaylists<T extends Problem$problemPlaylistsArgs<ExtArgs> = {}>(args?: Subset<T, Problem$problemPlaylistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    submissions<T extends Problem$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, Problem$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    solvedBy<T extends Problem$solvedByArgs<ExtArgs> = {}>(args?: Subset<T, Problem$solvedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    problemsPlaylist<T extends Problem$problemsPlaylistArgs<ExtArgs> = {}>(args?: Subset<T, Problem$problemsPlaylistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3560,18 +3568,19 @@ export namespace Prisma {
    */
   interface ProblemFieldRefs {
     readonly id: FieldRef<"Problem", 'String'>
+    readonly userId: FieldRef<"Problem", 'String'>
     readonly title: FieldRef<"Problem", 'String'>
     readonly description: FieldRef<"Problem", 'String'>
-    readonly difficulty: FieldRef<"Problem", 'Difficulty'>
+    readonly difficulty: FieldRef<"Problem", 'ProblemDifficulty'>
     readonly tags: FieldRef<"Problem", 'String[]'>
-    readonly userId: FieldRef<"Problem", 'String'>
     readonly examples: FieldRef<"Problem", 'Json'>
     readonly constraints: FieldRef<"Problem", 'String'>
+    readonly companies: FieldRef<"Problem", 'String[]'>
     readonly hints: FieldRef<"Problem", 'String'>
     readonly editorial: FieldRef<"Problem", 'String'>
     readonly testcases: FieldRef<"Problem", 'Json'>
     readonly codeSnippets: FieldRef<"Problem", 'Json'>
-    readonly referenceSolution: FieldRef<"Problem", 'Json'>
+    readonly referenceSolutions: FieldRef<"Problem", 'Json'>
     readonly createdAt: FieldRef<"Problem", 'DateTime'>
     readonly updatedAt: FieldRef<"Problem", 'DateTime'>
   }
@@ -3970,9 +3979,9 @@ export namespace Prisma {
   }
 
   /**
-   * Problem.submission
+   * Problem.submissions
    */
-  export type Problem$submissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Problem$submissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Submission
      */
@@ -3994,9 +4003,9 @@ export namespace Prisma {
   }
 
   /**
-   * Problem.problemSolvedBy
+   * Problem.solvedBy
    */
-  export type Problem$problemSolvedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Problem$solvedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ProblemSolved
      */
@@ -4018,27 +4027,27 @@ export namespace Prisma {
   }
 
   /**
-   * Problem.problemPlaylists
+   * Problem.problemsPlaylist
    */
-  export type Problem$problemPlaylistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Problem$problemsPlaylistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
-    where?: ProblemPlaylistWhereInput
-    orderBy?: ProblemPlaylistOrderByWithRelationInput | ProblemPlaylistOrderByWithRelationInput[]
-    cursor?: ProblemPlaylistWhereUniqueInput
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
+    where?: ProblemInPlaylistWhereInput
+    orderBy?: ProblemInPlaylistOrderByWithRelationInput | ProblemInPlaylistOrderByWithRelationInput[]
+    cursor?: ProblemInPlaylistWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ProblemPlaylistScalarFieldEnum | ProblemPlaylistScalarFieldEnum[]
+    distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
   }
 
   /**
@@ -4080,10 +4089,10 @@ export namespace Prisma {
     stderr: string | null
     compileOutput: string | null
     status: string | null
-    memory: string | null
     time: string | null
+    memory: string | null
     createdAt: Date | null
-    updateAt: Date | null
+    updatedAt: Date | null
   }
 
   export type SubmissionMaxAggregateOutputType = {
@@ -4096,10 +4105,10 @@ export namespace Prisma {
     stderr: string | null
     compileOutput: string | null
     status: string | null
-    memory: string | null
     time: string | null
+    memory: string | null
     createdAt: Date | null
-    updateAt: Date | null
+    updatedAt: Date | null
   }
 
   export type SubmissionCountAggregateOutputType = {
@@ -4113,10 +4122,10 @@ export namespace Prisma {
     stderr: number
     compileOutput: number
     status: number
-    memory: number
     time: number
+    memory: number
     createdAt: number
-    updateAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -4131,10 +4140,10 @@ export namespace Prisma {
     stderr?: true
     compileOutput?: true
     status?: true
-    memory?: true
     time?: true
+    memory?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
   }
 
   export type SubmissionMaxAggregateInputType = {
@@ -4147,10 +4156,10 @@ export namespace Prisma {
     stderr?: true
     compileOutput?: true
     status?: true
-    memory?: true
     time?: true
+    memory?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
   }
 
   export type SubmissionCountAggregateInputType = {
@@ -4164,10 +4173,10 @@ export namespace Prisma {
     stderr?: true
     compileOutput?: true
     status?: true
-    memory?: true
     time?: true
+    memory?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4253,11 +4262,11 @@ export namespace Prisma {
     stdout: string | null
     stderr: string | null
     compileOutput: string | null
-    status: string
-    memory: string | null
+    status: string | null
     time: string | null
+    memory: string | null
     createdAt: Date
-    updateAt: Date
+    updatedAt: Date
     _count: SubmissionCountAggregateOutputType | null
     _min: SubmissionMinAggregateOutputType | null
     _max: SubmissionMaxAggregateOutputType | null
@@ -4288,13 +4297,13 @@ export namespace Prisma {
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
-    testCases?: boolean | Submission$testCasesArgs<ExtArgs>
+    testcasesResults?: boolean | Submission$testcasesResultsArgs<ExtArgs>
     _count?: boolean | SubmissionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["submission"]>
 
@@ -4309,10 +4318,10 @@ export namespace Prisma {
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["submission"]>
@@ -4328,10 +4337,10 @@ export namespace Prisma {
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["submission"]>
@@ -4347,17 +4356,17 @@ export namespace Prisma {
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type SubmissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "sourceCode" | "language" | "stdin" | "stdout" | "stderr" | "compileOutput" | "status" | "memory" | "time" | "createdAt" | "updateAt", ExtArgs["result"]["submission"]>
+  export type SubmissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "sourceCode" | "language" | "stdin" | "stdout" | "stderr" | "compileOutput" | "status" | "time" | "memory" | "createdAt" | "updatedAt", ExtArgs["result"]["submission"]>
   export type SubmissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
-    testCases?: boolean | Submission$testCasesArgs<ExtArgs>
+    testcasesResults?: boolean | Submission$testcasesResultsArgs<ExtArgs>
     _count?: boolean | SubmissionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SubmissionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4374,7 +4383,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       problem: Prisma.$ProblemPayload<ExtArgs>
-      testCases: Prisma.$TestCaseResultPayload<ExtArgs>[]
+      testcasesResults: Prisma.$TestcaseResultsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4386,11 +4395,11 @@ export namespace Prisma {
       stdout: string | null
       stderr: string | null
       compileOutput: string | null
-      status: string
-      memory: string | null
+      status: string | null
       time: string | null
+      memory: string | null
       createdAt: Date
-      updateAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["submission"]>
     composites: {}
   }
@@ -4787,7 +4796,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    testCases<T extends Submission$testCasesArgs<ExtArgs> = {}>(args?: Subset<T, Submission$testCasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    testcasesResults<T extends Submission$testcasesResultsArgs<ExtArgs> = {}>(args?: Subset<T, Submission$testcasesResultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4827,10 +4836,10 @@ export namespace Prisma {
     readonly stderr: FieldRef<"Submission", 'String'>
     readonly compileOutput: FieldRef<"Submission", 'String'>
     readonly status: FieldRef<"Submission", 'String'>
-    readonly memory: FieldRef<"Submission", 'String'>
     readonly time: FieldRef<"Submission", 'String'>
+    readonly memory: FieldRef<"Submission", 'String'>
     readonly createdAt: FieldRef<"Submission", 'DateTime'>
-    readonly updateAt: FieldRef<"Submission", 'DateTime'>
+    readonly updatedAt: FieldRef<"Submission", 'DateTime'>
   }
     
 
@@ -5227,27 +5236,27 @@ export namespace Prisma {
   }
 
   /**
-   * Submission.testCases
+   * Submission.testcasesResults
    */
-  export type Submission$testCasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Submission$testcasesResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
-    where?: TestCaseResultWhereInput
-    orderBy?: TestCaseResultOrderByWithRelationInput | TestCaseResultOrderByWithRelationInput[]
-    cursor?: TestCaseResultWhereUniqueInput
+    include?: TestcaseResultsInclude<ExtArgs> | null
+    where?: TestcaseResultsWhereInput
+    orderBy?: TestcaseResultsOrderByWithRelationInput | TestcaseResultsOrderByWithRelationInput[]
+    cursor?: TestcaseResultsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TestCaseResultScalarFieldEnum | TestCaseResultScalarFieldEnum[]
+    distinct?: TestcaseResultsScalarFieldEnum | TestcaseResultsScalarFieldEnum[]
   }
 
   /**
@@ -5270,480 +5279,492 @@ export namespace Prisma {
 
 
   /**
-   * Model TestCaseResult
+   * Model TestcaseResults
    */
 
-  export type AggregateTestCaseResult = {
-    _count: TestCaseResultCountAggregateOutputType | null
-    _avg: TestCaseResultAvgAggregateOutputType | null
-    _sum: TestCaseResultSumAggregateOutputType | null
-    _min: TestCaseResultMinAggregateOutputType | null
-    _max: TestCaseResultMaxAggregateOutputType | null
+  export type AggregateTestcaseResults = {
+    _count: TestcaseResultsCountAggregateOutputType | null
+    _avg: TestcaseResultsAvgAggregateOutputType | null
+    _sum: TestcaseResultsSumAggregateOutputType | null
+    _min: TestcaseResultsMinAggregateOutputType | null
+    _max: TestcaseResultsMaxAggregateOutputType | null
   }
 
-  export type TestCaseResultAvgAggregateOutputType = {
-    testCase: number | null
+  export type TestcaseResultsAvgAggregateOutputType = {
+    testCaseNumber: number | null
   }
 
-  export type TestCaseResultSumAggregateOutputType = {
-    testCase: number | null
+  export type TestcaseResultsSumAggregateOutputType = {
+    testCaseNumber: number | null
   }
 
-  export type TestCaseResultMinAggregateOutputType = {
+  export type TestcaseResultsMinAggregateOutputType = {
     id: string | null
     submissionId: string | null
-    testCase: number | null
-    passed: boolean | null
+    testCaseNumber: number | null
+    isPassed: boolean | null
+    stdin: string | null
     stdout: string | null
-    expected: string | null
+    expectedOutput: string | null
     stderr: string | null
     compileOutput: string | null
     status: string | null
-    memory: string | null
     time: string | null
+    memory: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type TestCaseResultMaxAggregateOutputType = {
+  export type TestcaseResultsMaxAggregateOutputType = {
     id: string | null
     submissionId: string | null
-    testCase: number | null
-    passed: boolean | null
+    testCaseNumber: number | null
+    isPassed: boolean | null
+    stdin: string | null
     stdout: string | null
-    expected: string | null
+    expectedOutput: string | null
     stderr: string | null
     compileOutput: string | null
     status: string | null
-    memory: string | null
     time: string | null
+    memory: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type TestCaseResultCountAggregateOutputType = {
+  export type TestcaseResultsCountAggregateOutputType = {
     id: number
     submissionId: number
-    testCase: number
-    passed: number
+    testCaseNumber: number
+    isPassed: number
+    stdin: number
     stdout: number
-    expected: number
+    expectedOutput: number
     stderr: number
     compileOutput: number
     status: number
-    memory: number
     time: number
+    memory: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type TestCaseResultAvgAggregateInputType = {
-    testCase?: true
+  export type TestcaseResultsAvgAggregateInputType = {
+    testCaseNumber?: true
   }
 
-  export type TestCaseResultSumAggregateInputType = {
-    testCase?: true
+  export type TestcaseResultsSumAggregateInputType = {
+    testCaseNumber?: true
   }
 
-  export type TestCaseResultMinAggregateInputType = {
+  export type TestcaseResultsMinAggregateInputType = {
     id?: true
     submissionId?: true
-    testCase?: true
-    passed?: true
+    testCaseNumber?: true
+    isPassed?: true
+    stdin?: true
     stdout?: true
-    expected?: true
+    expectedOutput?: true
     stderr?: true
     compileOutput?: true
     status?: true
-    memory?: true
     time?: true
+    memory?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type TestCaseResultMaxAggregateInputType = {
+  export type TestcaseResultsMaxAggregateInputType = {
     id?: true
     submissionId?: true
-    testCase?: true
-    passed?: true
+    testCaseNumber?: true
+    isPassed?: true
+    stdin?: true
     stdout?: true
-    expected?: true
+    expectedOutput?: true
     stderr?: true
     compileOutput?: true
     status?: true
-    memory?: true
     time?: true
+    memory?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type TestCaseResultCountAggregateInputType = {
+  export type TestcaseResultsCountAggregateInputType = {
     id?: true
     submissionId?: true
-    testCase?: true
-    passed?: true
+    testCaseNumber?: true
+    isPassed?: true
+    stdin?: true
     stdout?: true
-    expected?: true
+    expectedOutput?: true
     stderr?: true
     compileOutput?: true
     status?: true
-    memory?: true
     time?: true
+    memory?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type TestCaseResultAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which TestCaseResult to aggregate.
+     * Filter which TestcaseResults to aggregate.
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestCaseResults to fetch.
+     * Determine the order of TestcaseResults to fetch.
      */
-    orderBy?: TestCaseResultOrderByWithRelationInput | TestCaseResultOrderByWithRelationInput[]
+    orderBy?: TestcaseResultsOrderByWithRelationInput | TestcaseResultsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TestCaseResultWhereUniqueInput
+    cursor?: TestcaseResultsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestCaseResults from the position of the cursor.
+     * Take `±n` TestcaseResults from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestCaseResults.
+     * Skip the first `n` TestcaseResults.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned TestCaseResults
+     * Count returned TestcaseResults
     **/
-    _count?: true | TestCaseResultCountAggregateInputType
+    _count?: true | TestcaseResultsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: TestCaseResultAvgAggregateInputType
+    _avg?: TestcaseResultsAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: TestCaseResultSumAggregateInputType
+    _sum?: TestcaseResultsSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TestCaseResultMinAggregateInputType
+    _min?: TestcaseResultsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TestCaseResultMaxAggregateInputType
+    _max?: TestcaseResultsMaxAggregateInputType
   }
 
-  export type GetTestCaseResultAggregateType<T extends TestCaseResultAggregateArgs> = {
-        [P in keyof T & keyof AggregateTestCaseResult]: P extends '_count' | 'count'
+  export type GetTestcaseResultsAggregateType<T extends TestcaseResultsAggregateArgs> = {
+        [P in keyof T & keyof AggregateTestcaseResults]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTestCaseResult[P]>
-      : GetScalarType<T[P], AggregateTestCaseResult[P]>
+        : GetScalarType<T[P], AggregateTestcaseResults[P]>
+      : GetScalarType<T[P], AggregateTestcaseResults[P]>
   }
 
 
 
 
-  export type TestCaseResultGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestCaseResultWhereInput
-    orderBy?: TestCaseResultOrderByWithAggregationInput | TestCaseResultOrderByWithAggregationInput[]
-    by: TestCaseResultScalarFieldEnum[] | TestCaseResultScalarFieldEnum
-    having?: TestCaseResultScalarWhereWithAggregatesInput
+  export type TestcaseResultsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestcaseResultsWhereInput
+    orderBy?: TestcaseResultsOrderByWithAggregationInput | TestcaseResultsOrderByWithAggregationInput[]
+    by: TestcaseResultsScalarFieldEnum[] | TestcaseResultsScalarFieldEnum
+    having?: TestcaseResultsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TestCaseResultCountAggregateInputType | true
-    _avg?: TestCaseResultAvgAggregateInputType
-    _sum?: TestCaseResultSumAggregateInputType
-    _min?: TestCaseResultMinAggregateInputType
-    _max?: TestCaseResultMaxAggregateInputType
+    _count?: TestcaseResultsCountAggregateInputType | true
+    _avg?: TestcaseResultsAvgAggregateInputType
+    _sum?: TestcaseResultsSumAggregateInputType
+    _min?: TestcaseResultsMinAggregateInputType
+    _max?: TestcaseResultsMaxAggregateInputType
   }
 
-  export type TestCaseResultGroupByOutputType = {
+  export type TestcaseResultsGroupByOutputType = {
     id: string
     submissionId: string
-    testCase: number
-    passed: boolean
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
     stdout: string | null
-    expected: string
+    expectedOutput: string
     stderr: string | null
     compileOutput: string | null
-    status: string
-    memory: string | null
+    status: string | null
     time: string | null
+    memory: string | null
     createdAt: Date
     updatedAt: Date
-    _count: TestCaseResultCountAggregateOutputType | null
-    _avg: TestCaseResultAvgAggregateOutputType | null
-    _sum: TestCaseResultSumAggregateOutputType | null
-    _min: TestCaseResultMinAggregateOutputType | null
-    _max: TestCaseResultMaxAggregateOutputType | null
+    _count: TestcaseResultsCountAggregateOutputType | null
+    _avg: TestcaseResultsAvgAggregateOutputType | null
+    _sum: TestcaseResultsSumAggregateOutputType | null
+    _min: TestcaseResultsMinAggregateOutputType | null
+    _max: TestcaseResultsMaxAggregateOutputType | null
   }
 
-  type GetTestCaseResultGroupByPayload<T extends TestCaseResultGroupByArgs> = Prisma.PrismaPromise<
+  type GetTestcaseResultsGroupByPayload<T extends TestcaseResultsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TestCaseResultGroupByOutputType, T['by']> &
+      PickEnumerable<TestcaseResultsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TestCaseResultGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TestcaseResultsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TestCaseResultGroupByOutputType[P]>
-            : GetScalarType<T[P], TestCaseResultGroupByOutputType[P]>
+              : GetScalarType<T[P], TestcaseResultsGroupByOutputType[P]>
+            : GetScalarType<T[P], TestcaseResultsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TestCaseResultSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TestcaseResultsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     submissionId?: boolean
-    testCase?: boolean
-    passed?: boolean
+    testCaseNumber?: boolean
+    isPassed?: boolean
+    stdin?: boolean
     stdout?: boolean
-    expected?: boolean
+    expectedOutput?: boolean
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["testCaseResult"]>
+  }, ExtArgs["result"]["testcaseResults"]>
 
-  export type TestCaseResultSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TestcaseResultsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     submissionId?: boolean
-    testCase?: boolean
-    passed?: boolean
+    testCaseNumber?: boolean
+    isPassed?: boolean
+    stdin?: boolean
     stdout?: boolean
-    expected?: boolean
+    expectedOutput?: boolean
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["testCaseResult"]>
+  }, ExtArgs["result"]["testcaseResults"]>
 
-  export type TestCaseResultSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TestcaseResultsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     submissionId?: boolean
-    testCase?: boolean
-    passed?: boolean
+    testCaseNumber?: boolean
+    isPassed?: boolean
+    stdin?: boolean
     stdout?: boolean
-    expected?: boolean
+    expectedOutput?: boolean
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["testCaseResult"]>
+  }, ExtArgs["result"]["testcaseResults"]>
 
-  export type TestCaseResultSelectScalar = {
+  export type TestcaseResultsSelectScalar = {
     id?: boolean
     submissionId?: boolean
-    testCase?: boolean
-    passed?: boolean
+    testCaseNumber?: boolean
+    isPassed?: boolean
+    stdin?: boolean
     stdout?: boolean
-    expected?: boolean
+    expectedOutput?: boolean
     stderr?: boolean
     compileOutput?: boolean
     status?: boolean
-    memory?: boolean
     time?: boolean
+    memory?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TestCaseResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "submissionId" | "testCase" | "passed" | "stdout" | "expected" | "stderr" | "compileOutput" | "status" | "memory" | "time" | "createdAt" | "updatedAt", ExtArgs["result"]["testCaseResult"]>
-  export type TestCaseResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "submissionId" | "testCaseNumber" | "isPassed" | "stdin" | "stdout" | "expectedOutput" | "stderr" | "compileOutput" | "status" | "time" | "memory" | "createdAt" | "updatedAt", ExtArgs["result"]["testcaseResults"]>
+  export type TestcaseResultsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }
-  export type TestCaseResultIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }
-  export type TestCaseResultIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }
 
-  export type $TestCaseResultPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "TestCaseResult"
+  export type $TestcaseResultsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TestcaseResults"
     objects: {
       submission: Prisma.$SubmissionPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       submissionId: string
-      testCase: number
-      passed: boolean
+      testCaseNumber: number
+      isPassed: boolean
+      stdin: string
       stdout: string | null
-      expected: string
+      expectedOutput: string
       stderr: string | null
       compileOutput: string | null
-      status: string
-      memory: string | null
+      status: string | null
       time: string | null
+      memory: string | null
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["testCaseResult"]>
+    }, ExtArgs["result"]["testcaseResults"]>
     composites: {}
   }
 
-  type TestCaseResultGetPayload<S extends boolean | null | undefined | TestCaseResultDefaultArgs> = $Result.GetResult<Prisma.$TestCaseResultPayload, S>
+  type TestcaseResultsGetPayload<S extends boolean | null | undefined | TestcaseResultsDefaultArgs> = $Result.GetResult<Prisma.$TestcaseResultsPayload, S>
 
-  type TestCaseResultCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TestCaseResultFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TestCaseResultCountAggregateInputType | true
+  type TestcaseResultsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TestcaseResultsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TestcaseResultsCountAggregateInputType | true
     }
 
-  export interface TestCaseResultDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TestCaseResult'], meta: { name: 'TestCaseResult' } }
+  export interface TestcaseResultsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TestcaseResults'], meta: { name: 'TestcaseResults' } }
     /**
-     * Find zero or one TestCaseResult that matches the filter.
-     * @param {TestCaseResultFindUniqueArgs} args - Arguments to find a TestCaseResult
+     * Find zero or one TestcaseResults that matches the filter.
+     * @param {TestcaseResultsFindUniqueArgs} args - Arguments to find a TestcaseResults
      * @example
-     * // Get one TestCaseResult
-     * const testCaseResult = await prisma.testCaseResult.findUnique({
+     * // Get one TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TestCaseResultFindUniqueArgs>(args: SelectSubset<T, TestCaseResultFindUniqueArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TestcaseResultsFindUniqueArgs>(args: SelectSubset<T, TestcaseResultsFindUniqueArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one TestCaseResult that matches the filter or throw an error with `error.code='P2025'`
+     * Find one TestcaseResults that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TestCaseResultFindUniqueOrThrowArgs} args - Arguments to find a TestCaseResult
+     * @param {TestcaseResultsFindUniqueOrThrowArgs} args - Arguments to find a TestcaseResults
      * @example
-     * // Get one TestCaseResult
-     * const testCaseResult = await prisma.testCaseResult.findUniqueOrThrow({
+     * // Get one TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TestCaseResultFindUniqueOrThrowArgs>(args: SelectSubset<T, TestCaseResultFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TestcaseResultsFindUniqueOrThrowArgs>(args: SelectSubset<T, TestcaseResultsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first TestCaseResult that matches the filter.
+     * Find the first TestcaseResults that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultFindFirstArgs} args - Arguments to find a TestCaseResult
+     * @param {TestcaseResultsFindFirstArgs} args - Arguments to find a TestcaseResults
      * @example
-     * // Get one TestCaseResult
-     * const testCaseResult = await prisma.testCaseResult.findFirst({
+     * // Get one TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TestCaseResultFindFirstArgs>(args?: SelectSubset<T, TestCaseResultFindFirstArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TestcaseResultsFindFirstArgs>(args?: SelectSubset<T, TestcaseResultsFindFirstArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first TestCaseResult that matches the filter or
+     * Find the first TestcaseResults that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultFindFirstOrThrowArgs} args - Arguments to find a TestCaseResult
+     * @param {TestcaseResultsFindFirstOrThrowArgs} args - Arguments to find a TestcaseResults
      * @example
-     * // Get one TestCaseResult
-     * const testCaseResult = await prisma.testCaseResult.findFirstOrThrow({
+     * // Get one TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TestCaseResultFindFirstOrThrowArgs>(args?: SelectSubset<T, TestCaseResultFindFirstOrThrowArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TestcaseResultsFindFirstOrThrowArgs>(args?: SelectSubset<T, TestcaseResultsFindFirstOrThrowArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more TestCaseResults that matches the filter.
+     * Find zero or more TestcaseResults that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TestcaseResultsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all TestCaseResults
-     * const testCaseResults = await prisma.testCaseResult.findMany()
+     * // Get all TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.findMany()
      * 
-     * // Get first 10 TestCaseResults
-     * const testCaseResults = await prisma.testCaseResult.findMany({ take: 10 })
+     * // Get first 10 TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const testCaseResultWithIdOnly = await prisma.testCaseResult.findMany({ select: { id: true } })
+     * const testcaseResultsWithIdOnly = await prisma.testcaseResults.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TestCaseResultFindManyArgs>(args?: SelectSubset<T, TestCaseResultFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TestcaseResultsFindManyArgs>(args?: SelectSubset<T, TestcaseResultsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a TestCaseResult.
-     * @param {TestCaseResultCreateArgs} args - Arguments to create a TestCaseResult.
+     * Create a TestcaseResults.
+     * @param {TestcaseResultsCreateArgs} args - Arguments to create a TestcaseResults.
      * @example
-     * // Create one TestCaseResult
-     * const TestCaseResult = await prisma.testCaseResult.create({
+     * // Create one TestcaseResults
+     * const TestcaseResults = await prisma.testcaseResults.create({
      *   data: {
-     *     // ... data to create a TestCaseResult
+     *     // ... data to create a TestcaseResults
      *   }
      * })
      * 
      */
-    create<T extends TestCaseResultCreateArgs>(args: SelectSubset<T, TestCaseResultCreateArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TestcaseResultsCreateArgs>(args: SelectSubset<T, TestcaseResultsCreateArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many TestCaseResults.
-     * @param {TestCaseResultCreateManyArgs} args - Arguments to create many TestCaseResults.
+     * Create many TestcaseResults.
+     * @param {TestcaseResultsCreateManyArgs} args - Arguments to create many TestcaseResults.
      * @example
-     * // Create many TestCaseResults
-     * const testCaseResult = await prisma.testCaseResult.createMany({
+     * // Create many TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TestCaseResultCreateManyArgs>(args?: SelectSubset<T, TestCaseResultCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TestcaseResultsCreateManyArgs>(args?: SelectSubset<T, TestcaseResultsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many TestCaseResults and returns the data saved in the database.
-     * @param {TestCaseResultCreateManyAndReturnArgs} args - Arguments to create many TestCaseResults.
+     * Create many TestcaseResults and returns the data saved in the database.
+     * @param {TestcaseResultsCreateManyAndReturnArgs} args - Arguments to create many TestcaseResults.
      * @example
-     * // Create many TestCaseResults
-     * const testCaseResult = await prisma.testCaseResult.createManyAndReturn({
+     * // Create many TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many TestCaseResults and only return the `id`
-     * const testCaseResultWithIdOnly = await prisma.testCaseResult.createManyAndReturn({
+     * // Create many TestcaseResults and only return the `id`
+     * const testcaseResultsWithIdOnly = await prisma.testcaseResults.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5753,28 +5774,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends TestCaseResultCreateManyAndReturnArgs>(args?: SelectSubset<T, TestCaseResultCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends TestcaseResultsCreateManyAndReturnArgs>(args?: SelectSubset<T, TestcaseResultsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a TestCaseResult.
-     * @param {TestCaseResultDeleteArgs} args - Arguments to delete one TestCaseResult.
+     * Delete a TestcaseResults.
+     * @param {TestcaseResultsDeleteArgs} args - Arguments to delete one TestcaseResults.
      * @example
-     * // Delete one TestCaseResult
-     * const TestCaseResult = await prisma.testCaseResult.delete({
+     * // Delete one TestcaseResults
+     * const TestcaseResults = await prisma.testcaseResults.delete({
      *   where: {
-     *     // ... filter to delete one TestCaseResult
+     *     // ... filter to delete one TestcaseResults
      *   }
      * })
      * 
      */
-    delete<T extends TestCaseResultDeleteArgs>(args: SelectSubset<T, TestCaseResultDeleteArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TestcaseResultsDeleteArgs>(args: SelectSubset<T, TestcaseResultsDeleteArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one TestCaseResult.
-     * @param {TestCaseResultUpdateArgs} args - Arguments to update one TestCaseResult.
+     * Update one TestcaseResults.
+     * @param {TestcaseResultsUpdateArgs} args - Arguments to update one TestcaseResults.
      * @example
-     * // Update one TestCaseResult
-     * const testCaseResult = await prisma.testCaseResult.update({
+     * // Update one TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5784,30 +5805,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TestCaseResultUpdateArgs>(args: SelectSubset<T, TestCaseResultUpdateArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TestcaseResultsUpdateArgs>(args: SelectSubset<T, TestcaseResultsUpdateArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more TestCaseResults.
-     * @param {TestCaseResultDeleteManyArgs} args - Arguments to filter TestCaseResults to delete.
+     * Delete zero or more TestcaseResults.
+     * @param {TestcaseResultsDeleteManyArgs} args - Arguments to filter TestcaseResults to delete.
      * @example
-     * // Delete a few TestCaseResults
-     * const { count } = await prisma.testCaseResult.deleteMany({
+     * // Delete a few TestcaseResults
+     * const { count } = await prisma.testcaseResults.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TestCaseResultDeleteManyArgs>(args?: SelectSubset<T, TestCaseResultDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TestcaseResultsDeleteManyArgs>(args?: SelectSubset<T, TestcaseResultsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more TestCaseResults.
+     * Update zero or more TestcaseResults.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TestcaseResultsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many TestCaseResults
-     * const testCaseResult = await prisma.testCaseResult.updateMany({
+     * // Update many TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5817,14 +5838,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TestCaseResultUpdateManyArgs>(args: SelectSubset<T, TestCaseResultUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TestcaseResultsUpdateManyArgs>(args: SelectSubset<T, TestcaseResultsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more TestCaseResults and returns the data updated in the database.
-     * @param {TestCaseResultUpdateManyAndReturnArgs} args - Arguments to update many TestCaseResults.
+     * Update zero or more TestcaseResults and returns the data updated in the database.
+     * @param {TestcaseResultsUpdateManyAndReturnArgs} args - Arguments to update many TestcaseResults.
      * @example
-     * // Update many TestCaseResults
-     * const testCaseResult = await prisma.testCaseResult.updateManyAndReturn({
+     * // Update many TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5833,8 +5854,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more TestCaseResults and only return the `id`
-     * const testCaseResultWithIdOnly = await prisma.testCaseResult.updateManyAndReturn({
+     * // Update zero or more TestcaseResults and only return the `id`
+     * const testcaseResultsWithIdOnly = await prisma.testcaseResults.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -5847,56 +5868,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends TestCaseResultUpdateManyAndReturnArgs>(args: SelectSubset<T, TestCaseResultUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends TestcaseResultsUpdateManyAndReturnArgs>(args: SelectSubset<T, TestcaseResultsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one TestCaseResult.
-     * @param {TestCaseResultUpsertArgs} args - Arguments to update or create a TestCaseResult.
+     * Create or update one TestcaseResults.
+     * @param {TestcaseResultsUpsertArgs} args - Arguments to update or create a TestcaseResults.
      * @example
-     * // Update or create a TestCaseResult
-     * const testCaseResult = await prisma.testCaseResult.upsert({
+     * // Update or create a TestcaseResults
+     * const testcaseResults = await prisma.testcaseResults.upsert({
      *   create: {
-     *     // ... data to create a TestCaseResult
+     *     // ... data to create a TestcaseResults
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the TestCaseResult we want to update
+     *     // ... the filter for the TestcaseResults we want to update
      *   }
      * })
      */
-    upsert<T extends TestCaseResultUpsertArgs>(args: SelectSubset<T, TestCaseResultUpsertArgs<ExtArgs>>): Prisma__TestCaseResultClient<$Result.GetResult<Prisma.$TestCaseResultPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TestcaseResultsUpsertArgs>(args: SelectSubset<T, TestcaseResultsUpsertArgs<ExtArgs>>): Prisma__TestcaseResultsClient<$Result.GetResult<Prisma.$TestcaseResultsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of TestCaseResults.
+     * Count the number of TestcaseResults.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultCountArgs} args - Arguments to filter TestCaseResults to count.
+     * @param {TestcaseResultsCountArgs} args - Arguments to filter TestcaseResults to count.
      * @example
-     * // Count the number of TestCaseResults
-     * const count = await prisma.testCaseResult.count({
+     * // Count the number of TestcaseResults
+     * const count = await prisma.testcaseResults.count({
      *   where: {
-     *     // ... the filter for the TestCaseResults we want to count
+     *     // ... the filter for the TestcaseResults we want to count
      *   }
      * })
     **/
-    count<T extends TestCaseResultCountArgs>(
-      args?: Subset<T, TestCaseResultCountArgs>,
+    count<T extends TestcaseResultsCountArgs>(
+      args?: Subset<T, TestcaseResultsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TestCaseResultCountAggregateOutputType>
+          : GetScalarType<T['select'], TestcaseResultsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a TestCaseResult.
+     * Allows you to perform aggregations operations on a TestcaseResults.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TestcaseResultsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5916,13 +5937,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TestCaseResultAggregateArgs>(args: Subset<T, TestCaseResultAggregateArgs>): Prisma.PrismaPromise<GetTestCaseResultAggregateType<T>>
+    aggregate<T extends TestcaseResultsAggregateArgs>(args: Subset<T, TestcaseResultsAggregateArgs>): Prisma.PrismaPromise<GetTestcaseResultsAggregateType<T>>
 
     /**
-     * Group by TestCaseResult.
+     * Group by TestcaseResults.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCaseResultGroupByArgs} args - Group by arguments.
+     * @param {TestcaseResultsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5937,14 +5958,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TestCaseResultGroupByArgs,
+      T extends TestcaseResultsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TestCaseResultGroupByArgs['orderBy'] }
-        : { orderBy?: TestCaseResultGroupByArgs['orderBy'] },
+        ? { orderBy: TestcaseResultsGroupByArgs['orderBy'] }
+        : { orderBy?: TestcaseResultsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5993,20 +6014,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TestCaseResultGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestCaseResultGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TestcaseResultsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestcaseResultsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the TestCaseResult model
+   * Fields of the TestcaseResults model
    */
-  readonly fields: TestCaseResultFieldRefs;
+  readonly fields: TestcaseResultsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for TestCaseResult.
+   * The delegate class that acts as a "Promise-like" for TestcaseResults.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TestCaseResultClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TestcaseResultsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     submission<T extends SubmissionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubmissionDefaultArgs<ExtArgs>>): Prisma__SubmissionClient<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -6035,433 +6056,434 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the TestCaseResult model
+   * Fields of the TestcaseResults model
    */
-  interface TestCaseResultFieldRefs {
-    readonly id: FieldRef<"TestCaseResult", 'String'>
-    readonly submissionId: FieldRef<"TestCaseResult", 'String'>
-    readonly testCase: FieldRef<"TestCaseResult", 'Int'>
-    readonly passed: FieldRef<"TestCaseResult", 'Boolean'>
-    readonly stdout: FieldRef<"TestCaseResult", 'String'>
-    readonly expected: FieldRef<"TestCaseResult", 'String'>
-    readonly stderr: FieldRef<"TestCaseResult", 'String'>
-    readonly compileOutput: FieldRef<"TestCaseResult", 'String'>
-    readonly status: FieldRef<"TestCaseResult", 'String'>
-    readonly memory: FieldRef<"TestCaseResult", 'String'>
-    readonly time: FieldRef<"TestCaseResult", 'String'>
-    readonly createdAt: FieldRef<"TestCaseResult", 'DateTime'>
-    readonly updatedAt: FieldRef<"TestCaseResult", 'DateTime'>
+  interface TestcaseResultsFieldRefs {
+    readonly id: FieldRef<"TestcaseResults", 'String'>
+    readonly submissionId: FieldRef<"TestcaseResults", 'String'>
+    readonly testCaseNumber: FieldRef<"TestcaseResults", 'Int'>
+    readonly isPassed: FieldRef<"TestcaseResults", 'Boolean'>
+    readonly stdin: FieldRef<"TestcaseResults", 'String'>
+    readonly stdout: FieldRef<"TestcaseResults", 'String'>
+    readonly expectedOutput: FieldRef<"TestcaseResults", 'String'>
+    readonly stderr: FieldRef<"TestcaseResults", 'String'>
+    readonly compileOutput: FieldRef<"TestcaseResults", 'String'>
+    readonly status: FieldRef<"TestcaseResults", 'String'>
+    readonly time: FieldRef<"TestcaseResults", 'String'>
+    readonly memory: FieldRef<"TestcaseResults", 'String'>
+    readonly createdAt: FieldRef<"TestcaseResults", 'DateTime'>
+    readonly updatedAt: FieldRef<"TestcaseResults", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * TestCaseResult findUnique
+   * TestcaseResults findUnique
    */
-  export type TestCaseResultFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * Filter, which TestCaseResult to fetch.
+     * Filter, which TestcaseResults to fetch.
      */
-    where: TestCaseResultWhereUniqueInput
+    where: TestcaseResultsWhereUniqueInput
   }
 
   /**
-   * TestCaseResult findUniqueOrThrow
+   * TestcaseResults findUniqueOrThrow
    */
-  export type TestCaseResultFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * Filter, which TestCaseResult to fetch.
+     * Filter, which TestcaseResults to fetch.
      */
-    where: TestCaseResultWhereUniqueInput
+    where: TestcaseResultsWhereUniqueInput
   }
 
   /**
-   * TestCaseResult findFirst
+   * TestcaseResults findFirst
    */
-  export type TestCaseResultFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * Filter, which TestCaseResult to fetch.
+     * Filter, which TestcaseResults to fetch.
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestCaseResults to fetch.
+     * Determine the order of TestcaseResults to fetch.
      */
-    orderBy?: TestCaseResultOrderByWithRelationInput | TestCaseResultOrderByWithRelationInput[]
+    orderBy?: TestcaseResultsOrderByWithRelationInput | TestcaseResultsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for TestCaseResults.
+     * Sets the position for searching for TestcaseResults.
      */
-    cursor?: TestCaseResultWhereUniqueInput
+    cursor?: TestcaseResultsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestCaseResults from the position of the cursor.
+     * Take `±n` TestcaseResults from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestCaseResults.
+     * Skip the first `n` TestcaseResults.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of TestCaseResults.
+     * Filter by unique combinations of TestcaseResults.
      */
-    distinct?: TestCaseResultScalarFieldEnum | TestCaseResultScalarFieldEnum[]
+    distinct?: TestcaseResultsScalarFieldEnum | TestcaseResultsScalarFieldEnum[]
   }
 
   /**
-   * TestCaseResult findFirstOrThrow
+   * TestcaseResults findFirstOrThrow
    */
-  export type TestCaseResultFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * Filter, which TestCaseResult to fetch.
+     * Filter, which TestcaseResults to fetch.
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestCaseResults to fetch.
+     * Determine the order of TestcaseResults to fetch.
      */
-    orderBy?: TestCaseResultOrderByWithRelationInput | TestCaseResultOrderByWithRelationInput[]
+    orderBy?: TestcaseResultsOrderByWithRelationInput | TestcaseResultsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for TestCaseResults.
+     * Sets the position for searching for TestcaseResults.
      */
-    cursor?: TestCaseResultWhereUniqueInput
+    cursor?: TestcaseResultsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestCaseResults from the position of the cursor.
+     * Take `±n` TestcaseResults from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestCaseResults.
+     * Skip the first `n` TestcaseResults.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of TestCaseResults.
+     * Filter by unique combinations of TestcaseResults.
      */
-    distinct?: TestCaseResultScalarFieldEnum | TestCaseResultScalarFieldEnum[]
+    distinct?: TestcaseResultsScalarFieldEnum | TestcaseResultsScalarFieldEnum[]
   }
 
   /**
-   * TestCaseResult findMany
+   * TestcaseResults findMany
    */
-  export type TestCaseResultFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * Filter, which TestCaseResults to fetch.
+     * Filter, which TestcaseResults to fetch.
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestCaseResults to fetch.
+     * Determine the order of TestcaseResults to fetch.
      */
-    orderBy?: TestCaseResultOrderByWithRelationInput | TestCaseResultOrderByWithRelationInput[]
+    orderBy?: TestcaseResultsOrderByWithRelationInput | TestcaseResultsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing TestCaseResults.
+     * Sets the position for listing TestcaseResults.
      */
-    cursor?: TestCaseResultWhereUniqueInput
+    cursor?: TestcaseResultsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestCaseResults from the position of the cursor.
+     * Take `±n` TestcaseResults from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestCaseResults.
+     * Skip the first `n` TestcaseResults.
      */
     skip?: number
-    distinct?: TestCaseResultScalarFieldEnum | TestCaseResultScalarFieldEnum[]
+    distinct?: TestcaseResultsScalarFieldEnum | TestcaseResultsScalarFieldEnum[]
   }
 
   /**
-   * TestCaseResult create
+   * TestcaseResults create
    */
-  export type TestCaseResultCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * The data needed to create a TestCaseResult.
+     * The data needed to create a TestcaseResults.
      */
-    data: XOR<TestCaseResultCreateInput, TestCaseResultUncheckedCreateInput>
+    data: XOR<TestcaseResultsCreateInput, TestcaseResultsUncheckedCreateInput>
   }
 
   /**
-   * TestCaseResult createMany
+   * TestcaseResults createMany
    */
-  export type TestCaseResultCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many TestCaseResults.
+     * The data used to create many TestcaseResults.
      */
-    data: TestCaseResultCreateManyInput | TestCaseResultCreateManyInput[]
+    data: TestcaseResultsCreateManyInput | TestcaseResultsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * TestCaseResult createManyAndReturn
+   * TestcaseResults createManyAndReturn
    */
-  export type TestCaseResultCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelectCreateManyAndReturn<ExtArgs> | null
+    select?: TestcaseResultsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
-     * The data used to create many TestCaseResults.
+     * The data used to create many TestcaseResults.
      */
-    data: TestCaseResultCreateManyInput | TestCaseResultCreateManyInput[]
+    data: TestcaseResultsCreateManyInput | TestcaseResultsCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: TestcaseResultsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * TestCaseResult update
+   * TestcaseResults update
    */
-  export type TestCaseResultUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * The data needed to update a TestCaseResult.
+     * The data needed to update a TestcaseResults.
      */
-    data: XOR<TestCaseResultUpdateInput, TestCaseResultUncheckedUpdateInput>
+    data: XOR<TestcaseResultsUpdateInput, TestcaseResultsUncheckedUpdateInput>
     /**
-     * Choose, which TestCaseResult to update.
+     * Choose, which TestcaseResults to update.
      */
-    where: TestCaseResultWhereUniqueInput
+    where: TestcaseResultsWhereUniqueInput
   }
 
   /**
-   * TestCaseResult updateMany
+   * TestcaseResults updateMany
    */
-  export type TestCaseResultUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update TestCaseResults.
+     * The data used to update TestcaseResults.
      */
-    data: XOR<TestCaseResultUpdateManyMutationInput, TestCaseResultUncheckedUpdateManyInput>
+    data: XOR<TestcaseResultsUpdateManyMutationInput, TestcaseResultsUncheckedUpdateManyInput>
     /**
-     * Filter which TestCaseResults to update
+     * Filter which TestcaseResults to update
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
-     * Limit how many TestCaseResults to update.
+     * Limit how many TestcaseResults to update.
      */
     limit?: number
   }
 
   /**
-   * TestCaseResult updateManyAndReturn
+   * TestcaseResults updateManyAndReturn
    */
-  export type TestCaseResultUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: TestcaseResultsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
-     * The data used to update TestCaseResults.
+     * The data used to update TestcaseResults.
      */
-    data: XOR<TestCaseResultUpdateManyMutationInput, TestCaseResultUncheckedUpdateManyInput>
+    data: XOR<TestcaseResultsUpdateManyMutationInput, TestcaseResultsUncheckedUpdateManyInput>
     /**
-     * Filter which TestCaseResults to update
+     * Filter which TestcaseResults to update
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
-     * Limit how many TestCaseResults to update.
+     * Limit how many TestcaseResults to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: TestcaseResultsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * TestCaseResult upsert
+   * TestcaseResults upsert
    */
-  export type TestCaseResultUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * The filter to search for the TestCaseResult to update in case it exists.
+     * The filter to search for the TestcaseResults to update in case it exists.
      */
-    where: TestCaseResultWhereUniqueInput
+    where: TestcaseResultsWhereUniqueInput
     /**
-     * In case the TestCaseResult found by the `where` argument doesn't exist, create a new TestCaseResult with this data.
+     * In case the TestcaseResults found by the `where` argument doesn't exist, create a new TestcaseResults with this data.
      */
-    create: XOR<TestCaseResultCreateInput, TestCaseResultUncheckedCreateInput>
+    create: XOR<TestcaseResultsCreateInput, TestcaseResultsUncheckedCreateInput>
     /**
-     * In case the TestCaseResult was found with the provided `where` argument, update it with this data.
+     * In case the TestcaseResults was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TestCaseResultUpdateInput, TestCaseResultUncheckedUpdateInput>
+    update: XOR<TestcaseResultsUpdateInput, TestcaseResultsUncheckedUpdateInput>
   }
 
   /**
-   * TestCaseResult delete
+   * TestcaseResults delete
    */
-  export type TestCaseResultDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
     /**
-     * Filter which TestCaseResult to delete.
+     * Filter which TestcaseResults to delete.
      */
-    where: TestCaseResultWhereUniqueInput
+    where: TestcaseResultsWhereUniqueInput
   }
 
   /**
-   * TestCaseResult deleteMany
+   * TestcaseResults deleteMany
    */
-  export type TestCaseResultDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which TestCaseResults to delete
+     * Filter which TestcaseResults to delete
      */
-    where?: TestCaseResultWhereInput
+    where?: TestcaseResultsWhereInput
     /**
-     * Limit how many TestCaseResults to delete.
+     * Limit how many TestcaseResults to delete.
      */
     limit?: number
   }
 
   /**
-   * TestCaseResult without action
+   * TestcaseResults without action
    */
-  export type TestCaseResultDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TestcaseResultsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestCaseResult
+     * Select specific fields to fetch from the TestcaseResults
      */
-    select?: TestCaseResultSelect<ExtArgs> | null
+    select?: TestcaseResultsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestCaseResult
+     * Omit specific fields from the TestcaseResults
      */
-    omit?: TestCaseResultOmit<ExtArgs> | null
+    omit?: TestcaseResultsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestCaseResultInclude<ExtArgs> | null
+    include?: TestcaseResultsInclude<ExtArgs> | null
   }
 
 
@@ -7545,27 +7567,27 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    userId: string | null
-    createAt: Date | null
-    updateAt: Date | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PlaylistMaxAggregateOutputType = {
     id: string | null
     name: string | null
     description: string | null
-    userId: string | null
-    createAt: Date | null
-    updateAt: Date | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PlaylistCountAggregateOutputType = {
     id: number
     name: number
     description: number
-    userId: number
-    createAt: number
-    updateAt: number
+    createdBy: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -7574,27 +7596,27 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    userId?: true
-    createAt?: true
-    updateAt?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type PlaylistMaxAggregateInputType = {
     id?: true
     name?: true
     description?: true
-    userId?: true
-    createAt?: true
-    updateAt?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type PlaylistCountAggregateInputType = {
     id?: true
     name?: true
     description?: true
-    userId?: true
-    createAt?: true
-    updateAt?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -7673,10 +7695,10 @@ export namespace Prisma {
   export type PlaylistGroupByOutputType = {
     id: string
     name: string
-    description: string
-    userId: string
-    createAt: Date
-    updateAt: Date
+    description: string | null
+    createdBy: string
+    createdAt: Date
+    updatedAt: Date
     _count: PlaylistCountAggregateOutputType | null
     _min: PlaylistMinAggregateOutputType | null
     _max: PlaylistMaxAggregateOutputType | null
@@ -7700,9 +7722,9 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    userId?: boolean
-    createAt?: boolean
-    updateAt?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problems?: boolean | Playlist$problemsArgs<ExtArgs>
     _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
@@ -7712,9 +7734,9 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    userId?: boolean
-    createAt?: boolean
-    updateAt?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
@@ -7722,9 +7744,9 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    userId?: boolean
-    createAt?: boolean
-    updateAt?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
@@ -7732,12 +7754,12 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    userId?: boolean
-    createAt?: boolean
-    updateAt?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "userId" | "createAt" | "updateAt", ExtArgs["result"]["playlist"]>
+  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "createdBy" | "createdAt" | "updatedAt", ExtArgs["result"]["playlist"]>
   export type PlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     problems?: boolean | Playlist$problemsArgs<ExtArgs>
@@ -7754,15 +7776,15 @@ export namespace Prisma {
     name: "Playlist"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      problems: Prisma.$ProblemPlaylistPayload<ExtArgs>[]
+      problems: Prisma.$ProblemInPlaylistPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      description: string
-      userId: string
-      createAt: Date
-      updateAt: Date
+      description: string | null
+      createdBy: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["playlist"]>
     composites: {}
   }
@@ -8158,7 +8180,7 @@ export namespace Prisma {
   export interface Prisma__PlaylistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    problems<T extends Playlist$problemsArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    problems<T extends Playlist$problemsArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8191,9 +8213,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Playlist", 'String'>
     readonly name: FieldRef<"Playlist", 'String'>
     readonly description: FieldRef<"Playlist", 'String'>
-    readonly userId: FieldRef<"Playlist", 'String'>
-    readonly createAt: FieldRef<"Playlist", 'DateTime'>
-    readonly updateAt: FieldRef<"Playlist", 'DateTime'>
+    readonly createdBy: FieldRef<"Playlist", 'String'>
+    readonly createdAt: FieldRef<"Playlist", 'DateTime'>
+    readonly updatedAt: FieldRef<"Playlist", 'DateTime'>
   }
     
 
@@ -8594,23 +8616,23 @@ export namespace Prisma {
    */
   export type Playlist$problemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
-    where?: ProblemPlaylistWhereInput
-    orderBy?: ProblemPlaylistOrderByWithRelationInput | ProblemPlaylistOrderByWithRelationInput[]
-    cursor?: ProblemPlaylistWhereUniqueInput
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
+    where?: ProblemInPlaylistWhereInput
+    orderBy?: ProblemInPlaylistOrderByWithRelationInput | ProblemInPlaylistOrderByWithRelationInput[]
+    cursor?: ProblemInPlaylistWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ProblemPlaylistScalarFieldEnum | ProblemPlaylistScalarFieldEnum[]
+    distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
   }
 
   /**
@@ -8633,217 +8655,217 @@ export namespace Prisma {
 
 
   /**
-   * Model ProblemPlaylist
+   * Model ProblemInPlaylist
    */
 
-  export type AggregateProblemPlaylist = {
-    _count: ProblemPlaylistCountAggregateOutputType | null
-    _min: ProblemPlaylistMinAggregateOutputType | null
-    _max: ProblemPlaylistMaxAggregateOutputType | null
+  export type AggregateProblemInPlaylist = {
+    _count: ProblemInPlaylistCountAggregateOutputType | null
+    _min: ProblemInPlaylistMinAggregateOutputType | null
+    _max: ProblemInPlaylistMaxAggregateOutputType | null
   }
 
-  export type ProblemPlaylistMinAggregateOutputType = {
+  export type ProblemInPlaylistMinAggregateOutputType = {
     id: string | null
     playlistId: string | null
     problemId: string | null
     createdAt: Date | null
-    updateAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type ProblemPlaylistMaxAggregateOutputType = {
+  export type ProblemInPlaylistMaxAggregateOutputType = {
     id: string | null
     playlistId: string | null
     problemId: string | null
     createdAt: Date | null
-    updateAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type ProblemPlaylistCountAggregateOutputType = {
+  export type ProblemInPlaylistCountAggregateOutputType = {
     id: number
     playlistId: number
     problemId: number
     createdAt: number
-    updateAt: number
+    updatedAt: number
     _all: number
   }
 
 
-  export type ProblemPlaylistMinAggregateInputType = {
+  export type ProblemInPlaylistMinAggregateInputType = {
     id?: true
     playlistId?: true
     problemId?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
   }
 
-  export type ProblemPlaylistMaxAggregateInputType = {
+  export type ProblemInPlaylistMaxAggregateInputType = {
     id?: true
     playlistId?: true
     problemId?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
   }
 
-  export type ProblemPlaylistCountAggregateInputType = {
+  export type ProblemInPlaylistCountAggregateInputType = {
     id?: true
     playlistId?: true
     problemId?: true
     createdAt?: true
-    updateAt?: true
+    updatedAt?: true
     _all?: true
   }
 
-  export type ProblemPlaylistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ProblemPlaylist to aggregate.
+     * Filter which ProblemInPlaylist to aggregate.
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ProblemPlaylists to fetch.
+     * Determine the order of ProblemInPlaylists to fetch.
      */
-    orderBy?: ProblemPlaylistOrderByWithRelationInput | ProblemPlaylistOrderByWithRelationInput[]
+    orderBy?: ProblemInPlaylistOrderByWithRelationInput | ProblemInPlaylistOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ProblemPlaylistWhereUniqueInput
+    cursor?: ProblemInPlaylistWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ProblemPlaylists from the position of the cursor.
+     * Take `±n` ProblemInPlaylists from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ProblemPlaylists.
+     * Skip the first `n` ProblemInPlaylists.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned ProblemPlaylists
+     * Count returned ProblemInPlaylists
     **/
-    _count?: true | ProblemPlaylistCountAggregateInputType
+    _count?: true | ProblemInPlaylistCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ProblemPlaylistMinAggregateInputType
+    _min?: ProblemInPlaylistMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ProblemPlaylistMaxAggregateInputType
+    _max?: ProblemInPlaylistMaxAggregateInputType
   }
 
-  export type GetProblemPlaylistAggregateType<T extends ProblemPlaylistAggregateArgs> = {
-        [P in keyof T & keyof AggregateProblemPlaylist]: P extends '_count' | 'count'
+  export type GetProblemInPlaylistAggregateType<T extends ProblemInPlaylistAggregateArgs> = {
+        [P in keyof T & keyof AggregateProblemInPlaylist]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateProblemPlaylist[P]>
-      : GetScalarType<T[P], AggregateProblemPlaylist[P]>
+        : GetScalarType<T[P], AggregateProblemInPlaylist[P]>
+      : GetScalarType<T[P], AggregateProblemInPlaylist[P]>
   }
 
 
 
 
-  export type ProblemPlaylistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProblemPlaylistWhereInput
-    orderBy?: ProblemPlaylistOrderByWithAggregationInput | ProblemPlaylistOrderByWithAggregationInput[]
-    by: ProblemPlaylistScalarFieldEnum[] | ProblemPlaylistScalarFieldEnum
-    having?: ProblemPlaylistScalarWhereWithAggregatesInput
+  export type ProblemInPlaylistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemInPlaylistWhereInput
+    orderBy?: ProblemInPlaylistOrderByWithAggregationInput | ProblemInPlaylistOrderByWithAggregationInput[]
+    by: ProblemInPlaylistScalarFieldEnum[] | ProblemInPlaylistScalarFieldEnum
+    having?: ProblemInPlaylistScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ProblemPlaylistCountAggregateInputType | true
-    _min?: ProblemPlaylistMinAggregateInputType
-    _max?: ProblemPlaylistMaxAggregateInputType
+    _count?: ProblemInPlaylistCountAggregateInputType | true
+    _min?: ProblemInPlaylistMinAggregateInputType
+    _max?: ProblemInPlaylistMaxAggregateInputType
   }
 
-  export type ProblemPlaylistGroupByOutputType = {
+  export type ProblemInPlaylistGroupByOutputType = {
     id: string
     playlistId: string
     problemId: string
     createdAt: Date
-    updateAt: Date
-    _count: ProblemPlaylistCountAggregateOutputType | null
-    _min: ProblemPlaylistMinAggregateOutputType | null
-    _max: ProblemPlaylistMaxAggregateOutputType | null
+    updatedAt: Date
+    _count: ProblemInPlaylistCountAggregateOutputType | null
+    _min: ProblemInPlaylistMinAggregateOutputType | null
+    _max: ProblemInPlaylistMaxAggregateOutputType | null
   }
 
-  type GetProblemPlaylistGroupByPayload<T extends ProblemPlaylistGroupByArgs> = Prisma.PrismaPromise<
+  type GetProblemInPlaylistGroupByPayload<T extends ProblemInPlaylistGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ProblemPlaylistGroupByOutputType, T['by']> &
+      PickEnumerable<ProblemInPlaylistGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ProblemPlaylistGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ProblemInPlaylistGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ProblemPlaylistGroupByOutputType[P]>
-            : GetScalarType<T[P], ProblemPlaylistGroupByOutputType[P]>
+              : GetScalarType<T[P], ProblemInPlaylistGroupByOutputType[P]>
+            : GetScalarType<T[P], ProblemInPlaylistGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ProblemPlaylistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProblemInPlaylistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     playlistId?: boolean
     problemId?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["problemPlaylist"]>
+  }, ExtArgs["result"]["problemInPlaylist"]>
 
-  export type ProblemPlaylistSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProblemInPlaylistSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     playlistId?: boolean
     problemId?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["problemPlaylist"]>
+  }, ExtArgs["result"]["problemInPlaylist"]>
 
-  export type ProblemPlaylistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProblemInPlaylistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     playlistId?: boolean
     problemId?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["problemPlaylist"]>
+  }, ExtArgs["result"]["problemInPlaylist"]>
 
-  export type ProblemPlaylistSelectScalar = {
+  export type ProblemInPlaylistSelectScalar = {
     id?: boolean
     playlistId?: boolean
     problemId?: boolean
     createdAt?: boolean
-    updateAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type ProblemPlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlistId" | "problemId" | "createdAt" | "updateAt", ExtArgs["result"]["problemPlaylist"]>
-  export type ProblemPlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlistId" | "problemId" | "createdAt" | "updatedAt", ExtArgs["result"]["problemInPlaylist"]>
+  export type ProblemInPlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }
-  export type ProblemPlaylistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }
-  export type ProblemPlaylistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }
 
-  export type $ProblemPlaylistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ProblemPlaylist"
+  export type $ProblemInPlaylistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProblemInPlaylist"
     objects: {
       playlist: Prisma.$PlaylistPayload<ExtArgs>
       problem: Prisma.$ProblemPayload<ExtArgs>
@@ -8853,137 +8875,137 @@ export namespace Prisma {
       playlistId: string
       problemId: string
       createdAt: Date
-      updateAt: Date
-    }, ExtArgs["result"]["problemPlaylist"]>
+      updatedAt: Date
+    }, ExtArgs["result"]["problemInPlaylist"]>
     composites: {}
   }
 
-  type ProblemPlaylistGetPayload<S extends boolean | null | undefined | ProblemPlaylistDefaultArgs> = $Result.GetResult<Prisma.$ProblemPlaylistPayload, S>
+  type ProblemInPlaylistGetPayload<S extends boolean | null | undefined | ProblemInPlaylistDefaultArgs> = $Result.GetResult<Prisma.$ProblemInPlaylistPayload, S>
 
-  type ProblemPlaylistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ProblemPlaylistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ProblemPlaylistCountAggregateInputType | true
+  type ProblemInPlaylistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProblemInPlaylistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProblemInPlaylistCountAggregateInputType | true
     }
 
-  export interface ProblemPlaylistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProblemPlaylist'], meta: { name: 'ProblemPlaylist' } }
+  export interface ProblemInPlaylistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProblemInPlaylist'], meta: { name: 'ProblemInPlaylist' } }
     /**
-     * Find zero or one ProblemPlaylist that matches the filter.
-     * @param {ProblemPlaylistFindUniqueArgs} args - Arguments to find a ProblemPlaylist
+     * Find zero or one ProblemInPlaylist that matches the filter.
+     * @param {ProblemInPlaylistFindUniqueArgs} args - Arguments to find a ProblemInPlaylist
      * @example
-     * // Get one ProblemPlaylist
-     * const problemPlaylist = await prisma.problemPlaylist.findUnique({
+     * // Get one ProblemInPlaylist
+     * const problemInPlaylist = await prisma.problemInPlaylist.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ProblemPlaylistFindUniqueArgs>(args: SelectSubset<T, ProblemPlaylistFindUniqueArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ProblemInPlaylistFindUniqueArgs>(args: SelectSubset<T, ProblemInPlaylistFindUniqueArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one ProblemPlaylist that matches the filter or throw an error with `error.code='P2025'`
+     * Find one ProblemInPlaylist that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ProblemPlaylistFindUniqueOrThrowArgs} args - Arguments to find a ProblemPlaylist
+     * @param {ProblemInPlaylistFindUniqueOrThrowArgs} args - Arguments to find a ProblemInPlaylist
      * @example
-     * // Get one ProblemPlaylist
-     * const problemPlaylist = await prisma.problemPlaylist.findUniqueOrThrow({
+     * // Get one ProblemInPlaylist
+     * const problemInPlaylist = await prisma.problemInPlaylist.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ProblemPlaylistFindUniqueOrThrowArgs>(args: SelectSubset<T, ProblemPlaylistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ProblemInPlaylistFindUniqueOrThrowArgs>(args: SelectSubset<T, ProblemInPlaylistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first ProblemPlaylist that matches the filter.
+     * Find the first ProblemInPlaylist that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistFindFirstArgs} args - Arguments to find a ProblemPlaylist
+     * @param {ProblemInPlaylistFindFirstArgs} args - Arguments to find a ProblemInPlaylist
      * @example
-     * // Get one ProblemPlaylist
-     * const problemPlaylist = await prisma.problemPlaylist.findFirst({
+     * // Get one ProblemInPlaylist
+     * const problemInPlaylist = await prisma.problemInPlaylist.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ProblemPlaylistFindFirstArgs>(args?: SelectSubset<T, ProblemPlaylistFindFirstArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ProblemInPlaylistFindFirstArgs>(args?: SelectSubset<T, ProblemInPlaylistFindFirstArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first ProblemPlaylist that matches the filter or
+     * Find the first ProblemInPlaylist that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistFindFirstOrThrowArgs} args - Arguments to find a ProblemPlaylist
+     * @param {ProblemInPlaylistFindFirstOrThrowArgs} args - Arguments to find a ProblemInPlaylist
      * @example
-     * // Get one ProblemPlaylist
-     * const problemPlaylist = await prisma.problemPlaylist.findFirstOrThrow({
+     * // Get one ProblemInPlaylist
+     * const problemInPlaylist = await prisma.problemInPlaylist.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ProblemPlaylistFindFirstOrThrowArgs>(args?: SelectSubset<T, ProblemPlaylistFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ProblemInPlaylistFindFirstOrThrowArgs>(args?: SelectSubset<T, ProblemInPlaylistFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more ProblemPlaylists that matches the filter.
+     * Find zero or more ProblemInPlaylists that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ProblemInPlaylistFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all ProblemPlaylists
-     * const problemPlaylists = await prisma.problemPlaylist.findMany()
+     * // Get all ProblemInPlaylists
+     * const problemInPlaylists = await prisma.problemInPlaylist.findMany()
      * 
-     * // Get first 10 ProblemPlaylists
-     * const problemPlaylists = await prisma.problemPlaylist.findMany({ take: 10 })
+     * // Get first 10 ProblemInPlaylists
+     * const problemInPlaylists = await prisma.problemInPlaylist.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const problemPlaylistWithIdOnly = await prisma.problemPlaylist.findMany({ select: { id: true } })
+     * const problemInPlaylistWithIdOnly = await prisma.problemInPlaylist.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ProblemPlaylistFindManyArgs>(args?: SelectSubset<T, ProblemPlaylistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ProblemInPlaylistFindManyArgs>(args?: SelectSubset<T, ProblemInPlaylistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a ProblemPlaylist.
-     * @param {ProblemPlaylistCreateArgs} args - Arguments to create a ProblemPlaylist.
+     * Create a ProblemInPlaylist.
+     * @param {ProblemInPlaylistCreateArgs} args - Arguments to create a ProblemInPlaylist.
      * @example
-     * // Create one ProblemPlaylist
-     * const ProblemPlaylist = await prisma.problemPlaylist.create({
+     * // Create one ProblemInPlaylist
+     * const ProblemInPlaylist = await prisma.problemInPlaylist.create({
      *   data: {
-     *     // ... data to create a ProblemPlaylist
+     *     // ... data to create a ProblemInPlaylist
      *   }
      * })
      * 
      */
-    create<T extends ProblemPlaylistCreateArgs>(args: SelectSubset<T, ProblemPlaylistCreateArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ProblemInPlaylistCreateArgs>(args: SelectSubset<T, ProblemInPlaylistCreateArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many ProblemPlaylists.
-     * @param {ProblemPlaylistCreateManyArgs} args - Arguments to create many ProblemPlaylists.
+     * Create many ProblemInPlaylists.
+     * @param {ProblemInPlaylistCreateManyArgs} args - Arguments to create many ProblemInPlaylists.
      * @example
-     * // Create many ProblemPlaylists
-     * const problemPlaylist = await prisma.problemPlaylist.createMany({
+     * // Create many ProblemInPlaylists
+     * const problemInPlaylist = await prisma.problemInPlaylist.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ProblemPlaylistCreateManyArgs>(args?: SelectSubset<T, ProblemPlaylistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ProblemInPlaylistCreateManyArgs>(args?: SelectSubset<T, ProblemInPlaylistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many ProblemPlaylists and returns the data saved in the database.
-     * @param {ProblemPlaylistCreateManyAndReturnArgs} args - Arguments to create many ProblemPlaylists.
+     * Create many ProblemInPlaylists and returns the data saved in the database.
+     * @param {ProblemInPlaylistCreateManyAndReturnArgs} args - Arguments to create many ProblemInPlaylists.
      * @example
-     * // Create many ProblemPlaylists
-     * const problemPlaylist = await prisma.problemPlaylist.createManyAndReturn({
+     * // Create many ProblemInPlaylists
+     * const problemInPlaylist = await prisma.problemInPlaylist.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many ProblemPlaylists and only return the `id`
-     * const problemPlaylistWithIdOnly = await prisma.problemPlaylist.createManyAndReturn({
+     * // Create many ProblemInPlaylists and only return the `id`
+     * const problemInPlaylistWithIdOnly = await prisma.problemInPlaylist.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8993,28 +9015,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ProblemPlaylistCreateManyAndReturnArgs>(args?: SelectSubset<T, ProblemPlaylistCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ProblemInPlaylistCreateManyAndReturnArgs>(args?: SelectSubset<T, ProblemInPlaylistCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a ProblemPlaylist.
-     * @param {ProblemPlaylistDeleteArgs} args - Arguments to delete one ProblemPlaylist.
+     * Delete a ProblemInPlaylist.
+     * @param {ProblemInPlaylistDeleteArgs} args - Arguments to delete one ProblemInPlaylist.
      * @example
-     * // Delete one ProblemPlaylist
-     * const ProblemPlaylist = await prisma.problemPlaylist.delete({
+     * // Delete one ProblemInPlaylist
+     * const ProblemInPlaylist = await prisma.problemInPlaylist.delete({
      *   where: {
-     *     // ... filter to delete one ProblemPlaylist
+     *     // ... filter to delete one ProblemInPlaylist
      *   }
      * })
      * 
      */
-    delete<T extends ProblemPlaylistDeleteArgs>(args: SelectSubset<T, ProblemPlaylistDeleteArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ProblemInPlaylistDeleteArgs>(args: SelectSubset<T, ProblemInPlaylistDeleteArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one ProblemPlaylist.
-     * @param {ProblemPlaylistUpdateArgs} args - Arguments to update one ProblemPlaylist.
+     * Update one ProblemInPlaylist.
+     * @param {ProblemInPlaylistUpdateArgs} args - Arguments to update one ProblemInPlaylist.
      * @example
-     * // Update one ProblemPlaylist
-     * const problemPlaylist = await prisma.problemPlaylist.update({
+     * // Update one ProblemInPlaylist
+     * const problemInPlaylist = await prisma.problemInPlaylist.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9024,30 +9046,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ProblemPlaylistUpdateArgs>(args: SelectSubset<T, ProblemPlaylistUpdateArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ProblemInPlaylistUpdateArgs>(args: SelectSubset<T, ProblemInPlaylistUpdateArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more ProblemPlaylists.
-     * @param {ProblemPlaylistDeleteManyArgs} args - Arguments to filter ProblemPlaylists to delete.
+     * Delete zero or more ProblemInPlaylists.
+     * @param {ProblemInPlaylistDeleteManyArgs} args - Arguments to filter ProblemInPlaylists to delete.
      * @example
-     * // Delete a few ProblemPlaylists
-     * const { count } = await prisma.problemPlaylist.deleteMany({
+     * // Delete a few ProblemInPlaylists
+     * const { count } = await prisma.problemInPlaylist.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ProblemPlaylistDeleteManyArgs>(args?: SelectSubset<T, ProblemPlaylistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ProblemInPlaylistDeleteManyArgs>(args?: SelectSubset<T, ProblemInPlaylistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more ProblemPlaylists.
+     * Update zero or more ProblemInPlaylists.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ProblemInPlaylistUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many ProblemPlaylists
-     * const problemPlaylist = await prisma.problemPlaylist.updateMany({
+     * // Update many ProblemInPlaylists
+     * const problemInPlaylist = await prisma.problemInPlaylist.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9057,14 +9079,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ProblemPlaylistUpdateManyArgs>(args: SelectSubset<T, ProblemPlaylistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ProblemInPlaylistUpdateManyArgs>(args: SelectSubset<T, ProblemInPlaylistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more ProblemPlaylists and returns the data updated in the database.
-     * @param {ProblemPlaylistUpdateManyAndReturnArgs} args - Arguments to update many ProblemPlaylists.
+     * Update zero or more ProblemInPlaylists and returns the data updated in the database.
+     * @param {ProblemInPlaylistUpdateManyAndReturnArgs} args - Arguments to update many ProblemInPlaylists.
      * @example
-     * // Update many ProblemPlaylists
-     * const problemPlaylist = await prisma.problemPlaylist.updateManyAndReturn({
+     * // Update many ProblemInPlaylists
+     * const problemInPlaylist = await prisma.problemInPlaylist.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9073,8 +9095,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more ProblemPlaylists and only return the `id`
-     * const problemPlaylistWithIdOnly = await prisma.problemPlaylist.updateManyAndReturn({
+     * // Update zero or more ProblemInPlaylists and only return the `id`
+     * const problemInPlaylistWithIdOnly = await prisma.problemInPlaylist.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -9087,56 +9109,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ProblemPlaylistUpdateManyAndReturnArgs>(args: SelectSubset<T, ProblemPlaylistUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ProblemInPlaylistUpdateManyAndReturnArgs>(args: SelectSubset<T, ProblemInPlaylistUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one ProblemPlaylist.
-     * @param {ProblemPlaylistUpsertArgs} args - Arguments to update or create a ProblemPlaylist.
+     * Create or update one ProblemInPlaylist.
+     * @param {ProblemInPlaylistUpsertArgs} args - Arguments to update or create a ProblemInPlaylist.
      * @example
-     * // Update or create a ProblemPlaylist
-     * const problemPlaylist = await prisma.problemPlaylist.upsert({
+     * // Update or create a ProblemInPlaylist
+     * const problemInPlaylist = await prisma.problemInPlaylist.upsert({
      *   create: {
-     *     // ... data to create a ProblemPlaylist
+     *     // ... data to create a ProblemInPlaylist
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the ProblemPlaylist we want to update
+     *     // ... the filter for the ProblemInPlaylist we want to update
      *   }
      * })
      */
-    upsert<T extends ProblemPlaylistUpsertArgs>(args: SelectSubset<T, ProblemPlaylistUpsertArgs<ExtArgs>>): Prisma__ProblemPlaylistClient<$Result.GetResult<Prisma.$ProblemPlaylistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ProblemInPlaylistUpsertArgs>(args: SelectSubset<T, ProblemInPlaylistUpsertArgs<ExtArgs>>): Prisma__ProblemInPlaylistClient<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of ProblemPlaylists.
+     * Count the number of ProblemInPlaylists.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistCountArgs} args - Arguments to filter ProblemPlaylists to count.
+     * @param {ProblemInPlaylistCountArgs} args - Arguments to filter ProblemInPlaylists to count.
      * @example
-     * // Count the number of ProblemPlaylists
-     * const count = await prisma.problemPlaylist.count({
+     * // Count the number of ProblemInPlaylists
+     * const count = await prisma.problemInPlaylist.count({
      *   where: {
-     *     // ... the filter for the ProblemPlaylists we want to count
+     *     // ... the filter for the ProblemInPlaylists we want to count
      *   }
      * })
     **/
-    count<T extends ProblemPlaylistCountArgs>(
-      args?: Subset<T, ProblemPlaylistCountArgs>,
+    count<T extends ProblemInPlaylistCountArgs>(
+      args?: Subset<T, ProblemInPlaylistCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ProblemPlaylistCountAggregateOutputType>
+          : GetScalarType<T['select'], ProblemInPlaylistCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a ProblemPlaylist.
+     * Allows you to perform aggregations operations on a ProblemInPlaylist.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ProblemInPlaylistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -9156,13 +9178,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ProblemPlaylistAggregateArgs>(args: Subset<T, ProblemPlaylistAggregateArgs>): Prisma.PrismaPromise<GetProblemPlaylistAggregateType<T>>
+    aggregate<T extends ProblemInPlaylistAggregateArgs>(args: Subset<T, ProblemInPlaylistAggregateArgs>): Prisma.PrismaPromise<GetProblemInPlaylistAggregateType<T>>
 
     /**
-     * Group by ProblemPlaylist.
+     * Group by ProblemInPlaylist.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProblemPlaylistGroupByArgs} args - Group by arguments.
+     * @param {ProblemInPlaylistGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9177,14 +9199,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ProblemPlaylistGroupByArgs,
+      T extends ProblemInPlaylistGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProblemPlaylistGroupByArgs['orderBy'] }
-        : { orderBy?: ProblemPlaylistGroupByArgs['orderBy'] },
+        ? { orderBy: ProblemInPlaylistGroupByArgs['orderBy'] }
+        : { orderBy?: ProblemInPlaylistGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9233,20 +9255,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ProblemPlaylistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProblemPlaylistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ProblemInPlaylistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProblemInPlaylistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the ProblemPlaylist model
+   * Fields of the ProblemInPlaylist model
    */
-  readonly fields: ProblemPlaylistFieldRefs;
+  readonly fields: ProblemInPlaylistFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for ProblemPlaylist.
+   * The delegate class that acts as a "Promise-like" for ProblemInPlaylist.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ProblemPlaylistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ProblemInPlaylistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     playlist<T extends PlaylistDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlaylistDefaultArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -9276,425 +9298,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the ProblemPlaylist model
+   * Fields of the ProblemInPlaylist model
    */
-  interface ProblemPlaylistFieldRefs {
-    readonly id: FieldRef<"ProblemPlaylist", 'String'>
-    readonly playlistId: FieldRef<"ProblemPlaylist", 'String'>
-    readonly problemId: FieldRef<"ProblemPlaylist", 'String'>
-    readonly createdAt: FieldRef<"ProblemPlaylist", 'DateTime'>
-    readonly updateAt: FieldRef<"ProblemPlaylist", 'DateTime'>
+  interface ProblemInPlaylistFieldRefs {
+    readonly id: FieldRef<"ProblemInPlaylist", 'String'>
+    readonly playlistId: FieldRef<"ProblemInPlaylist", 'String'>
+    readonly problemId: FieldRef<"ProblemInPlaylist", 'String'>
+    readonly createdAt: FieldRef<"ProblemInPlaylist", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProblemInPlaylist", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * ProblemPlaylist findUnique
+   * ProblemInPlaylist findUnique
    */
-  export type ProblemPlaylistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * Filter, which ProblemPlaylist to fetch.
+     * Filter, which ProblemInPlaylist to fetch.
      */
-    where: ProblemPlaylistWhereUniqueInput
+    where: ProblemInPlaylistWhereUniqueInput
   }
 
   /**
-   * ProblemPlaylist findUniqueOrThrow
+   * ProblemInPlaylist findUniqueOrThrow
    */
-  export type ProblemPlaylistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * Filter, which ProblemPlaylist to fetch.
+     * Filter, which ProblemInPlaylist to fetch.
      */
-    where: ProblemPlaylistWhereUniqueInput
+    where: ProblemInPlaylistWhereUniqueInput
   }
 
   /**
-   * ProblemPlaylist findFirst
+   * ProblemInPlaylist findFirst
    */
-  export type ProblemPlaylistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * Filter, which ProblemPlaylist to fetch.
+     * Filter, which ProblemInPlaylist to fetch.
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ProblemPlaylists to fetch.
+     * Determine the order of ProblemInPlaylists to fetch.
      */
-    orderBy?: ProblemPlaylistOrderByWithRelationInput | ProblemPlaylistOrderByWithRelationInput[]
+    orderBy?: ProblemInPlaylistOrderByWithRelationInput | ProblemInPlaylistOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ProblemPlaylists.
+     * Sets the position for searching for ProblemInPlaylists.
      */
-    cursor?: ProblemPlaylistWhereUniqueInput
+    cursor?: ProblemInPlaylistWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ProblemPlaylists from the position of the cursor.
+     * Take `±n` ProblemInPlaylists from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ProblemPlaylists.
+     * Skip the first `n` ProblemInPlaylists.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ProblemPlaylists.
+     * Filter by unique combinations of ProblemInPlaylists.
      */
-    distinct?: ProblemPlaylistScalarFieldEnum | ProblemPlaylistScalarFieldEnum[]
+    distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
   }
 
   /**
-   * ProblemPlaylist findFirstOrThrow
+   * ProblemInPlaylist findFirstOrThrow
    */
-  export type ProblemPlaylistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * Filter, which ProblemPlaylist to fetch.
+     * Filter, which ProblemInPlaylist to fetch.
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ProblemPlaylists to fetch.
+     * Determine the order of ProblemInPlaylists to fetch.
      */
-    orderBy?: ProblemPlaylistOrderByWithRelationInput | ProblemPlaylistOrderByWithRelationInput[]
+    orderBy?: ProblemInPlaylistOrderByWithRelationInput | ProblemInPlaylistOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ProblemPlaylists.
+     * Sets the position for searching for ProblemInPlaylists.
      */
-    cursor?: ProblemPlaylistWhereUniqueInput
+    cursor?: ProblemInPlaylistWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ProblemPlaylists from the position of the cursor.
+     * Take `±n` ProblemInPlaylists from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ProblemPlaylists.
+     * Skip the first `n` ProblemInPlaylists.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ProblemPlaylists.
+     * Filter by unique combinations of ProblemInPlaylists.
      */
-    distinct?: ProblemPlaylistScalarFieldEnum | ProblemPlaylistScalarFieldEnum[]
+    distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
   }
 
   /**
-   * ProblemPlaylist findMany
+   * ProblemInPlaylist findMany
    */
-  export type ProblemPlaylistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * Filter, which ProblemPlaylists to fetch.
+     * Filter, which ProblemInPlaylists to fetch.
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ProblemPlaylists to fetch.
+     * Determine the order of ProblemInPlaylists to fetch.
      */
-    orderBy?: ProblemPlaylistOrderByWithRelationInput | ProblemPlaylistOrderByWithRelationInput[]
+    orderBy?: ProblemInPlaylistOrderByWithRelationInput | ProblemInPlaylistOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing ProblemPlaylists.
+     * Sets the position for listing ProblemInPlaylists.
      */
-    cursor?: ProblemPlaylistWhereUniqueInput
+    cursor?: ProblemInPlaylistWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ProblemPlaylists from the position of the cursor.
+     * Take `±n` ProblemInPlaylists from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ProblemPlaylists.
+     * Skip the first `n` ProblemInPlaylists.
      */
     skip?: number
-    distinct?: ProblemPlaylistScalarFieldEnum | ProblemPlaylistScalarFieldEnum[]
+    distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
   }
 
   /**
-   * ProblemPlaylist create
+   * ProblemInPlaylist create
    */
-  export type ProblemPlaylistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * The data needed to create a ProblemPlaylist.
+     * The data needed to create a ProblemInPlaylist.
      */
-    data: XOR<ProblemPlaylistCreateInput, ProblemPlaylistUncheckedCreateInput>
+    data: XOR<ProblemInPlaylistCreateInput, ProblemInPlaylistUncheckedCreateInput>
   }
 
   /**
-   * ProblemPlaylist createMany
+   * ProblemInPlaylist createMany
    */
-  export type ProblemPlaylistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many ProblemPlaylists.
+     * The data used to create many ProblemInPlaylists.
      */
-    data: ProblemPlaylistCreateManyInput | ProblemPlaylistCreateManyInput[]
+    data: ProblemInPlaylistCreateManyInput | ProblemInPlaylistCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * ProblemPlaylist createManyAndReturn
+   * ProblemInPlaylist createManyAndReturn
    */
-  export type ProblemPlaylistCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ProblemInPlaylistSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
-     * The data used to create many ProblemPlaylists.
+     * The data used to create many ProblemInPlaylists.
      */
-    data: ProblemPlaylistCreateManyInput | ProblemPlaylistCreateManyInput[]
+    data: ProblemInPlaylistCreateManyInput | ProblemInPlaylistCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: ProblemInPlaylistIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * ProblemPlaylist update
+   * ProblemInPlaylist update
    */
-  export type ProblemPlaylistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * The data needed to update a ProblemPlaylist.
+     * The data needed to update a ProblemInPlaylist.
      */
-    data: XOR<ProblemPlaylistUpdateInput, ProblemPlaylistUncheckedUpdateInput>
+    data: XOR<ProblemInPlaylistUpdateInput, ProblemInPlaylistUncheckedUpdateInput>
     /**
-     * Choose, which ProblemPlaylist to update.
+     * Choose, which ProblemInPlaylist to update.
      */
-    where: ProblemPlaylistWhereUniqueInput
+    where: ProblemInPlaylistWhereUniqueInput
   }
 
   /**
-   * ProblemPlaylist updateMany
+   * ProblemInPlaylist updateMany
    */
-  export type ProblemPlaylistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update ProblemPlaylists.
+     * The data used to update ProblemInPlaylists.
      */
-    data: XOR<ProblemPlaylistUpdateManyMutationInput, ProblemPlaylistUncheckedUpdateManyInput>
+    data: XOR<ProblemInPlaylistUpdateManyMutationInput, ProblemInPlaylistUncheckedUpdateManyInput>
     /**
-     * Filter which ProblemPlaylists to update
+     * Filter which ProblemInPlaylists to update
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
-     * Limit how many ProblemPlaylists to update.
+     * Limit how many ProblemInPlaylists to update.
      */
     limit?: number
   }
 
   /**
-   * ProblemPlaylist updateManyAndReturn
+   * ProblemInPlaylist updateManyAndReturn
    */
-  export type ProblemPlaylistUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ProblemInPlaylistSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
-     * The data used to update ProblemPlaylists.
+     * The data used to update ProblemInPlaylists.
      */
-    data: XOR<ProblemPlaylistUpdateManyMutationInput, ProblemPlaylistUncheckedUpdateManyInput>
+    data: XOR<ProblemInPlaylistUpdateManyMutationInput, ProblemInPlaylistUncheckedUpdateManyInput>
     /**
-     * Filter which ProblemPlaylists to update
+     * Filter which ProblemInPlaylists to update
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
-     * Limit how many ProblemPlaylists to update.
+     * Limit how many ProblemInPlaylists to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: ProblemInPlaylistIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * ProblemPlaylist upsert
+   * ProblemInPlaylist upsert
    */
-  export type ProblemPlaylistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * The filter to search for the ProblemPlaylist to update in case it exists.
+     * The filter to search for the ProblemInPlaylist to update in case it exists.
      */
-    where: ProblemPlaylistWhereUniqueInput
+    where: ProblemInPlaylistWhereUniqueInput
     /**
-     * In case the ProblemPlaylist found by the `where` argument doesn't exist, create a new ProblemPlaylist with this data.
+     * In case the ProblemInPlaylist found by the `where` argument doesn't exist, create a new ProblemInPlaylist with this data.
      */
-    create: XOR<ProblemPlaylistCreateInput, ProblemPlaylistUncheckedCreateInput>
+    create: XOR<ProblemInPlaylistCreateInput, ProblemInPlaylistUncheckedCreateInput>
     /**
-     * In case the ProblemPlaylist was found with the provided `where` argument, update it with this data.
+     * In case the ProblemInPlaylist was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ProblemPlaylistUpdateInput, ProblemPlaylistUncheckedUpdateInput>
+    update: XOR<ProblemInPlaylistUpdateInput, ProblemInPlaylistUncheckedUpdateInput>
   }
 
   /**
-   * ProblemPlaylist delete
+   * ProblemInPlaylist delete
    */
-  export type ProblemPlaylistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
     /**
-     * Filter which ProblemPlaylist to delete.
+     * Filter which ProblemInPlaylist to delete.
      */
-    where: ProblemPlaylistWhereUniqueInput
+    where: ProblemInPlaylistWhereUniqueInput
   }
 
   /**
-   * ProblemPlaylist deleteMany
+   * ProblemInPlaylist deleteMany
    */
-  export type ProblemPlaylistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ProblemPlaylists to delete
+     * Filter which ProblemInPlaylists to delete
      */
-    where?: ProblemPlaylistWhereInput
+    where?: ProblemInPlaylistWhereInput
     /**
-     * Limit how many ProblemPlaylists to delete.
+     * Limit how many ProblemInPlaylists to delete.
      */
     limit?: number
   }
 
   /**
-   * ProblemPlaylist without action
+   * ProblemInPlaylist without action
    */
-  export type ProblemPlaylistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProblemInPlaylistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProblemPlaylist
+     * Select specific fields to fetch from the ProblemInPlaylist
      */
-    select?: ProblemPlaylistSelect<ExtArgs> | null
+    select?: ProblemInPlaylistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProblemPlaylist
+     * Omit specific fields from the ProblemInPlaylist
      */
-    omit?: ProblemPlaylistOmit<ExtArgs> | null
+    omit?: ProblemInPlaylistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProblemPlaylistInclude<ExtArgs> | null
+    include?: ProblemInPlaylistInclude<ExtArgs> | null
   }
 
 
@@ -9716,11 +9738,11 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
-    image: 'image',
-    role: 'role',
     password: 'password',
+    imageUrl: 'imageUrl',
+    role: 'role',
     createdAt: 'createdAt',
-    updateAt: 'updateAt'
+    updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9728,18 +9750,19 @@ export namespace Prisma {
 
   export const ProblemScalarFieldEnum: {
     id: 'id',
+    userId: 'userId',
     title: 'title',
     description: 'description',
     difficulty: 'difficulty',
     tags: 'tags',
-    userId: 'userId',
     examples: 'examples',
     constraints: 'constraints',
+    companies: 'companies',
     hints: 'hints',
     editorial: 'editorial',
     testcases: 'testcases',
     codeSnippets: 'codeSnippets',
-    referenceSolution: 'referenceSolution',
+    referenceSolutions: 'referenceSolutions',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -9758,32 +9781,33 @@ export namespace Prisma {
     stderr: 'stderr',
     compileOutput: 'compileOutput',
     status: 'status',
-    memory: 'memory',
     time: 'time',
+    memory: 'memory',
     createdAt: 'createdAt',
-    updateAt: 'updateAt'
+    updatedAt: 'updatedAt'
   };
 
   export type SubmissionScalarFieldEnum = (typeof SubmissionScalarFieldEnum)[keyof typeof SubmissionScalarFieldEnum]
 
 
-  export const TestCaseResultScalarFieldEnum: {
+  export const TestcaseResultsScalarFieldEnum: {
     id: 'id',
     submissionId: 'submissionId',
-    testCase: 'testCase',
-    passed: 'passed',
+    testCaseNumber: 'testCaseNumber',
+    isPassed: 'isPassed',
+    stdin: 'stdin',
     stdout: 'stdout',
-    expected: 'expected',
+    expectedOutput: 'expectedOutput',
     stderr: 'stderr',
     compileOutput: 'compileOutput',
     status: 'status',
-    memory: 'memory',
     time: 'time',
+    memory: 'memory',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type TestCaseResultScalarFieldEnum = (typeof TestCaseResultScalarFieldEnum)[keyof typeof TestCaseResultScalarFieldEnum]
+  export type TestcaseResultsScalarFieldEnum = (typeof TestcaseResultsScalarFieldEnum)[keyof typeof TestcaseResultsScalarFieldEnum]
 
 
   export const ProblemSolvedScalarFieldEnum: {
@@ -9801,23 +9825,23 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
-    userId: 'userId',
-    createAt: 'createAt',
-    updateAt: 'updateAt'
+    createdBy: 'createdBy',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type PlaylistScalarFieldEnum = (typeof PlaylistScalarFieldEnum)[keyof typeof PlaylistScalarFieldEnum]
 
 
-  export const ProblemPlaylistScalarFieldEnum: {
+  export const ProblemInPlaylistScalarFieldEnum: {
     id: 'id',
     playlistId: 'playlistId',
     problemId: 'problemId',
     createdAt: 'createdAt',
-    updateAt: 'updateAt'
+    updatedAt: 'updatedAt'
   };
 
-  export type ProblemPlaylistScalarFieldEnum = (typeof ProblemPlaylistScalarFieldEnum)[keyof typeof ProblemPlaylistScalarFieldEnum]
+  export type ProblemInPlaylistScalarFieldEnum = (typeof ProblemInPlaylistScalarFieldEnum)[keyof typeof ProblemInPlaylistScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9908,16 +9932,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Difficulty'
+   * Reference to a field of type 'ProblemDifficulty'
    */
-  export type EnumDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Difficulty'>
+  export type EnumProblemDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProblemDifficulty'>
     
 
 
   /**
-   * Reference to a field of type 'Difficulty[]'
+   * Reference to a field of type 'ProblemDifficulty[]'
    */
-  export type ListEnumDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Difficulty[]'>
+  export type ListEnumProblemDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProblemDifficulty[]'>
     
 
 
@@ -9978,32 +10002,32 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
+    name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    image?: StringNullableFilter<"User"> | string | null
-    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     password?: StringFilter<"User"> | string
+    imageUrl?: StringNullableFilter<"User"> | string | null
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeFilter<"User"> | Date | string
-    updateAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
     problems?: ProblemListRelationFilter
-    submission?: SubmissionListRelationFilter
-    solvedProblem?: ProblemSolvedListRelationFilter
-    Playlists?: PlaylistListRelationFilter
+    submissions?: SubmissionListRelationFilter
+    problemsSolved?: ProblemSolvedListRelationFilter
+    playlists?: PlaylistListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrderInput | SortOrder
+    name?: SortOrder
     email?: SortOrder
-    image?: SortOrderInput | SortOrder
-    role?: SortOrder
     password?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
     problems?: ProblemOrderByRelationAggregateInput
-    submission?: SubmissionOrderByRelationAggregateInput
-    solvedProblem?: ProblemSolvedOrderByRelationAggregateInput
-    Playlists?: PlaylistOrderByRelationAggregateInput
+    submissions?: SubmissionOrderByRelationAggregateInput
+    problemsSolved?: ProblemSolvedOrderByRelationAggregateInput
+    playlists?: PlaylistOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10012,27 +10036,27 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringNullableFilter<"User"> | string | null
-    image?: StringNullableFilter<"User"> | string | null
-    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
+    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    imageUrl?: StringNullableFilter<"User"> | string | null
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeFilter<"User"> | Date | string
-    updateAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
     problems?: ProblemListRelationFilter
-    submission?: SubmissionListRelationFilter
-    solvedProblem?: ProblemSolvedListRelationFilter
-    Playlists?: PlaylistListRelationFilter
+    submissions?: SubmissionListRelationFilter
+    problemsSolved?: ProblemSolvedListRelationFilter
+    playlists?: PlaylistListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrderInput | SortOrder
+    name?: SortOrder
     email?: SortOrder
-    image?: SortOrderInput | SortOrder
-    role?: SortOrder
     password?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -10043,13 +10067,13 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    image?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     password?: StringWithAggregatesFilter<"User"> | string
+    imageUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updateAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type ProblemWhereInput = {
@@ -10057,46 +10081,48 @@ export namespace Prisma {
     OR?: ProblemWhereInput[]
     NOT?: ProblemWhereInput | ProblemWhereInput[]
     id?: StringFilter<"Problem"> | string
+    userId?: StringFilter<"Problem"> | string
     title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
-    difficulty?: EnumDifficultyFilter<"Problem"> | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFilter<"Problem"> | $Enums.ProblemDifficulty
     tags?: StringNullableListFilter<"Problem">
-    userId?: StringFilter<"Problem"> | string
     examples?: JsonFilter<"Problem">
     constraints?: StringFilter<"Problem"> | string
+    companies?: StringNullableListFilter<"Problem">
     hints?: StringNullableFilter<"Problem"> | string | null
     editorial?: StringNullableFilter<"Problem"> | string | null
     testcases?: JsonFilter<"Problem">
     codeSnippets?: JsonFilter<"Problem">
-    referenceSolution?: JsonFilter<"Problem">
+    referenceSolutions?: JsonFilter<"Problem">
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     updatedAt?: DateTimeFilter<"Problem"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    submission?: SubmissionListRelationFilter
-    problemSolvedBy?: ProblemSolvedListRelationFilter
-    problemPlaylists?: ProblemPlaylistListRelationFilter
+    submissions?: SubmissionListRelationFilter
+    solvedBy?: ProblemSolvedListRelationFilter
+    problemsPlaylist?: ProblemInPlaylistListRelationFilter
   }
 
   export type ProblemOrderByWithRelationInput = {
     id?: SortOrder
+    userId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     difficulty?: SortOrder
     tags?: SortOrder
-    userId?: SortOrder
     examples?: SortOrder
     constraints?: SortOrder
+    companies?: SortOrder
     hints?: SortOrderInput | SortOrder
     editorial?: SortOrderInput | SortOrder
     testcases?: SortOrder
     codeSnippets?: SortOrder
-    referenceSolution?: SortOrder
+    referenceSolutions?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    submission?: SubmissionOrderByRelationAggregateInput
-    problemSolvedBy?: ProblemSolvedOrderByRelationAggregateInput
-    problemPlaylists?: ProblemPlaylistOrderByRelationAggregateInput
+    submissions?: SubmissionOrderByRelationAggregateInput
+    solvedBy?: ProblemSolvedOrderByRelationAggregateInput
+    problemsPlaylist?: ProblemInPlaylistOrderByRelationAggregateInput
   }
 
   export type ProblemWhereUniqueInput = Prisma.AtLeast<{
@@ -10104,40 +10130,42 @@ export namespace Prisma {
     AND?: ProblemWhereInput | ProblemWhereInput[]
     OR?: ProblemWhereInput[]
     NOT?: ProblemWhereInput | ProblemWhereInput[]
+    userId?: StringFilter<"Problem"> | string
     title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
-    difficulty?: EnumDifficultyFilter<"Problem"> | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFilter<"Problem"> | $Enums.ProblemDifficulty
     tags?: StringNullableListFilter<"Problem">
-    userId?: StringFilter<"Problem"> | string
     examples?: JsonFilter<"Problem">
     constraints?: StringFilter<"Problem"> | string
+    companies?: StringNullableListFilter<"Problem">
     hints?: StringNullableFilter<"Problem"> | string | null
     editorial?: StringNullableFilter<"Problem"> | string | null
     testcases?: JsonFilter<"Problem">
     codeSnippets?: JsonFilter<"Problem">
-    referenceSolution?: JsonFilter<"Problem">
+    referenceSolutions?: JsonFilter<"Problem">
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     updatedAt?: DateTimeFilter<"Problem"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    submission?: SubmissionListRelationFilter
-    problemSolvedBy?: ProblemSolvedListRelationFilter
-    problemPlaylists?: ProblemPlaylistListRelationFilter
+    submissions?: SubmissionListRelationFilter
+    solvedBy?: ProblemSolvedListRelationFilter
+    problemsPlaylist?: ProblemInPlaylistListRelationFilter
   }, "id">
 
   export type ProblemOrderByWithAggregationInput = {
     id?: SortOrder
+    userId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     difficulty?: SortOrder
     tags?: SortOrder
-    userId?: SortOrder
     examples?: SortOrder
     constraints?: SortOrder
+    companies?: SortOrder
     hints?: SortOrderInput | SortOrder
     editorial?: SortOrderInput | SortOrder
     testcases?: SortOrder
     codeSnippets?: SortOrder
-    referenceSolution?: SortOrder
+    referenceSolutions?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ProblemCountOrderByAggregateInput
@@ -10150,18 +10178,19 @@ export namespace Prisma {
     OR?: ProblemScalarWhereWithAggregatesInput[]
     NOT?: ProblemScalarWhereWithAggregatesInput | ProblemScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Problem"> | string
+    userId?: StringWithAggregatesFilter<"Problem"> | string
     title?: StringWithAggregatesFilter<"Problem"> | string
     description?: StringWithAggregatesFilter<"Problem"> | string
-    difficulty?: EnumDifficultyWithAggregatesFilter<"Problem"> | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyWithAggregatesFilter<"Problem"> | $Enums.ProblemDifficulty
     tags?: StringNullableListFilter<"Problem">
-    userId?: StringWithAggregatesFilter<"Problem"> | string
     examples?: JsonWithAggregatesFilter<"Problem">
     constraints?: StringWithAggregatesFilter<"Problem"> | string
+    companies?: StringNullableListFilter<"Problem">
     hints?: StringNullableWithAggregatesFilter<"Problem"> | string | null
     editorial?: StringNullableWithAggregatesFilter<"Problem"> | string | null
     testcases?: JsonWithAggregatesFilter<"Problem">
     codeSnippets?: JsonWithAggregatesFilter<"Problem">
-    referenceSolution?: JsonWithAggregatesFilter<"Problem">
+    referenceSolutions?: JsonWithAggregatesFilter<"Problem">
     createdAt?: DateTimeWithAggregatesFilter<"Problem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Problem"> | Date | string
   }
@@ -10179,14 +10208,14 @@ export namespace Prisma {
     stdout?: StringNullableFilter<"Submission"> | string | null
     stderr?: StringNullableFilter<"Submission"> | string | null
     compileOutput?: StringNullableFilter<"Submission"> | string | null
-    status?: StringFilter<"Submission"> | string
-    memory?: StringNullableFilter<"Submission"> | string | null
+    status?: StringNullableFilter<"Submission"> | string | null
     time?: StringNullableFilter<"Submission"> | string | null
+    memory?: StringNullableFilter<"Submission"> | string | null
     createdAt?: DateTimeFilter<"Submission"> | Date | string
-    updateAt?: DateTimeFilter<"Submission"> | Date | string
+    updatedAt?: DateTimeFilter<"Submission"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
-    testCases?: TestCaseResultListRelationFilter
+    testcasesResults?: TestcaseResultsListRelationFilter
   }
 
   export type SubmissionOrderByWithRelationInput = {
@@ -10199,14 +10228,14 @@ export namespace Prisma {
     stdout?: SortOrderInput | SortOrder
     stderr?: SortOrderInput | SortOrder
     compileOutput?: SortOrderInput | SortOrder
-    status?: SortOrder
-    memory?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     time?: SortOrderInput | SortOrder
+    memory?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     problem?: ProblemOrderByWithRelationInput
-    testCases?: TestCaseResultOrderByRelationAggregateInput
+    testcasesResults?: TestcaseResultsOrderByRelationAggregateInput
   }
 
   export type SubmissionWhereUniqueInput = Prisma.AtLeast<{
@@ -10222,14 +10251,14 @@ export namespace Prisma {
     stdout?: StringNullableFilter<"Submission"> | string | null
     stderr?: StringNullableFilter<"Submission"> | string | null
     compileOutput?: StringNullableFilter<"Submission"> | string | null
-    status?: StringFilter<"Submission"> | string
-    memory?: StringNullableFilter<"Submission"> | string | null
+    status?: StringNullableFilter<"Submission"> | string | null
     time?: StringNullableFilter<"Submission"> | string | null
+    memory?: StringNullableFilter<"Submission"> | string | null
     createdAt?: DateTimeFilter<"Submission"> | Date | string
-    updateAt?: DateTimeFilter<"Submission"> | Date | string
+    updatedAt?: DateTimeFilter<"Submission"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
-    testCases?: TestCaseResultListRelationFilter
+    testcasesResults?: TestcaseResultsListRelationFilter
   }, "id">
 
   export type SubmissionOrderByWithAggregationInput = {
@@ -10242,11 +10271,11 @@ export namespace Prisma {
     stdout?: SortOrderInput | SortOrder
     stderr?: SortOrderInput | SortOrder
     compileOutput?: SortOrderInput | SortOrder
-    status?: SortOrder
-    memory?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     time?: SortOrderInput | SortOrder
+    memory?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: SubmissionCountOrderByAggregateInput
     _max?: SubmissionMaxOrderByAggregateInput
     _min?: SubmissionMinOrderByAggregateInput
@@ -10265,108 +10294,113 @@ export namespace Prisma {
     stdout?: StringNullableWithAggregatesFilter<"Submission"> | string | null
     stderr?: StringNullableWithAggregatesFilter<"Submission"> | string | null
     compileOutput?: StringNullableWithAggregatesFilter<"Submission"> | string | null
-    status?: StringWithAggregatesFilter<"Submission"> | string
-    memory?: StringNullableWithAggregatesFilter<"Submission"> | string | null
+    status?: StringNullableWithAggregatesFilter<"Submission"> | string | null
     time?: StringNullableWithAggregatesFilter<"Submission"> | string | null
+    memory?: StringNullableWithAggregatesFilter<"Submission"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Submission"> | Date | string
-    updateAt?: DateTimeWithAggregatesFilter<"Submission"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Submission"> | Date | string
   }
 
-  export type TestCaseResultWhereInput = {
-    AND?: TestCaseResultWhereInput | TestCaseResultWhereInput[]
-    OR?: TestCaseResultWhereInput[]
-    NOT?: TestCaseResultWhereInput | TestCaseResultWhereInput[]
-    id?: StringFilter<"TestCaseResult"> | string
-    submissionId?: StringFilter<"TestCaseResult"> | string
-    testCase?: IntFilter<"TestCaseResult"> | number
-    passed?: BoolFilter<"TestCaseResult"> | boolean
-    stdout?: StringNullableFilter<"TestCaseResult"> | string | null
-    expected?: StringFilter<"TestCaseResult"> | string
-    stderr?: StringNullableFilter<"TestCaseResult"> | string | null
-    compileOutput?: StringNullableFilter<"TestCaseResult"> | string | null
-    status?: StringFilter<"TestCaseResult"> | string
-    memory?: StringNullableFilter<"TestCaseResult"> | string | null
-    time?: StringNullableFilter<"TestCaseResult"> | string | null
-    createdAt?: DateTimeFilter<"TestCaseResult"> | Date | string
-    updatedAt?: DateTimeFilter<"TestCaseResult"> | Date | string
+  export type TestcaseResultsWhereInput = {
+    AND?: TestcaseResultsWhereInput | TestcaseResultsWhereInput[]
+    OR?: TestcaseResultsWhereInput[]
+    NOT?: TestcaseResultsWhereInput | TestcaseResultsWhereInput[]
+    id?: StringFilter<"TestcaseResults"> | string
+    submissionId?: StringFilter<"TestcaseResults"> | string
+    testCaseNumber?: IntFilter<"TestcaseResults"> | number
+    isPassed?: BoolFilter<"TestcaseResults"> | boolean
+    stdin?: StringFilter<"TestcaseResults"> | string
+    stdout?: StringNullableFilter<"TestcaseResults"> | string | null
+    expectedOutput?: StringFilter<"TestcaseResults"> | string
+    stderr?: StringNullableFilter<"TestcaseResults"> | string | null
+    compileOutput?: StringNullableFilter<"TestcaseResults"> | string | null
+    status?: StringNullableFilter<"TestcaseResults"> | string | null
+    time?: StringNullableFilter<"TestcaseResults"> | string | null
+    memory?: StringNullableFilter<"TestcaseResults"> | string | null
+    createdAt?: DateTimeFilter<"TestcaseResults"> | Date | string
+    updatedAt?: DateTimeFilter<"TestcaseResults"> | Date | string
     submission?: XOR<SubmissionScalarRelationFilter, SubmissionWhereInput>
   }
 
-  export type TestCaseResultOrderByWithRelationInput = {
+  export type TestcaseResultsOrderByWithRelationInput = {
     id?: SortOrder
     submissionId?: SortOrder
-    testCase?: SortOrder
-    passed?: SortOrder
+    testCaseNumber?: SortOrder
+    isPassed?: SortOrder
+    stdin?: SortOrder
     stdout?: SortOrderInput | SortOrder
-    expected?: SortOrder
+    expectedOutput?: SortOrder
     stderr?: SortOrderInput | SortOrder
     compileOutput?: SortOrderInput | SortOrder
-    status?: SortOrder
-    memory?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     time?: SortOrderInput | SortOrder
+    memory?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     submission?: SubmissionOrderByWithRelationInput
   }
 
-  export type TestCaseResultWhereUniqueInput = Prisma.AtLeast<{
+  export type TestcaseResultsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: TestCaseResultWhereInput | TestCaseResultWhereInput[]
-    OR?: TestCaseResultWhereInput[]
-    NOT?: TestCaseResultWhereInput | TestCaseResultWhereInput[]
-    submissionId?: StringFilter<"TestCaseResult"> | string
-    testCase?: IntFilter<"TestCaseResult"> | number
-    passed?: BoolFilter<"TestCaseResult"> | boolean
-    stdout?: StringNullableFilter<"TestCaseResult"> | string | null
-    expected?: StringFilter<"TestCaseResult"> | string
-    stderr?: StringNullableFilter<"TestCaseResult"> | string | null
-    compileOutput?: StringNullableFilter<"TestCaseResult"> | string | null
-    status?: StringFilter<"TestCaseResult"> | string
-    memory?: StringNullableFilter<"TestCaseResult"> | string | null
-    time?: StringNullableFilter<"TestCaseResult"> | string | null
-    createdAt?: DateTimeFilter<"TestCaseResult"> | Date | string
-    updatedAt?: DateTimeFilter<"TestCaseResult"> | Date | string
+    AND?: TestcaseResultsWhereInput | TestcaseResultsWhereInput[]
+    OR?: TestcaseResultsWhereInput[]
+    NOT?: TestcaseResultsWhereInput | TestcaseResultsWhereInput[]
+    submissionId?: StringFilter<"TestcaseResults"> | string
+    testCaseNumber?: IntFilter<"TestcaseResults"> | number
+    isPassed?: BoolFilter<"TestcaseResults"> | boolean
+    stdin?: StringFilter<"TestcaseResults"> | string
+    stdout?: StringNullableFilter<"TestcaseResults"> | string | null
+    expectedOutput?: StringFilter<"TestcaseResults"> | string
+    stderr?: StringNullableFilter<"TestcaseResults"> | string | null
+    compileOutput?: StringNullableFilter<"TestcaseResults"> | string | null
+    status?: StringNullableFilter<"TestcaseResults"> | string | null
+    time?: StringNullableFilter<"TestcaseResults"> | string | null
+    memory?: StringNullableFilter<"TestcaseResults"> | string | null
+    createdAt?: DateTimeFilter<"TestcaseResults"> | Date | string
+    updatedAt?: DateTimeFilter<"TestcaseResults"> | Date | string
     submission?: XOR<SubmissionScalarRelationFilter, SubmissionWhereInput>
   }, "id">
 
-  export type TestCaseResultOrderByWithAggregationInput = {
+  export type TestcaseResultsOrderByWithAggregationInput = {
     id?: SortOrder
     submissionId?: SortOrder
-    testCase?: SortOrder
-    passed?: SortOrder
+    testCaseNumber?: SortOrder
+    isPassed?: SortOrder
+    stdin?: SortOrder
     stdout?: SortOrderInput | SortOrder
-    expected?: SortOrder
+    expectedOutput?: SortOrder
     stderr?: SortOrderInput | SortOrder
     compileOutput?: SortOrderInput | SortOrder
-    status?: SortOrder
-    memory?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     time?: SortOrderInput | SortOrder
+    memory?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: TestCaseResultCountOrderByAggregateInput
-    _avg?: TestCaseResultAvgOrderByAggregateInput
-    _max?: TestCaseResultMaxOrderByAggregateInput
-    _min?: TestCaseResultMinOrderByAggregateInput
-    _sum?: TestCaseResultSumOrderByAggregateInput
+    _count?: TestcaseResultsCountOrderByAggregateInput
+    _avg?: TestcaseResultsAvgOrderByAggregateInput
+    _max?: TestcaseResultsMaxOrderByAggregateInput
+    _min?: TestcaseResultsMinOrderByAggregateInput
+    _sum?: TestcaseResultsSumOrderByAggregateInput
   }
 
-  export type TestCaseResultScalarWhereWithAggregatesInput = {
-    AND?: TestCaseResultScalarWhereWithAggregatesInput | TestCaseResultScalarWhereWithAggregatesInput[]
-    OR?: TestCaseResultScalarWhereWithAggregatesInput[]
-    NOT?: TestCaseResultScalarWhereWithAggregatesInput | TestCaseResultScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"TestCaseResult"> | string
-    submissionId?: StringWithAggregatesFilter<"TestCaseResult"> | string
-    testCase?: IntWithAggregatesFilter<"TestCaseResult"> | number
-    passed?: BoolWithAggregatesFilter<"TestCaseResult"> | boolean
-    stdout?: StringNullableWithAggregatesFilter<"TestCaseResult"> | string | null
-    expected?: StringWithAggregatesFilter<"TestCaseResult"> | string
-    stderr?: StringNullableWithAggregatesFilter<"TestCaseResult"> | string | null
-    compileOutput?: StringNullableWithAggregatesFilter<"TestCaseResult"> | string | null
-    status?: StringWithAggregatesFilter<"TestCaseResult"> | string
-    memory?: StringNullableWithAggregatesFilter<"TestCaseResult"> | string | null
-    time?: StringNullableWithAggregatesFilter<"TestCaseResult"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"TestCaseResult"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"TestCaseResult"> | Date | string
+  export type TestcaseResultsScalarWhereWithAggregatesInput = {
+    AND?: TestcaseResultsScalarWhereWithAggregatesInput | TestcaseResultsScalarWhereWithAggregatesInput[]
+    OR?: TestcaseResultsScalarWhereWithAggregatesInput[]
+    NOT?: TestcaseResultsScalarWhereWithAggregatesInput | TestcaseResultsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TestcaseResults"> | string
+    submissionId?: StringWithAggregatesFilter<"TestcaseResults"> | string
+    testCaseNumber?: IntWithAggregatesFilter<"TestcaseResults"> | number
+    isPassed?: BoolWithAggregatesFilter<"TestcaseResults"> | boolean
+    stdin?: StringWithAggregatesFilter<"TestcaseResults"> | string
+    stdout?: StringNullableWithAggregatesFilter<"TestcaseResults"> | string | null
+    expectedOutput?: StringWithAggregatesFilter<"TestcaseResults"> | string
+    stderr?: StringNullableWithAggregatesFilter<"TestcaseResults"> | string | null
+    compileOutput?: StringNullableWithAggregatesFilter<"TestcaseResults"> | string | null
+    status?: StringNullableWithAggregatesFilter<"TestcaseResults"> | string | null
+    time?: StringNullableWithAggregatesFilter<"TestcaseResults"> | string | null
+    memory?: StringNullableWithAggregatesFilter<"TestcaseResults"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TestcaseResults"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TestcaseResults"> | Date | string
   }
 
   export type ProblemSolvedWhereInput = {
@@ -10434,47 +10468,47 @@ export namespace Prisma {
     NOT?: PlaylistWhereInput | PlaylistWhereInput[]
     id?: StringFilter<"Playlist"> | string
     name?: StringFilter<"Playlist"> | string
-    description?: StringFilter<"Playlist"> | string
-    userId?: StringFilter<"Playlist"> | string
-    createAt?: DateTimeFilter<"Playlist"> | Date | string
-    updateAt?: DateTimeFilter<"Playlist"> | Date | string
+    description?: StringNullableFilter<"Playlist"> | string | null
+    createdBy?: StringFilter<"Playlist"> | string
+    createdAt?: DateTimeFilter<"Playlist"> | Date | string
+    updatedAt?: DateTimeFilter<"Playlist"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    problems?: ProblemPlaylistListRelationFilter
+    problems?: ProblemInPlaylistListRelationFilter
   }
 
   export type PlaylistOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    userId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    problems?: ProblemPlaylistOrderByRelationAggregateInput
+    problems?: ProblemInPlaylistOrderByRelationAggregateInput
   }
 
   export type PlaylistWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    name_userId?: PlaylistNameUserIdCompoundUniqueInput
+    name_createdBy?: PlaylistNameCreatedByCompoundUniqueInput
     AND?: PlaylistWhereInput | PlaylistWhereInput[]
     OR?: PlaylistWhereInput[]
     NOT?: PlaylistWhereInput | PlaylistWhereInput[]
     name?: StringFilter<"Playlist"> | string
-    description?: StringFilter<"Playlist"> | string
-    userId?: StringFilter<"Playlist"> | string
-    createAt?: DateTimeFilter<"Playlist"> | Date | string
-    updateAt?: DateTimeFilter<"Playlist"> | Date | string
+    description?: StringNullableFilter<"Playlist"> | string | null
+    createdBy?: StringFilter<"Playlist"> | string
+    createdAt?: DateTimeFilter<"Playlist"> | Date | string
+    updatedAt?: DateTimeFilter<"Playlist"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    problems?: ProblemPlaylistListRelationFilter
-  }, "id" | "name_userId">
+    problems?: ProblemInPlaylistListRelationFilter
+  }, "id" | "name_createdBy">
 
   export type PlaylistOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    userId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: PlaylistCountOrderByAggregateInput
     _max?: PlaylistMaxOrderByAggregateInput
     _min?: PlaylistMinOrderByAggregateInput
@@ -10486,262 +10520,267 @@ export namespace Prisma {
     NOT?: PlaylistScalarWhereWithAggregatesInput | PlaylistScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Playlist"> | string
     name?: StringWithAggregatesFilter<"Playlist"> | string
-    description?: StringWithAggregatesFilter<"Playlist"> | string
-    userId?: StringWithAggregatesFilter<"Playlist"> | string
-    createAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
-    updateAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
+    description?: StringNullableWithAggregatesFilter<"Playlist"> | string | null
+    createdBy?: StringWithAggregatesFilter<"Playlist"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
   }
 
-  export type ProblemPlaylistWhereInput = {
-    AND?: ProblemPlaylistWhereInput | ProblemPlaylistWhereInput[]
-    OR?: ProblemPlaylistWhereInput[]
-    NOT?: ProblemPlaylistWhereInput | ProblemPlaylistWhereInput[]
-    id?: StringFilter<"ProblemPlaylist"> | string
-    playlistId?: StringFilter<"ProblemPlaylist"> | string
-    problemId?: StringFilter<"ProblemPlaylist"> | string
-    createdAt?: DateTimeFilter<"ProblemPlaylist"> | Date | string
-    updateAt?: DateTimeFilter<"ProblemPlaylist"> | Date | string
+  export type ProblemInPlaylistWhereInput = {
+    AND?: ProblemInPlaylistWhereInput | ProblemInPlaylistWhereInput[]
+    OR?: ProblemInPlaylistWhereInput[]
+    NOT?: ProblemInPlaylistWhereInput | ProblemInPlaylistWhereInput[]
+    id?: StringFilter<"ProblemInPlaylist"> | string
+    playlistId?: StringFilter<"ProblemInPlaylist"> | string
+    problemId?: StringFilter<"ProblemInPlaylist"> | string
+    createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
+    updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
     problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
   }
 
-  export type ProblemPlaylistOrderByWithRelationInput = {
+  export type ProblemInPlaylistOrderByWithRelationInput = {
     id?: SortOrder
     playlistId?: SortOrder
     problemId?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
     playlist?: PlaylistOrderByWithRelationInput
     problem?: ProblemOrderByWithRelationInput
   }
 
-  export type ProblemPlaylistWhereUniqueInput = Prisma.AtLeast<{
+  export type ProblemInPlaylistWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    problemId_playlistId?: ProblemPlaylistProblemIdPlaylistIdCompoundUniqueInput
-    AND?: ProblemPlaylistWhereInput | ProblemPlaylistWhereInput[]
-    OR?: ProblemPlaylistWhereInput[]
-    NOT?: ProblemPlaylistWhereInput | ProblemPlaylistWhereInput[]
-    playlistId?: StringFilter<"ProblemPlaylist"> | string
-    problemId?: StringFilter<"ProblemPlaylist"> | string
-    createdAt?: DateTimeFilter<"ProblemPlaylist"> | Date | string
-    updateAt?: DateTimeFilter<"ProblemPlaylist"> | Date | string
+    playlistId_problemId?: ProblemInPlaylistPlaylistIdProblemIdCompoundUniqueInput
+    AND?: ProblemInPlaylistWhereInput | ProblemInPlaylistWhereInput[]
+    OR?: ProblemInPlaylistWhereInput[]
+    NOT?: ProblemInPlaylistWhereInput | ProblemInPlaylistWhereInput[]
+    playlistId?: StringFilter<"ProblemInPlaylist"> | string
+    problemId?: StringFilter<"ProblemInPlaylist"> | string
+    createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
+    updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
     problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
-  }, "id" | "problemId_playlistId">
+  }, "id" | "playlistId_problemId">
 
-  export type ProblemPlaylistOrderByWithAggregationInput = {
+  export type ProblemInPlaylistOrderByWithAggregationInput = {
     id?: SortOrder
     playlistId?: SortOrder
     problemId?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
-    _count?: ProblemPlaylistCountOrderByAggregateInput
-    _max?: ProblemPlaylistMaxOrderByAggregateInput
-    _min?: ProblemPlaylistMinOrderByAggregateInput
+    updatedAt?: SortOrder
+    _count?: ProblemInPlaylistCountOrderByAggregateInput
+    _max?: ProblemInPlaylistMaxOrderByAggregateInput
+    _min?: ProblemInPlaylistMinOrderByAggregateInput
   }
 
-  export type ProblemPlaylistScalarWhereWithAggregatesInput = {
-    AND?: ProblemPlaylistScalarWhereWithAggregatesInput | ProblemPlaylistScalarWhereWithAggregatesInput[]
-    OR?: ProblemPlaylistScalarWhereWithAggregatesInput[]
-    NOT?: ProblemPlaylistScalarWhereWithAggregatesInput | ProblemPlaylistScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ProblemPlaylist"> | string
-    playlistId?: StringWithAggregatesFilter<"ProblemPlaylist"> | string
-    problemId?: StringWithAggregatesFilter<"ProblemPlaylist"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"ProblemPlaylist"> | Date | string
-    updateAt?: DateTimeWithAggregatesFilter<"ProblemPlaylist"> | Date | string
+  export type ProblemInPlaylistScalarWhereWithAggregatesInput = {
+    AND?: ProblemInPlaylistScalarWhereWithAggregatesInput | ProblemInPlaylistScalarWhereWithAggregatesInput[]
+    OR?: ProblemInPlaylistScalarWhereWithAggregatesInput[]
+    NOT?: ProblemInPlaylistScalarWhereWithAggregatesInput | ProblemInPlaylistScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProblemInPlaylist"> | string
+    playlistId?: StringWithAggregatesFilter<"ProblemInPlaylist"> | string
+    problemId?: StringWithAggregatesFilter<"ProblemInPlaylist"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
   }
 
   export type UserCreateInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
-    submission?: SubmissionCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
-    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
-    submission?: SubmissionUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
-    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemCreateInput = {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
-    submission?: SubmissionCreateNestedManyWithoutProblemInput
-    problemSolvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateInput = {
     id?: string
+    userId: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
-    userId: string
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
-    problemSolvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
-    submission?: SubmissionUpdateManyWithoutProblemNestedInput
-    problemSolvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
-    userId?: StringFieldUpdateOperationsInput | string
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
-    problemSolvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyInput = {
     id?: string
+    userId: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
-    userId: string
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10750,33 +10789,35 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
-    userId?: StringFieldUpdateOperationsInput | string
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10789,14 +10830,14 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    user: UserCreateNestedOneWithoutSubmissionInput
-    problem: ProblemCreateNestedOneWithoutSubmissionInput
-    testCases?: TestCaseResultCreateNestedManyWithoutSubmissionInput
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSubmissionsInput
+    problem: ProblemCreateNestedOneWithoutSubmissionsInput
+    testcasesResults?: TestcaseResultsCreateNestedManyWithoutSubmissionInput
   }
 
   export type SubmissionUncheckedCreateInput = {
@@ -10809,12 +10850,12 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    testCases?: TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput
+    updatedAt?: Date | string
+    testcasesResults?: TestcaseResultsUncheckedCreateNestedManyWithoutSubmissionInput
   }
 
   export type SubmissionUpdateInput = {
@@ -10825,14 +10866,14 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSubmissionNestedInput
-    problem?: ProblemUpdateOneRequiredWithoutSubmissionNestedInput
-    testCases?: TestCaseResultUpdateManyWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSubmissionsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutSubmissionsNestedInput
+    testcasesResults?: TestcaseResultsUpdateManyWithoutSubmissionNestedInput
   }
 
   export type SubmissionUncheckedUpdateInput = {
@@ -10845,12 +10886,12 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    testCases?: TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    testcasesResults?: TestcaseResultsUncheckedUpdateManyWithoutSubmissionNestedInput
   }
 
   export type SubmissionCreateManyInput = {
@@ -10863,11 +10904,11 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type SubmissionUpdateManyMutationInput = {
@@ -10878,11 +10919,11 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubmissionUncheckedUpdateManyInput = {
@@ -10895,120 +10936,127 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TestCaseResultCreateInput = {
-    id?: string
-    testCase: number
-    passed: boolean
-    stdout?: string | null
-    expected: string
-    stderr?: string | null
-    compileOutput?: string | null
-    status: string
-    memory?: string | null
-    time?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    submission: SubmissionCreateNestedOneWithoutTestCasesInput
-  }
-
-  export type TestCaseResultUncheckedCreateInput = {
-    id?: string
-    submissionId: string
-    testCase: number
-    passed: boolean
-    stdout?: string | null
-    expected: string
-    stderr?: string | null
-    compileOutput?: string | null
-    status: string
-    memory?: string | null
-    time?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TestCaseResultUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
-    stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
-    stderr?: NullableStringFieldUpdateOperationsInput | string | null
-    compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
     memory?: NullableStringFieldUpdateOperationsInput | string | null
-    time?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUpdateOneRequiredWithoutTestCasesNestedInput
-  }
-
-  export type TestCaseResultUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    submissionId?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
-    stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
-    stderr?: NullableStringFieldUpdateOperationsInput | string | null
-    compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
-    time?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TestCaseResultCreateManyInput = {
+  export type TestcaseResultsCreateInput = {
+    id?: string
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
+    stdout?: string | null
+    expectedOutput: string
+    stderr?: string | null
+    compileOutput?: string | null
+    status?: string | null
+    time?: string | null
+    memory?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submission: SubmissionCreateNestedOneWithoutTestcasesResultsInput
+  }
+
+  export type TestcaseResultsUncheckedCreateInput = {
     id?: string
     submissionId: string
-    testCase: number
-    passed: boolean
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
     stdout?: string | null
-    expected: string
+    expectedOutput: string
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type TestCaseResultUpdateManyMutationInput = {
+  export type TestcaseResultsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
+    expectedOutput?: StringFieldUpdateOperationsInput | string
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submission?: SubmissionUpdateOneRequiredWithoutTestcasesResultsNestedInput
+  }
+
+  export type TestcaseResultsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    submissionId?: StringFieldUpdateOperationsInput | string
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
+    stdout?: NullableStringFieldUpdateOperationsInput | string | null
+    expectedOutput?: StringFieldUpdateOperationsInput | string
+    stderr?: NullableStringFieldUpdateOperationsInput | string | null
+    compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TestCaseResultUncheckedUpdateManyInput = {
+  export type TestcaseResultsCreateManyInput = {
+    id?: string
+    submissionId: string
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
+    stdout?: string | null
+    expectedOutput: string
+    stderr?: string | null
+    compileOutput?: string | null
+    status?: string | null
+    time?: string | null
+    memory?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TestcaseResultsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    submissionId?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
+    expectedOutput?: StringFieldUpdateOperationsInput | string
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TestcaseResultsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    submissionId?: StringFieldUpdateOperationsInput | string
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
+    stdout?: NullableStringFieldUpdateOperationsInput | string | null
+    expectedOutput?: StringFieldUpdateOperationsInput | string
+    stderr?: NullableStringFieldUpdateOperationsInput | string | null
+    compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11017,8 +11065,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSolvedProblemInput
-    problem: ProblemCreateNestedOneWithoutProblemSolvedByInput
+    user: UserCreateNestedOneWithoutProblemsSolvedInput
+    problem: ProblemCreateNestedOneWithoutSolvedByInput
   }
 
   export type ProblemSolvedUncheckedCreateInput = {
@@ -11033,8 +11081,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSolvedProblemNestedInput
-    problem?: ProblemUpdateOneRequiredWithoutProblemSolvedByNestedInput
+    user?: UserUpdateOneRequiredWithoutProblemsSolvedNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutSolvedByNestedInput
   }
 
   export type ProblemSolvedUncheckedUpdateInput = {
@@ -11070,121 +11118,121 @@ export namespace Prisma {
   export type PlaylistCreateInput = {
     id?: string
     name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutPlaylistsInput
-    problems?: ProblemPlaylistCreateNestedManyWithoutPlaylistInput
+    problems?: ProblemInPlaylistCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUncheckedCreateInput = {
     id?: string
     name: string
-    description: string
-    userId: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    problems?: ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
+    description?: string | null
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPlaylistsNestedInput
-    problems?: ProblemPlaylistUpdateManyWithoutPlaylistNestedInput
+    problems?: ProblemInPlaylistUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problems?: ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistCreateManyInput = {
     id?: string
     name: string
-    description: string
-    userId: string
-    createAt?: Date | string
-    updateAt?: Date | string
+    description?: string | null
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PlaylistUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlaylistUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemPlaylistCreateInput = {
+  export type ProblemInPlaylistCreateInput = {
     id?: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     playlist: PlaylistCreateNestedOneWithoutProblemsInput
-    problem: ProblemCreateNestedOneWithoutProblemPlaylistsInput
+    problem: ProblemCreateNestedOneWithoutProblemsPlaylistInput
   }
 
-  export type ProblemPlaylistUncheckedCreateInput = {
+  export type ProblemInPlaylistUncheckedCreateInput = {
     id?: string
     playlistId: string
     problemId: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ProblemPlaylistUpdateInput = {
+  export type ProblemInPlaylistUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     playlist?: PlaylistUpdateOneRequiredWithoutProblemsNestedInput
-    problem?: ProblemUpdateOneRequiredWithoutProblemPlaylistsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutProblemsPlaylistNestedInput
   }
 
-  export type ProblemPlaylistUncheckedUpdateInput = {
+  export type ProblemInPlaylistUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemPlaylistCreateManyInput = {
+  export type ProblemInPlaylistCreateManyInput = {
     id?: string
     playlistId: string
     problemId: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ProblemPlaylistUpdateManyMutationInput = {
+  export type ProblemInPlaylistUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemPlaylistUncheckedUpdateManyInput = {
+  export type ProblemInPlaylistUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -11284,33 +11332,33 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    image?: SortOrder
-    role?: SortOrder
     password?: SortOrder
+    imageUrl?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    image?: SortOrder
-    role?: SortOrder
     password?: SortOrder
+    imageUrl?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    image?: SortOrder
-    role?: SortOrder
     password?: SortOrder
+    imageUrl?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -11373,11 +11421,11 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type EnumDifficultyFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyFilter<$PrismaModel> | $Enums.Difficulty
+  export type EnumProblemDifficultyFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProblemDifficulty | EnumProblemDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumProblemDifficultyFilter<$PrismaModel> | $Enums.ProblemDifficulty
   }
 
   export type StringNullableListFilter<$PrismaModel = never> = {
@@ -11416,40 +11464,41 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type ProblemPlaylistListRelationFilter = {
-    every?: ProblemPlaylistWhereInput
-    some?: ProblemPlaylistWhereInput
-    none?: ProblemPlaylistWhereInput
+  export type ProblemInPlaylistListRelationFilter = {
+    every?: ProblemInPlaylistWhereInput
+    some?: ProblemInPlaylistWhereInput
+    none?: ProblemInPlaylistWhereInput
   }
 
-  export type ProblemPlaylistOrderByRelationAggregateInput = {
+  export type ProblemInPlaylistOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type ProblemCountOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     difficulty?: SortOrder
     tags?: SortOrder
-    userId?: SortOrder
     examples?: SortOrder
     constraints?: SortOrder
+    companies?: SortOrder
     hints?: SortOrder
     editorial?: SortOrder
     testcases?: SortOrder
     codeSnippets?: SortOrder
-    referenceSolution?: SortOrder
+    referenceSolutions?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ProblemMaxOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     difficulty?: SortOrder
-    userId?: SortOrder
     constraints?: SortOrder
     hints?: SortOrder
     editorial?: SortOrder
@@ -11459,10 +11508,10 @@ export namespace Prisma {
 
   export type ProblemMinOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     title?: SortOrder
     description?: SortOrder
     difficulty?: SortOrder
-    userId?: SortOrder
     constraints?: SortOrder
     hints?: SortOrder
     editorial?: SortOrder
@@ -11470,14 +11519,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumDifficultyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.Difficulty
+  export type EnumProblemDifficultyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProblemDifficulty | EnumProblemDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumProblemDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.ProblemDifficulty
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDifficultyFilter<$PrismaModel>
-    _max?: NestedEnumDifficultyFilter<$PrismaModel>
+    _min?: NestedEnumProblemDifficultyFilter<$PrismaModel>
+    _max?: NestedEnumProblemDifficultyFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -11511,13 +11560,13 @@ export namespace Prisma {
     isNot?: ProblemWhereInput
   }
 
-  export type TestCaseResultListRelationFilter = {
-    every?: TestCaseResultWhereInput
-    some?: TestCaseResultWhereInput
-    none?: TestCaseResultWhereInput
+  export type TestcaseResultsListRelationFilter = {
+    every?: TestcaseResultsWhereInput
+    some?: TestcaseResultsWhereInput
+    none?: TestcaseResultsWhereInput
   }
 
-  export type TestCaseResultOrderByRelationAggregateInput = {
+  export type TestcaseResultsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -11532,10 +11581,10 @@ export namespace Prisma {
     stderr?: SortOrder
     compileOutput?: SortOrder
     status?: SortOrder
-    memory?: SortOrder
     time?: SortOrder
+    memory?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type SubmissionMaxOrderByAggregateInput = {
@@ -11548,10 +11597,10 @@ export namespace Prisma {
     stderr?: SortOrder
     compileOutput?: SortOrder
     status?: SortOrder
-    memory?: SortOrder
     time?: SortOrder
+    memory?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type SubmissionMinOrderByAggregateInput = {
@@ -11564,10 +11613,10 @@ export namespace Prisma {
     stderr?: SortOrder
     compileOutput?: SortOrder
     status?: SortOrder
-    memory?: SortOrder
     time?: SortOrder
+    memory?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11591,60 +11640,63 @@ export namespace Prisma {
     isNot?: SubmissionWhereInput
   }
 
-  export type TestCaseResultCountOrderByAggregateInput = {
+  export type TestcaseResultsCountOrderByAggregateInput = {
     id?: SortOrder
     submissionId?: SortOrder
-    testCase?: SortOrder
-    passed?: SortOrder
+    testCaseNumber?: SortOrder
+    isPassed?: SortOrder
+    stdin?: SortOrder
     stdout?: SortOrder
-    expected?: SortOrder
+    expectedOutput?: SortOrder
     stderr?: SortOrder
     compileOutput?: SortOrder
     status?: SortOrder
-    memory?: SortOrder
     time?: SortOrder
+    memory?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type TestCaseResultAvgOrderByAggregateInput = {
-    testCase?: SortOrder
+  export type TestcaseResultsAvgOrderByAggregateInput = {
+    testCaseNumber?: SortOrder
   }
 
-  export type TestCaseResultMaxOrderByAggregateInput = {
+  export type TestcaseResultsMaxOrderByAggregateInput = {
     id?: SortOrder
     submissionId?: SortOrder
-    testCase?: SortOrder
-    passed?: SortOrder
+    testCaseNumber?: SortOrder
+    isPassed?: SortOrder
+    stdin?: SortOrder
     stdout?: SortOrder
-    expected?: SortOrder
+    expectedOutput?: SortOrder
     stderr?: SortOrder
     compileOutput?: SortOrder
     status?: SortOrder
-    memory?: SortOrder
     time?: SortOrder
+    memory?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type TestCaseResultMinOrderByAggregateInput = {
+  export type TestcaseResultsMinOrderByAggregateInput = {
     id?: SortOrder
     submissionId?: SortOrder
-    testCase?: SortOrder
-    passed?: SortOrder
+    testCaseNumber?: SortOrder
+    isPassed?: SortOrder
+    stdin?: SortOrder
     stdout?: SortOrder
-    expected?: SortOrder
+    expectedOutput?: SortOrder
     stderr?: SortOrder
     compileOutput?: SortOrder
     status?: SortOrder
-    memory?: SortOrder
     time?: SortOrder
+    memory?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type TestCaseResultSumOrderByAggregateInput = {
-    testCase?: SortOrder
+  export type TestcaseResultsSumOrderByAggregateInput = {
+    testCaseNumber?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -11700,36 +11752,36 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PlaylistNameUserIdCompoundUniqueInput = {
+  export type PlaylistNameCreatedByCompoundUniqueInput = {
     name: string
-    userId: string
+    createdBy: string
   }
 
   export type PlaylistCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    userId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PlaylistMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    userId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PlaylistMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    userId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PlaylistScalarRelationFilter = {
@@ -11737,33 +11789,33 @@ export namespace Prisma {
     isNot?: PlaylistWhereInput
   }
 
-  export type ProblemPlaylistProblemIdPlaylistIdCompoundUniqueInput = {
-    problemId: string
+  export type ProblemInPlaylistPlaylistIdProblemIdCompoundUniqueInput = {
     playlistId: string
+    problemId: string
   }
 
-  export type ProblemPlaylistCountOrderByAggregateInput = {
+  export type ProblemInPlaylistCountOrderByAggregateInput = {
     id?: SortOrder
     playlistId?: SortOrder
     problemId?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type ProblemPlaylistMaxOrderByAggregateInput = {
+  export type ProblemInPlaylistMaxOrderByAggregateInput = {
     id?: SortOrder
     playlistId?: SortOrder
     problemId?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type ProblemPlaylistMinOrderByAggregateInput = {
+  export type ProblemInPlaylistMinOrderByAggregateInput = {
     id?: SortOrder
     playlistId?: SortOrder
     problemId?: SortOrder
     createdAt?: SortOrder
-    updateAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProblemCreateNestedManyWithoutUserInput = {
@@ -11954,6 +12006,10 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type ProblemCreatecompaniesInput = {
+    set: string[]
+  }
+
   export type UserCreateNestedOneWithoutProblemsInput = {
     create?: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
     connectOrCreate?: UserCreateOrConnectWithoutProblemsInput
@@ -11974,11 +12030,11 @@ export namespace Prisma {
     connect?: ProblemSolvedWhereUniqueInput | ProblemSolvedWhereUniqueInput[]
   }
 
-  export type ProblemPlaylistCreateNestedManyWithoutProblemInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutProblemInput, ProblemPlaylistUncheckedCreateWithoutProblemInput> | ProblemPlaylistCreateWithoutProblemInput[] | ProblemPlaylistUncheckedCreateWithoutProblemInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutProblemInput | ProblemPlaylistCreateOrConnectWithoutProblemInput[]
-    createMany?: ProblemPlaylistCreateManyProblemInputEnvelope
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
+  export type ProblemInPlaylistCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutProblemInput, ProblemInPlaylistUncheckedCreateWithoutProblemInput> | ProblemInPlaylistCreateWithoutProblemInput[] | ProblemInPlaylistUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutProblemInput | ProblemInPlaylistCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemInPlaylistCreateManyProblemInputEnvelope
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
   export type SubmissionUncheckedCreateNestedManyWithoutProblemInput = {
@@ -11995,18 +12051,23 @@ export namespace Prisma {
     connect?: ProblemSolvedWhereUniqueInput | ProblemSolvedWhereUniqueInput[]
   }
 
-  export type ProblemPlaylistUncheckedCreateNestedManyWithoutProblemInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutProblemInput, ProblemPlaylistUncheckedCreateWithoutProblemInput> | ProblemPlaylistCreateWithoutProblemInput[] | ProblemPlaylistUncheckedCreateWithoutProblemInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutProblemInput | ProblemPlaylistCreateOrConnectWithoutProblemInput[]
-    createMany?: ProblemPlaylistCreateManyProblemInputEnvelope
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
+  export type ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutProblemInput, ProblemInPlaylistUncheckedCreateWithoutProblemInput> | ProblemInPlaylistCreateWithoutProblemInput[] | ProblemInPlaylistUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutProblemInput | ProblemInPlaylistCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemInPlaylistCreateManyProblemInputEnvelope
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
-  export type EnumDifficultyFieldUpdateOperationsInput = {
-    set?: $Enums.Difficulty
+  export type EnumProblemDifficultyFieldUpdateOperationsInput = {
+    set?: $Enums.ProblemDifficulty
   }
 
   export type ProblemUpdatetagsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ProblemUpdatecompaniesInput = {
     set?: string[]
     push?: string | string[]
   }
@@ -12047,18 +12108,18 @@ export namespace Prisma {
     deleteMany?: ProblemSolvedScalarWhereInput | ProblemSolvedScalarWhereInput[]
   }
 
-  export type ProblemPlaylistUpdateManyWithoutProblemNestedInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutProblemInput, ProblemPlaylistUncheckedCreateWithoutProblemInput> | ProblemPlaylistCreateWithoutProblemInput[] | ProblemPlaylistUncheckedCreateWithoutProblemInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutProblemInput | ProblemPlaylistCreateOrConnectWithoutProblemInput[]
-    upsert?: ProblemPlaylistUpsertWithWhereUniqueWithoutProblemInput | ProblemPlaylistUpsertWithWhereUniqueWithoutProblemInput[]
-    createMany?: ProblemPlaylistCreateManyProblemInputEnvelope
-    set?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    disconnect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    delete?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    update?: ProblemPlaylistUpdateWithWhereUniqueWithoutProblemInput | ProblemPlaylistUpdateWithWhereUniqueWithoutProblemInput[]
-    updateMany?: ProblemPlaylistUpdateManyWithWhereWithoutProblemInput | ProblemPlaylistUpdateManyWithWhereWithoutProblemInput[]
-    deleteMany?: ProblemPlaylistScalarWhereInput | ProblemPlaylistScalarWhereInput[]
+  export type ProblemInPlaylistUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutProblemInput, ProblemInPlaylistUncheckedCreateWithoutProblemInput> | ProblemInPlaylistCreateWithoutProblemInput[] | ProblemInPlaylistUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutProblemInput | ProblemInPlaylistCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemInPlaylistUpsertWithWhereUniqueWithoutProblemInput | ProblemInPlaylistUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemInPlaylistCreateManyProblemInputEnvelope
+    set?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    disconnect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    delete?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    update?: ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput | ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput | ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
   }
 
   export type SubmissionUncheckedUpdateManyWithoutProblemNestedInput = {
@@ -12089,93 +12150,93 @@ export namespace Prisma {
     deleteMany?: ProblemSolvedScalarWhereInput | ProblemSolvedScalarWhereInput[]
   }
 
-  export type ProblemPlaylistUncheckedUpdateManyWithoutProblemNestedInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutProblemInput, ProblemPlaylistUncheckedCreateWithoutProblemInput> | ProblemPlaylistCreateWithoutProblemInput[] | ProblemPlaylistUncheckedCreateWithoutProblemInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutProblemInput | ProblemPlaylistCreateOrConnectWithoutProblemInput[]
-    upsert?: ProblemPlaylistUpsertWithWhereUniqueWithoutProblemInput | ProblemPlaylistUpsertWithWhereUniqueWithoutProblemInput[]
-    createMany?: ProblemPlaylistCreateManyProblemInputEnvelope
-    set?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    disconnect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    delete?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    update?: ProblemPlaylistUpdateWithWhereUniqueWithoutProblemInput | ProblemPlaylistUpdateWithWhereUniqueWithoutProblemInput[]
-    updateMany?: ProblemPlaylistUpdateManyWithWhereWithoutProblemInput | ProblemPlaylistUpdateManyWithWhereWithoutProblemInput[]
-    deleteMany?: ProblemPlaylistScalarWhereInput | ProblemPlaylistScalarWhereInput[]
+  export type ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutProblemInput, ProblemInPlaylistUncheckedCreateWithoutProblemInput> | ProblemInPlaylistCreateWithoutProblemInput[] | ProblemInPlaylistUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutProblemInput | ProblemInPlaylistCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemInPlaylistUpsertWithWhereUniqueWithoutProblemInput | ProblemInPlaylistUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemInPlaylistCreateManyProblemInputEnvelope
+    set?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    disconnect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    delete?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    update?: ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput | ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput | ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutSubmissionInput = {
-    create?: XOR<UserCreateWithoutSubmissionInput, UserUncheckedCreateWithoutSubmissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSubmissionInput
+  export type UserCreateNestedOneWithoutSubmissionsInput = {
+    create?: XOR<UserCreateWithoutSubmissionsInput, UserUncheckedCreateWithoutSubmissionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSubmissionsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ProblemCreateNestedOneWithoutSubmissionInput = {
-    create?: XOR<ProblemCreateWithoutSubmissionInput, ProblemUncheckedCreateWithoutSubmissionInput>
-    connectOrCreate?: ProblemCreateOrConnectWithoutSubmissionInput
+  export type ProblemCreateNestedOneWithoutSubmissionsInput = {
+    create?: XOR<ProblemCreateWithoutSubmissionsInput, ProblemUncheckedCreateWithoutSubmissionsInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutSubmissionsInput
     connect?: ProblemWhereUniqueInput
   }
 
-  export type TestCaseResultCreateNestedManyWithoutSubmissionInput = {
-    create?: XOR<TestCaseResultCreateWithoutSubmissionInput, TestCaseResultUncheckedCreateWithoutSubmissionInput> | TestCaseResultCreateWithoutSubmissionInput[] | TestCaseResultUncheckedCreateWithoutSubmissionInput[]
-    connectOrCreate?: TestCaseResultCreateOrConnectWithoutSubmissionInput | TestCaseResultCreateOrConnectWithoutSubmissionInput[]
-    createMany?: TestCaseResultCreateManySubmissionInputEnvelope
-    connect?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
+  export type TestcaseResultsCreateNestedManyWithoutSubmissionInput = {
+    create?: XOR<TestcaseResultsCreateWithoutSubmissionInput, TestcaseResultsUncheckedCreateWithoutSubmissionInput> | TestcaseResultsCreateWithoutSubmissionInput[] | TestcaseResultsUncheckedCreateWithoutSubmissionInput[]
+    connectOrCreate?: TestcaseResultsCreateOrConnectWithoutSubmissionInput | TestcaseResultsCreateOrConnectWithoutSubmissionInput[]
+    createMany?: TestcaseResultsCreateManySubmissionInputEnvelope
+    connect?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
   }
 
-  export type TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput = {
-    create?: XOR<TestCaseResultCreateWithoutSubmissionInput, TestCaseResultUncheckedCreateWithoutSubmissionInput> | TestCaseResultCreateWithoutSubmissionInput[] | TestCaseResultUncheckedCreateWithoutSubmissionInput[]
-    connectOrCreate?: TestCaseResultCreateOrConnectWithoutSubmissionInput | TestCaseResultCreateOrConnectWithoutSubmissionInput[]
-    createMany?: TestCaseResultCreateManySubmissionInputEnvelope
-    connect?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
+  export type TestcaseResultsUncheckedCreateNestedManyWithoutSubmissionInput = {
+    create?: XOR<TestcaseResultsCreateWithoutSubmissionInput, TestcaseResultsUncheckedCreateWithoutSubmissionInput> | TestcaseResultsCreateWithoutSubmissionInput[] | TestcaseResultsUncheckedCreateWithoutSubmissionInput[]
+    connectOrCreate?: TestcaseResultsCreateOrConnectWithoutSubmissionInput | TestcaseResultsCreateOrConnectWithoutSubmissionInput[]
+    createMany?: TestcaseResultsCreateManySubmissionInputEnvelope
+    connect?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutSubmissionNestedInput = {
-    create?: XOR<UserCreateWithoutSubmissionInput, UserUncheckedCreateWithoutSubmissionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSubmissionInput
-    upsert?: UserUpsertWithoutSubmissionInput
+  export type UserUpdateOneRequiredWithoutSubmissionsNestedInput = {
+    create?: XOR<UserCreateWithoutSubmissionsInput, UserUncheckedCreateWithoutSubmissionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSubmissionsInput
+    upsert?: UserUpsertWithoutSubmissionsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSubmissionInput, UserUpdateWithoutSubmissionInput>, UserUncheckedUpdateWithoutSubmissionInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSubmissionsInput, UserUpdateWithoutSubmissionsInput>, UserUncheckedUpdateWithoutSubmissionsInput>
   }
 
-  export type ProblemUpdateOneRequiredWithoutSubmissionNestedInput = {
-    create?: XOR<ProblemCreateWithoutSubmissionInput, ProblemUncheckedCreateWithoutSubmissionInput>
-    connectOrCreate?: ProblemCreateOrConnectWithoutSubmissionInput
-    upsert?: ProblemUpsertWithoutSubmissionInput
+  export type ProblemUpdateOneRequiredWithoutSubmissionsNestedInput = {
+    create?: XOR<ProblemCreateWithoutSubmissionsInput, ProblemUncheckedCreateWithoutSubmissionsInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutSubmissionsInput
+    upsert?: ProblemUpsertWithoutSubmissionsInput
     connect?: ProblemWhereUniqueInput
-    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutSubmissionInput, ProblemUpdateWithoutSubmissionInput>, ProblemUncheckedUpdateWithoutSubmissionInput>
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutSubmissionsInput, ProblemUpdateWithoutSubmissionsInput>, ProblemUncheckedUpdateWithoutSubmissionsInput>
   }
 
-  export type TestCaseResultUpdateManyWithoutSubmissionNestedInput = {
-    create?: XOR<TestCaseResultCreateWithoutSubmissionInput, TestCaseResultUncheckedCreateWithoutSubmissionInput> | TestCaseResultCreateWithoutSubmissionInput[] | TestCaseResultUncheckedCreateWithoutSubmissionInput[]
-    connectOrCreate?: TestCaseResultCreateOrConnectWithoutSubmissionInput | TestCaseResultCreateOrConnectWithoutSubmissionInput[]
-    upsert?: TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput | TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput[]
-    createMany?: TestCaseResultCreateManySubmissionInputEnvelope
-    set?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    disconnect?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    delete?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    connect?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    update?: TestCaseResultUpdateWithWhereUniqueWithoutSubmissionInput | TestCaseResultUpdateWithWhereUniqueWithoutSubmissionInput[]
-    updateMany?: TestCaseResultUpdateManyWithWhereWithoutSubmissionInput | TestCaseResultUpdateManyWithWhereWithoutSubmissionInput[]
-    deleteMany?: TestCaseResultScalarWhereInput | TestCaseResultScalarWhereInput[]
+  export type TestcaseResultsUpdateManyWithoutSubmissionNestedInput = {
+    create?: XOR<TestcaseResultsCreateWithoutSubmissionInput, TestcaseResultsUncheckedCreateWithoutSubmissionInput> | TestcaseResultsCreateWithoutSubmissionInput[] | TestcaseResultsUncheckedCreateWithoutSubmissionInput[]
+    connectOrCreate?: TestcaseResultsCreateOrConnectWithoutSubmissionInput | TestcaseResultsCreateOrConnectWithoutSubmissionInput[]
+    upsert?: TestcaseResultsUpsertWithWhereUniqueWithoutSubmissionInput | TestcaseResultsUpsertWithWhereUniqueWithoutSubmissionInput[]
+    createMany?: TestcaseResultsCreateManySubmissionInputEnvelope
+    set?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    disconnect?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    delete?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    connect?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    update?: TestcaseResultsUpdateWithWhereUniqueWithoutSubmissionInput | TestcaseResultsUpdateWithWhereUniqueWithoutSubmissionInput[]
+    updateMany?: TestcaseResultsUpdateManyWithWhereWithoutSubmissionInput | TestcaseResultsUpdateManyWithWhereWithoutSubmissionInput[]
+    deleteMany?: TestcaseResultsScalarWhereInput | TestcaseResultsScalarWhereInput[]
   }
 
-  export type TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput = {
-    create?: XOR<TestCaseResultCreateWithoutSubmissionInput, TestCaseResultUncheckedCreateWithoutSubmissionInput> | TestCaseResultCreateWithoutSubmissionInput[] | TestCaseResultUncheckedCreateWithoutSubmissionInput[]
-    connectOrCreate?: TestCaseResultCreateOrConnectWithoutSubmissionInput | TestCaseResultCreateOrConnectWithoutSubmissionInput[]
-    upsert?: TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput | TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput[]
-    createMany?: TestCaseResultCreateManySubmissionInputEnvelope
-    set?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    disconnect?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    delete?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    connect?: TestCaseResultWhereUniqueInput | TestCaseResultWhereUniqueInput[]
-    update?: TestCaseResultUpdateWithWhereUniqueWithoutSubmissionInput | TestCaseResultUpdateWithWhereUniqueWithoutSubmissionInput[]
-    updateMany?: TestCaseResultUpdateManyWithWhereWithoutSubmissionInput | TestCaseResultUpdateManyWithWhereWithoutSubmissionInput[]
-    deleteMany?: TestCaseResultScalarWhereInput | TestCaseResultScalarWhereInput[]
+  export type TestcaseResultsUncheckedUpdateManyWithoutSubmissionNestedInput = {
+    create?: XOR<TestcaseResultsCreateWithoutSubmissionInput, TestcaseResultsUncheckedCreateWithoutSubmissionInput> | TestcaseResultsCreateWithoutSubmissionInput[] | TestcaseResultsUncheckedCreateWithoutSubmissionInput[]
+    connectOrCreate?: TestcaseResultsCreateOrConnectWithoutSubmissionInput | TestcaseResultsCreateOrConnectWithoutSubmissionInput[]
+    upsert?: TestcaseResultsUpsertWithWhereUniqueWithoutSubmissionInput | TestcaseResultsUpsertWithWhereUniqueWithoutSubmissionInput[]
+    createMany?: TestcaseResultsCreateManySubmissionInputEnvelope
+    set?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    disconnect?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    delete?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    connect?: TestcaseResultsWhereUniqueInput | TestcaseResultsWhereUniqueInput[]
+    update?: TestcaseResultsUpdateWithWhereUniqueWithoutSubmissionInput | TestcaseResultsUpdateWithWhereUniqueWithoutSubmissionInput[]
+    updateMany?: TestcaseResultsUpdateManyWithWhereWithoutSubmissionInput | TestcaseResultsUpdateManyWithWhereWithoutSubmissionInput[]
+    deleteMany?: TestcaseResultsScalarWhereInput | TestcaseResultsScalarWhereInput[]
   }
 
-  export type SubmissionCreateNestedOneWithoutTestCasesInput = {
-    create?: XOR<SubmissionCreateWithoutTestCasesInput, SubmissionUncheckedCreateWithoutTestCasesInput>
-    connectOrCreate?: SubmissionCreateOrConnectWithoutTestCasesInput
+  export type SubmissionCreateNestedOneWithoutTestcasesResultsInput = {
+    create?: XOR<SubmissionCreateWithoutTestcasesResultsInput, SubmissionUncheckedCreateWithoutTestcasesResultsInput>
+    connectOrCreate?: SubmissionCreateOrConnectWithoutTestcasesResultsInput
     connect?: SubmissionWhereUniqueInput
   }
 
@@ -12191,40 +12252,40 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type SubmissionUpdateOneRequiredWithoutTestCasesNestedInput = {
-    create?: XOR<SubmissionCreateWithoutTestCasesInput, SubmissionUncheckedCreateWithoutTestCasesInput>
-    connectOrCreate?: SubmissionCreateOrConnectWithoutTestCasesInput
-    upsert?: SubmissionUpsertWithoutTestCasesInput
+  export type SubmissionUpdateOneRequiredWithoutTestcasesResultsNestedInput = {
+    create?: XOR<SubmissionCreateWithoutTestcasesResultsInput, SubmissionUncheckedCreateWithoutTestcasesResultsInput>
+    connectOrCreate?: SubmissionCreateOrConnectWithoutTestcasesResultsInput
+    upsert?: SubmissionUpsertWithoutTestcasesResultsInput
     connect?: SubmissionWhereUniqueInput
-    update?: XOR<XOR<SubmissionUpdateToOneWithWhereWithoutTestCasesInput, SubmissionUpdateWithoutTestCasesInput>, SubmissionUncheckedUpdateWithoutTestCasesInput>
+    update?: XOR<XOR<SubmissionUpdateToOneWithWhereWithoutTestcasesResultsInput, SubmissionUpdateWithoutTestcasesResultsInput>, SubmissionUncheckedUpdateWithoutTestcasesResultsInput>
   }
 
-  export type UserCreateNestedOneWithoutSolvedProblemInput = {
-    create?: XOR<UserCreateWithoutSolvedProblemInput, UserUncheckedCreateWithoutSolvedProblemInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSolvedProblemInput
+  export type UserCreateNestedOneWithoutProblemsSolvedInput = {
+    create?: XOR<UserCreateWithoutProblemsSolvedInput, UserUncheckedCreateWithoutProblemsSolvedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProblemsSolvedInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ProblemCreateNestedOneWithoutProblemSolvedByInput = {
-    create?: XOR<ProblemCreateWithoutProblemSolvedByInput, ProblemUncheckedCreateWithoutProblemSolvedByInput>
-    connectOrCreate?: ProblemCreateOrConnectWithoutProblemSolvedByInput
+  export type ProblemCreateNestedOneWithoutSolvedByInput = {
+    create?: XOR<ProblemCreateWithoutSolvedByInput, ProblemUncheckedCreateWithoutSolvedByInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutSolvedByInput
     connect?: ProblemWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutSolvedProblemNestedInput = {
-    create?: XOR<UserCreateWithoutSolvedProblemInput, UserUncheckedCreateWithoutSolvedProblemInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSolvedProblemInput
-    upsert?: UserUpsertWithoutSolvedProblemInput
+  export type UserUpdateOneRequiredWithoutProblemsSolvedNestedInput = {
+    create?: XOR<UserCreateWithoutProblemsSolvedInput, UserUncheckedCreateWithoutProblemsSolvedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProblemsSolvedInput
+    upsert?: UserUpsertWithoutProblemsSolvedInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSolvedProblemInput, UserUpdateWithoutSolvedProblemInput>, UserUncheckedUpdateWithoutSolvedProblemInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProblemsSolvedInput, UserUpdateWithoutProblemsSolvedInput>, UserUncheckedUpdateWithoutProblemsSolvedInput>
   }
 
-  export type ProblemUpdateOneRequiredWithoutProblemSolvedByNestedInput = {
-    create?: XOR<ProblemCreateWithoutProblemSolvedByInput, ProblemUncheckedCreateWithoutProblemSolvedByInput>
-    connectOrCreate?: ProblemCreateOrConnectWithoutProblemSolvedByInput
-    upsert?: ProblemUpsertWithoutProblemSolvedByInput
+  export type ProblemUpdateOneRequiredWithoutSolvedByNestedInput = {
+    create?: XOR<ProblemCreateWithoutSolvedByInput, ProblemUncheckedCreateWithoutSolvedByInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutSolvedByInput
+    upsert?: ProblemUpsertWithoutSolvedByInput
     connect?: ProblemWhereUniqueInput
-    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutProblemSolvedByInput, ProblemUpdateWithoutProblemSolvedByInput>, ProblemUncheckedUpdateWithoutProblemSolvedByInput>
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutSolvedByInput, ProblemUpdateWithoutSolvedByInput>, ProblemUncheckedUpdateWithoutSolvedByInput>
   }
 
   export type UserCreateNestedOneWithoutPlaylistsInput = {
@@ -12233,18 +12294,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type ProblemPlaylistCreateNestedManyWithoutPlaylistInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutPlaylistInput, ProblemPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemPlaylistCreateWithoutPlaylistInput[] | ProblemPlaylistUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutPlaylistInput | ProblemPlaylistCreateOrConnectWithoutPlaylistInput[]
-    createMany?: ProblemPlaylistCreateManyPlaylistInputEnvelope
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
+  export type ProblemInPlaylistCreateNestedManyWithoutPlaylistInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutPlaylistInput, ProblemInPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemInPlaylistCreateWithoutPlaylistInput[] | ProblemInPlaylistUncheckedCreateWithoutPlaylistInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutPlaylistInput | ProblemInPlaylistCreateOrConnectWithoutPlaylistInput[]
+    createMany?: ProblemInPlaylistCreateManyPlaylistInputEnvelope
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
-  export type ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutPlaylistInput, ProblemPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemPlaylistCreateWithoutPlaylistInput[] | ProblemPlaylistUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutPlaylistInput | ProblemPlaylistCreateOrConnectWithoutPlaylistInput[]
-    createMany?: ProblemPlaylistCreateManyPlaylistInputEnvelope
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
+  export type ProblemInPlaylistUncheckedCreateNestedManyWithoutPlaylistInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutPlaylistInput, ProblemInPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemInPlaylistCreateWithoutPlaylistInput[] | ProblemInPlaylistUncheckedCreateWithoutPlaylistInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutPlaylistInput | ProblemInPlaylistCreateOrConnectWithoutPlaylistInput[]
+    createMany?: ProblemInPlaylistCreateManyPlaylistInputEnvelope
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutPlaylistsNestedInput = {
@@ -12255,32 +12316,32 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPlaylistsInput, UserUpdateWithoutPlaylistsInput>, UserUncheckedUpdateWithoutPlaylistsInput>
   }
 
-  export type ProblemPlaylistUpdateManyWithoutPlaylistNestedInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutPlaylistInput, ProblemPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemPlaylistCreateWithoutPlaylistInput[] | ProblemPlaylistUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutPlaylistInput | ProblemPlaylistCreateOrConnectWithoutPlaylistInput[]
-    upsert?: ProblemPlaylistUpsertWithWhereUniqueWithoutPlaylistInput | ProblemPlaylistUpsertWithWhereUniqueWithoutPlaylistInput[]
-    createMany?: ProblemPlaylistCreateManyPlaylistInputEnvelope
-    set?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    disconnect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    delete?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    update?: ProblemPlaylistUpdateWithWhereUniqueWithoutPlaylistInput | ProblemPlaylistUpdateWithWhereUniqueWithoutPlaylistInput[]
-    updateMany?: ProblemPlaylistUpdateManyWithWhereWithoutPlaylistInput | ProblemPlaylistUpdateManyWithWhereWithoutPlaylistInput[]
-    deleteMany?: ProblemPlaylistScalarWhereInput | ProblemPlaylistScalarWhereInput[]
+  export type ProblemInPlaylistUpdateManyWithoutPlaylistNestedInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutPlaylistInput, ProblemInPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemInPlaylistCreateWithoutPlaylistInput[] | ProblemInPlaylistUncheckedCreateWithoutPlaylistInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutPlaylistInput | ProblemInPlaylistCreateOrConnectWithoutPlaylistInput[]
+    upsert?: ProblemInPlaylistUpsertWithWhereUniqueWithoutPlaylistInput | ProblemInPlaylistUpsertWithWhereUniqueWithoutPlaylistInput[]
+    createMany?: ProblemInPlaylistCreateManyPlaylistInputEnvelope
+    set?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    disconnect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    delete?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    update?: ProblemInPlaylistUpdateWithWhereUniqueWithoutPlaylistInput | ProblemInPlaylistUpdateWithWhereUniqueWithoutPlaylistInput[]
+    updateMany?: ProblemInPlaylistUpdateManyWithWhereWithoutPlaylistInput | ProblemInPlaylistUpdateManyWithWhereWithoutPlaylistInput[]
+    deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
   }
 
-  export type ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput = {
-    create?: XOR<ProblemPlaylistCreateWithoutPlaylistInput, ProblemPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemPlaylistCreateWithoutPlaylistInput[] | ProblemPlaylistUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: ProblemPlaylistCreateOrConnectWithoutPlaylistInput | ProblemPlaylistCreateOrConnectWithoutPlaylistInput[]
-    upsert?: ProblemPlaylistUpsertWithWhereUniqueWithoutPlaylistInput | ProblemPlaylistUpsertWithWhereUniqueWithoutPlaylistInput[]
-    createMany?: ProblemPlaylistCreateManyPlaylistInputEnvelope
-    set?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    disconnect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    delete?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    connect?: ProblemPlaylistWhereUniqueInput | ProblemPlaylistWhereUniqueInput[]
-    update?: ProblemPlaylistUpdateWithWhereUniqueWithoutPlaylistInput | ProblemPlaylistUpdateWithWhereUniqueWithoutPlaylistInput[]
-    updateMany?: ProblemPlaylistUpdateManyWithWhereWithoutPlaylistInput | ProblemPlaylistUpdateManyWithWhereWithoutPlaylistInput[]
-    deleteMany?: ProblemPlaylistScalarWhereInput | ProblemPlaylistScalarWhereInput[]
+  export type ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput = {
+    create?: XOR<ProblemInPlaylistCreateWithoutPlaylistInput, ProblemInPlaylistUncheckedCreateWithoutPlaylistInput> | ProblemInPlaylistCreateWithoutPlaylistInput[] | ProblemInPlaylistUncheckedCreateWithoutPlaylistInput[]
+    connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutPlaylistInput | ProblemInPlaylistCreateOrConnectWithoutPlaylistInput[]
+    upsert?: ProblemInPlaylistUpsertWithWhereUniqueWithoutPlaylistInput | ProblemInPlaylistUpsertWithWhereUniqueWithoutPlaylistInput[]
+    createMany?: ProblemInPlaylistCreateManyPlaylistInputEnvelope
+    set?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    disconnect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    delete?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+    update?: ProblemInPlaylistUpdateWithWhereUniqueWithoutPlaylistInput | ProblemInPlaylistUpdateWithWhereUniqueWithoutPlaylistInput[]
+    updateMany?: ProblemInPlaylistUpdateManyWithWhereWithoutPlaylistInput | ProblemInPlaylistUpdateManyWithWhereWithoutPlaylistInput[]
+    deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
   }
 
   export type PlaylistCreateNestedOneWithoutProblemsInput = {
@@ -12289,9 +12350,9 @@ export namespace Prisma {
     connect?: PlaylistWhereUniqueInput
   }
 
-  export type ProblemCreateNestedOneWithoutProblemPlaylistsInput = {
-    create?: XOR<ProblemCreateWithoutProblemPlaylistsInput, ProblemUncheckedCreateWithoutProblemPlaylistsInput>
-    connectOrCreate?: ProblemCreateOrConnectWithoutProblemPlaylistsInput
+  export type ProblemCreateNestedOneWithoutProblemsPlaylistInput = {
+    create?: XOR<ProblemCreateWithoutProblemsPlaylistInput, ProblemUncheckedCreateWithoutProblemsPlaylistInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutProblemsPlaylistInput
     connect?: ProblemWhereUniqueInput
   }
 
@@ -12303,12 +12364,12 @@ export namespace Prisma {
     update?: XOR<XOR<PlaylistUpdateToOneWithWhereWithoutProblemsInput, PlaylistUpdateWithoutProblemsInput>, PlaylistUncheckedUpdateWithoutProblemsInput>
   }
 
-  export type ProblemUpdateOneRequiredWithoutProblemPlaylistsNestedInput = {
-    create?: XOR<ProblemCreateWithoutProblemPlaylistsInput, ProblemUncheckedCreateWithoutProblemPlaylistsInput>
-    connectOrCreate?: ProblemCreateOrConnectWithoutProblemPlaylistsInput
-    upsert?: ProblemUpsertWithoutProblemPlaylistsInput
+  export type ProblemUpdateOneRequiredWithoutProblemsPlaylistNestedInput = {
+    create?: XOR<ProblemCreateWithoutProblemsPlaylistInput, ProblemUncheckedCreateWithoutProblemsPlaylistInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutProblemsPlaylistInput
+    upsert?: ProblemUpsertWithoutProblemsPlaylistInput
     connect?: ProblemWhereUniqueInput
-    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutProblemPlaylistsInput, ProblemUpdateWithoutProblemPlaylistsInput>, ProblemUncheckedUpdateWithoutProblemPlaylistsInput>
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutProblemsPlaylistInput, ProblemUpdateWithoutProblemsPlaylistInput>, ProblemUncheckedUpdateWithoutProblemsPlaylistInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -12437,21 +12498,21 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumDifficultyFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyFilter<$PrismaModel> | $Enums.Difficulty
+  export type NestedEnumProblemDifficultyFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProblemDifficulty | EnumProblemDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumProblemDifficultyFilter<$PrismaModel> | $Enums.ProblemDifficulty
   }
 
-  export type NestedEnumDifficultyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.Difficulty
+  export type NestedEnumProblemDifficultyWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProblemDifficulty | EnumProblemDifficultyFieldRefInput<$PrismaModel>
+    in?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProblemDifficulty[] | ListEnumProblemDifficultyFieldRefInput<$PrismaModel>
+    not?: NestedEnumProblemDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.ProblemDifficulty
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDifficultyFilter<$PrismaModel>
-    _max?: NestedEnumDifficultyFilter<$PrismaModel>
+    _min?: NestedEnumProblemDifficultyFilter<$PrismaModel>
+    _max?: NestedEnumProblemDifficultyFilter<$PrismaModel>
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -12521,40 +12582,42 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    submission?: SubmissionCreateNestedManyWithoutProblemInput
-    problemSolvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
-    problemSolvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutUserInput = {
@@ -12575,13 +12638,13 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    problem: ProblemCreateNestedOneWithoutSubmissionInput
-    testCases?: TestCaseResultCreateNestedManyWithoutSubmissionInput
+    updatedAt?: Date | string
+    problem: ProblemCreateNestedOneWithoutSubmissionsInput
+    testcasesResults?: TestcaseResultsCreateNestedManyWithoutSubmissionInput
   }
 
   export type SubmissionUncheckedCreateWithoutUserInput = {
@@ -12593,12 +12656,12 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    testCases?: TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput
+    updatedAt?: Date | string
+    testcasesResults?: TestcaseResultsUncheckedCreateNestedManyWithoutSubmissionInput
   }
 
   export type SubmissionCreateOrConnectWithoutUserInput = {
@@ -12615,7 +12678,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    problem: ProblemCreateNestedOneWithoutProblemSolvedByInput
+    problem: ProblemCreateNestedOneWithoutSolvedByInput
   }
 
   export type ProblemSolvedUncheckedCreateWithoutUserInput = {
@@ -12638,19 +12701,19 @@ export namespace Prisma {
   export type PlaylistCreateWithoutUserInput = {
     id?: string
     name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    problems?: ProblemPlaylistCreateNestedManyWithoutPlaylistInput
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInPlaylistCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUncheckedCreateWithoutUserInput = {
     id?: string
     name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    problems?: ProblemPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistCreateOrConnectWithoutUserInput = {
@@ -12684,18 +12747,19 @@ export namespace Prisma {
     OR?: ProblemScalarWhereInput[]
     NOT?: ProblemScalarWhereInput | ProblemScalarWhereInput[]
     id?: StringFilter<"Problem"> | string
+    userId?: StringFilter<"Problem"> | string
     title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
-    difficulty?: EnumDifficultyFilter<"Problem"> | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFilter<"Problem"> | $Enums.ProblemDifficulty
     tags?: StringNullableListFilter<"Problem">
-    userId?: StringFilter<"Problem"> | string
     examples?: JsonFilter<"Problem">
     constraints?: StringFilter<"Problem"> | string
+    companies?: StringNullableListFilter<"Problem">
     hints?: StringNullableFilter<"Problem"> | string | null
     editorial?: StringNullableFilter<"Problem"> | string | null
     testcases?: JsonFilter<"Problem">
     codeSnippets?: JsonFilter<"Problem">
-    referenceSolution?: JsonFilter<"Problem">
+    referenceSolutions?: JsonFilter<"Problem">
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     updatedAt?: DateTimeFilter<"Problem"> | Date | string
   }
@@ -12729,11 +12793,11 @@ export namespace Prisma {
     stdout?: StringNullableFilter<"Submission"> | string | null
     stderr?: StringNullableFilter<"Submission"> | string | null
     compileOutput?: StringNullableFilter<"Submission"> | string | null
-    status?: StringFilter<"Submission"> | string
-    memory?: StringNullableFilter<"Submission"> | string | null
+    status?: StringNullableFilter<"Submission"> | string | null
     time?: StringNullableFilter<"Submission"> | string | null
+    memory?: StringNullableFilter<"Submission"> | string | null
     createdAt?: DateTimeFilter<"Submission"> | Date | string
-    updateAt?: DateTimeFilter<"Submission"> | Date | string
+    updatedAt?: DateTimeFilter<"Submission"> | Date | string
   }
 
   export type ProblemSolvedUpsertWithWhereUniqueWithoutUserInput = {
@@ -12785,38 +12849,38 @@ export namespace Prisma {
     NOT?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
     id?: StringFilter<"Playlist"> | string
     name?: StringFilter<"Playlist"> | string
-    description?: StringFilter<"Playlist"> | string
-    userId?: StringFilter<"Playlist"> | string
-    createAt?: DateTimeFilter<"Playlist"> | Date | string
-    updateAt?: DateTimeFilter<"Playlist"> | Date | string
+    description?: StringNullableFilter<"Playlist"> | string | null
+    createdBy?: StringFilter<"Playlist"> | string
+    createdAt?: DateTimeFilter<"Playlist"> | Date | string
+    updatedAt?: DateTimeFilter<"Playlist"> | Date | string
   }
 
   export type UserCreateWithoutProblemsInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
-    submission?: SubmissionCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistCreateNestedManyWithoutUserInput
+    updatedAt?: Date | string
+    submissions?: SubmissionCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProblemsInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
-    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    updatedAt?: Date | string
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProblemsInput = {
@@ -12832,13 +12896,13 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    user: UserCreateNestedOneWithoutSubmissionInput
-    testCases?: TestCaseResultCreateNestedManyWithoutSubmissionInput
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSubmissionsInput
+    testcasesResults?: TestcaseResultsCreateNestedManyWithoutSubmissionInput
   }
 
   export type SubmissionUncheckedCreateWithoutProblemInput = {
@@ -12850,12 +12914,12 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    testCases?: TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput
+    updatedAt?: Date | string
+    testcasesResults?: TestcaseResultsUncheckedCreateNestedManyWithoutSubmissionInput
   }
 
   export type SubmissionCreateOrConnectWithoutProblemInput = {
@@ -12872,7 +12936,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSolvedProblemInput
+    user: UserCreateNestedOneWithoutProblemsSolvedInput
   }
 
   export type ProblemSolvedUncheckedCreateWithoutProblemInput = {
@@ -12892,27 +12956,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ProblemPlaylistCreateWithoutProblemInput = {
+  export type ProblemInPlaylistCreateWithoutProblemInput = {
     id?: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     playlist: PlaylistCreateNestedOneWithoutProblemsInput
   }
 
-  export type ProblemPlaylistUncheckedCreateWithoutProblemInput = {
+  export type ProblemInPlaylistUncheckedCreateWithoutProblemInput = {
     id?: string
     playlistId: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ProblemPlaylistCreateOrConnectWithoutProblemInput = {
-    where: ProblemPlaylistWhereUniqueInput
-    create: XOR<ProblemPlaylistCreateWithoutProblemInput, ProblemPlaylistUncheckedCreateWithoutProblemInput>
+  export type ProblemInPlaylistCreateOrConnectWithoutProblemInput = {
+    where: ProblemInPlaylistWhereUniqueInput
+    create: XOR<ProblemInPlaylistCreateWithoutProblemInput, ProblemInPlaylistUncheckedCreateWithoutProblemInput>
   }
 
-  export type ProblemPlaylistCreateManyProblemInputEnvelope = {
-    data: ProblemPlaylistCreateManyProblemInput | ProblemPlaylistCreateManyProblemInput[]
+  export type ProblemInPlaylistCreateManyProblemInputEnvelope = {
+    data: ProblemInPlaylistCreateManyProblemInput | ProblemInPlaylistCreateManyProblemInput[]
     skipDuplicates?: boolean
   }
 
@@ -12929,30 +12993,30 @@ export namespace Prisma {
 
   export type UserUpdateWithoutProblemsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: SubmissionUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProblemsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SubmissionUpsertWithWhereUniqueWithoutProblemInput = {
@@ -12987,277 +13051,284 @@ export namespace Prisma {
     data: XOR<ProblemSolvedUpdateManyMutationInput, ProblemSolvedUncheckedUpdateManyWithoutProblemInput>
   }
 
-  export type ProblemPlaylistUpsertWithWhereUniqueWithoutProblemInput = {
-    where: ProblemPlaylistWhereUniqueInput
-    update: XOR<ProblemPlaylistUpdateWithoutProblemInput, ProblemPlaylistUncheckedUpdateWithoutProblemInput>
-    create: XOR<ProblemPlaylistCreateWithoutProblemInput, ProblemPlaylistUncheckedCreateWithoutProblemInput>
+  export type ProblemInPlaylistUpsertWithWhereUniqueWithoutProblemInput = {
+    where: ProblemInPlaylistWhereUniqueInput
+    update: XOR<ProblemInPlaylistUpdateWithoutProblemInput, ProblemInPlaylistUncheckedUpdateWithoutProblemInput>
+    create: XOR<ProblemInPlaylistCreateWithoutProblemInput, ProblemInPlaylistUncheckedCreateWithoutProblemInput>
   }
 
-  export type ProblemPlaylistUpdateWithWhereUniqueWithoutProblemInput = {
-    where: ProblemPlaylistWhereUniqueInput
-    data: XOR<ProblemPlaylistUpdateWithoutProblemInput, ProblemPlaylistUncheckedUpdateWithoutProblemInput>
+  export type ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput = {
+    where: ProblemInPlaylistWhereUniqueInput
+    data: XOR<ProblemInPlaylistUpdateWithoutProblemInput, ProblemInPlaylistUncheckedUpdateWithoutProblemInput>
   }
 
-  export type ProblemPlaylistUpdateManyWithWhereWithoutProblemInput = {
-    where: ProblemPlaylistScalarWhereInput
-    data: XOR<ProblemPlaylistUpdateManyMutationInput, ProblemPlaylistUncheckedUpdateManyWithoutProblemInput>
+  export type ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput = {
+    where: ProblemInPlaylistScalarWhereInput
+    data: XOR<ProblemInPlaylistUpdateManyMutationInput, ProblemInPlaylistUncheckedUpdateManyWithoutProblemInput>
   }
 
-  export type ProblemPlaylistScalarWhereInput = {
-    AND?: ProblemPlaylistScalarWhereInput | ProblemPlaylistScalarWhereInput[]
-    OR?: ProblemPlaylistScalarWhereInput[]
-    NOT?: ProblemPlaylistScalarWhereInput | ProblemPlaylistScalarWhereInput[]
-    id?: StringFilter<"ProblemPlaylist"> | string
-    playlistId?: StringFilter<"ProblemPlaylist"> | string
-    problemId?: StringFilter<"ProblemPlaylist"> | string
-    createdAt?: DateTimeFilter<"ProblemPlaylist"> | Date | string
-    updateAt?: DateTimeFilter<"ProblemPlaylist"> | Date | string
+  export type ProblemInPlaylistScalarWhereInput = {
+    AND?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
+    OR?: ProblemInPlaylistScalarWhereInput[]
+    NOT?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
+    id?: StringFilter<"ProblemInPlaylist"> | string
+    playlistId?: StringFilter<"ProblemInPlaylist"> | string
+    problemId?: StringFilter<"ProblemInPlaylist"> | string
+    createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
+    updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
   }
 
-  export type UserCreateWithoutSubmissionInput = {
+  export type UserCreateWithoutSubmissionsInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSubmissionInput = {
+  export type UserUncheckedCreateWithoutSubmissionsInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSubmissionInput = {
+  export type UserCreateOrConnectWithoutSubmissionsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSubmissionInput, UserUncheckedCreateWithoutSubmissionInput>
+    create: XOR<UserCreateWithoutSubmissionsInput, UserUncheckedCreateWithoutSubmissionsInput>
   }
 
-  export type ProblemCreateWithoutSubmissionInput = {
+  export type ProblemCreateWithoutSubmissionsInput = {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
-    problemSolvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
   }
 
-  export type ProblemUncheckedCreateWithoutSubmissionInput = {
+  export type ProblemUncheckedCreateWithoutSubmissionsInput = {
     id?: string
+    userId: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
-    userId: string
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    problemSolvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
   }
 
-  export type ProblemCreateOrConnectWithoutSubmissionInput = {
+  export type ProblemCreateOrConnectWithoutSubmissionsInput = {
     where: ProblemWhereUniqueInput
-    create: XOR<ProblemCreateWithoutSubmissionInput, ProblemUncheckedCreateWithoutSubmissionInput>
+    create: XOR<ProblemCreateWithoutSubmissionsInput, ProblemUncheckedCreateWithoutSubmissionsInput>
   }
 
-  export type TestCaseResultCreateWithoutSubmissionInput = {
+  export type TestcaseResultsCreateWithoutSubmissionInput = {
     id?: string
-    testCase: number
-    passed: boolean
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
     stdout?: string | null
-    expected: string
+    expectedOutput: string
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type TestCaseResultUncheckedCreateWithoutSubmissionInput = {
+  export type TestcaseResultsUncheckedCreateWithoutSubmissionInput = {
     id?: string
-    testCase: number
-    passed: boolean
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
     stdout?: string | null
-    expected: string
+    expectedOutput: string
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type TestCaseResultCreateOrConnectWithoutSubmissionInput = {
-    where: TestCaseResultWhereUniqueInput
-    create: XOR<TestCaseResultCreateWithoutSubmissionInput, TestCaseResultUncheckedCreateWithoutSubmissionInput>
+  export type TestcaseResultsCreateOrConnectWithoutSubmissionInput = {
+    where: TestcaseResultsWhereUniqueInput
+    create: XOR<TestcaseResultsCreateWithoutSubmissionInput, TestcaseResultsUncheckedCreateWithoutSubmissionInput>
   }
 
-  export type TestCaseResultCreateManySubmissionInputEnvelope = {
-    data: TestCaseResultCreateManySubmissionInput | TestCaseResultCreateManySubmissionInput[]
+  export type TestcaseResultsCreateManySubmissionInputEnvelope = {
+    data: TestcaseResultsCreateManySubmissionInput | TestcaseResultsCreateManySubmissionInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutSubmissionInput = {
-    update: XOR<UserUpdateWithoutSubmissionInput, UserUncheckedUpdateWithoutSubmissionInput>
-    create: XOR<UserCreateWithoutSubmissionInput, UserUncheckedCreateWithoutSubmissionInput>
+  export type UserUpsertWithoutSubmissionsInput = {
+    update: XOR<UserUpdateWithoutSubmissionsInput, UserUncheckedUpdateWithoutSubmissionsInput>
+    create: XOR<UserCreateWithoutSubmissionsInput, UserUncheckedCreateWithoutSubmissionsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSubmissionInput = {
+  export type UserUpdateToOneWithWhereWithoutSubmissionsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSubmissionInput, UserUncheckedUpdateWithoutSubmissionInput>
+    data: XOR<UserUpdateWithoutSubmissionsInput, UserUncheckedUpdateWithoutSubmissionsInput>
   }
 
-  export type UserUpdateWithoutSubmissionInput = {
+  export type UserUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSubmissionInput = {
+  export type UserUncheckedUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ProblemUpsertWithoutSubmissionInput = {
-    update: XOR<ProblemUpdateWithoutSubmissionInput, ProblemUncheckedUpdateWithoutSubmissionInput>
-    create: XOR<ProblemCreateWithoutSubmissionInput, ProblemUncheckedCreateWithoutSubmissionInput>
+  export type ProblemUpsertWithoutSubmissionsInput = {
+    update: XOR<ProblemUpdateWithoutSubmissionsInput, ProblemUncheckedUpdateWithoutSubmissionsInput>
+    create: XOR<ProblemCreateWithoutSubmissionsInput, ProblemUncheckedCreateWithoutSubmissionsInput>
     where?: ProblemWhereInput
   }
 
-  export type ProblemUpdateToOneWithWhereWithoutSubmissionInput = {
+  export type ProblemUpdateToOneWithWhereWithoutSubmissionsInput = {
     where?: ProblemWhereInput
-    data: XOR<ProblemUpdateWithoutSubmissionInput, ProblemUncheckedUpdateWithoutSubmissionInput>
+    data: XOR<ProblemUpdateWithoutSubmissionsInput, ProblemUncheckedUpdateWithoutSubmissionsInput>
   }
 
-  export type ProblemUpdateWithoutSubmissionInput = {
+  export type ProblemUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
-    problemSolvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
   }
 
-  export type ProblemUncheckedUpdateWithoutSubmissionInput = {
+  export type ProblemUncheckedUpdateWithoutSubmissionsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
-    userId?: StringFieldUpdateOperationsInput | string
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problemSolvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
   }
 
-  export type TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput = {
-    where: TestCaseResultWhereUniqueInput
-    update: XOR<TestCaseResultUpdateWithoutSubmissionInput, TestCaseResultUncheckedUpdateWithoutSubmissionInput>
-    create: XOR<TestCaseResultCreateWithoutSubmissionInput, TestCaseResultUncheckedCreateWithoutSubmissionInput>
+  export type TestcaseResultsUpsertWithWhereUniqueWithoutSubmissionInput = {
+    where: TestcaseResultsWhereUniqueInput
+    update: XOR<TestcaseResultsUpdateWithoutSubmissionInput, TestcaseResultsUncheckedUpdateWithoutSubmissionInput>
+    create: XOR<TestcaseResultsCreateWithoutSubmissionInput, TestcaseResultsUncheckedCreateWithoutSubmissionInput>
   }
 
-  export type TestCaseResultUpdateWithWhereUniqueWithoutSubmissionInput = {
-    where: TestCaseResultWhereUniqueInput
-    data: XOR<TestCaseResultUpdateWithoutSubmissionInput, TestCaseResultUncheckedUpdateWithoutSubmissionInput>
+  export type TestcaseResultsUpdateWithWhereUniqueWithoutSubmissionInput = {
+    where: TestcaseResultsWhereUniqueInput
+    data: XOR<TestcaseResultsUpdateWithoutSubmissionInput, TestcaseResultsUncheckedUpdateWithoutSubmissionInput>
   }
 
-  export type TestCaseResultUpdateManyWithWhereWithoutSubmissionInput = {
-    where: TestCaseResultScalarWhereInput
-    data: XOR<TestCaseResultUpdateManyMutationInput, TestCaseResultUncheckedUpdateManyWithoutSubmissionInput>
+  export type TestcaseResultsUpdateManyWithWhereWithoutSubmissionInput = {
+    where: TestcaseResultsScalarWhereInput
+    data: XOR<TestcaseResultsUpdateManyMutationInput, TestcaseResultsUncheckedUpdateManyWithoutSubmissionInput>
   }
 
-  export type TestCaseResultScalarWhereInput = {
-    AND?: TestCaseResultScalarWhereInput | TestCaseResultScalarWhereInput[]
-    OR?: TestCaseResultScalarWhereInput[]
-    NOT?: TestCaseResultScalarWhereInput | TestCaseResultScalarWhereInput[]
-    id?: StringFilter<"TestCaseResult"> | string
-    submissionId?: StringFilter<"TestCaseResult"> | string
-    testCase?: IntFilter<"TestCaseResult"> | number
-    passed?: BoolFilter<"TestCaseResult"> | boolean
-    stdout?: StringNullableFilter<"TestCaseResult"> | string | null
-    expected?: StringFilter<"TestCaseResult"> | string
-    stderr?: StringNullableFilter<"TestCaseResult"> | string | null
-    compileOutput?: StringNullableFilter<"TestCaseResult"> | string | null
-    status?: StringFilter<"TestCaseResult"> | string
-    memory?: StringNullableFilter<"TestCaseResult"> | string | null
-    time?: StringNullableFilter<"TestCaseResult"> | string | null
-    createdAt?: DateTimeFilter<"TestCaseResult"> | Date | string
-    updatedAt?: DateTimeFilter<"TestCaseResult"> | Date | string
+  export type TestcaseResultsScalarWhereInput = {
+    AND?: TestcaseResultsScalarWhereInput | TestcaseResultsScalarWhereInput[]
+    OR?: TestcaseResultsScalarWhereInput[]
+    NOT?: TestcaseResultsScalarWhereInput | TestcaseResultsScalarWhereInput[]
+    id?: StringFilter<"TestcaseResults"> | string
+    submissionId?: StringFilter<"TestcaseResults"> | string
+    testCaseNumber?: IntFilter<"TestcaseResults"> | number
+    isPassed?: BoolFilter<"TestcaseResults"> | boolean
+    stdin?: StringFilter<"TestcaseResults"> | string
+    stdout?: StringNullableFilter<"TestcaseResults"> | string | null
+    expectedOutput?: StringFilter<"TestcaseResults"> | string
+    stderr?: StringNullableFilter<"TestcaseResults"> | string | null
+    compileOutput?: StringNullableFilter<"TestcaseResults"> | string | null
+    status?: StringNullableFilter<"TestcaseResults"> | string | null
+    time?: StringNullableFilter<"TestcaseResults"> | string | null
+    memory?: StringNullableFilter<"TestcaseResults"> | string | null
+    createdAt?: DateTimeFilter<"TestcaseResults"> | Date | string
+    updatedAt?: DateTimeFilter<"TestcaseResults"> | Date | string
   }
 
-  export type SubmissionCreateWithoutTestCasesInput = {
+  export type SubmissionCreateWithoutTestcasesResultsInput = {
     id?: string
     sourceCode: JsonNullValueInput | InputJsonValue
     language: string
@@ -13265,16 +13336,16 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
-    user: UserCreateNestedOneWithoutSubmissionInput
-    problem: ProblemCreateNestedOneWithoutSubmissionInput
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSubmissionsInput
+    problem: ProblemCreateNestedOneWithoutSubmissionsInput
   }
 
-  export type SubmissionUncheckedCreateWithoutTestCasesInput = {
+  export type SubmissionUncheckedCreateWithoutTestcasesResultsInput = {
     id?: string
     userId: string
     problemId: string
@@ -13284,30 +13355,30 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type SubmissionCreateOrConnectWithoutTestCasesInput = {
+  export type SubmissionCreateOrConnectWithoutTestcasesResultsInput = {
     where: SubmissionWhereUniqueInput
-    create: XOR<SubmissionCreateWithoutTestCasesInput, SubmissionUncheckedCreateWithoutTestCasesInput>
+    create: XOR<SubmissionCreateWithoutTestcasesResultsInput, SubmissionUncheckedCreateWithoutTestcasesResultsInput>
   }
 
-  export type SubmissionUpsertWithoutTestCasesInput = {
-    update: XOR<SubmissionUpdateWithoutTestCasesInput, SubmissionUncheckedUpdateWithoutTestCasesInput>
-    create: XOR<SubmissionCreateWithoutTestCasesInput, SubmissionUncheckedCreateWithoutTestCasesInput>
+  export type SubmissionUpsertWithoutTestcasesResultsInput = {
+    update: XOR<SubmissionUpdateWithoutTestcasesResultsInput, SubmissionUncheckedUpdateWithoutTestcasesResultsInput>
+    create: XOR<SubmissionCreateWithoutTestcasesResultsInput, SubmissionUncheckedCreateWithoutTestcasesResultsInput>
     where?: SubmissionWhereInput
   }
 
-  export type SubmissionUpdateToOneWithWhereWithoutTestCasesInput = {
+  export type SubmissionUpdateToOneWithWhereWithoutTestcasesResultsInput = {
     where?: SubmissionWhereInput
-    data: XOR<SubmissionUpdateWithoutTestCasesInput, SubmissionUncheckedUpdateWithoutTestCasesInput>
+    data: XOR<SubmissionUpdateWithoutTestcasesResultsInput, SubmissionUncheckedUpdateWithoutTestcasesResultsInput>
   }
 
-  export type SubmissionUpdateWithoutTestCasesInput = {
+  export type SubmissionUpdateWithoutTestcasesResultsInput = {
     id?: StringFieldUpdateOperationsInput | string
     sourceCode?: JsonNullValueInput | InputJsonValue
     language?: StringFieldUpdateOperationsInput | string
@@ -13315,16 +13386,16 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSubmissionNestedInput
-    problem?: ProblemUpdateOneRequiredWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSubmissionsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutSubmissionsNestedInput
   }
 
-  export type SubmissionUncheckedUpdateWithoutTestCasesInput = {
+  export type SubmissionUncheckedUpdateWithoutTestcasesResultsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
@@ -13334,207 +13405,211 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutSolvedProblemInput = {
+  export type UserCreateWithoutProblemsSolvedInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
-    submission?: SubmissionCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutUserInput
+    playlists?: PlaylistCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSolvedProblemInput = {
+  export type UserUncheckedCreateWithoutProblemsSolvedInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
-    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
-    Playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSolvedProblemInput = {
+  export type UserCreateOrConnectWithoutProblemsSolvedInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSolvedProblemInput, UserUncheckedCreateWithoutSolvedProblemInput>
+    create: XOR<UserCreateWithoutProblemsSolvedInput, UserUncheckedCreateWithoutProblemsSolvedInput>
   }
 
-  export type ProblemCreateWithoutProblemSolvedByInput = {
+  export type ProblemCreateWithoutSolvedByInput = {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
-    submission?: SubmissionCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
   }
 
-  export type ProblemUncheckedCreateWithoutProblemSolvedByInput = {
+  export type ProblemUncheckedCreateWithoutSolvedByInput = {
     id?: string
+    userId: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
-    userId: string
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
-    problemPlaylists?: ProblemPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
   }
 
-  export type ProblemCreateOrConnectWithoutProblemSolvedByInput = {
+  export type ProblemCreateOrConnectWithoutSolvedByInput = {
     where: ProblemWhereUniqueInput
-    create: XOR<ProblemCreateWithoutProblemSolvedByInput, ProblemUncheckedCreateWithoutProblemSolvedByInput>
+    create: XOR<ProblemCreateWithoutSolvedByInput, ProblemUncheckedCreateWithoutSolvedByInput>
   }
 
-  export type UserUpsertWithoutSolvedProblemInput = {
-    update: XOR<UserUpdateWithoutSolvedProblemInput, UserUncheckedUpdateWithoutSolvedProblemInput>
-    create: XOR<UserCreateWithoutSolvedProblemInput, UserUncheckedCreateWithoutSolvedProblemInput>
+  export type UserUpsertWithoutProblemsSolvedInput = {
+    update: XOR<UserUpdateWithoutProblemsSolvedInput, UserUncheckedUpdateWithoutProblemsSolvedInput>
+    create: XOR<UserCreateWithoutProblemsSolvedInput, UserUncheckedCreateWithoutProblemsSolvedInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSolvedProblemInput = {
+  export type UserUpdateToOneWithWhereWithoutProblemsSolvedInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSolvedProblemInput, UserUncheckedUpdateWithoutSolvedProblemInput>
+    data: XOR<UserUpdateWithoutProblemsSolvedInput, UserUncheckedUpdateWithoutProblemsSolvedInput>
   }
 
-  export type UserUpdateWithoutSolvedProblemInput = {
+  export type UserUpdateWithoutProblemsSolvedInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
-    submission?: SubmissionUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSolvedProblemInput = {
+  export type UserUncheckedUpdateWithoutProblemsSolvedInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
-    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
-    Playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ProblemUpsertWithoutProblemSolvedByInput = {
-    update: XOR<ProblemUpdateWithoutProblemSolvedByInput, ProblemUncheckedUpdateWithoutProblemSolvedByInput>
-    create: XOR<ProblemCreateWithoutProblemSolvedByInput, ProblemUncheckedCreateWithoutProblemSolvedByInput>
+  export type ProblemUpsertWithoutSolvedByInput = {
+    update: XOR<ProblemUpdateWithoutSolvedByInput, ProblemUncheckedUpdateWithoutSolvedByInput>
+    create: XOR<ProblemCreateWithoutSolvedByInput, ProblemUncheckedCreateWithoutSolvedByInput>
     where?: ProblemWhereInput
   }
 
-  export type ProblemUpdateToOneWithWhereWithoutProblemSolvedByInput = {
+  export type ProblemUpdateToOneWithWhereWithoutSolvedByInput = {
     where?: ProblemWhereInput
-    data: XOR<ProblemUpdateWithoutProblemSolvedByInput, ProblemUncheckedUpdateWithoutProblemSolvedByInput>
+    data: XOR<ProblemUpdateWithoutSolvedByInput, ProblemUncheckedUpdateWithoutSolvedByInput>
   }
 
-  export type ProblemUpdateWithoutProblemSolvedByInput = {
+  export type ProblemUpdateWithoutSolvedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
-    submission?: SubmissionUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
   }
 
-  export type ProblemUncheckedUpdateWithoutProblemSolvedByInput = {
+  export type ProblemUncheckedUpdateWithoutSolvedByInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
-    userId?: StringFieldUpdateOperationsInput | string
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type UserCreateWithoutPlaylistsInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
-    submission?: SubmissionCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPlaylistsInput = {
     id?: string
-    name?: string | null
+    name: string
     email: string
-    image?: string | null
-    role?: $Enums.UserRole
     password: string
+    imageUrl?: string | null
+    role?: $Enums.UserRole
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
-    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
-    solvedProblem?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    problemsSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPlaylistsInput = {
@@ -13542,27 +13617,27 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutPlaylistsInput, UserUncheckedCreateWithoutPlaylistsInput>
   }
 
-  export type ProblemPlaylistCreateWithoutPlaylistInput = {
+  export type ProblemInPlaylistCreateWithoutPlaylistInput = {
     id?: string
     createdAt?: Date | string
-    updateAt?: Date | string
-    problem: ProblemCreateNestedOneWithoutProblemPlaylistsInput
+    updatedAt?: Date | string
+    problem: ProblemCreateNestedOneWithoutProblemsPlaylistInput
   }
 
-  export type ProblemPlaylistUncheckedCreateWithoutPlaylistInput = {
+  export type ProblemInPlaylistUncheckedCreateWithoutPlaylistInput = {
     id?: string
     problemId: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ProblemPlaylistCreateOrConnectWithoutPlaylistInput = {
-    where: ProblemPlaylistWhereUniqueInput
-    create: XOR<ProblemPlaylistCreateWithoutPlaylistInput, ProblemPlaylistUncheckedCreateWithoutPlaylistInput>
+  export type ProblemInPlaylistCreateOrConnectWithoutPlaylistInput = {
+    where: ProblemInPlaylistWhereUniqueInput
+    create: XOR<ProblemInPlaylistCreateWithoutPlaylistInput, ProblemInPlaylistUncheckedCreateWithoutPlaylistInput>
   }
 
-  export type ProblemPlaylistCreateManyPlaylistInputEnvelope = {
-    data: ProblemPlaylistCreateManyPlaylistInput | ProblemPlaylistCreateManyPlaylistInput[]
+  export type ProblemInPlaylistCreateManyPlaylistInputEnvelope = {
+    data: ProblemInPlaylistCreateManyPlaylistInput | ProblemInPlaylistCreateManyPlaylistInput[]
     skipDuplicates?: boolean
   }
 
@@ -13579,64 +13654,64 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPlaylistsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
-    submission?: SubmissionUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPlaylistsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password?: StringFieldUpdateOperationsInput | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
-    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
-    solvedProblem?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    problemsSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ProblemPlaylistUpsertWithWhereUniqueWithoutPlaylistInput = {
-    where: ProblemPlaylistWhereUniqueInput
-    update: XOR<ProblemPlaylistUpdateWithoutPlaylistInput, ProblemPlaylistUncheckedUpdateWithoutPlaylistInput>
-    create: XOR<ProblemPlaylistCreateWithoutPlaylistInput, ProblemPlaylistUncheckedCreateWithoutPlaylistInput>
+  export type ProblemInPlaylistUpsertWithWhereUniqueWithoutPlaylistInput = {
+    where: ProblemInPlaylistWhereUniqueInput
+    update: XOR<ProblemInPlaylistUpdateWithoutPlaylistInput, ProblemInPlaylistUncheckedUpdateWithoutPlaylistInput>
+    create: XOR<ProblemInPlaylistCreateWithoutPlaylistInput, ProblemInPlaylistUncheckedCreateWithoutPlaylistInput>
   }
 
-  export type ProblemPlaylistUpdateWithWhereUniqueWithoutPlaylistInput = {
-    where: ProblemPlaylistWhereUniqueInput
-    data: XOR<ProblemPlaylistUpdateWithoutPlaylistInput, ProblemPlaylistUncheckedUpdateWithoutPlaylistInput>
+  export type ProblemInPlaylistUpdateWithWhereUniqueWithoutPlaylistInput = {
+    where: ProblemInPlaylistWhereUniqueInput
+    data: XOR<ProblemInPlaylistUpdateWithoutPlaylistInput, ProblemInPlaylistUncheckedUpdateWithoutPlaylistInput>
   }
 
-  export type ProblemPlaylistUpdateManyWithWhereWithoutPlaylistInput = {
-    where: ProblemPlaylistScalarWhereInput
-    data: XOR<ProblemPlaylistUpdateManyMutationInput, ProblemPlaylistUncheckedUpdateManyWithoutPlaylistInput>
+  export type ProblemInPlaylistUpdateManyWithWhereWithoutPlaylistInput = {
+    where: ProblemInPlaylistScalarWhereInput
+    data: XOR<ProblemInPlaylistUpdateManyMutationInput, ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistInput>
   }
 
   export type PlaylistCreateWithoutProblemsInput = {
     id?: string
     name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutPlaylistsInput
   }
 
   export type PlaylistUncheckedCreateWithoutProblemsInput = {
     id?: string
     name: string
-    description: string
-    userId: string
-    createAt?: Date | string
-    updateAt?: Date | string
+    description?: string | null
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PlaylistCreateOrConnectWithoutProblemsInput = {
@@ -13644,49 +13719,51 @@ export namespace Prisma {
     create: XOR<PlaylistCreateWithoutProblemsInput, PlaylistUncheckedCreateWithoutProblemsInput>
   }
 
-  export type ProblemCreateWithoutProblemPlaylistsInput = {
+  export type ProblemCreateWithoutProblemsPlaylistInput = {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProblemsInput
-    submission?: SubmissionCreateNestedManyWithoutProblemInput
-    problemSolvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
   }
 
-  export type ProblemUncheckedCreateWithoutProblemPlaylistsInput = {
+  export type ProblemUncheckedCreateWithoutProblemsPlaylistInput = {
     id?: string
+    userId: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
-    userId: string
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
-    problemSolvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
   }
 
-  export type ProblemCreateOrConnectWithoutProblemPlaylistsInput = {
+  export type ProblemCreateOrConnectWithoutProblemsPlaylistInput = {
     where: ProblemWhereUniqueInput
-    create: XOR<ProblemCreateWithoutProblemPlaylistsInput, ProblemUncheckedCreateWithoutProblemPlaylistsInput>
+    create: XOR<ProblemCreateWithoutProblemsPlaylistInput, ProblemUncheckedCreateWithoutProblemsPlaylistInput>
   }
 
   export type PlaylistUpsertWithoutProblemsInput = {
@@ -13703,85 +13780,88 @@ export namespace Prisma {
   export type PlaylistUpdateWithoutProblemsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPlaylistsNestedInput
   }
 
   export type PlaylistUncheckedUpdateWithoutProblemsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemUpsertWithoutProblemPlaylistsInput = {
-    update: XOR<ProblemUpdateWithoutProblemPlaylistsInput, ProblemUncheckedUpdateWithoutProblemPlaylistsInput>
-    create: XOR<ProblemCreateWithoutProblemPlaylistsInput, ProblemUncheckedCreateWithoutProblemPlaylistsInput>
+  export type ProblemUpsertWithoutProblemsPlaylistInput = {
+    update: XOR<ProblemUpdateWithoutProblemsPlaylistInput, ProblemUncheckedUpdateWithoutProblemsPlaylistInput>
+    create: XOR<ProblemCreateWithoutProblemsPlaylistInput, ProblemUncheckedCreateWithoutProblemsPlaylistInput>
     where?: ProblemWhereInput
   }
 
-  export type ProblemUpdateToOneWithWhereWithoutProblemPlaylistsInput = {
+  export type ProblemUpdateToOneWithWhereWithoutProblemsPlaylistInput = {
     where?: ProblemWhereInput
-    data: XOR<ProblemUpdateWithoutProblemPlaylistsInput, ProblemUncheckedUpdateWithoutProblemPlaylistsInput>
+    data: XOR<ProblemUpdateWithoutProblemsPlaylistInput, ProblemUncheckedUpdateWithoutProblemsPlaylistInput>
   }
 
-  export type ProblemUpdateWithoutProblemPlaylistsInput = {
+  export type ProblemUpdateWithoutProblemsPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
-    submission?: SubmissionUpdateManyWithoutProblemNestedInput
-    problemSolvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
   }
 
-  export type ProblemUncheckedUpdateWithoutProblemPlaylistsInput = {
+  export type ProblemUncheckedUpdateWithoutProblemsPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
-    userId?: StringFieldUpdateOperationsInput | string
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
-    problemSolvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyUserInput = {
     id?: string
     title: string
     description: string
-    difficulty: $Enums.Difficulty
+    difficulty: $Enums.ProblemDifficulty
     tags?: ProblemCreatetagsInput | string[]
     examples: JsonNullValueInput | InputJsonValue
     constraints: string
+    companies?: ProblemCreatecompaniesInput | string[]
     hints?: string | null
     editorial?: string | null
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
-    referenceSolution: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13795,11 +13875,11 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ProblemSolvedCreateManyUserInput = {
@@ -13812,64 +13892,67 @@ export namespace Prisma {
   export type PlaylistCreateManyUserInput = {
     id?: string
     name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ProblemUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUpdateManyWithoutProblemNestedInput
-    problemSolvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
-    problemSolvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
-    problemPlaylists?: ProblemPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylist?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    difficulty?: EnumProblemDifficultyFieldUpdateOperationsInput | $Enums.ProblemDifficulty
     tags?: ProblemUpdatetagsInput | string[]
     examples?: JsonNullValueInput | InputJsonValue
     constraints?: StringFieldUpdateOperationsInput | string
+    companies?: ProblemUpdatecompaniesInput | string[]
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     editorial?: NullableStringFieldUpdateOperationsInput | string | null
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
-    referenceSolution?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13882,13 +13965,13 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problem?: ProblemUpdateOneRequiredWithoutSubmissionNestedInput
-    testCases?: TestCaseResultUpdateManyWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problem?: ProblemUpdateOneRequiredWithoutSubmissionsNestedInput
+    testcasesResults?: TestcaseResultsUpdateManyWithoutSubmissionNestedInput
   }
 
   export type SubmissionUncheckedUpdateWithoutUserInput = {
@@ -13900,12 +13983,12 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    testCases?: TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    testcasesResults?: TestcaseResultsUncheckedUpdateManyWithoutSubmissionNestedInput
   }
 
   export type SubmissionUncheckedUpdateManyWithoutUserInput = {
@@ -13917,18 +14000,18 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problem?: ProblemUpdateOneRequiredWithoutProblemSolvedByNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutSolvedByNestedInput
   }
 
   export type ProblemSolvedUncheckedUpdateWithoutUserInput = {
@@ -13948,27 +14031,27 @@ export namespace Prisma {
   export type PlaylistUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problems?: ProblemPlaylistUpdateManyWithoutPlaylistNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInPlaylistUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problems?: ProblemPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubmissionCreateManyProblemInput = {
@@ -13980,11 +14063,11 @@ export namespace Prisma {
     stdout?: string | null
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ProblemSolvedCreateManyProblemInput = {
@@ -13994,11 +14077,11 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ProblemPlaylistCreateManyProblemInput = {
+  export type ProblemInPlaylistCreateManyProblemInput = {
     id?: string
     playlistId: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type SubmissionUpdateWithoutProblemInput = {
@@ -14009,13 +14092,13 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSubmissionNestedInput
-    testCases?: TestCaseResultUpdateManyWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSubmissionsNestedInput
+    testcasesResults?: TestcaseResultsUpdateManyWithoutSubmissionNestedInput
   }
 
   export type SubmissionUncheckedUpdateWithoutProblemInput = {
@@ -14027,12 +14110,12 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    testCases?: TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    testcasesResults?: TestcaseResultsUncheckedUpdateManyWithoutSubmissionNestedInput
   }
 
   export type SubmissionUncheckedUpdateManyWithoutProblemInput = {
@@ -14044,18 +14127,18 @@ export namespace Prisma {
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUpdateWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSolvedProblemNestedInput
+    user?: UserUpdateOneRequiredWithoutProblemsSolvedNestedInput
   }
 
   export type ProblemSolvedUncheckedUpdateWithoutProblemInput = {
@@ -14072,113 +14155,117 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemPlaylistUpdateWithoutProblemInput = {
+  export type ProblemInPlaylistUpdateWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     playlist?: PlaylistUpdateOneRequiredWithoutProblemsNestedInput
   }
 
-  export type ProblemPlaylistUncheckedUpdateWithoutProblemInput = {
+  export type ProblemInPlaylistUncheckedUpdateWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemPlaylistUncheckedUpdateManyWithoutProblemInput = {
+  export type ProblemInPlaylistUncheckedUpdateManyWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TestCaseResultCreateManySubmissionInput = {
+  export type TestcaseResultsCreateManySubmissionInput = {
     id?: string
-    testCase: number
-    passed: boolean
+    testCaseNumber: number
+    isPassed: boolean
+    stdin: string
     stdout?: string | null
-    expected: string
+    expectedOutput: string
     stderr?: string | null
     compileOutput?: string | null
-    status: string
-    memory?: string | null
+    status?: string | null
     time?: string | null
+    memory?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type TestCaseResultUpdateWithoutSubmissionInput = {
+  export type TestcaseResultsUpdateWithoutSubmissionInput = {
     id?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
+    expectedOutput?: StringFieldUpdateOperationsInput | string
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TestCaseResultUncheckedUpdateWithoutSubmissionInput = {
+  export type TestcaseResultsUncheckedUpdateWithoutSubmissionInput = {
     id?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
+    expectedOutput?: StringFieldUpdateOperationsInput | string
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TestCaseResultUncheckedUpdateManyWithoutSubmissionInput = {
+  export type TestcaseResultsUncheckedUpdateManyWithoutSubmissionInput = {
     id?: StringFieldUpdateOperationsInput | string
-    testCase?: IntFieldUpdateOperationsInput | number
-    passed?: BoolFieldUpdateOperationsInput | boolean
+    testCaseNumber?: IntFieldUpdateOperationsInput | number
+    isPassed?: BoolFieldUpdateOperationsInput | boolean
+    stdin?: StringFieldUpdateOperationsInput | string
     stdout?: NullableStringFieldUpdateOperationsInput | string | null
-    expected?: StringFieldUpdateOperationsInput | string
+    expectedOutput?: StringFieldUpdateOperationsInput | string
     stderr?: NullableStringFieldUpdateOperationsInput | string | null
     compileOutput?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    memory?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
+    memory?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProblemPlaylistCreateManyPlaylistInput = {
+  export type ProblemInPlaylistCreateManyPlaylistInput = {
     id?: string
     problemId: string
     createdAt?: Date | string
-    updateAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ProblemPlaylistUpdateWithoutPlaylistInput = {
+  export type ProblemInPlaylistUpdateWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problem?: ProblemUpdateOneRequiredWithoutProblemPlaylistsNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problem?: ProblemUpdateOneRequiredWithoutProblemsPlaylistNestedInput
   }
 
-  export type ProblemPlaylistUncheckedUpdateWithoutPlaylistInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    problemId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProblemPlaylistUncheckedUpdateManyWithoutPlaylistInput = {
+  export type ProblemInPlaylistUncheckedUpdateWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

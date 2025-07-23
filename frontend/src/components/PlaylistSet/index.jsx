@@ -1,49 +1,43 @@
-import { useState } from "react";
-import {
-  BookMarked,
-  List,
-  Play,
-  PlusCircle,
-  Shuffle,
-  Trash2,
-  UserCircle,
-} from "lucide-react";
-import toast from "react-hot-toast";
-import {
-  useDeletePlaylistById,
-  useGetAllPlaylists,
-} from "../../hooks/ReactQuery/usePlaylistApi";
-import { MyLoader, DeleteModal } from "../common";
-import { useAuthStore } from "../../stores/useAuthStore";
-import queryClient from "../../utils/queryClient";
-import { QUERY_KEYS } from "../../constants/keys";
-import timeAgo from "../../utils/timeAgo";
-import CreatePlaylistModal from "./CreatePlaylistModel";
-import { useNavigate } from "react-router-dom";
+import { BookMarked, List, Play, PlusCircle, Shuffle, Trash2, UserCircle } from 'lucide-react';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useDeletePlaylistById, useGetAllPlaylists } from '../../hooks/reactQuery/usePlaylistApi';
+import { DeleteModal, MyLoader } from '../common';
+import { useAuthStore } from '../../stores/useAuthStore';
+import { useNavigate } from 'react-router-dom';
+import queryClient from '../../utils/queryClient';
+import { QUERY_KEYS } from '../../constants/keys';
+import timeAgo from '../../utils/timeAgo';
+import CreatePlaylistModal from './CreatePlaylistModal';
 
 const PlaylistSet = () => {
   const [playlistToDeleted, setPlaylistToDeleted] = useState(null);
+
   const { mutate: deletePlaylist } = useDeletePlaylistById();
   const { data, isLoading } = useGetAllPlaylists();
+
   const navigate = useNavigate();
+
   const { isAuthenticated, removePlaylist } = useAuthStore();
 
   const handleDeletePlaylist = (id) => {
     if (!id) {
-      toast.error("Please select a playlist to perform this action");
+      toast.error('Please select a playlist to perform this action');
       return;
     }
     deletePlaylist(id, {
       onSuccess: ({ message }) => {
-        toast.success(message || "Playlist deleted successfully");
+        toast.success(message || 'Playlist deleted successfully');
         queryClient.invalidateQueries(QUERY_KEYS.PLAYLISTS);
         removePlaylist(id);
       },
       onError: (err) => {
-        toast.error(err?.response?.data?.error || "Something went wrong");
+        toast.error(err?.response?.data?.error || 'Something went wrong');
       },
     });
   };
+  // console.log(data);
+
   if (isLoading) return <MyLoader />;
 
   return (
@@ -77,18 +71,12 @@ const PlaylistSet = () => {
 
                 <div
                   className="tooltip tooltip-bottom"
-                  data-tip={
-                    isAuthenticated
-                      ? "Create a new playlist"
-                      : "Login to create playlist"
-                  }
+                  data-tip={isAuthenticated ? 'Create a new playlist' : 'Login to create playlist'}
                 >
                   <button
                     className="btn btn-primary gap-2"
                     type="button"
-                    onClick={() =>
-                      document.getElementById("create_playlist").showModal()
-                    }
+                    onClick={() => document.getElementById('create_playlist').showModal()}
                     disabled={!isAuthenticated}
                   >
                     <PlusCircle className="w-5 h-5" />
@@ -125,9 +113,7 @@ const PlaylistSet = () => {
                               <Play className="w-5 h-5 text-primary" />
                             </div>
                             <div>
-                              <h3 className="card-title text-xl">
-                                {playlist?.name}
-                              </h3>
+                              <h3 className="card-title text-xl">{playlist?.name}</h3>
                               <div className="flex items-center gap-2 text-sm text-base-content/60">
                                 <UserCircle className="w-4 h-4" />
                                 {playlist?.user?.name}
@@ -136,9 +122,7 @@ const PlaylistSet = () => {
                           </div>
                         </div>
 
-                        <p className="text-base-content/70 line-clamp-2">
-                          {playlist?.description}
-                        </p>
+                        <p className="text-base-content/70 line-clamp-2">{playlist?.description}</p>
 
                         <div className="flex items-center justify-between mb-4">
                           <div className="stat p-2">
@@ -158,15 +142,11 @@ const PlaylistSet = () => {
                           <div
                             className="tooltip tooltip-bottom"
                             data-tip={
-                              isAuthenticated
-                                ? "Explore the playlist"
-                                : "Login to explore playlist"
+                              isAuthenticated ? 'Explore the playlist' : 'Login to explore playlist'
                             }
                           >
                             <button
-                              onClick={() =>
-                                navigate(`/playlists/${playlist?.id}`)
-                              }
+                              onClick={() => navigate(`/playlists/${playlist?.id}`)}
                               type="button"
                               className="btn btn-primary btn-sm gap-2 flex-1"
                               disabled={!isAuthenticated}
@@ -178,19 +158,13 @@ const PlaylistSet = () => {
 
                           <div
                             className="tooltip tooltip-bottom"
-                            data-tip={
-                              isAuthenticated
-                                ? "Delete the playlist"
-                                : "Unauthorized"
-                            }
+                            data-tip={isAuthenticated ? 'Delete the playlist' : 'Unauthorized'}
                           >
                             <button
                               type="button"
                               onClick={() => {
                                 setPlaylistToDeleted(playlist);
-                                document
-                                  .getElementById("delete_playlist_modal")
-                                  .showModal();
+                                document.getElementById('delete_playlist_modal').showModal();
                               }}
                               className="btn btn-error btn-sm"
                               disabled={!isAuthenticated}
@@ -208,18 +182,13 @@ const PlaylistSet = () => {
                   <div className="p-4 bg-base-200 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <BookMarked className="w-8 h-8 text-base-content/40" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    No playlists yet
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">No playlists yet</h3>
                   <p className="text-base-content/60 mb-4">
-                    Create your first playlist to organize your favorite
-                    problems
+                    Create your first playlist to organize your favorite problems
                   </p>
                   <button
                     className="btn btn-primary gap-2"
-                    onClick={() =>
-                      document.getElementById("create_playlist").showModal()
-                    }
+                    onClick={() => document.getElementById('create_playlist').showModal()}
                     disabled={!isAuthenticated}
                   >
                     <PlusCircle className="w-5 h-5" />

@@ -1,81 +1,195 @@
 import { db } from "../libs/db.js";
-import {
-  submitBatch,
-  pollBatchResults,
-  getLanguageName,
-} from "../libs/judge0.lib.js";
 
-export const executeCode = async (req, res) => {
+import {
+  getRapidApiLanguageName,
+  prepareJudge0SubmissionsAndReturnTokens,
+} from "../libs/rapidApi.lib.js";
+
+import {
+  JUDGE0_STATUS_MAP,
+  JUDGE0_STATUS_PRIORITY_ORDER,
+} from "../utils/constants.js";
+
+export const executeCodeForRun = async (req, res) => {
+  /*
+   * Take input from body - source code, language, stdin, expected output
+   * validate testcases (stdin & expected output) - stdin = ['inp 1', 'inp 2', ...]
+   * get language id
+   * prepare submission
+   * submit to judge0
+   * analyze test case results
+   * return test case results
+   *
+   * For submission - same as run + db operation
+   * store the submission in database (submission model)
+   * if all test cases passed marked problem as solved by adding to problemSolved
+   * save individual test case results to testcaseResults
+   * add all testcase results to submission
+   */
+
+  const { sourceCode, languageId, stdin, expectedOutputs } = req.body;
+
+  if (
+    !Array.isArray(stdin) ||
+    stdin.length === 0 ||
+    !Array.isArray(expectedOutputs) ||
+    expectedOutputs.length === 0 ||
+    stdin.length !== expectedOutputs.length
+  ) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid or missing test cases.",
+    });
+  }
+
   try {
-    const { source_code, language_id, stdin, expected_outputs, problemId } =
-      req.body;
-    const userId = req.user.id;
-    // 1. Validate test cases
-    if (
-      !Array.isArray(stdin) ||
-      stdin.length === 0 ||
-      !Array.isArray(expected_outputs) ||
-      expected_outputs.length !== stdin.length
-    ) {
-      return res.status(400).json({ error: "Invalid or Missing test cases" });
-    }
-    // 2. Prepare each test cases for judge0 batch submission
-    const submissions = stdin.map((input) => ({
-      source_code,
-      language_id,
-      stdin: input,
+    const testcases = stdin.map((input, index) => ({
+      input,
+      output: expectedOutputs[index],
     }));
-    // 3. Send batch of submissions to judge0
-    const submitResponse = await submitBatch(submissions);
-    const tokens = submitResponse.map((res) => res.token);
-    // 4. Poll judge0 for results of all submitted test cases
-    const results = await pollBatchResults(tokens);
-    //  Analyze test case results
-    let allPassed = true;
-    const detailedResults = results.map((result, i) => {
+
+    const submissionsResults = await prepareJudge0SubmissionsAndReturnTokens(
+      testcases,
+      languageId,
+      sourceCode
+    );
+
+    let isAllPassed = true;
+
+    const detailedResults = submissionsResults.map((result, idx) => {
       const stdout = result.stdout?.trim();
-      const expected_output = expected_outputs[i]?.trim();
-      const passed = stdout === expected_output;
-      if (!passed) allPassed = false;
+      const expectedOutput = expectedOutputs[idx]?.trim();
+      const passed = stdout === expectedOutput;
+
+      if (!passed) isAllPassed = false;
+
       return {
-        testCase: i + 1,
-        passed,
+        testCaseNumber: idx + 1,
+        isPassed: passed,
         stdout,
-        expected: expected_output,
+        expectedOutput,
         stderr: result.stderr || null,
-        compile_output: result.compile_output || null,
+        compileOutput: result.compile_output?.trim() || null,
         status: result.status.description,
-        memory: result.memory ? `${result.memory}KB  ` : undefined,
-        time: result.time ? `${result.time} Seconds` : undefined,
+        time: result.time ? `${result.time}` : 0,
+        memory: result.memory ? `${result.memory}` : 0,
       };
     });
-    // store submission summary
-    const submission = await db.submission.create({
+
+    return res.status(200).json({
+      success: isAllPassed,
+      message: isAllPassed ? "All test cases passed." : "Test cases failed.",
+      data: detailedResults,
+    });
+  } catch (error) {
+    console.log("Error while executing code for run", error);
+    return res.status(500).json({
+      success: false,
+      error: "Error while executing code.",
+    });
+  }
+};
+
+export const executeCodeForSubmit = async (req, res) => {
+  /*
+   * For submission - same as run + db operation
+   * store the submission in database (submission model)
+   * if all test cases passed marked problem as solved by adding to problemSolved
+   * save individual test case results to testcaseResults
+   */
+
+  const { id: userId } = req.user;
+
+  const { sourceCode, languageId, problemId } = req.body;
+
+  try {
+    const problem = await db.Problem.findUnique({
+      where: {
+        id: problemId,
+      },
+    });
+
+    if (!problem) {
+      return res.status(404).json({
+        success: false,
+        error: "Problem not found.",
+      });
+    }
+
+    const submissionsResults = await prepareJudge0SubmissionsAndReturnTokens(
+      problem.testcases,
+      languageId,
+      sourceCode
+    );
+    // console.log(submissionsResults);
+    let isAllPassed = true;
+
+    const detailedResults = submissionsResults.map((result, idx) => {
+      const stdout = result.stdout?.trim();
+      const expectedOutput = problem.testcases[idx].output?.trim();
+      const passed = stdout === expectedOutput;
+
+      if (!passed) isAllPassed = false;
+
+      return {
+        testCaseNumber: idx + 1,
+        isPassed: passed,
+        stdin: problem.testcases[idx].input,
+        stdout,
+        expectedOutput,
+        stderr: result.stderr || null,
+        compileOutput: result.compile_output?.trim() || null,
+        status: result.status.description,
+        time: result.time ? `${result.time}` : undefined,
+        memory: result.memory ? `${result.memory}` : undefined,
+      };
+    });
+
+    const finalStatusId = submissionsResults.reduce((worstId, result) => {
+      const currentId = result.status?.id;
+
+      const currentPriority = JUDGE0_STATUS_PRIORITY_ORDER.indexOf(currentId);
+      const worstPriority = JUDGE0_STATUS_PRIORITY_ORDER.indexOf(worstId);
+
+      // If current has higher priority (i.e. lower index), update
+      return currentPriority !== -1 && currentPriority < worstPriority
+        ? currentId
+        : worstId;
+    }, 3); // Default is 3 (Accepted)
+
+    const submission = await db.Submission.create({
       data: {
         userId,
         problemId,
-        sourceCode: source_code,
-        language: getLanguageName(language_id),
-        stdin: stdin.join("\n"),
-        stdout: JSON.stringify(detailedResults.map((r) => r.stdout)),
-        stderr: detailedResults.some((r) => r.stderr)
-          ? JSON.stringify(detailedResults.map((r) => r.stderr))
+        sourceCode,
+        language: getRapidApiLanguageName(languageId),
+        stdin: JSON.stringify(problem.testcases.map(({ input }) => input)),
+        stdout: JSON.stringify(detailedResults.map(({ stdout }) => stdout)),
+        stderr: detailedResults.some(({ stderr }) => stderr)
+          ? JSON.stringify(detailedResults.map(({ stderr }) => stderr))
           : null,
-        compileOutput: detailedResults.some((r) => r.compile_output)
-          ? JSON.stringify(detailedResults.map((r) => r.compile_output))
+        compileOutput: detailedResults.some(
+          ({ compileOutput }) => compileOutput
+        )
+          ? JSON.stringify(
+              detailedResults.map(({ compileOutput }) => compileOutput)
+            )
           : null,
-        status: allPassed ? "Accepted" : "Wrong Answer",
-        memory: detailedResults.some((r) => r.memory)
-          ? JSON.stringify(detailedResults.map((r) => r.memory))
+        time: detailedResults.some(({ time }) => time)
+          ? JSON.stringify(detailedResults.map(({ time }) => time))
           : null,
-        time: detailedResults.some((r) => r.time)
-          ? JSON.stringify(detailedResults.map((r) => r.time))
+        memory: detailedResults.some(({ memory }) => memory)
+          ? JSON.stringify(detailedResults.map(({ memory }) => memory))
           : null,
+        status: JUDGE0_STATUS_MAP[finalStatusId],
       },
     });
-    // If All passed = true mark problem as solved for the current user
-    if (allPassed) {
-      await db.problemSolved.upsert({
+
+    // console.log('New submission created', submission);
+
+    //   problem solved for the current user
+    if (isAllPassed) {
+      await db.ProblemSolved.upsert({
         where: {
           userId_problemId: {
             userId,
@@ -89,38 +203,90 @@ export const executeCode = async (req, res) => {
         },
       });
     }
-    // 8. Save individual test case results  using detailedResult
-    const testCaseResults = detailedResults.map((result) => ({
+
+    //   save each test case results
+    const testcaseResults = detailedResults.map((result) => ({
       submissionId: submission.id,
-      testCase: result.testCase,
-      passed: result.passed,
+      testCaseNumber: result.testCaseNumber,
+      isPassed: result.isPassed,
+      stdin: result.stdin,
       stdout: result.stdout,
-      expected: result.expected,
+      expectedOutput: result.expectedOutput,
       stderr: result.stderr,
-      compileOutput: result.compile_output,
+      compileOutput: result.compileOutput,
       status: result.status,
-      memory: result.memory,
       time: result.time,
+      memory: result.memory,
     }));
-    await db.testCaseResult.createMany({
-      data: testCaseResults,
+
+    await db.TestcaseResults.createMany({
+      data: testcaseResults,
     });
-    // 9. Fetch full submission with test cases
-    const submissionWithTestCase = await db.submission.findUnique({
+
+    //   find the submission with testcase results
+    const submissionWithTestcaseResults = await db.Submission.findUnique({
       where: {
         id: submission.id,
       },
       include: {
-        testCases: true,
+        testcasesResults: true,
       },
     });
-    res.status(200).json({
+
+    // console.log(isAllPassed);
+
+    // console.log(submissionWithTestcaseResults);
+
+    const firstFailedResult =
+      submissionWithTestcaseResults.testcasesResults.find(
+        (result) => !result.isPassed
+      );
+
+    const totalTestcasesCount =
+      submissionWithTestcaseResults.testcasesResults.length;
+    const passedTestcasesCount =
+      submissionWithTestcaseResults.testcasesResults.filter(
+        (tc) => tc?.isPassed
+      ).length;
+
+    if (firstFailedResult) {
+      return res.status(200).json({
+        success: false,
+        message: `Submission failed for test case ${firstFailedResult.testCaseNumber}.`,
+        data: {
+          ...firstFailedResult,
+          submittedOn: submissionWithTestcaseResults.updatedAt,
+          totalTestcasesCount,
+          passedTestcasesCount,
+          isAllPassed,
+        },
+      });
+    }
+
+    const summaryOfSubmission =
+      submissionWithTestcaseResults.testcasesResults.reduce((final, result) => {
+        final.time = (final.time || 0) + Number(result.time); // in second
+        final.memory = (final.memory || 0) + Number(result.memory); // in KB
+        final.status = result.status;
+        return final;
+      }, {});
+
+    return res.status(200).json({
       success: true,
-      message: "Code Executed! Successfully!",
-      submission: submissionWithTestCase,
+      message: "Submission accepted.",
+      data: {
+        ...summaryOfSubmission,
+        submittedOn: submissionWithTestcaseResults.updatedAt,
+        totalTestcasesCount,
+        passedTestcasesCount,
+        isAllPassed,
+      },
     });
   } catch (error) {
-    console.error("this is the error", error.message);
-    res.status(500).json({ error: "Failed to execute code" });
+    console.log("Error while executing code for submit", error);
+    return res.status(500).json({
+      success: false,
+      error: "Error while submitting code.",
+    });
   }
 };
