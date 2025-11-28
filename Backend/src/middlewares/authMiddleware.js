@@ -76,7 +76,7 @@ export const checkAdmin = async (req, res, next) => {
 export const requireAuth = (req, res, next) => {
   const token = req.cookies["x-auth-token"];
   console.log("Cookies:", req.cookies);
-console.log("Token from cookie:", req.cookies["x-auth-token"]);
+  console.log("Token from cookie:", req.cookies["x-auth-token"]);
 
   if (!token) {
     return res.status(401).json({
