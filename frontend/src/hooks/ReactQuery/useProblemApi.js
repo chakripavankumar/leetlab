@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from 'react-query';
-import { QUERY_KEYS } from '../../constants/keys';
-import problemApis from '../../apis/problemApi';
+import { useMutation, useQuery } from "react-query";
+import { QUERY_KEYS } from "../../constants/keys";
+import problemApis from "../../apis/problemApi";
 
 export const useGetAllProblems = () =>
   useQuery({

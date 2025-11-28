@@ -1,13 +1,13 @@
-import { BookMarked, PlusCircle } from 'lucide-react';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
-import { useCreatePlaylist } from '../../hooks/reactQuery/usePlaylistApi';
-import queryClient from '../../utils/queryClient';
-import { QUERY_KEYS } from '../../constants/keys';
-import { useAuthStore } from '../../stores/useAuthStore';
+import { BookMarked, PlusCircle } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useCreatePlaylist } from "../../hooks/reactQuery/usePlaylistApi";
+import queryClient from "../../utils/queryClient";
+import { QUERY_KEYS } from "../../constants/keys";
+import { useAuthStore } from "../../stores/useAuthStore";
 
-const CreatePlaylistModal = ({ modalId = 'create_playlist' }) => {
-  const [formData, setFormData] = useState({ name: '', description: '' });
+const CreatePlaylistModal = ({ modalId = "create_playlist" }) => {
+  const [formData, setFormData] = useState({ name: "", description: "" });
   const { mutate: createPlaylist } = useCreatePlaylist();
   const { addPlaylist } = useAuthStore();
 
@@ -15,21 +15,21 @@ const CreatePlaylistModal = ({ modalId = 'create_playlist' }) => {
     e.preventDefault();
 
     if (!formData.name || !formData.description) {
-      toast.error('Please fill in all the fields');
+      toast.error("Please fill in all the fields");
       return;
     }
 
     createPlaylist(formData, {
       onSuccess: ({ message, data }) => {
-        toast.success(message || 'Playlist created successfully');
-        setFormData({ name: '', description: '' });
+        toast.success(message || "Playlist created successfully");
+        setFormData({ name: "", description: "" });
         const modal = document.getElementById(modalId);
         if (modal) modal.close();
         queryClient.invalidateQueries(QUERY_KEYS.PLAYLISTS);
         addPlaylist({ id: data?.id, name: data?.name });
       },
       onError: (err) => {
-        toast.error(err.response?.data?.error || 'Something went wrong');
+        toast.error(err.response?.data?.error || "Something went wrong");
       },
     });
   };
@@ -38,7 +38,9 @@ const CreatePlaylistModal = ({ modalId = 'create_playlist' }) => {
     <dialog id={modalId} className="modal">
       <div className="modal-box">
         <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
         </form>
 
         <div className="flex items-center gap-3 mb-6">
@@ -59,7 +61,9 @@ const CreatePlaylistModal = ({ modalId = 'create_playlist' }) => {
               placeholder="Enter playlist name"
               className="input input-bordered w-full"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               required
             />
           </div>
@@ -73,7 +77,9 @@ const CreatePlaylistModal = ({ modalId = 'create_playlist' }) => {
               placeholder="Enter playlist description"
               className="textarea textarea-bordered w-full h-24"
               value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
             />
           </div>
 

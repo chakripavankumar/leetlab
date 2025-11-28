@@ -6,14 +6,13 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
-} from 'lucide-react';
-import { useState } from 'react';
+} from "lucide-react";
+import { useState } from "react";
 
 const PaginatedTable = ({
   data = [],
   columns = [],
   renderRow,
-  // itemsPerPage = 10,
   sortConfig = {},
   onSortChange = () => {},
   noDataMessage = null,
@@ -40,7 +39,8 @@ const PaginatedTable = ({
   };
 
   const renderSortIcon = (key) => {
-    if (sortConfig.key !== key) return <ArrowUpDown className="w-4 h-4 text-base-content/40" />;
+    if (sortConfig.key !== key)
+      return <ArrowUpDown className="w-4 h-4 text-base-content/40" />;
     return sortConfig.asc ? (
       <ArrowUp className="w-4 h-4 text-primary" />
     ) : (
@@ -60,17 +60,17 @@ const PaginatedTable = ({
     } else {
       if (currentPage <= 3) {
         for (let i = 1; i <= 4; i++) pages.push(i);
-        pages.push('...');
+        pages.push("...");
         pages.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
         pages.push(1);
-        pages.push('...');
+        pages.push("...");
         for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i);
       } else {
         pages.push(1);
-        pages.push('...');
+        pages.push("...");
         for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i);
-        pages.push('...');
+        pages.push("...");
         pages.push(totalPages);
       }
     }
@@ -86,13 +86,15 @@ const PaginatedTable = ({
       {data.length > 0 && (
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
           <div className="text-sm text-base-content/70">
-            Showing <span className="font-medium">{startIdx + 1}</span> to{' '}
-            <span className="font-medium">{Math.min(startIdx + itemsPerPage, data.length)}</span> of{' '}
-            <span className="font-medium">{data.length}</span> results
+            Showing <span className="font-medium">{startIdx + 1}</span> to{" "}
+            <span className="font-medium">
+              {Math.min(startIdx + itemsPerPage, data.length)}
+            </span>{" "}
+            of <span className="font-medium">{data.length}</span> results
           </div>
           {totalPages > 1 && (
             <div className="text-sm text-base-content/70">
-              Page <span className="font-medium">{currentPage}</span> of{' '}
+              Page <span className="font-medium">{currentPage}</span> of{" "}
               <span className="font-medium">{totalPages}</span>
             </div>
           )}
@@ -113,8 +115,8 @@ const PaginatedTable = ({
                       py-4 px-6 text-left font-semibold text-base-content/90 border-b border-base-300
                       ${
                         col.sortKey
-                          ? 'cursor-pointer select-none hover:bg-base-300/50 transition-colors'
-                          : ''
+                          ? "cursor-pointer select-none hover:bg-base-300/50 transition-colors"
+                          : ""
                       }
                     `}
                   >
@@ -133,13 +135,22 @@ const PaginatedTable = ({
 
             <tbody>
               {currentData.length > 0
-                ? currentData.map((item, index) => renderRow(item, startIdx + index))
+                ? currentData.map((item, index) =>
+                    renderRow(item, startIdx + index)
+                  )
                 : noDataMessage || (
                     <tr>
-                      <td colSpan={columns.length} className="text-center py-12">
+                      <td
+                        colSpan={columns.length}
+                        className="text-center py-12"
+                      >
                         <div className="space-y-2">
-                          <div className="text-4xl text-base-content/20">📄</div>
-                          <p className="text-lg text-base-content/70">No data available</p>
+                          <div className="text-4xl text-base-content/20">
+                            📄
+                          </div>
+                          <p className="text-lg text-base-content/70">
+                            No data available
+                          </p>
                           <p className="text-sm text-base-content/50">
                             There are no items to display at the moment.
                           </p>
@@ -207,14 +218,16 @@ const PaginatedTable = ({
                     btn btn-sm
                     ${
                       page === currentPage
-                        ? 'btn-primary'
-                        : page === '...'
-                        ? 'btn-ghost cursor-default'
-                        : 'btn-ghost hover:btn-primary hover:btn-outline'
+                        ? "btn-primary"
+                        : page === "..."
+                        ? "btn-ghost cursor-default"
+                        : "btn-ghost hover:btn-primary hover:btn-outline"
                     }
                   `}
-                  onClick={() => typeof page === 'number' && handlePageChange(page)}
-                  disabled={page === '...'}
+                  onClick={() =>
+                    typeof page === "number" && handlePageChange(page)
+                  }
+                  disabled={page === "..."}
                 >
                   {page}
                 </button>
@@ -253,11 +266,11 @@ const PaginatedTable = ({
               className="input input-sm input-bordered w-16 text-center"
               placeholder={currentPage.toString()}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
+                if (e.key === "Enter") {
                   const page = parseInt(e.target.value);
                   if (page && page >= 1 && page <= totalPages) {
                     handlePageChange(page);
-                    e.target.value = '';
+                    e.target.value = "";
                   }
                 }
               }}

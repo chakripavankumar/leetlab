@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const Card = ({ title, subTitle = '', children }) => {
+const Card = ({ title, subTitle = "", children }) => {
   return (
     <div className="space-y-6">
       <div className="card card-xl bg-base-100 shadow-xl">

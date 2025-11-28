@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query';
-import { QUERY_KEYS } from '../../constants/keys';
-import submissionApis from '../../apis/submissionApis';
+import { useQuery } from "react-query";
+import { QUERY_KEYS } from "../../constants/keys";
+import submissionApis from "../../apis/submissionApis";
 
 export const useGetAllSubmissions = () =>
   useQuery({

@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from 'react-query';
-import authApis from '../../apis/authApis';
-import { QUERY_KEYS } from '../../constants/keys';
+import { useMutation, useQuery } from "react-query";
+import authApis from "../../apis/authApis";
+import { QUERY_KEYS } from "../../constants/keys";
 
 export const useAuthLogin = () => useMutation(authApis.login);
 

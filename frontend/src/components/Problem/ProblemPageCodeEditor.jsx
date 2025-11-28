@@ -1,26 +1,39 @@
-import { CheckCircle, Fullscreen, Maximize2, Minimize2, Share2, Code, Code2 } from 'lucide-react';
-import { SUPPORTED_LANGUAGES } from '../../constants/problemDetails';
-import CodeEditor from '../common/CodeEditor';
-import useFullScreen from '../../hooks/useFullScreen';
-import { useEffect, useState } from 'react';
-import { CopyButton } from '../common';
-import useCodeEditorStore from '../../stores/useCodeEditorStore';
-import { useParams } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import {
+  CheckCircle,
+  Fullscreen,
+  Maximize2,
+  Minimize2,
+  Share2,
+  Code,
+  Code2,
+} from "lucide-react";
+import { SUPPORTED_LANGUAGES } from "../../constants/problemDetails";
+import CodeEditor from "../common/CodeEditor";
+import useFullScreen from "../../hooks/useFullScreen";
+import { useEffect, useState } from "react";
+import { CopyButton } from "../common";
+import useCodeEditorStore from "../../stores/useCodeEditorStore";
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(SUPPORTED_LANGUAGES[0].value);
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    SUPPORTED_LANGUAGES[0].value
+  );
   const [isFullScreen, handleFullScreen] = useFullScreen();
-  const [code, setCode] = useState(codeSnippets[SUPPORTED_LANGUAGES[0].value] || '');
+  const [code, setCode] = useState(
+    codeSnippets[SUPPORTED_LANGUAGES[0].value] || ""
+  );
 
-  const { codeMap, setCodeMap, lastEditedLanguage, setLastEditedLanguage } = useCodeEditorStore();
+  const { codeMap, setCodeMap, lastEditedLanguage, setLastEditedLanguage } =
+    useCodeEditorStore();
 
   const { problemId } = useParams();
 
   useEffect(() => {
     if (!problemId) return;
     const storedCode = codeMap[`${problemId}:${selectedLanguage}`];
-    const fallbackCode = codeSnippets[selectedLanguage] || '';
+    const fallbackCode = codeSnippets[selectedLanguage] || "";
     setCode(storedCode ?? fallbackCode);
 
     setSelectedLanguage(lastEditedLanguage);
@@ -71,7 +84,7 @@ const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
                   if (problemId) {
                     const shareUrl = `${window.location.origin}/problems/${problemId}`;
                     navigator.clipboard.writeText(shareUrl);
-                    toast.success('Problem link copied to clipboard!');
+                    toast.success("Problem link copied to clipboard!");
                   }
                 }}
                 className="btn btn-ghost btn-sm tooltip tooltip-bottom"
@@ -98,7 +111,7 @@ const ProblemPageCodeEditor = ({ codeSnippets = {} }) => {
                 ) : (
                   <Maximize2 className="w-4 h-4" />
                 )}
-                {isFullScreen ? 'Minimize' : 'Maximize'}
+                {isFullScreen ? "Minimize" : "Maximize"}
               </button>
             </div>
           </div>

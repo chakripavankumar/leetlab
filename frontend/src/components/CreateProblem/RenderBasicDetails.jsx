@@ -1,10 +1,13 @@
-import { Card } from '../common';
-import TabNavigationButtons from '../common/TabNavigationButtons';
+import { Card } from "../common";
+import TabNavigationButtons from "../common/TabNavigationButtons";
 
 const RenderBasicDetails = ({ register, errors }) => {
   return (
     <>
-      <Card title="Problem Details" subTitle="Basic information about the problem">
+      <Card
+        title="Problem Details"
+        subTitle="Basic information about the problem"
+      >
         <div className="form-control w-full space-y-3">
           <div>
             <label htmlFor="title" className="label">
@@ -14,17 +17,21 @@ const RenderBasicDetails = ({ register, errors }) => {
               type="text"
               placeholder="e.g., Two Sum"
               className="input w-full"
-              {...register('title')}
-              // value={title}
-              // onChange={(e) => setTitle(e.target.value)}
+              {...register("title")}
             />
             {errors.title && (
-              <span className="label-text-alt text-error text-sm">{errors.title?.message}</span>
+              <span className="label-text-alt text-error text-sm">
+                {errors.title?.message}
+              </span>
             )}
           </div>
           <div>
             <label className="label">Difficulty</label>
-            <select defaultValue="title" className="select w-full" {...register('difficulty')}>
+            <select
+              defaultValue="title"
+              className="select w-full"
+              {...register("difficulty")}
+            >
               <option disabled value="">
                 Select Difficulty
               </option>
@@ -33,7 +40,9 @@ const RenderBasicDetails = ({ register, errors }) => {
               <option value="HARD">Hard</option>
             </select>
             {errors.difficulty && (
-              <span className="label-text-alt text-error text-sm">{errors.difficulty.message}</span>
+              <span className="label-text-alt text-error text-sm">
+                {errors.difficulty.message}
+              </span>
             )}
           </div>
           <div>
@@ -42,7 +51,7 @@ const RenderBasicDetails = ({ register, errors }) => {
               type="text"
               placeholder="Describe the problem in details"
               className="textarea w-full"
-              {...register('description')}
+              {...register("description")}
               // value={title}
               // onChange={(e) => setTitle(e.target.value)}
             />
@@ -58,7 +67,7 @@ const RenderBasicDetails = ({ register, errors }) => {
               type="text"
               placeholder="e.g., 0 <= nums[i] <= 1000"
               className="textarea w-full"
-              {...register('constraints')}
+              {...register("constraints")}
               // value={title}
               // onChange={(e) => setTitle(e.target.value)}
             />

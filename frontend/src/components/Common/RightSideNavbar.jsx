@@ -1,15 +1,24 @@
-import React from 'react';
-import { useAuthStore } from '../../stores/useAuthStore';
-import routes from '../../routes';
-import { Bell, BookMarked, BookOpen, Code, LogOut, Trophy, User } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuthLogout } from '../../hooks/reactQuery/useAuthApi';
-import toast from 'react-hot-toast';
-import queryClient from '../../utils/queryClient';
-import { QUERY_KEYS } from '../../constants/keys';
+import React from "react";
+import { useAuthStore } from "../../stores/useAuthStore";
+import routes from "../../routes";
+import {
+  Bell,
+  BookMarked,
+  BookOpen,
+  Code,
+  LogOut,
+  Trophy,
+  User,
+} from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthLogout } from "../../hooks/reactQuery/useAuthApi";
+import toast from "react-hot-toast";
+import queryClient from "../../utils/queryClient";
+import { QUERY_KEYS } from "../../constants/keys";
 
 const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
-  const { authUser, isAuthenticated, clearAuth, problemsSolved } = useAuthStore();
+  const { authUser, isAuthenticated, clearAuth, problemsSolved } =
+    useAuthStore();
 
   const { mutate: authLogoutHandle } = useAuthLogout();
 
@@ -20,11 +29,11 @@ const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
       onSuccess: () => {
         clearAuth();
         queryClient.clear();
-        navigate('/login');
+        navigate("/login");
         if (onLinkClick) onLinkClick();
       },
       onError: (err) => {
-        toast.error(err.response.data?.error || 'Something went wrong');
+        toast.error(err.response.data?.error || "Something went wrong");
       },
     });
   };
@@ -77,13 +86,17 @@ const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
         <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
           <div className="w-10 h-10 rounded-full ring-2 ring-slate-600/30">
             <img
-              src={authUser?.image || 'https://avatar.iran.liara.run/public/boy'}
+              src={
+                authUser?.image || "https://avatar.iran.liara.run/public/boy"
+              }
               alt="User Avatar"
               className="object-cover rounded-full w-full h-full"
             />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-slate-200 truncate">{authUser?.name}</p>
+            <p className="font-semibold text-slate-200 truncate">
+              {authUser?.name}
+            </p>
             <p className="text-sm text-slate-400 truncate">{authUser?.email}</p>
             {problemsSolved?.length > 0 && (
               <div className="flex items-center gap-1 mt-1">
@@ -118,7 +131,7 @@ const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
           <div className="flex items-center gap-1">
             <Trophy className="w-3 h-3 text-emerald-400" />
             <span className="text-xs text-slate-300">
-              {problemsSolved?.length || ''} Problems solved
+              {problemsSolved?.length || ""} Problems solved
             </span>
           </div>
         </div>
@@ -126,10 +139,15 @@ const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
 
       {/* User Dropdown */}
       <div className="dropdown dropdown-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar hover:bg-slate-700/50">
+        <label
+          tabIndex={0}
+          className="btn btn-ghost btn-circle avatar hover:bg-slate-700/50"
+        >
           <div className="w-10 rounded-full ring-2 ring-slate-600/30 hover:ring-emerald-500/50 transition-all duration-200">
             <img
-              src={authUser?.image || 'https://avatar.iran.liara.run/public/boy'}
+              src={
+                authUser?.image || "https://avatar.iran.liara.run/public/boy"
+              }
               alt="User Avatar"
               className="object-cover rounded-full"
             />
@@ -149,7 +167,7 @@ const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
                   <div className="flex items-center gap-1">
                     <Trophy className="w-3 h-3 text-emerald-400" />
                     <span className="text-xs text-slate-300">
-                      {problemsSolved?.length || ''} Problems solved
+                      {problemsSolved?.length || ""} Problems solved
                     </span>
                   </div>
                 )}
@@ -188,7 +206,7 @@ const RightSideNavbar = ({ isMobile = false, onLinkClick }) => {
             </Link>
           </li>
 
-          {authUser?.role === 'ADMIN' && (
+          {authUser?.role === "ADMIN" && (
             <li>
               <Link
                 to={routes.admin.createProblem}

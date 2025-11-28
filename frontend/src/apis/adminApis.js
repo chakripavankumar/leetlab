@@ -1,8 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
-const createProblem = (payload) => axios.post('/problem/create-problem', payload);
+const createProblem = (payload) =>
+  axios.post("/problem/create-problem", payload);
 
-const deleteProblem = (problemId) => axios.delete(`/problem/delete-problem/${problemId}`);
+const deleteProblem = (problemId) =>
+  axios.delete(`/problem/delete-problem/${problemId}`);
 
 const adminApis = {
   createProblem,

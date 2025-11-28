@@ -1,11 +1,11 @@
-import { useAuthStore } from '../../stores/useAuthStore';
-import { useAddProblemsToPlaylist } from '../../hooks/reactQuery/usePlaylistApi';
-import toast from 'react-hot-toast';
-import { useState } from 'react';
-import queryClient from '../../utils/queryClient';
-import { QUERY_KEYS } from '../../constants/keys';
-import { PlayCircle, X, Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useAuthStore } from "../../stores/useAuthStore";
+import { useAddProblemsToPlaylist } from "../../hooks/reactQuery/usePlaylistApi";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import queryClient from "../../utils/queryClient";
+import { QUERY_KEYS } from "../../constants/keys";
+import { PlayCircle, X, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PlaylistModal = ({ problemId, allPlaylists }) => {
   const [playlistAddDetails, setPlaylistAddDetails] = useState({
@@ -18,15 +18,15 @@ const PlaylistModal = ({ problemId, allPlaylists }) => {
 
   const addToPlaylist = () => {
     if (!isAuthenticated) {
-      toast.error('Please login to add problem to playlist');
+      toast.error("Please login to add problem to playlist");
       return;
     }
     if (!playlistAddDetails.playlistId || !problemId) {
-      toast.error('Please select a playlist');
+      toast.error("Please select a playlist");
       return;
     }
 
-    const modal = document.getElementById('add_to_playlist');
+    const modal = document.getElementById("add_to_playlist");
     if (modal) {
       modal.close();
     }
@@ -38,11 +38,11 @@ const PlaylistModal = ({ problemId, allPlaylists }) => {
       },
       {
         onSuccess: (res) => {
-          toast.success(res?.message || 'Added to playlist successfully');
+          toast.success(res?.message || "Added to playlist successfully");
           queryClient.invalidateQueries(QUERY_KEYS.PLAYLISTS);
         },
         onError: (err) => {
-          toast.error(err?.response?.data?.error || 'Something went wrong');
+          toast.error(err?.response?.data?.error || "Something went wrong");
         },
       }
     );
@@ -72,7 +72,9 @@ const PlaylistModal = ({ problemId, allPlaylists }) => {
           </div>
 
           {/* Title */}
-          <h3 className="font-bold text-xl text-center mb-3">Add to Playlist</h3>
+          <h3 className="font-bold text-xl text-center mb-3">
+            Add to Playlist
+          </h3>
 
           {/* Message */}
           <p className="text-base-content/70 text-center mb-6 leading-relaxed">
@@ -86,9 +88,12 @@ const PlaylistModal = ({ problemId, allPlaylists }) => {
               <select
                 className="select select-primary select-lg w-full bg-base-100 border-2 focus:border-primary transition-colors"
                 onChange={(e) =>
-                  setPlaylistAddDetails((prev) => ({ ...prev, playlistId: e.target.value }))
+                  setPlaylistAddDetails((prev) => ({
+                    ...prev,
+                    playlistId: e.target.value,
+                  }))
                 }
-                value={playlistAddDetails.playlistId || 'default'}
+                value={playlistAddDetails.playlistId || "default"}
               >
                 <option disabled={true} value="default">
                   Select a playlist to add this problem
@@ -121,10 +126,10 @@ const PlaylistModal = ({ problemId, allPlaylists }) => {
           ) : (
             <div className="text-center">
               <p className="text-base-content/70 mb-6">
-                No playlists available. Please create a new{' '}
+                No playlists available. Please create a new{" "}
                 <Link to="/playlists" className="text-primary link-hover">
                   playlist
-                </Link>{' '}
+                </Link>{" "}
                 first.
               </p>
 

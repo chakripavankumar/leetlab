@@ -11,37 +11,37 @@ import {
   Send,
   Download,
   RefreshCcwDotIcon,
-} from 'lucide-react';
-import MenuBarTab, { MenuBarTabItem } from '../common/MenuBarTab';
-import RenderBasicDetails from './RenderBasicDetails';
-import RenderExamples from './RenderExamples';
-import RenderCodeTemplates from './RenderCodeTemplates';
-import RenderReferenceSolutions from './RenderReferenceSolutions';
-import RenderMetadata from './RenderMetadata';
-import RenderTestcases from './RenderTestcases';
-import { useEffect, useState } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { zodProblemSchema } from '../../utils/zodSchema';
-import { useCreateProblem } from '../../hooks/reactQuery/useAdminApi';
-import { DEFAULT_PROBLEM_VALUES } from '../../constants/problemDetails';
+} from "lucide-react";
+import MenuBarTab, { MenuBarTabItem } from "../common/MenuBarTab";
+import RenderBasicDetails from "./RenderBasicDetails";
+import RenderExamples from "./RenderExamples";
+import RenderCodeTemplates from "./RenderCodeTemplates";
+import RenderReferenceSolutions from "./RenderReferenceSolutions";
+import RenderMetadata from "./RenderMetadata";
+import RenderTestcases from "./RenderTestcases";
+import { useEffect, useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { zodProblemSchema } from "../../utils/zodSchema";
+import { useCreateProblem } from "../../hooks/reactQuery/useAdminApi";
+import { DEFAULT_PROBLEM_VALUES } from "../../constants/problemDetails";
 import {
   sampleDemoData,
   sampleDPData,
   sampleStringProblem,
-} from '../../constants/sampleProblemData';
+} from "../../constants/sampleProblemData";
 import {
   getFromLocalStorage,
   removeFromLocalStorage,
   setToLocalStorage,
-} from '../../utils/localStorage';
-import { DRAFT_PROBLEM_KEY, QUERY_KEYS } from '../../constants/keys';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import queryClient from '../../utils/queryClient';
+} from "../../utils/localStorage";
+import { DRAFT_PROBLEM_KEY, QUERY_KEYS } from "../../constants/keys";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import queryClient from "../../utils/queryClient";
 
 const CreateProblem = () => {
-  const [sampleType, setSampleType] = useState('DP');
+  const [sampleType, setSampleType] = useState("DP");
 
   const { mutate: createProblem, isLoading } = useCreateProblem();
 
@@ -69,7 +69,7 @@ const CreateProblem = () => {
     replace: replaceExample,
   } = useFieldArray({
     control,
-    name: 'examples',
+    name: "examples",
   });
 
   const {
@@ -79,7 +79,7 @@ const CreateProblem = () => {
     replace: replaceTestCases,
   } = useFieldArray({
     control,
-    name: 'testcases',
+    name: "testcases",
   });
 
   useEffect(() => {
@@ -110,23 +110,23 @@ const CreateProblem = () => {
       onSuccess: (res) => {
         // console.log(res);
         if (res?.success) {
-          toast.success(res?.message || 'Problem created successfully');
+          toast.success(res?.message || "Problem created successfully");
           // console.log(res.data)
           navigate(`/problems/${res?.data?.id}`);
           queryClient.invalidateQueries(QUERY_KEYS.PROBLEMS);
         } else {
-          toast.error(res?.message || 'Something went wrong');
+          toast.error(res?.message || "Something went wrong");
           return;
         }
       },
       onError: (err) => {
-        toast.error(err.response.data?.error || 'Something went wrong');
+        toast.error(err.response.data?.error || "Something went wrong");
       },
     });
   };
 
   const loadSampleData = () => {
-    const sampleData = sampleType === 'DP' ? sampleDPData : sampleStringProblem;
+    const sampleData = sampleType === "DP" ? sampleDPData : sampleStringProblem;
     replaceTestCases(sampleData?.testcases.map((test) => test));
     replaceExample(sampleData?.examples.map((ex) => ex));
 
@@ -164,7 +164,9 @@ const CreateProblem = () => {
                 type="button"
                 className="btn btn-secondary gap-2"
                 onClick={() => {
-                  replaceTestCases(sampleDemoData?.testcases.map((test) => test));
+                  replaceTestCases(
+                    sampleDemoData?.testcases.map((test) => test)
+                  );
                   replaceExample(sampleDemoData?.examples.map((ex) => ex));
 
                   reset(sampleDemoData);
@@ -179,20 +181,32 @@ const CreateProblem = () => {
           <form onSubmit={handleSubmit(handleSubmitQuestion)}>
             <div className="flex flex-col flex-wrap justify-end sm:flex-row gap-4 mb-6 p-4 rounded-lg">
               <div className="flex gap-3">
-                <button type="button" onClick={handleSaveDraft} className="btn btn-outline gap-2">
+                <button
+                  type="button"
+                  onClick={handleSaveDraft}
+                  className="btn btn-outline gap-2"
+                >
                   <Save className="w-4 h-4" />
                   Save as Draft
                 </button>
-                <button type="button" onClick={handleFormReset} className="btn btn-outline gap-2">
+                <button
+                  type="button"
+                  onClick={handleFormReset}
+                  className="btn btn-outline gap-2"
+                >
                   <RefreshCcwDotIcon className="w-4 h-4" />
                   Reset Form
                 </button>
                 <button
                   disabled={isLoading}
                   type="submit"
-                  className={`btn btn-primary gap-2 ${isLoading && 'btn-disabled'}`}
+                  className={`btn btn-primary gap-2 ${
+                    isLoading && "btn-disabled"
+                  }`}
                 >
-                  {isLoading && <span className="loading loading-spinner loading-xs mr-2"></span>}
+                  {isLoading && (
+                    <span className="loading loading-spinner loading-xs mr-2"></span>
+                  )}
                   <Send className="w-4 h-4" />
                   Submit Question
                 </button>
@@ -214,11 +228,15 @@ const CreateProblem = () => {
               </MenuBarTabItem>
 
               <MenuBarTabItem title="Code Templates" icon={Code}>
-                <RenderCodeTemplates {...{ control, errors, watch, resetField }} />
+                <RenderCodeTemplates
+                  {...{ control, errors, watch, resetField }}
+                />
               </MenuBarTabItem>
 
               <MenuBarTabItem title="Reference Solutions" icon={CheckCircle}>
-                <RenderReferenceSolutions {...{ control, errors, watch, resetField }} />
+                <RenderReferenceSolutions
+                  {...{ control, errors, watch, resetField }}
+                />
               </MenuBarTabItem>
 
               <MenuBarTabItem title="Test Cases" icon={TestTube}>

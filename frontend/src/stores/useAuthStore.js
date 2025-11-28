@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export const useAuthStore = create(
   persist(
@@ -19,7 +19,8 @@ export const useAuthStore = create(
           playlists: user?.playlists || [],
         }),
 
-      clearAuth: () => set({ authUser: null, isAuthenticated: false, problemsSolved: [] }),
+      clearAuth: () =>
+        set({ authUser: null, isAuthenticated: false, problemsSolved: [] }),
 
       addSolvedProblem: (problemId) => {
         const current = get().problemsSolved;
@@ -41,7 +42,7 @@ export const useAuthStore = create(
       },
     }),
     {
-      name: 'x-auth-store',
+      name: "x-auth-store",
     }
   )
 );

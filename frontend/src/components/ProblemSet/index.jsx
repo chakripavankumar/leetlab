@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   FileJson,
   Trash,
@@ -9,32 +9,45 @@ import {
   Filter,
   Code,
   CheckCircle,
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useGetAllProblems } from '../../hooks/reactQuery/useProblemApi';
-import { toast } from 'react-hot-toast';
-import { useAuthStore } from '../../stores/useAuthStore';
-import { DeleteModal, MyLoader, PaginatedTable, PlaylistModal } from '../common';
-import { useDeleteProblem } from '../../hooks/reactQuery/useAdminApi';
-import queryClient from '../../utils/queryClient';
-import { QUERY_KEYS } from '../../constants/keys';
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { useGetAllProblems } from "../../hooks/reactQuery/useProblemApi";
+import { toast } from "react-hot-toast";
+import { useAuthStore } from "../../stores/useAuthStore";
+import {
+  DeleteModal,
+  MyLoader,
+  PaginatedTable,
+  PlaylistModal,
+} from "../common";
+import { useDeleteProblem } from "../../hooks/reactQuery/useAdminApi";
+import queryClient from "../../utils/queryClient";
+import { QUERY_KEYS } from "../../constants/keys";
 
 const ProblemSet = () => {
-  const [search, setSearch] = useState('');
-  const [difficultyFilter, setDifficultyFilter] = useState('');
-  const [companyFilter, setCompanyFilter] = useState('');
-  const [tagFilter, setTagFilter] = useState('');
-  const [sortBy, setSortBy] = useState('');
+  const [search, setSearch] = useState("");
+  const [difficultyFilter, setDifficultyFilter] = useState("");
+  const [companyFilter, setCompanyFilter] = useState("");
+  const [tagFilter, setTagFilter] = useState("");
+  const [sortBy, setSortBy] = useState("");
   const [sortAsc, setSortAsc] = useState(true);
   const [filteredProblems, setFilteredProblems] = useState([]);
   const [problemIdForPlaylist, setProblemIdForPlaylist] = useState(null);
-  const [problemToDelete, setProblemToDelete] = useState({ id: null, title: null });
+  const [problemToDelete, setProblemToDelete] = useState({
+    id: null,
+    title: null,
+  });
 
   const { data, isLoading, isError, error } = useGetAllProblems();
   // const { data: allPlaylists } = useGetAllPlaylists();
   const { mutate: deleteProblem } = useDeleteProblem();
 
-  const { authUser, isAuthenticated, problemsSolved, playlists: myPlaylists } = useAuthStore();
+  const {
+    authUser,
+    isAuthenticated,
+    problemsSolved,
+    playlists: myPlaylists,
+  } = useAuthStore();
 
   useEffect(() => {
     if (!data?.data) return;
@@ -45,13 +58,17 @@ const ProblemSet = () => {
         solved: problemsSolved.includes(p.id), // inject "solved" status
       }))
       .filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
-      .filter((p) => (difficultyFilter ? p.difficulty === difficultyFilter : true))
-      .filter((p) => (companyFilter ? p.companies.includes(companyFilter) : true))
+      .filter((p) =>
+        difficultyFilter ? p.difficulty === difficultyFilter : true
+      )
+      .filter((p) =>
+        companyFilter ? p.companies.includes(companyFilter) : true
+      )
       .filter((p) => (tagFilter ? p.tags.includes(tagFilter) : true))
       .sort((a, b) => {
         if (!sortBy) return 0;
 
-        if (sortBy === 'solved') {
+        if (sortBy === "solved") {
           return sortAsc
             ? Number(b.solved) - Number(a.solved)
             : Number(a.solved) - Number(b.solved);
@@ -60,7 +77,7 @@ const ProblemSet = () => {
         const valA = a[sortBy];
         const valB = b[sortBy];
 
-        if (typeof valA === 'string') {
+        if (typeof valA === "string") {
           return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
         } else {
           return sortAsc ? valA - valB : valB - valA;
@@ -68,7 +85,16 @@ const ProblemSet = () => {
       });
 
     setFilteredProblems(updatedData);
-  }, [data, problemsSolved, search, difficultyFilter, companyFilter, tagFilter, sortBy, sortAsc]);
+  }, [
+    data,
+    problemsSolved,
+    search,
+    difficultyFilter,
+    companyFilter,
+    tagFilter,
+    sortBy,
+    sortAsc,
+  ]);
 
   const handleSortChange = ({ key, asc }) => {
     setSortBy(key);
@@ -91,20 +117,20 @@ const ProblemSet = () => {
 
   const handleDeleteProblem = () => {
     if (!problemToDelete.id) {
-      toast.error('Please select a problem to delete');
+      toast.error("Please select a problem to delete");
       return;
     }
     deleteProblem(problemToDelete.id, {
       onSuccess: ({ message }) => {
-        toast.success(message || 'Problem deleted successfully');
+        toast.success(message || "Problem deleted successfully");
         setProblemToDelete({ id: null, title: null });
         queryClient.invalidateQueries(QUERY_KEYS.PROBLEMS);
       },
       onError: (err) => {
-        toast.error(err?.response?.data?.error || 'Something went wrong');
+        toast.error(err?.response?.data?.error || "Something went wrong");
       },
     });
-    closeModal('delete_problem_modal');
+    closeModal("delete_problem_modal");
   };
 
   if (isLoading) {
@@ -112,12 +138,16 @@ const ProblemSet = () => {
   }
 
   if (isError) {
-    toast.error(error?.error || 'Something went wrong');
+    toast.error(error?.error || "Something went wrong");
   }
 
   // console.log(data?.data?.map((p) => p.tags).flat());
-  const availableCompanies = Array.from(new Set(data?.data?.flatMap((p) => p?.companies)));
-  const availableTags = Array.from(new Set(data?.data?.flatMap((p) => p?.tags)));
+  const availableCompanies = Array.from(
+    new Set(data?.data?.flatMap((p) => p?.companies))
+  );
+  const availableTags = Array.from(
+    new Set(data?.data?.flatMap((p) => p?.tags))
+  );
 
   // console.log(availableCompanies);
   // console.log(availableTags);
@@ -236,18 +266,21 @@ const ProblemSet = () => {
                 data={filteredProblems}
                 itemsPerPage={10}
                 columns={[
-                  { label: '#', sortKey: '' },
-                  { label: 'Status', sortKey: 'solved' },
-                  { label: 'Title', sortKey: 'title' },
-                  { label: 'Difficulty', sortKey: 'difficulty' },
-                  { label: 'Company', sortKey: '' },
-                  { label: 'Topics', sortKey: '' },
-                  { label: 'Actions', sortKey: '' },
+                  { label: "#", sortKey: "" },
+                  { label: "Status", sortKey: "solved" },
+                  { label: "Title", sortKey: "title" },
+                  { label: "Difficulty", sortKey: "difficulty" },
+                  { label: "Company", sortKey: "" },
+                  { label: "Topics", sortKey: "" },
+                  { label: "Actions", sortKey: "" },
                 ]}
                 sortConfig={{ key: sortBy, asc: sortAsc }}
                 onSortChange={handleSortChange}
                 renderRow={(problem, index) => (
-                  <tr key={problem.id} className="hover:bg-base-200/50 transition-colors">
+                  <tr
+                    key={problem.id}
+                    className="hover:bg-base-200/50 transition-colors"
+                  >
                     <td className="text-center">{index + 1}</td>
 
                     <td className="text-center">
@@ -269,7 +302,9 @@ const ProblemSet = () => {
                       >
                         {problem?.title}
                       </Link>
-                      {import.meta.env.VITE_DEMO_PROBLEM_ID?.includes(problem?.id) && (
+                      {import.meta.env.VITE_DEMO_PROBLEM_ID?.includes(
+                        problem?.id
+                      ) && (
                         <span className="badge badge-sm badge-info">Demo</span>
                       )}
                     </td>
@@ -277,18 +312,18 @@ const ProblemSet = () => {
                     <td className="text-center">
                       <span
                         className={`badge badge-lg ${
-                          problem.difficulty === 'EASY'
-                            ? 'badge-success'
-                            : problem.difficulty === 'MEDIUM'
-                            ? 'badge-warning'
-                            : 'badge-error'
+                          problem.difficulty === "EASY"
+                            ? "badge-success"
+                            : problem.difficulty === "MEDIUM"
+                            ? "badge-warning"
+                            : "badge-error"
                         }`}
                       >
-                        {problem.difficulty === 'EASY'
-                          ? 'Easy'
-                          : problem.difficulty === 'MEDIUM'
-                          ? 'Medium'
-                          : 'Hard'}
+                        {problem.difficulty === "EASY"
+                          ? "Easy"
+                          : problem.difficulty === "MEDIUM"
+                          ? "Medium"
+                          : "Hard"}
                       </span>
                     </td>
 
@@ -296,7 +331,9 @@ const ProblemSet = () => {
                       <div
                         className="tooltip tooltip-top"
                         data-tip={
-                          problem.companies?.length ? problem.companies.join(', ') : 'No company'
+                          problem.companies?.length
+                            ? problem.companies.join(", ")
+                            : "No company"
                         }
                       >
                         <div className="p-2 bg-base-200 rounded-lg inline-block">
@@ -308,7 +345,11 @@ const ProblemSet = () => {
                     <td className="text-center">
                       <div
                         className="tooltip tooltip-top"
-                        data-tip={problem.tags?.length ? problem.tags.join(', ') : 'No topics'}
+                        data-tip={
+                          problem.tags?.length
+                            ? problem.tags.join(", ")
+                            : "No topics"
+                        }
                       >
                         <div className="p-2 bg-base-200 rounded-lg inline-block">
                           <Tag className="w-4 h-4 text-base-content" />
@@ -321,13 +362,15 @@ const ProblemSet = () => {
                         <div
                           className="tooltip tooltip-top"
                           data-tip={
-                            isAuthenticated ? 'Save to playlist' : 'Login to save to playlist'
+                            isAuthenticated
+                              ? "Save to playlist"
+                              : "Login to save to playlist"
                           }
                         >
                           <button
                             type="button"
                             onClick={() => {
-                              openModal('add_to_playlist');
+                              openModal("add_to_playlist");
                               setProblemIdForPlaylist(problem?.id);
                             }}
                             className="btn btn-sm btn-outline btn-primary gap-1"
@@ -337,8 +380,11 @@ const ProblemSet = () => {
                           </button>
                         </div>
 
-                        {isAuthenticated && authUser?.role === 'ADMIN' && (
-                          <div className="tooltip tooltip-top" data-tip="Delete Problem">
+                        {isAuthenticated && authUser?.role === "ADMIN" && (
+                          <div
+                            className="tooltip tooltip-top"
+                            data-tip="Delete Problem"
+                          >
                             <button
                               className="btn btn-sm btn-outline btn-error gap-1"
                               onClick={() => {
@@ -346,7 +392,7 @@ const ProblemSet = () => {
                                   id: problem?.id,
                                   title: problem?.title,
                                 });
-                                openModal('delete_problem_modal');
+                                openModal("delete_problem_modal");
                               }}
                             >
                               <Trash className="w-4 h-4" />
@@ -363,7 +409,10 @@ const ProblemSet = () => {
         </div>
 
         {/* Modals */}
-        <PlaylistModal allPlaylists={myPlaylists} problemId={problemIdForPlaylist} />
+        <PlaylistModal
+          allPlaylists={myPlaylists}
+          problemId={problemIdForPlaylist}
+        />
 
         <DeleteModal
           modalId="delete_problem_modal"

@@ -1,5 +1,5 @@
-import { Children, useId, isValidElement, useState } from 'react';
-import TabContext from '../../context/useTabContext';
+import { Children, useId, isValidElement, useState } from "react";
+import TabContext from "../../context/useTabContext";
 
 export const MenuBarTabItem = ({ children }) => {
   return children;
@@ -25,11 +25,20 @@ const MenuBarTab = ({ children }) => {
 
   return (
     <TabContext.Provider
-      value={{ activeTabIdx: activeIdx, nextTab, previousTab, totalTabs: validChildren.length }}
+      value={{
+        activeTabIdx: activeIdx,
+        nextTab,
+        previousTab,
+        totalTabs: validChildren.length,
+      }}
     >
       <div className="tabs tabs-lift justify-center">
         {validChildren.map((child, idx) => (
-          <label key={idx} className="tab cursor-pointer" onClick={() => setActiveIdx(idx)}>
+          <label
+            key={idx}
+            className="tab cursor-pointer"
+            onClick={() => setActiveIdx(idx)}
+          >
             <input
               type="radio"
               name={uid}
@@ -50,7 +59,7 @@ const MenuBarTab = ({ children }) => {
           <div
             key={idx}
             className={`tab-content bg-base-100  p-6 transition-opacity duration-300 ease-in-out ${
-              activeIdx === idx ? 'block' : 'hidden'
+              activeIdx === idx ? "block" : "hidden"
             }`}
           >
             {child.props.children}

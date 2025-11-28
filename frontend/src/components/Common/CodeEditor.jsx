@@ -1,7 +1,13 @@
-import Editor from '@monaco-editor/react';
-import { LucideLoader } from 'lucide-react';
+import Editor from "@monaco-editor/react";
+import { LucideLoader } from "lucide-react";
 
-const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) => {
+const CodeEditor = ({
+  language,
+  value,
+  onChange,
+  readOnly = false,
+  ...props
+}) => {
   const handleEditorDidMount = (editor, monaco) => {
     // Add custom keybindings
     // editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
@@ -10,28 +16,30 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
 
     // Add custom actions
     editor.addAction({
-      id: 'format-document',
-      label: 'Format Document',
-      keybindings: [monaco.KeyMod.Shift | monaco.KeyMod.Alt | monaco.KeyCode.KeyF],
+      id: "format-document",
+      label: "Format Document",
+      keybindings: [
+        monaco.KeyMod.Shift | monaco.KeyMod.Alt | monaco.KeyCode.KeyF,
+      ],
       run: () => {
-        editor.getAction('editor.action.formatDocument').run();
+        editor.getAction("editor.action.formatDocument").run();
       },
     });
 
     // Define custom theme with different line number colors
-    monaco.editor.defineTheme('customDark', {
-      base: 'vs-dark',
+    monaco.editor.defineTheme("customDark", {
+      base: "vs-dark",
       inherit: true,
       rules: [],
       colors: {
-        'editorLineNumber.foreground': '#9DCA9D', // Bright green line numbers
-        'editorLineNumber.activeForeground': '#E87952', // Orange for active line number
-        'editor.lineHighlightBackground': '#2d2d2d', // Subtle line highlight
+        "editorLineNumber.foreground": "#9DCA9D", // Bright green line numbers
+        "editorLineNumber.activeForeground": "#E87952", // Orange for active line number
+        "editor.lineHighlightBackground": "#2d2d2d", // Subtle line highlight
       },
     });
 
     // Apply the custom theme
-    monaco.editor.setTheme('customDark');
+    monaco.editor.setTheme("customDark");
 
     // Focus editor
     editor.focus();
@@ -54,7 +62,7 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
         fontFamily:
           "'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', Consolas, monospace",
         fontLigatures: true, // Enable font ligatures for supported fonts
-        lineNumbers: 'on',
+        lineNumbers: "on",
         lineNumbersMinChars: 3,
         automaticLayout: true,
         scrollBeyondLastLine: false,
@@ -62,18 +70,18 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
 
         // Visual enhancements
         roundedSelection: true,
-        cursorSmoothCaretAnimation: 'on',
-        cursorBlinking: 'phase',
+        cursorSmoothCaretAnimation: "on",
+        cursorBlinking: "phase",
         cursorWidth: 2,
-        renderLineHighlight: 'all',
-        renderWhitespace: 'selection', // Show whitespace only when text is selected
+        renderLineHighlight: "all",
+        renderWhitespace: "selection", // Show whitespace only when text is selected
         renderControlCharacters: true,
         smoothScrolling: true,
 
         // Word wrapping
-        wordWrap: 'on',
-        wrappingIndent: 'indent',
-        wrappingStrategy: 'advanced',
+        wordWrap: "on",
+        wrappingIndent: "indent",
+        wrappingStrategy: "advanced",
 
         // Indentation and formatting
         tabSize: 2,
@@ -83,10 +91,10 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
         formatOnPaste: true,
 
         // Bracket and quote handling - UPDATED: Only vertical lines
-        autoClosingBrackets: 'always',
-        autoClosingQuotes: 'always',
-        autoClosingDelete: 'always',
-        autoSurround: 'languageDefined',
+        autoClosingBrackets: "always",
+        autoClosingQuotes: "always",
+        autoClosingDelete: "always",
+        autoSurround: "languageDefined",
         bracketPairColorization: { enabled: true },
         guides: {
           bracketPairs: true,
@@ -103,8 +111,8 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
           useShadows: true,
           verticalHasArrows: false,
           horizontalHasArrows: false,
-          vertical: 'visible',
-          horizontal: 'visible',
+          vertical: "visible",
+          horizontal: "visible",
         },
 
         // IntelliSense and suggestions
@@ -114,29 +122,29 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
           strings: false,
         },
         suggestOnTriggerCharacters: true,
-        acceptSuggestionOnEnter: 'on',
+        acceptSuggestionOnEnter: "on",
         acceptSuggestionOnCommitCharacter: true,
-        suggestSelection: 'first',
-        wordBasedSuggestions: 'matchingDocuments',
+        suggestSelection: "first",
+        wordBasedSuggestions: "matchingDocuments",
         parameterHints: { enabled: true },
 
         // Find and replace
         find: {
           addExtraSpaceOnTop: false,
-          autoFindInSelection: 'never',
-          seedSearchStringFromSelection: 'selection',
+          autoFindInSelection: "never",
+          seedSearchStringFromSelection: "selection",
         },
 
         // Context menu and interactions
         contextmenu: true,
         mouseWheelZoom: true,
-        multiCursorModifier: 'ctrlCmd',
+        multiCursorModifier: "ctrlCmd",
         multiCursorMergeOverlapping: true,
 
         // Selection and editing
         selectOnLineNumbers: true,
         selectionHighlight: true,
-        occurrencesHighlight: 'singleFile',
+        occurrencesHighlight: "singleFile",
         wordHighlightDelay: 300,
 
         // Hover and links
@@ -149,7 +157,7 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
 
         // Folding
         folding: true,
-        foldingStrategy: 'indentation',
+        foldingStrategy: "indentation",
         foldingHighlight: true,
         unfoldOnClickAfterEndOfLine: false,
 
@@ -161,7 +169,7 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
         largeFileOptimizations: true,
 
         // Accessibility
-        accessibilitySupport: 'auto',
+        accessibilitySupport: "auto",
         accessibilityPageSize: 10,
 
         // Sticky scroll (shows current scope at top)
@@ -171,10 +179,10 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
         },
 
         // Semantic highlighting
-        'semanticHighlighting.enabled': true,
+        "semanticHighlighting.enabled": true,
 
         // Error and warning decorations
-        showFoldingControls: 'mouseover',
+        showFoldingControls: "mouseover",
         showUnused: true,
 
         // Editor appearance
@@ -199,7 +207,7 @@ const CodeEditor = ({ language, value, onChange, readOnly = false, ...props }) =
 
         // Lightbulb (code actions indicator)
         lightbulb: {
-          enabled: 'onCode',
+          enabled: "onCode",
         },
 
         // Sticky tabs

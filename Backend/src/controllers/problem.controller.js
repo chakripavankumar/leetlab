@@ -11,18 +11,14 @@ export const createProblem = async (req, res) => {
    * 1. Get all fields from body
    * 2. check user role again
    * 3. loop through each reference solution for different languages
-   *
    * 3.1 get judge0 language id for current language
    * 3.2 prepare judge0 submission for all testcases
    * 3.3 submit all testcases to judge0 in one batch
    * 3.4 extract tokens from response with comma separated
    * 3.5 poll judge0 until all submissions are finished
    * 3.6 validate all submissions (status.id !== 1 && status.id !== 2)
-   *
    * 4. save the problem in database after all reference solutions are passed
    * 5. return success message
-   *
-   *
    * referenceSolution = { python: "print('hello')", java: "System.out.println('hello')", javascript: "console.log('hello')" }
    */
 

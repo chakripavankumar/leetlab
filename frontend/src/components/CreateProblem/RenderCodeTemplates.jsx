@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react';
-import { Card } from '../common';
-import { SUPPORTED_LANGUAGES } from '../../constants/problemDetails';
-import CodeEditor from '../common/CodeEditor';
-import { Code2, Trash2 } from 'lucide-react';
-import TabNavigationButtons from '../common/TabNavigationButtons';
-import { Controller } from 'react-hook-form';
+import { useEffect, useState } from "react";
+import { Card } from "../common";
+import { SUPPORTED_LANGUAGES } from "../../constants/problemDetails";
+import CodeEditor from "../common/CodeEditor";
+import { Code2, Trash2 } from "lucide-react";
+import TabNavigationButtons from "../common/TabNavigationButtons";
+import { Controller } from "react-hook-form";
 
 const RenderCodeTemplates = ({ control, errors, watch, resetField }) => {
-  const [activeTab, setActiveTab] = useState('manage');
+  const [activeTab, setActiveTab] = useState("manage");
   const [addedLanguages, setAddedLanguages] = useState([]);
 
-  const referenceSolutions = watch('codeSnippets');
+  const referenceSolutions = watch("codeSnippets");
 
   useEffect(() => {
     if (referenceSolutions) {
       const langs = Object.keys(referenceSolutions);
-      const matchedLangs = SUPPORTED_LANGUAGES.filter((lang) => langs.includes(lang.value));
+      const matchedLangs = SUPPORTED_LANGUAGES.filter((lang) =>
+        langs.includes(lang.value)
+      );
       setAddedLanguages(matchedLangs);
     }
   }, [referenceSolutions]);
@@ -35,19 +37,29 @@ const RenderCodeTemplates = ({ control, errors, watch, resetField }) => {
     <div className="space-y-4">
       <Card title="Code Templates" subTitle="Code templates for the problem">
         <div className="flex items-center flex-wrap gap-2">
-          <button type="button" onClick={() => setActiveTab('add')} className="btn flex-1">
+          <button
+            type="button"
+            onClick={() => setActiveTab("add")}
+            className="btn flex-1"
+          >
             Add Template
           </button>
-          <button type="button" onClick={() => setActiveTab('manage')} className="btn flex-1">
-            Manage Template{' '}
-            <div className="badge badge-sm badge-secondary">{addedLanguages.length}</div>
+          <button
+            type="button"
+            onClick={() => setActiveTab("manage")}
+            className="btn flex-1"
+          >
+            Manage Template{" "}
+            <div className="badge badge-sm badge-secondary">
+              {addedLanguages.length}
+            </div>
           </button>
         </div>
 
         <div className="w-full">
           <div
             className={`tab-content bg-base-100  p-6 transition-opacity duration-300 ease-in-out ${
-              activeTab === 'add' ? 'block' : 'hidden'
+              activeTab === "add" ? "block" : "hidden"
             }`}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -55,7 +67,9 @@ const RenderCodeTemplates = ({ control, errors, watch, resetField }) => {
                 <button
                   type="button"
                   onClick={() => toggleSelectedLanguage(lang)}
-                  className={`btn btn-neutral ${addedLanguages.includes(lang) && 'disabled'}`}
+                  className={`btn btn-neutral ${
+                    addedLanguages.includes(lang) && "disabled"
+                  }`}
                   disabled={addedLanguages.includes(lang)}
                   key={lang.id}
                 >
@@ -67,7 +81,7 @@ const RenderCodeTemplates = ({ control, errors, watch, resetField }) => {
 
           <div
             className={`tab-content bg-base-100  p-6 transition-opacity duration-300 ease-in-out ${
-              activeTab === 'manage' ? 'block' : 'hidden'
+              activeTab === "manage" ? "block" : "hidden"
             }`}
           >
             {addedLanguages.length === 0 && (

@@ -1,5 +1,5 @@
 const timeAgo = (dateInput) => {
-  const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput;
+  const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
   const now = new Date();
   const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
@@ -17,11 +17,11 @@ const timeAgo = (dateInput) => {
     const value = intervals[unit];
     const count = Math.floor(seconds / value);
     if (count > 0) {
-      return `${count} ${unit}${count > 1 ? 's' : ''} ago`;
+      return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
     }
   }
 
-  return 'just now';
+  return "just now";
 };
 
 export default timeAgo;

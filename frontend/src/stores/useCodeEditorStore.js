@@ -1,12 +1,12 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 // "id:PYTHON": "print('hello')"
 const useCodeEditorStore = create(
   persist(
     (set) => ({
       codeMap: {},
-      lastEditedLanguage: 'JAVASCRIPT',
+      lastEditedLanguage: "JAVASCRIPT",
       setCodeMap: (problemId, language, code) =>
         set((state) => ({
           codeMap: {
@@ -14,10 +14,11 @@ const useCodeEditorStore = create(
             [`${problemId}:${language}`]: code,
           },
         })),
-      setLastEditedLanguage: (language) => set({ lastEditedLanguage: language }),
+      setLastEditedLanguage: (language) =>
+        set({ lastEditedLanguage: language }),
     }),
     {
-      name: 'code-editor',
+      name: "code-editor",
     }
   )
 );

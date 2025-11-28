@@ -1,6 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
-import { useGetSubmissionById } from '../../hooks/reactQuery/useSubmissionApi';
-import { CopyButton, MyLoader, PageNotFound } from '../common';
+import { Link, useParams } from "react-router-dom";
+import { useGetSubmissionById } from "../../hooks/reactQuery/useSubmissionApi";
+import { CopyButton, MyLoader, PageNotFound } from "../common";
 import {
   Book,
   LinkIcon,
@@ -12,15 +12,19 @@ import {
   User,
   Calendar,
   AlertTriangle,
-} from 'lucide-react';
-import { useAuthStore } from '../../stores/useAuthStore';
-import { calculateAverageMemory, calculateAverageTime } from '../../utils/calculation';
-import formatDate from '../../utils/formatDate';
+} from "lucide-react";
+import { useAuthStore } from "../../stores/useAuthStore";
+import {
+  calculateAverageMemory,
+  calculateAverageTime,
+} from "../../utils/calculation";
+import formatDate from "../../utils/formatDate";
 
 const Submission = () => {
   const { submissionId } = useParams();
 
-  const { isLoading, isError, data, error } = useGetSubmissionById(submissionId);
+  const { isLoading, isError, data, error } =
+    useGetSubmissionById(submissionId);
 
   const { authUser } = useAuthStore();
 
@@ -39,10 +43,14 @@ const Submission = () => {
   const avgMemory = calculateAverageMemory(data?.data?.memory).toFixed(0);
 
   const totalTestcases = data?.data?.testcasesResults?.length;
-  const passedTestcases = data?.data?.testcasesResults?.filter((t) => t.isPassed).length;
+  const passedTestcases = data?.data?.testcasesResults?.filter(
+    (t) => t.isPassed
+  ).length;
 
   // Find first failed test case
-  const firstFailedTestCase = data?.data?.testcasesResults?.find((t) => !t.isPassed);
+  const firstFailedTestCase = data?.data?.testcasesResults?.find(
+    (t) => !t.isPassed
+  );
 
   return (
     <div className="min-h-screen bg-base-200 p-6 md:p-12">
@@ -56,7 +64,9 @@ const Submission = () => {
                   <Book className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold mb-2">Submission Details</h1>
+                  <h1 className="text-4xl font-bold mb-2">
+                    Submission Details
+                  </h1>
                   <p className="text-base-content/70 text-lg">
                     View detailed information about your code submission
                   </p>
@@ -68,7 +78,9 @@ const Submission = () => {
                   <div className="stat-title text-xs">Status</div>
                   <div
                     className={`stat-value text-2xl ${
-                      data.data?.status === 'Accepted' ? 'text-success' : 'text-error'
+                      data.data?.status === "Accepted"
+                        ? "text-success"
+                        : "text-error"
                     }`}
                   >
                     {data.data?.status}
@@ -91,7 +103,7 @@ const Submission = () => {
                   </p>
                 </div>
                 <div className="p-3 bg-info/10 rounded-lg">
-                  {data.data?.status === 'Accepted' ? (
+                  {data.data?.status === "Accepted" ? (
                     <CheckCircle className="w-8 h-8 text-success" />
                   ) : (
                     <XCircle className="w-8 h-8 text-error" />
@@ -188,7 +200,9 @@ const Submission = () => {
                   </div>
                   <div>
                     <p className="text-sm text-base-content/60">Submitted</p>
-                    <p className="text-lg font-semibold">{formatDate(data.data.createdAt, true)}</p>
+                    <p className="text-lg font-semibold">
+                      {formatDate(data.data.createdAt, true)}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -257,7 +271,9 @@ const Submission = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <div className="w-3 h-3 bg-success rounded-full"></div>
-                        <h3 className="font-semibold text-lg">Expected Output</h3>
+                        <h3 className="font-semibold text-lg">
+                          Expected Output
+                        </h3>
                       </div>
                       <div className="bg-success/10 border border-success/20 rounded-lg p-4">
                         <pre className="text-sm whitespace-pre-wrap">
@@ -285,11 +301,15 @@ const Submission = () => {
                 <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="bg-base-200 rounded-lg p-3 text-center">
                     <p className="text-xs text-base-content/60">Status</p>
-                    <p className="font-semibold text-error">{firstFailedTestCase.status}</p>
+                    <p className="font-semibold text-error">
+                      {firstFailedTestCase.status}
+                    </p>
                   </div>
                   <div className="bg-base-200 rounded-lg p-3 text-center">
                     <p className="text-xs text-base-content/60">Time</p>
-                    <p className="font-semibold">{firstFailedTestCase.time}ms</p>
+                    <p className="font-semibold">
+                      {firstFailedTestCase.time}ms
+                    </p>
                   </div>
                   <div className="bg-base-200 rounded-lg p-3 text-center">
                     <p className="text-xs text-base-content/60">Memory</p>
@@ -299,7 +319,9 @@ const Submission = () => {
                   </div>
                   <div className="bg-base-200 rounded-lg p-3 text-center">
                     <p className="text-xs text-base-content/60">Test #</p>
-                    <p className="font-semibold">{firstFailedTestCase.testCaseNumber}</p>
+                    <p className="font-semibold">
+                      {firstFailedTestCase.testCaseNumber}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -313,7 +335,7 @@ const Submission = () => {
             <div className="p-6 border-b border-base-300">
               <h2 className="card-title text-2xl flex items-center gap-2">
                 <div className="flex items-center gap-2">
-                  {data.data?.status === 'Accepted' ? (
+                  {data.data?.status === "Accepted" ? (
                     <CheckCircle className="w-6 h-6 text-success" />
                   ) : (
                     <XCircle className="w-6 h-6 text-error" />
@@ -322,7 +344,9 @@ const Submission = () => {
                 </div>
                 <div
                   className={`badge ${
-                    data.data?.status === 'Accepted' ? 'badge-success' : 'badge-error'
+                    data.data?.status === "Accepted"
+                      ? "badge-success"
+                      : "badge-error"
                   } badge-lg text-nowrap`}
                 >
                   {passedTestcases} / {totalTestcases} Passed
@@ -334,10 +358,12 @@ const Submission = () => {
               <div className="text-center">
                 <div
                   className={`text-6xl font-bold mb-4 ${
-                    data.data?.status === 'Accepted' ? 'text-success' : 'text-error'
+                    data.data?.status === "Accepted"
+                      ? "text-success"
+                      : "text-error"
                   }`}
                 >
-                  {data.data?.status === 'Accepted' ? '✓' : '✗'}
+                  {data.data?.status === "Accepted" ? "✓" : "✗"}
                 </div>
                 <h3 className="text-2xl font-bold mb-2">{data.data?.status}</h3>
                 <p className="text-lg text-base-content/70">

@@ -1,8 +1,14 @@
-import { Card } from '../common';
-import { Plus, Trash2 } from 'lucide-react';
-import TabNavigationButtons from '../common/TabNavigationButtons';
+import { Card } from "../common";
+import { Plus, Trash2 } from "lucide-react";
+import TabNavigationButtons from "../common/TabNavigationButtons";
 
-const RenderExamples = ({ exampleFields, register, errors, addExample, removeExample }) => {
+const RenderExamples = ({
+  exampleFields,
+  register,
+  errors,
+  addExample,
+  removeExample,
+}) => {
   return (
     <div className="space-y-4">
       <Card
@@ -11,7 +17,9 @@ const RenderExamples = ({ exampleFields, register, errors, addExample, removeExa
             <span>Examples</span>
             <button
               type="button"
-              onClick={() => addExample({ input: '', output: '', explanation: '' })}
+              onClick={() =>
+                addExample({ input: "", output: "", explanation: "" })
+              }
               className="btn btn-sm btn-primary"
             >
               <Plus className="w-4 h-4" />

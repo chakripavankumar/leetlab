@@ -1,10 +1,10 @@
-import React from 'react';
-import { AlertTriangle, X } from 'lucide-react';
+import React from "react";
+import { AlertTriangle, X } from "lucide-react";
 
 const DeleteModal = ({
   modalId,
-  title = 'Are you sure?',
-  message = 'This action cannot be undone.',
+  title = "Are you sure?",
+  message = "This action cannot be undone.",
   onDelete,
 }) => {
   return (
@@ -28,7 +28,9 @@ const DeleteModal = ({
         <h3 className="font-bold text-xl text-center mb-3">{title}</h3>
 
         {/* Message */}
-        <p className="text-base-content/70 text-center mb-6 leading-relaxed">{message}</p>
+        <p className="text-base-content/70 text-center mb-6 leading-relaxed">
+          {message}
+        </p>
 
         {/* Action Buttons */}
         <div className="modal-action justify-center gap-3 mt-6">

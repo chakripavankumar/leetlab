@@ -1,7 +1,18 @@
-import { forwardRef } from 'react';
+import { forwardRef } from "react";
 
 const Input = forwardRef(
-  ({ label, icon: Icon, placeHolder, type = 'text', classNames = '', errorMsg, ...props }, ref) => (
+  (
+    {
+      label,
+      icon: Icon,
+      placeHolder,
+      type = "text",
+      classNames = "",
+      errorMsg,
+      ...props
+    },
+    ref
+  ) => (
     <div className="form-control">
       <label className="label">
         <span className="label-text font-medium">{label}</span>

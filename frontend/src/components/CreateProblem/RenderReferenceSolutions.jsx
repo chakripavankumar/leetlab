@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react';
-import { Card } from '../common';
-import { SUPPORTED_LANGUAGES } from '../../constants/problemDetails';
-import CodeEditor from '../common/CodeEditor';
-import { Code2, Trash2 } from 'lucide-react';
-import TabNavigationButtons from '../common/TabNavigationButtons';
-import { Controller } from 'react-hook-form';
+import { useEffect, useState } from "react";
+import { Card } from "../common";
+import { SUPPORTED_LANGUAGES } from "../../constants/problemDetails";
+import CodeEditor from "../common/CodeEditor";
+import { Code2, Trash2 } from "lucide-react";
+import TabNavigationButtons from "../common/TabNavigationButtons";
+import { Controller } from "react-hook-form";
 
 const RenderReferenceSolutions = ({ control, errors, watch, resetField }) => {
-  const [activeTab, setActiveTab] = useState('manage');
+  const [activeTab, setActiveTab] = useState("manage");
   const [addedLanguages, setAddedLanguages] = useState([]);
 
-  const referenceSolutions = watch('referenceSolutions'); // get live referenceSolutions data
+  const referenceSolutions = watch("referenceSolutions");
 
   useEffect(() => {
     if (referenceSolutions) {
       const langs = Object.keys(referenceSolutions);
-      const matchedLangs = SUPPORTED_LANGUAGES.filter((lang) => langs.includes(lang.value));
+      const matchedLangs = SUPPORTED_LANGUAGES.filter((lang) =>
+        langs.includes(lang.value)
+      );
       setAddedLanguages(matchedLangs);
     }
   }, [referenceSolutions]);
@@ -34,21 +36,34 @@ const RenderReferenceSolutions = ({ control, errors, watch, resetField }) => {
 
   return (
     <div className="space-y-4">
-      <Card title="Add Reference Solution" subTitle="Reference solutions for the problem">
+      <Card
+        title="Add Reference Solution"
+        subTitle="Reference solutions for the problem"
+      >
         <div className="flex items-center flex-wrap gap-2">
-          <button type="button" onClick={() => setActiveTab('add')} className="btn flex-1">
+          <button
+            type="button"
+            onClick={() => setActiveTab("add")}
+            className="btn flex-1"
+          >
             Add Reference Solution
           </button>
-          <button type="button" onClick={() => setActiveTab('manage')} className="btn flex-1">
-            Manage Reference Solutions{' '}
-            <div className="badge badge-sm badge-secondary">{addedLanguages.length}</div>
+          <button
+            type="button"
+            onClick={() => setActiveTab("manage")}
+            className="btn flex-1"
+          >
+            Manage Reference Solutions{" "}
+            <div className="badge badge-sm badge-secondary">
+              {addedLanguages.length}
+            </div>
           </button>
         </div>
 
         <div className="w-full">
           <div
             className={`tab-content bg-base-100  p-6 transition-opacity duration-300 ease-in-out ${
-              activeTab === 'add' ? 'block' : 'hidden'
+              activeTab === "add" ? "block" : "hidden"
             }`}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -56,7 +71,9 @@ const RenderReferenceSolutions = ({ control, errors, watch, resetField }) => {
                 <button
                   type="button"
                   onClick={() => toggleSelectedLanguage(lang)}
-                  className={`btn btn-neutral ${addedLanguages.includes(lang) && 'disabled'}`}
+                  className={`btn btn-neutral ${
+                    addedLanguages.includes(lang) && "disabled"
+                  }`}
                   disabled={addedLanguages.includes(lang)}
                   key={lang.id}
                 >
@@ -68,13 +85,13 @@ const RenderReferenceSolutions = ({ control, errors, watch, resetField }) => {
 
           <div
             className={`tab-content bg-base-100  p-6 transition-opacity duration-300 ease-in-out ${
-              activeTab === 'manage' ? 'block' : 'hidden'
+              activeTab === "manage" ? "block" : "hidden"
             }`}
           >
             {addedLanguages.length === 0 && (
               <div className="text-sm opacity-70 text-center">
-                No languages added for reference solution, Kindly click on the language you want to
-                add
+                No languages added for reference solution, Kindly click on the
+                language you want to add
               </div>
             )}
 
